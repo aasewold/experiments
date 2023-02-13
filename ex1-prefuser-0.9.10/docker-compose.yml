@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  carla:
+    build:
+      context: .
+      dockerfile: carla.dockerfile
+    environment:
+      - DISPLAY=
+      - SDL_VIDEODRIVER=offscreen
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  prefuser:
+    build:
+      context: .
+      dockerfile: prefuser.dockerfile
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./models:/transfuser/model_ckpt
+      - ./results:/transfuser/results
+    depends_on:
+      - carla
+    network_mode: service:carla
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
