@@ -14,4 +14,10 @@ RUN ./ImportAssets.sh
 USER carla
 WORKDIR /home/carla
 
-ENTRYPOINT ["/bin/sh", "-c", "/bin/bash CarlaUE4.sh -opengl"]
+ENV DISPLAY=
+ENV SDL_VIDEODRIVER=offscreen
+
+CMD ["/bin/bash", "CarlaUE4.sh", "-opengl"]
+
+HEALTHCHECK --interval=1s --timeout=1s --start-period=5s --retries=30 \
+    CMD grep -qi ':07d0' /proc/1/net/tcp

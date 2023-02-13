@@ -1,7 +1,20 @@
-FROM carlasim/carla:0.9.10.1 as carla
-# Nothing to do, just need this stage to copy some files from
+# Used to retreive the CARLA Python API
+ARG CARLA_VERSION
+FROM carlasim/carla:${CARLA_VERSION} AS carla
 
-# FROM nvidia/cuda:10.2-cudnn8-runtime-ubuntu18.04
+
+# Clones and checks out transfuser
+FROM alpine/git AS transfuser
+ARG TRANSFUSER_COMMIT
+
+RUN mkdir /transfuser
+WORKDIR /transfuser
+
+RUN git clone https://github.com/aasewold/transfuser.git /transfuser  \
+    && git checkout ${TRANSFUSER_COMMIT}
+
+
+# Final image
 FROM nvidia/cuda:11.3.1-cudnn8-runtime-ubuntu18.04
 
 RUN apt-get update && \
@@ -20,8 +33,12 @@ ENV PATH /opt/conda/bin:$PATH
 RUN mkdir /transfuser
 WORKDIR /transfuser
 
-RUN git clone https://github.com/autonomousvision/transfuser.git /transfuser  \
-    && git checkout 2022
+RUN mkdir carla
+COPY --from=carla /home/carla/PythonAPI carla/PythonAPI
+
+RUN mkdir team_code_transfuser
+COPY --from=transfuser /transfuser/environment.yml ./
+COPY --from=transfuser /transfuser/team_code_transfuser/requirements.txt team_code_transfuser/
 
 RUN conda env create -f environment.yml 
 SHELL ["conda", "run", "--no-capture-output", "-n", "tfuse", "/bin/bash", "-c"]
@@ -30,8 +47,7 @@ RUN pip install torch==1.11.0+cu113 torchvision==0.12.0+cu113 torchaudio==0.11.0
     && pip install torch-scatter==2.0.9 -f https://data.pyg.org/whl/torch-1.11.0+cu113.html \
     && pip install mmcv-full==1.5.3 -f https://download.openmmlab.com/mmcv/dist/cu113/torch1.11.0/index.html
 
-RUN mkdir carla
-COPY --from=carla /home/carla/PythonAPI carla/PythonAPI
+COPY --from=transfuser /transfuser /transfuser
 
 ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "tfuse"]
 CMD [ "/bin/bash", "./leaderboard/scripts/local_evaluation.sh", "carla", "." ]

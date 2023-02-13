@@ -5,9 +5,6 @@ services:
     build:
       context: .
       dockerfile: carla.dockerfile
-    environment:
-      - DISPLAY=
-      - SDL_VIDEODRIVER=offscreen
     deploy:
       resources:
         reservations:
@@ -18,15 +15,19 @@ services:
 
   prefuser:
     build:
-      context: .
-      dockerfile: prefuser.dockerfile
+      context: ../common
+      dockerfile: transfuser.dockerfile
+      args:
+        - CARLA_VERSION=0.9.10.1
+        - TRANSFUSER_COMMIT=2022
     environment:
       - PYTHONUNBUFFERED=1
     volumes:
-      - ./models:/transfuser/model_ckpt
-      - ./results:/transfuser/results
+      - ./models/prefuser/:/transfuser/model_ckpt/transfuser
+      - ./results/:/transfuser/results
     depends_on:
-      - carla
+      carla:
+        condition: service_healthy
     network_mode: service:carla
     deploy:
       resources:
