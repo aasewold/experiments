@@ -3,8 +3,9 @@ version: '3'
 services:
   carla:
     build:
-      context: .
-      dockerfile: carla.dockerfile
+      context: ../common
+      dockerfile: carla-0.9.14.dockerfile
+    restart: on-failure
     deploy:
       resources:
         reservations:
@@ -29,6 +30,7 @@ services:
       carla:
         condition: service_healthy
     network_mode: service:carla
+    restart: on-failure
     deploy:
       resources:
         reservations:
