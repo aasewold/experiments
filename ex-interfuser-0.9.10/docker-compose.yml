@@ -11,7 +11,8 @@ services:
         reservations:
           devices:
             - driver: nvidia
-              count: 1
+              device_ids:
+                - "1"
               capabilities: [gpu]
 
   interfuser:
@@ -22,8 +23,8 @@ services:
         - CARLA_VERSION=0.9.10.1
     environment:
       - PYTHONUNBUFFERED=1
-    env_file:
-      - .env
+      # Specify which evaluation to run. The options are town05, 42routes and longest6
+      - EVALUATION=longest6
     volumes:
       - ./models/interfuser/:/interfuser/models
       - ./results/:/interfuser/results
@@ -38,5 +39,6 @@ services:
         reservations:
           devices:
             - driver: nvidia
-              count: 1
+              device_ids:
+                - "1"
               capabilities: [gpu]
