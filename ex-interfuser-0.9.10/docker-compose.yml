@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  carla:
+    build:
+      context: ../common
+      dockerfile: carla-0.9.10.1.dockerfile
+    restart: on-failure
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  interfuser:
+    build:
+      context: ../common
+      dockerfile: interfuser.dockerfile
+      args:
+        - CARLA_VERSION=0.9.10.1
+    environment:
+      - PYTHONUNBUFFERED=1
+    env_file:
+      - .env
+    volumes:
+      - ./models/interfuser/:/interfuser/models
+      - ./results/:/interfuser/results
+      - ./data/:/interfuser/data
+    depends_on:
+      carla:
+        condition: service_healthy
+    network_mode: service:carla
+    restart: on-failure
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
