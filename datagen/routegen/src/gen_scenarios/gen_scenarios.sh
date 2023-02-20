@@ -1,5 +1,6 @@
-export CARLA_ROOT=${1:-/home/kchitta/Documents/CARLA_0.9.14.1}
-export WORK_DIR=${2:-/home/kchitta/Documents/misc/transfuser}
+#!/bin/bash
+
+set -e
 
 export CARLA_SERVER=${CARLA_ROOT}/CarlaUE4.sh
 export PYTHONPATH=$PYTHONPATH:${CARLA_ROOT}/PythonAPI
@@ -9,15 +10,9 @@ export SCENARIO_RUNNER_ROOT=${WORK_DIR}/scenario_runner
 export LEADERBOARD_ROOT=${WORK_DIR}/leaderboard
 export PYTHONPATH="${CARLA_ROOT}/PythonAPI/carla/":"${SCENARIO_RUNNER_ROOT}":"${LEADERBOARD_ROOT}":${PYTHONPATH}
 
-python3 ${WORK_DIR}/tools/dataset/gen_scenarios/gen_scenario_1_3.py \
---save_dir=${WORK_DIR}/leaderboard/data/training/scenarios/
+DIR=$(dirname "$0")
 
-python3 ${WORK_DIR}/tools/dataset/gen_scenarios/gen_scenario_4.py \
---save_dir=${WORK_DIR}/leaderboard/data/training/scenarios/
-
-python3 ${WORK_DIR}/tools/dataset/gen_scenarios/gen_scenario_7_8_9.py \
---save_dir=${WORK_DIR}/leaderboard/data/training/scenarios/
-
-python3 ${WORK_DIR}/tools/dataset/gen_scenarios/gen_scenario_10.py \
---save_dir=${WORK_DIR}/leaderboard/data/training/scenarios/
-
+python3 ${DIR}/gen_scenario_1_3.py --save_dir=${RESULTS_DIR}/scenarios
+python3 ${DIR}/gen_scenario_4.py --save_dir=${RESULTS_DIR}/scenarios
+python3 ${DIR}/gen_scenario_7_8_9.py --save_dir=${RESULTS_DIR}/scenarios
+python3 ${DIR}/gen_scenario_10.py --save_dir=${RESULTS_DIR}/scenarios
