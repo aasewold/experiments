@@ -48,13 +48,20 @@ def gen_scenarios(args, scenario_type_dict, town_scenario_tp_gen):
         towns = [args.towns]
     
     for town_ in towns:
+        print(f'Generating scenarios for town: {town_}')
+        print('Connecting to CARLA server on localhost:2000')
         client = carla.Client('localhost', 2000)
         client.set_timeout(200.0)
+        print(f'Loading town {town_}')
         world = client.load_world(town_)
+        print(f'Getting map')
         carla_map = world.get_map()  
         save_dir = args.save_dir
+        print(f'Running scenarios')
         for scen_type, _ in scenario_type_dict.items():
+            print(f'Running scenario {scen_type}')
             town_scenario_tp_gen(town_, carla_map , scen_type, save_dir, world)
+        print()
 
 
 def sample_junctions(world_map, route, scenarios_list, town, start_dist=20, end_dist=20, min_len=50, max_len=MAX_LEN):

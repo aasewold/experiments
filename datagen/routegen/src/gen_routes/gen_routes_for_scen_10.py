@@ -175,6 +175,8 @@ def main(args):
 
         if args.save_dir is not None and len_tree > 0:
             tree.write(args.save_file, xml_declaration=True, encoding='utf-8', pretty_print=True)
+    else:
+        print(f"No unsignalized junctions in {args.town}")
 
 
 if __name__ == '__main__':
@@ -193,6 +195,7 @@ if __name__ == '__main__':
     scenario_name = args.scenarios_dir.split('/')[-2]
     print(f"Generating routes for {scenario_name}")
     for town_ in towns:
+        print(f"Generating routes for {town_}")
         args.town = town_
         args.scenarios_file = os.path.join(args.scenarios_dir, town_ + '_' + scenario_name + '.json')
         route_save_dir = os.path.join(args.save_dir, scenario_name)
