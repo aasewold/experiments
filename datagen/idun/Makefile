@@ -18,10 +18,10 @@ TF_SIF=$(TF_BUILDDIR)/transfuser.sif
 TF_TAR=$(TF_BUILDDIR)/transfuser.tar
 
 TF_TAG := aasewold/transfuser:datagen-$(TRANSFUSER_SHA)
-TF_DOCKERFILE := ../common/transfuser.dockerfile
+TF_DOCKERFILE := ../../common/transfuser.dockerfile
 
 CARLA_TAG := aasewold/carla:datagen-$(CARLA_VERSION)
-CARLA_DOCKERFILE := ../common/carla-$(CARLA_VERSION).dockerfile
+CARLA_DOCKERFILE := ../../common/carla-$(CARLA_VERSION).dockerfile
 
 
 IDUN_HOST=idun-login1.hpc.ntnu.no
@@ -34,7 +34,7 @@ IDUN_SIFDIR=$(IDUN_WORKDIR)/sif
 job: idun | $(IDUN_RUNDIR)
 	ssh $(IDUN_HOST) "cd $(IDUN_RUNDIR) && ../submit.sh"
 
-idun: idun-carla idun-transfuser idun-extra
+idun: idun-carla idun-transfuser idun-files
 
 idun-carla: $(BUILDDIR)/.idun-carla | $(BUILDDIR)
 $(BUILDDIR)/.idun-carla: $(CARLA_SIF) | $(IDUN_SIFDIR)
@@ -46,10 +46,10 @@ $(BUILDDIR)/.idun-transfuser: $(TF_SIF) | $(IDUN_SIFDIR)
 	rsync -hP $(TF_SIF) $(IDUN_HOST):$(IDUN_SIFDIR)/
 	touch $@
 
-IDUN_EXTRA_FILES := $(shell find ./idun -type f -print)
-idun-extra: $(BUILDDIR)/.idun-extra | $(BUILDDIR)
-$(BUILDDIR)/.idun-extra: $(IDUN_EXTRA_FILES) | $(IDUN_WORKDIR)
-	rsync -rhP ./idun/ $(IDUN_HOST):$(IDUN_WORKDIR)/
+IDUN_FILES := $(shell find ./files -type f -print)
+idun-files: $(BUILDDIR)/.idun-files | $(BUILDDIR)
+$(BUILDDIR)/.idun-files: $(IDUN_FILES) | $(IDUN_WORKDIR)
+	rsync -ahP ./files/ $(IDUN_HOST):$(IDUN_WORKDIR)/
 	touch $@
 
 

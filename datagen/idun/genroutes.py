@@ -5,10 +5,10 @@ import sys
 import csv
 from pathlib import Path
 
-routes = Path(sys.argv[1])
-scenarios = Path(sys.argv[2])
-out_csv = Path(sys.argv[3])
-strip_prefix = sys.argv[4]
+routes = Path('files/routes/routes')
+scenarios = Path('files/routes/scenarios')
+out_csv = Path('files/config/routes.csv')
+strip_prefix = 'files'
 
 pairs = []
 

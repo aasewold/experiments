@@ -1,33 +1,25 @@
 
-RESULTS := results
+BUILD := build
 
 .PHONY: routes scenarios
 
-routes: $(RESULTS)/.routes
-scenarios: $(RESULTS)/.scenarios
+routes: $(BUILD)/.routes
+scenarios: $(BUILD)/.scenarios
 
-$(RESULTS)/.routes: scenarios
+$(BUILD)/.routes: scenarios | $(BUILD)
 	@echo "Generating routes"
 	docker compose run --build --rm routegen ./gen_routes/gen_routes.sh
-	@touch $(RESULTS)/.routes
+	@touch $(BUILD)/.routes
 
-$(RESULTS)/.scenarios:
+$(BUILD)/.scenarios: | $(BUILD)
 	@echo "Generating scenarios"
 	docker compose run --build --rm routegen ./gen_scenarios/gen_scenarios.sh
-	@touch $(RESULTS)/.scenarios
+	@touch $(BUILD)/.scenarios
 
 
-.PHONY: clean clean-routes clean-scenarios
+$(BUILD):
+	mkdir -p $(BUILD)
 
-clean: clean-routes clean-scenarios clean-compose
-
-clean-compose:
-	docker compose down
-
-clean-routes:
-	@echo "Cleaning routes"
-	rm -r $(RESULTS)/routes
-
-clean-scenarios:
-	@echo "Cleaning scenarios"
-	rm -r $(RESULTS)/scenarios
+.PHONY: clean
+clean:
+	rm -rf $(BUILD)
