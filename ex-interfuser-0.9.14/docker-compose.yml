@@ -4,7 +4,7 @@ services:
   carla:
     build:
       context: ../common
-      dockerfile: carla-0.9.10.1.dockerfile
+      dockerfile: carla-0.9.14.dockerfile
     restart: on-failure
     deploy:
       resources:
@@ -20,12 +20,12 @@ services:
       context: ../common
       dockerfile: interfuser.dockerfile
       args:
-        - CARLA_VERSION=0.9.10.1
-        - INTERFUSER_COMMIT=main
+        - CARLA_VERSION=0.9.14
+        - INTERFUSER_COMMIT=0.9.14
     environment:
       - PYTHONUNBUFFERED=1
       # Specify which evaluation to run. The options are town05, 42routes and longest6
-      - EVALUATION=longest6
+      - EVALUATION=42routes
     volumes:
       - ./models/interfuser/:/interfuser/models
       - ./results/:/interfuser/results

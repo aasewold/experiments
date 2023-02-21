@@ -9,7 +9,10 @@ FROM alpine/git AS interfuser
 RUN mkdir /interfuser
 WORKDIR /interfuser
 
-RUN git clone https://github.com/aasewold/InterFuser.git /interfuser
+ARG INTERFUSER_COMMIT
+
+RUN git clone https://github.com/aasewold/InterFuser.git /interfuser \
+    && git checkout ${INTERFUSER_COMMIT}
 
 # Final image
 FROM nvidia/cuda:11.3.1-cudnn8-runtime-ubuntu18.04
@@ -44,7 +47,8 @@ RUN pip install -r requirements.txt
 COPY --from=interfuser /interfuser/interfuser /interfuser/interfuser
 RUN cd interfuser && python setup.py develop && cd ..
 
-RUN easy_install carla/PythonAPI/carla/dist/carla-0.9.10-py3.7-linux-x86_64.egg
+COPY --from=carla /home/carla/PythonAPI/carla/dist/carla-*-py3.7-linux-x86_64.egg /interfuser/carla.egg
+RUN easy_install /interfuser/carla.egg && rm /interfuser/carla.egg
 
 RUN pip install -U pip && pip install -U setuptools
 
