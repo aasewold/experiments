@@ -12,6 +12,10 @@ export PYTHONPATH="${CARLA_ROOT}/PythonAPI/carla/":"${SCENARIO_RUNNER_ROOT}":"${
 
 DIR=$(dirname "$0")
 
+mkdir -p ${RESULTS_DIR}/scenarios
+
+cp -f ${DIR}/empty.json ${RESULTS_DIR}/scenarios/empty.json
+
 python3 ${DIR}/gen_scenario_1_3.py --save_dir=${RESULTS_DIR}/scenarios
 python3 ${DIR}/gen_scenario_4.py --save_dir=${RESULTS_DIR}/scenarios
 python3 ${DIR}/gen_scenario_7_8_9.py --save_dir=${RESULTS_DIR}/scenarios

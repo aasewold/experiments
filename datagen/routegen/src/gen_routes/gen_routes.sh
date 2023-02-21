@@ -12,6 +12,8 @@ export PYTHONPATH="${CARLA_ROOT}/PythonAPI/carla/":"${SCENARIO_RUNNER_ROOT}":"${
 
 DIR=$(dirname "$0")
 
+mkdir -p ${RESULTS_DIR}/routes
+
 python3 ${DIR}/gen_routes_for_scen_1_3_4.py \
 --save_dir=${RESULTS_DIR}/routes \
 --scenarios_dir=${RESULTS_DIR}/scenarios/Scenario1/ \

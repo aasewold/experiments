@@ -21,10 +21,10 @@ WORKDIR /routegen
 RUN mkdir carla
 COPY --from=carla /home/carla/PythonAPI carla/PythonAPI
 
-RUN mkdir results
-
 ENV WORK_DIR    /routegen
 ENV CARLA_ROOT  /routegen/carla
-ENV RESULTS_DIR /routegen/results
+
+RUN mkdir /routes
+ENV RESULTS_DIR /routes
 
 COPY . .

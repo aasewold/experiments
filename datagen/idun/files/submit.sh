@@ -2,16 +2,22 @@
 
 set -euo pipefail
 
-dir=$(dirname $0)
-
-routes_file=$dir/config/routes.csv
+routes_file=input/routes.csv
 num_routes=$(wc -l < $routes_file)
 
-job_in=$dir/job.slurm
-job_out=$dir/.job.slurm.tmp.n$num_routes
-cp $job_in $job_out || { echo "$job_out already exists, please remove it."; exit 1; }
+output_dir_name=$(date +%Y-%m-%d_%H-%M-%S)
+output_dir=output/$output_dir_name
+mkdir -p $output_dir
 
-sed "s/#SBATCH --array=.*/#SBATCH --array=1-$num_routes/" -i $job_out
+(
+    cd output
+    ln -sf $output_dir_name latest
+)
 
-sbatch $job_out
-rm $job_out
+job_in=job.slurm
+job_out=$output_dir/job.slurm
+
+sed "s/#SBATCH --array=.*/#SBATCH --array=1-$num_routes/" < $job_in > $job_out
+
+cd $output_dir
+sbatch job.slurm

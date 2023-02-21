@@ -26,13 +26,12 @@ CARLA_DOCKERFILE := ../../common/carla-$(CARLA_VERSION).dockerfile
 
 IDUN_HOST=idun-login1.hpc.ntnu.no
 IDUN_WORKDIR=work/thesis/datagen
-IDUN_RUNDIR=$(IDUN_WORKDIR)/run
 IDUN_SIFDIR=$(IDUN_WORKDIR)/sif
 
 .PHONY: job idun idun-carla idun-transfuser
 
-job: idun | $(IDUN_RUNDIR)
-	ssh $(IDUN_HOST) "cd $(IDUN_RUNDIR) && ../submit.sh"
+job: idun
+	ssh $(IDUN_HOST) "cd $(IDUN_WORKDIR) && ./submit.sh"
 
 idun: idun-carla idun-transfuser idun-files
 
@@ -53,15 +52,12 @@ $(BUILDDIR)/.idun-files: $(IDUN_FILES) | $(IDUN_WORKDIR)
 	touch $@
 
 
-.PHONY: $(IDUN_WORKDIR) $(IDUN_SIFDIR) $(IDUN_RUNDIR)
+.PHONY: $(IDUN_WORKDIR) $(IDUN_SIFDIR)
 $(IDUN_WORKDIR):
 	ssh $(IDUN_HOST) mkdir -p $(IDUN_WORKDIR)
 
 $(IDUN_SIFDIR):
 	ssh $(IDUN_HOST) mkdir -p $(IDUN_SIFDIR)
-
-$(IDUN_RUNDIR):
-	ssh $(IDUN_HOST) mkdir -p $(IDUN_RUNDIR)
 
 
 .PHONY: clean clean-carla clean-transfuser

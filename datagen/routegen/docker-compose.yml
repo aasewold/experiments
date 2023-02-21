@@ -23,7 +23,7 @@ services:
     environment:
       - PYTHONUNBUFFERED=1
     volumes:
-      - ../idun/files/routes:/routegen/results
+      - ./build/output:/routes
     depends_on:
       carla:
         condition: service_healthy

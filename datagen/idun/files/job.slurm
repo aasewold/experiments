@@ -9,15 +9,15 @@
 
 #SBATCH --array=1-1
 
-echo "date: $(date +'%Y-%m-%d_%H-%M-%S')"
+echo Starting at $(date +'%Y-%m-%d_%H-%M-%S')
 echo "job : $SLURM_ARRAY_JOB_ID"
 echo "index: $SLURM_ARRAY_TASK_ID / $SLURM_ARRAY_TASK_COUNT"
 
 DATAGEN_ROOT=$HOME/work/thesis/datagen
-SIFDIR=$DATAGEN_ROOT/sif
-CONFDIR=$DATAGEN_ROOT/config
+SIF_DIR=$DATAGEN_ROOT/sif
+ROUTES_DIR=$DATAGEN_ROOT/input
 
-ROUTELINE=$(sed "${SLURM_ARRAY_TASK_ID}q;d" $CONFDIR/routes.csv)
+ROUTELINE=$(sed "${SLURM_ARRAY_TASK_ID}q;d" $ROUTES_DIR/routes.csv)
 ROUTE=$(echo $ROUTELINE | cut -d, -f1)
 SCENARIO=$(echo $ROUTELINE | cut -d, -f2)
 echo "Route: $ROUTE"
@@ -34,7 +34,7 @@ echo "Running CARLA on port $CARLA_PORT"
 echo Starting server
 singularity exec \
         --nv \
-        $SIFDIR/carla.sif \
+        $SIF_DIR/carla.sif \
                 /home/carla/CarlaUE4.sh \
                         -RenderOffScreen \
                         -carla-rpc-port=$CARLA_PORT \
@@ -42,16 +42,19 @@ singularity exec \
                         &
 CARLA_PID=$!
 
+echo Sleeping
 sleep 30
+
+echo
 echo Starting client
 
 SAVE_PATH=$(realpath $SAVE_PATH)
 singularity run \
         --nv \
         --bind $DATAGEN_ROOT:/datagen \
-        --bind $ROUTES_PATH:/routes \
+        --bind $ROUTES_DIR:/routes \
         --bind $SAVE_PATH:/results \
-        $SIFDIR/transfuser.sif \
+        $SIF_DIR/transfuser.sif \
         /bin/bash /datagen/datagen.sh \
                 /transfuser/carla /transfuser /results \
                 localhost $CARLA_PORT $CARLA_TM_PORT \
@@ -61,4 +64,4 @@ singularity run \
 echo Killing $CARLA_PID
 kill $CARLA_PID
 
-echo Bye
+echo Finished at $(date +'%Y-%m-%d_%H-%M-%S')

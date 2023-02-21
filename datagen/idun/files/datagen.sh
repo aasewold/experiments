@@ -8,8 +8,8 @@ export SAVE_PATH=$1; shift
 export CARLA_HOST=$1; shift
 export CARLA_PORT=$1; shift
 export CARLA_TM_PORT=$1; shift
-export SCENARIOS=$1; shift
 export ROUTES=$1; shift
+export SCENARIOS=$1; shift
 
 export PYTHONPATH=$PYTHONPATH:${CARLA_ROOT}/PythonAPI
 export PYTHONPATH=$PYTHONPATH:${CARLA_ROOT}/PythonAPI/carla
