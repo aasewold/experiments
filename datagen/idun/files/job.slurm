@@ -13,9 +13,8 @@ echo Starting at $(date +'%Y-%m-%d_%H-%M-%S')
 echo "job : $SLURM_ARRAY_JOB_ID"
 echo "index: $SLURM_ARRAY_TASK_ID / $SLURM_ARRAY_TASK_COUNT"
 
-DATAGEN_ROOT=$HOME/work/thesis/datagen
-SIF_DIR=$DATAGEN_ROOT/sif
-ROUTES_DIR=$DATAGEN_ROOT/input
+SIF_DIR=$HOME/work/thesis/datagen/sif
+ROUTES_DIR=$PWD/input
 
 ROUTELINE=$(sed "${SLURM_ARRAY_TASK_ID}q;d" $ROUTES_DIR/routes.csv)
 ROUTE=$(echo $ROUTELINE | cut -d, -f1)
@@ -23,7 +22,7 @@ SCENARIO=$(echo $ROUTELINE | cut -d, -f2)
 echo "Route: $ROUTE"
 echo "Scenario: $SCENARIO"
 
-SAVE_PATH=data/${SLURM_ARRAY_TASK_ID}-$(basename $ROUTE)
+SAVE_PATH=data/${SLURM_ARRAY_TASK_ID}-$(basename $ROUTE .xml)
 mkdir -p $SAVE_PATH
 echo "Generating data into $SAVE_PATH"
 
@@ -51,11 +50,12 @@ echo Starting client
 SAVE_PATH=$(realpath $SAVE_PATH)
 singularity run \
         --nv \
-        --bind $DATAGEN_ROOT:/datagen \
+        --pwd /pwd \
+        --bind $PWD:/pwd \
         --bind $ROUTES_DIR:/routes \
         --bind $SAVE_PATH:/results \
         $SIF_DIR/transfuser.sif \
-        /bin/bash /datagen/datagen.sh \
+        /bin/bash ./datagen.sh \
                 /transfuser/carla /transfuser /results \
                 localhost $CARLA_PORT $CARLA_TM_PORT \
                 $ROUTE $SCENARIO
