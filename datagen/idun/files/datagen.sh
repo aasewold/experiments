@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo hey
-
 export CARLA_ROOT=$1; shift
 export WORK_DIR=$1; shift
 export SAVE_PATH=$1; shift
@@ -10,6 +8,8 @@ export CARLA_PORT=$1; shift
 export CARLA_TM_PORT=$1; shift
 export ROUTES=$1; shift
 export SCENARIOS=$1; shift
+
+export TRANSFUSER_DAYTIME_HEADLIGHTS=1
 
 export PYTHONPATH=$PYTHONPATH:${CARLA_ROOT}/PythonAPI
 export PYTHONPATH=$PYTHONPATH:${CARLA_ROOT}/PythonAPI/carla
