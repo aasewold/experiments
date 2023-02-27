@@ -23,4 +23,8 @@ num_routes=$(wc -l < $routes_file)
 sed "s/#SBATCH --array=.*/#SBATCH --array=1-$num_routes/" -i job.slurm
 
 # Submit the job
-sbatch job.slurm
+mkdir logs
+sbatch \
+    -o logs/slurm-%A_%a.out \
+    -e logs/slurm-%A_%a.out \
+    job.slurm
