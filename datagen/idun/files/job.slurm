@@ -38,7 +38,9 @@ singularity exec \
                         -RenderOffScreen \
                         -carla-rpc-port=$CARLA_PORT \
                         -carla-streaming-port=0 \
-                        &
+        > >(gzip > logs/carla-${SLURM_ARRAY_JOB_ID}_${SLURM_ARRAY_TASK_ID}.gz) \
+        2>&1 \
+        &
 CARLA_PID=$!
 
 echo Sleeping
