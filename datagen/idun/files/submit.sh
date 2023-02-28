@@ -2,6 +2,10 @@
 
 set -euo pipefail
 
+# Check Lustre quotas
+lfs quota -u $USER /cluster
+echo
+
 # Setup output directory
 output_dir_name=$(date +%Y-%m-%d_%H-%M-%S)
 output_dir=output/$output_dir_name
