@@ -31,7 +31,7 @@ IDUN_SIFDIR=$(IDUN_WORKDIR)/sif
 .PHONY: job idun idun-carla idun-transfuser
 
 job: idun
-	ssh $(IDUN_HOST) "cd $(IDUN_WORKDIR) && ./submit.sh"
+	ssh $(IDUN_HOST) "cd $(IDUN_WORKDIR) && RESUME=$(RESUME) ROUTES=$(ROUTES) ./submit.sh"
 
 idun: idun-carla idun-transfuser idun-files
 

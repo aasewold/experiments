@@ -9,6 +9,8 @@
 
 #SBATCH --array=1-1
 
+time_start=$(date +%s)
+
 echo Starting at $(date +'%Y-%m-%d_%H-%M-%S')
 echo "job : $SLURM_ARRAY_JOB_ID"
 echo "index: $SLURM_ARRAY_TASK_ID / $SLURM_ARRAY_TASK_COUNT"
@@ -24,6 +26,34 @@ echo "Scenario: $SCENARIO"
 
 SAVE_NAME=${SLURM_ARRAY_TASK_ID}-$(basename $ROUTE .xml)
 SAVE_PATH=data/$SAVE_NAME
+TAR_NAME=$SAVE_NAME.tar.gz
+TAR_PATH=data/$TAR_NAME
+
+archive_data() (
+    echo "Archiving files to $TAR_NAME"
+    cd data
+    tar -czf $TAR_NAME.tmp $SAVE_NAME
+    if [ $? -eq 0 ]; then
+        echo "Archiving successful, removing $SAVE_NAME"
+        mv $TAR_NAME.tmp $TAR_NAME
+        rm -r $SAVE_NAME
+    else
+        echo "Archiving failed, keeping $SAVE_NAME"
+    fi
+)
+
+if [ -f $TAR_PATH ]; then
+    echo "Data already exists at $TAR_NAME, skipping."
+    exit 0
+fi
+
+if [ -f $TAR_PATH.tmp ]; then
+    echo "Data generated, but archiving failed last time, retrying."
+    rm $TAR_PATH.tmp
+    archive_data
+    exit 0
+fi
+
 mkdir -p $SAVE_PATH
 echo "Generating data into $SAVE_PATH"
 
@@ -137,16 +167,13 @@ done
 
 echo "Data generation finished successfully after $attempt attempt(s)"
 
-echo Archiving files
-(
-    cd data
-    tar -czf $SAVE_NAME.tar.gz $SAVE_NAME
-    if [ $? -eq 0 ]; then
-        echo "Archiving successful, removing $SAVE_NAME"
-        rm -r $SAVE_NAME
-    else
-        echo "Archiving failed, keeping $SAVE_NAME"
-    fi
-)
+archive_data
 
 echo "Finished at $(date +'%Y-%m-%d_%H-%M-%S')"
+
+time_end=$(date +%s)
+duration=$((time_end-time_start))
+hours=$((duration / 3600))
+minutes=$(( (duration % 3600) / 60 ))
+seconds=$(( (duration % 3600) % 60 ))
+echo "Runtime: $hours:$minutes:$seconds (hh:mm:ss)"
