@@ -23,4 +23,7 @@ done
 
 export EVALUATION=$eval
 
-docker compose up --abort-on-container-exit --detach
+source ../common/utils.sh
+
+run_in_screen "ex-interfuser-0.9.10-$eval" \
+    "docker compose up --build --abort-on-container-exit"
