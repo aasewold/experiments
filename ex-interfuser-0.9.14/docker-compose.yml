@@ -25,7 +25,7 @@ services:
     environment:
       - PYTHONUNBUFFERED=1
       # Specify which evaluation to run. The options are town05, 42routes and longest6
-      - EVALUATION=42routes
+      - EVALUATION=${EVALUATION:-longest6}
     volumes:
       - ./models/interfuser/:/interfuser/models
       - ./results/:/interfuser/results
