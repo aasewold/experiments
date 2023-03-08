@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  transfuser:
+    build:
+      context: ../common
+      dockerfile: transfuser.dockerfile
+      args:
+        - CARLA_VERSION=0.9.14
+        - TRANSFUSER_COMMIT=792a7767a0f5cc370c738bbfdc81211db2637629
+    command: ["/bin/bash", "/scripts/train_multi.sh"]
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./scripts:/scripts
+      - ${DATASET_PATH}:/dataset
+      - ${LOG_PATH:-./logs}:/logs
+    restart: on-failure
+    shm_size: 512M
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 2
+              capabilities: [gpu]
