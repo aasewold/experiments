@@ -3,29 +3,29 @@ version: '3'
 services:
   carla:
     build:
-      context: ../common
-      dockerfile: carla-0.9.10.1.dockerfile
+      context: .
+      dockerfile: carla-${CARLA_VERSION}.dockerfile
     restart: on-failure
     deploy:
       resources:
         reservations:
           devices:
             - driver: nvidia
-              count: 1
               capabilities: [gpu]
+              device_ids: ["${GPU:-0}"]
 
-  prefuser:
+  transfuser:
     build:
-      context: ../common
+      context: .
       dockerfile: transfuser.dockerfile
       args:
-        - CARLA_VERSION=0.9.10.1
-        - TRANSFUSER_COMMIT=2022
+        - CARLA_VERSION=${CARLA_VERSION}
+        - TRANSFUSER_COMMIT=${TRANSFUSER_COMMIT}
     environment:
       - PYTHONUNBUFFERED=1
     volumes:
-      - ./models/prefuser/:/transfuser/model_ckpt/transfuser
-      - ./results/:/transfuser/results
+      - ${MODEL_PATH}:/transfuser/model_ckpt/transfuser
+      - ${RESULT_PATH}:/transfuser/results
     depends_on:
       carla:
         condition: service_healthy
@@ -36,5 +36,5 @@ services:
         reservations:
           devices:
             - driver: nvidia
-              count: 1
               capabilities: [gpu]
+              device_ids: ["${GPU:-0}"]
