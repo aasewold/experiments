@@ -10,4 +10,4 @@ if [ ! -d "$DATASET_PATH" ]; then
 fi
 
 run_in_screen "train-transfuser" \
-    "docker compose up --build --abort-on-container-exit"
+    "docker compose up --build"
