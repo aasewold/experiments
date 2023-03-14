@@ -23,6 +23,7 @@ services:
         - TRANSFUSER_COMMIT=${TRANSFUSER_COMMIT}
     environment:
       - PYTHONUNBUFFERED=1
+      - SAVE_PATH=${SAVE_PATH:-}
     volumes:
       - ${MODEL_PATH}:/transfuser/model_ckpt/transfuser
       - ${RESULT_PATH}:/transfuser/results
