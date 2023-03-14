@@ -1,6 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
+cd "$(dirname "$0")"/..
+
 cd models/prefuser || { echo "models/prefuser does not exist" >&2; exit 1; }
 
 md5sum -c <<< \

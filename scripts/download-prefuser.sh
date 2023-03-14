@@ -1,6 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
+cd "$(dirname "$0")"/..
+
 mkdir -p models/prefuser
 
 wget https://s3.eu-central-1.amazonaws.com/avg-projects/transfuser/models_2022.zip

@@ -1,6 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
+cd "$(dirname "$0")"/..
+
 mkdir -p models/interfuser
 
 echo "Please download the model pth.tar file from http://43.159.60.142/s/p2CN"
