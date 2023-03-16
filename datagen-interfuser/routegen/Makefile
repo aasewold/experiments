@@ -12,7 +12,6 @@ copy:
 
 $(BUILD)/.route_configs: | $(BUILD)
 	@echo "Generating route_configs"
-	python src/generate_yamls.py
 	python src/generate_route_configs.py
 	@touch $(BUILD)/.route_configs
 
