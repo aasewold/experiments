@@ -40,30 +40,30 @@ TAR_PATH=data/$TAR_NAME
 
 echo "Checkpoint endpoint: $CHECKPOINT_ENDPOINT"
 
-archive_data() (
-    echo "Archiving files to $TAR_NAME"
-    cd data
-    tar -czf $TAR_NAME.tmp $SAVE_ROOT
-    if [ $? -eq 0 ]; then
-        echo "Archiving successful, removing $SAVE_ROOT"
-        mv $TAR_NAME.tmp $TAR_NAME
-        rm -r $SAVE_ROOT
-    else
-        echo "Archiving failed, keeping $SAVE_ROOT"
-    fi
-)
+# archive_data() (
+#     echo "Archiving files to $TAR_NAME"
+#     cd data
+#     tar -czf $TAR_NAME.tmp $SAVE_ROOT
+#     if [ $? -eq 0 ]; then
+#         echo "Archiving successful, removing $SAVE_ROOT"
+#         mv $TAR_NAME.tmp $TAR_NAME
+#         rm -r $SAVE_ROOT
+#     else
+#         echo "Archiving failed, keeping $SAVE_ROOT"
+#     fi
+# )
 
-if [ -f $TAR_PATH ]; then
-    echo "Data already exists at $TAR_NAME, skipping."
-    exit 0
-fi
+# if [ -f $TAR_PATH ]; then
+#     echo "Data already exists at $TAR_NAME, skipping."
+#     exit 0
+# fi
 
-if [ -f $TAR_PATH.tmp ]; then
-    echo "Data generated, but archiving failed last time, retrying."
-    rm $TAR_PATH.tmp
-    archive_data
-    exit 0
-fi
+# if [ -f $TAR_PATH.tmp ]; then
+#     echo "Data generated, but archiving failed last time, retrying."
+#     rm $TAR_PATH.tmp
+#     archive_data
+#     exit 0
+# fi
 
 mkdir -p $SAVE_ROOT
 echo "Generating data into $SAVE_ROOT"
@@ -184,7 +184,7 @@ done
 
 echo "Data generation finished successfully after $attempt attempt(s)"
 
-archive_data
+# archive_data
 
 echo "Finished at $(date +'%Y-%m-%d_%H-%M-%S')"
 
