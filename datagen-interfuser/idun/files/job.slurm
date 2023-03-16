@@ -2,7 +2,7 @@
 #SBATCH --job-name="carla-datagen-interfuser"
 #SBATCH --partition=GPUQ
 #SBATCH --account=share-ie-idi
-#SBATCH --time=05:00:00
+#SBATCH --time=07-00:00:00
 
 #SBATCH --ntasks=1
 #SBATCH --gres=gpu:1
