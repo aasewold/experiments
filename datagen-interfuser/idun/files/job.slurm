@@ -6,6 +6,7 @@
 
 #SBATCH --ntasks=1
 #SBATCH --gres=gpu:1
+#SBATCH --constraint="V100|P100"
 
 #SBATCH --array=1-1
 
@@ -23,7 +24,8 @@ YAMLS_DIR=$INPUT_DIR/yamls
 ROUTELINE=$(sed "${SLURM_ARRAY_TASK_ID}q;d" $INPUT_DIR/route_configs.csv)
 ROUTE=$(echo $ROUTELINE | cut -d, -f1)
 SCENARIO=$(echo $ROUTELINE | cut -d, -f2)
-WEATHER_CONFIG_INDEX=$(echo $ROUTELINE | cut -d, -f3)
+WEATHER_CONFIG_INDEX=$(echo $ROUTELINE | cut -d, -f3 | tr -d $'\r')
+
 echo "Route: $ROUTE"
 echo "Scenario: $SCENARIO"
 echo "Weather config index: $WEATHER_CONFIG_INDEX"
@@ -31,9 +33,12 @@ echo "Weather config index: $WEATHER_CONFIG_INDEX"
 SAVE_ROOT=data/dataset
 SAVE_NAME=${SLURM_ARRAY_TASK_ID}-$(basename $ROUTE .xml)
 
+CHECKPOINT_ENDPOINT=${SAVE_ROOT}/weather-${WEATHER_CONFIG_INDEX}/results/${SAVE_NAME}.json
+
 TAR_NAME=$SAVE_NAME.tar.gz
 TAR_PATH=data/$TAR_NAME
 
+echo "Checkpoint endpoint: $CHECKPOINT_ENDPOINT"
 
 archive_data() (
     echo "Archiving files to $TAR_NAME"
@@ -42,7 +47,7 @@ archive_data() (
     if [ $? -eq 0 ]; then
         echo "Archiving successful, removing $SAVE_ROOT"
         mv $TAR_NAME.tmp $TAR_NAME
-#        rm -r $SAVE_ROOT
+        rm -r $SAVE_ROOT
     else
         echo "Archiving failed, keeping $SAVE_ROOT"
     fi
@@ -100,10 +105,10 @@ while :; do
 attempt=$((attempt+1))
 echo Starting attempt $attempt
 
-export CARLA_RPC_PORT=$(find_port 70000)
-export CARLA_STREAMING_PORT=$(find_port 71000)
-export CARLA_SECONDARY_PORT=$(find_port 72000)
-export CARLA_TM_PORT=$(find_port 73000)
+export CARLA_RPC_PORT=$(find_port 30000)
+export CARLA_STREAMING_PORT=$(find_port 31000)
+export CARLA_SECONDARY_PORT=$(find_port 32000)
+export CARLA_TM_PORT=$(find_port 33000)
 echo "Running CARLA on port $CARLA_RPC_PORT/$CARLA_STREAMING_PORT/$CARLA_SECONDARY_PORT/$CARLA_TM_PORT"
 
 echo Starting server
@@ -136,9 +141,9 @@ singularity run \
     $SIF_DIR/interfuser.sif \
     /bin/bash ./datagen.sh \
         /interfuser/carla /interfuser /yamls \
-        /results $SAVE_NAME \
+        /results $SAVE_NAME $CHECKPOINT_ENDPOINT \
         localhost $CARLA_RPC_PORT $CARLA_TM_PORT \
-        $ROUTE $SCENARIO $WEATHER_CONFIG_INDEX
+        $ROUTE $SCENARIO $WEATHER_CONFIG_INDEX 
 
 echo Client exited with code $?
 
@@ -149,27 +154,32 @@ wait $CARLA_PID
 echo CARLA exited with code $?
 
 # Check checkpoint.json status
-# python3 <<EOF
-# import sys
-# import json
-# with open('$SAVE_PATH/checkpoint.json') as f:
-#     data = json.load(f)
-# checkpoint = data.get('_checkpoint', {})
-# progress = checkpoint.get('progress', [])
-# if len(progress) != 2:
-#     print('Invalid progress:', progress, file=sys.stderr)
-#     sys.exit(1)
-# if progress[0] != progress[1]:
-#     print('Progress mismatch:', progress, file=sys.stderr)
-#     sys.exit(1)
-# EOF
+python3 <<EOF
+import sys
+import json
+import os
 
-# checkpoint_good=$?
-# if [ $checkpoint_good -eq 0 ]; then
-#     break
-# fi
+if not os.path.exists('$CHECKPOINT_ENDPOINT'):
+    print('Checkpoint file not found', file=sys.stderr)
+    sys.exit(1)
+with open('$CHECKPOINT_ENDPOINT') as f:
+    data = json.load(f)
+checkpoint = data.get('_checkpoint', {})
+progress = checkpoint.get('progress', [])
+if len(progress) != 2:
+    print('Invalid progress:', progress, file=sys.stderr)
+    sys.exit(1)
+if progress[0] != progress[1]:
+    print('Progress mismatch:', progress, file=sys.stderr)
+    sys.exit(1)
+EOF
 
-# done
+checkpoint_good=$?
+if [ $checkpoint_good -eq 0 ]; then
+    break
+fi
+
+done
 
 
 echo "Data generation finished successfully after $attempt attempt(s)"

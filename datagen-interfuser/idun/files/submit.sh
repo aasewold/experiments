@@ -37,7 +37,7 @@ cd $output_dir
 
 if [ -z "$ROUTES" ]; then
     # Calculate the correct number of nodes, one for each route file
-    routes_file=input/routes.csv
+    routes_file=input/route_configs.csv
     num_routes=$(wc -l < $routes_file)
     ROUTES="1-$num_routes"
 fi

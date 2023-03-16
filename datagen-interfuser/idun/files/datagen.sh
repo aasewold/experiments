@@ -5,6 +5,7 @@ export WORK_DIR=$1; shift
 export YAML_ROOT=$1; shift
 export SAVE_ROOT=$1; shift
 export SAVE_NAME=$1; shift
+export CHECKPOINT_ENDPOINT=$1; shift
 export CARLA_HOST=$1; shift
 export CARLA_PORT=$1; shift
 export CARLA_TM_PORT=$1; shift
@@ -23,7 +24,6 @@ export PYTHONPATH=$PYTHONPATH:${WORK_DIR}/scenario_runner
 
 export LEADERBOARD_ROOT=${WORK_DIR}/leaderboard
 
-export CHECKPOINT_ENDPOINT=${SAVE_ROOT}/weather-${WEATHER_CONFIG_INDEX}/results/${SAVE_NAME}.json
 export SAVE_PATH=${SAVE_ROOT}/weather-${WEATHER_CONFIG_INDEX}/data
 export TEAM_CONFIG=${YAML_ROOT}/weather-${WEATHER_CONFIG_INDEX}.yaml
 export TRAFFIC_SEED=42
@@ -39,6 +39,8 @@ export RESUME=True
 mkdir -p $(dirname ${CHECKPOINT_ENDPOINT})
 mkdir -p ${SAVE_PATH}
 
+mkdir -p birdview_v2_cache/Carla/Maps
+
 python3 ${LEADERBOARD_ROOT}/leaderboard/leaderboard_evaluator.py \
 --scenarios=${SCENARIOS}  \
 --routes=${ROUTES} \
@@ -52,6 +54,7 @@ python3 ${LEADERBOARD_ROOT}/leaderboard/leaderboard_evaluator.py \
 --resume=${RESUME} \
 --port=${CARLA_PORT} \
 --host=${CARLA_HOST} \
---trafficManagerPort=${TM_PORT} \
+--trafficManagerPort=${CARLA_TM_PORT} \
 --carlaProviderSeed=${CARLA_SEED} \
---trafficManagerSeed=${TRAFFIC_SEED}
+--trafficManagerSeed=${TRAFFIC_SEED} \
+--timeout=60
