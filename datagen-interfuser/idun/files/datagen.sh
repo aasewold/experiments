@@ -3,9 +3,7 @@
 export CARLA_ROOT=$1; shift
 export WORK_DIR=$1; shift
 export YAML_ROOT=$1; shift
-export SAVE_ROOT=$1; shift
-export SAVE_NAME=$1; shift
-export CHECKPOINT_ENDPOINT=$1; shift
+export SAVE_PATH=$1; shift
 export CARLA_HOST=$1; shift
 export CARLA_PORT=$1; shift
 export CARLA_TM_PORT=$1; shift
@@ -24,7 +22,7 @@ export PYTHONPATH=$PYTHONPATH:${WORK_DIR}/scenario_runner
 
 export LEADERBOARD_ROOT=${WORK_DIR}/leaderboard
 
-export SAVE_PATH=${SAVE_ROOT}/weather-${WEATHER_CONFIG_INDEX}/data
+export CHECKPOINT_ENDPOINT=${SAVE_PATH}/checkpoint.json
 export TEAM_CONFIG=${YAML_ROOT}/weather-${WEATHER_CONFIG_INDEX}.yaml
 export TRAFFIC_SEED=42
 export CARLA_SEED=42

@@ -30,43 +30,38 @@ echo "Route: $ROUTE"
 echo "Scenario: $SCENARIO"
 echo "Weather config index: $WEATHER_CONFIG_INDEX"
 
-SAVE_ROOT=data/dataset
-SAVE_NAME=${SLURM_ARRAY_TASK_ID}-$(basename $ROUTE .xml)
-
-CHECKPOINT_ENDPOINT=${SAVE_ROOT}/weather-${WEATHER_CONFIG_INDEX}/results/${SAVE_NAME}.json
-
+SAVE_NAME=${SLURM_ARRAY_TASK_ID}-w${WEATHER_CONFIG_INDEX}-$(basename $ROUTE .xml)
+SAVE_PATH=data/$SAVE_NAME
 TAR_NAME=$SAVE_NAME.tar.gz
 TAR_PATH=data/$TAR_NAME
 
-echo "Checkpoint endpoint: $CHECKPOINT_ENDPOINT"
+archive_data() (
+    echo "Archiving files to $TAR_NAME"
+    cd data
+    tar -czf $TAR_NAME.tmp $SAVE_NAME
+    if [ $? -eq 0 ]; then
+        echo "Archiving successful, removing $SAVE_NAME"
+        mv $TAR_NAME.tmp $TAR_NAME
+        rm -r $SAVE_NAME
+    else
+        echo "Archiving failed, keeping $SAVE_NAME"
+    fi
+)
 
-# archive_data() (
-#     echo "Archiving files to $TAR_NAME"
-#     cd data
-#     tar -czf $TAR_NAME.tmp $SAVE_ROOT
-#     if [ $? -eq 0 ]; then
-#         echo "Archiving successful, removing $SAVE_ROOT"
-#         mv $TAR_NAME.tmp $TAR_NAME
-#         rm -r $SAVE_ROOT
-#     else
-#         echo "Archiving failed, keeping $SAVE_ROOT"
-#     fi
-# )
+if [ -f $TAR_PATH ]; then
+    echo "Data already exists at $TAR_NAME, skipping."
+    exit 0
+fi
 
-# if [ -f $TAR_PATH ]; then
-#     echo "Data already exists at $TAR_NAME, skipping."
-#     exit 0
-# fi
+if [ -f $TAR_PATH.tmp ]; then
+    echo "Data generated, but archiving failed last time, retrying."
+    rm $TAR_PATH.tmp
+    archive_data
+    exit 0
+fi
 
-# if [ -f $TAR_PATH.tmp ]; then
-#     echo "Data generated, but archiving failed last time, retrying."
-#     rm $TAR_PATH.tmp
-#     archive_data
-#     exit 0
-# fi
-
-mkdir -p $SAVE_ROOT
-echo "Generating data into $SAVE_ROOT"
+mkdir -p $SAVE_PATH
+echo "Generating data into $SAVE_PATH"
 
 is_port_available() {
     local port=$1
@@ -131,17 +126,16 @@ sleep 30
 echo
 echo Starting client
 
-SAVE_ROOT=$(realpath $SAVE_ROOT)
+SAVE_PATH=$(realpath $SAVE_PATH)
 singularity run \
     --nv \
     --pwd /pwd \
     --bind $PWD:/pwd \
     --bind $YAMLS_DIR:/yamls \
-    --bind $SAVE_ROOT:/results \
+    --bind $SAVE_PATH:/results \
     $SIF_DIR/interfuser.sif \
     /bin/bash ./datagen.sh \
-        /interfuser/carla /interfuser /yamls \
-        /results $SAVE_NAME $CHECKPOINT_ENDPOINT \
+        /interfuser/carla /interfuser /yamls /results \
         localhost $CARLA_RPC_PORT $CARLA_TM_PORT \
         $ROUTE $SCENARIO $WEATHER_CONFIG_INDEX 
 
@@ -157,12 +151,7 @@ echo CARLA exited with code $?
 python3 <<EOF
 import sys
 import json
-import os
-
-if not os.path.exists('$CHECKPOINT_ENDPOINT'):
-    print('Checkpoint file not found', file=sys.stderr)
-    sys.exit(1)
-with open('$CHECKPOINT_ENDPOINT') as f:
+with open('$SAVE_PATH/checkpoint.json') as f:
     data = json.load(f)
 checkpoint = data.get('_checkpoint', {})
 progress = checkpoint.get('progress', [])
@@ -184,7 +173,7 @@ done
 
 echo "Data generation finished successfully after $attempt attempt(s)"
 
-# archive_data
+archive_data
 
 echo "Finished at $(date +'%Y-%m-%d_%H-%M-%S')"
 
