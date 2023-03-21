@@ -15,6 +15,7 @@ export OMP_NUM_THREADS=$(nproc)
 export OPENBLAS_NUM_THREADS=1
 
 export PYTHONPATH=/transfuser/team_code_transfuser:$PYTHONPATH
+export PYTHONPATH=/transfuser/scenario_runner:$PYTHONPATH
 
 exec torchrun \
     --nnodes=1 \
