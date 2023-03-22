@@ -50,4 +50,4 @@ RUN pip install torch==1.11.0+cu113 torchvision==0.12.0+cu113 torchaudio==0.11.0
 COPY --from=transfuser /transfuser /transfuser
 
 ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "tfuse"]
-CMD [ "/bin/bash", "./leaderboard/scripts/local_evaluation.sh", "carla", "." ]
+CMD [ "/bin/bash" ]
