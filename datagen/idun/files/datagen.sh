@@ -26,6 +26,7 @@ export TEAM_AGENT=${WORK_DIR}/team_code_autopilot/data_agent.py
 export DEBUG_CHALLENGE=0
 export RESUME=1
 export DATAGEN=1
+export ACTOR_AMOUNT=town
 
 python3 ${LEADERBOARD_ROOT}/leaderboard/leaderboard_evaluator_local.py \
 --scenarios=${SCENARIOS}  \

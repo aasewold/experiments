@@ -24,6 +24,7 @@ services:
     environment:
       - PYTHONUNBUFFERED=1
       - SAVE_PATH=${SAVE_PATH:-}
+      - ACTOR_AMOUNT=${ACTOR_AMOUNT:-500}
     volumes:
       - ${MODEL_PATH}:/model
       - ${RESULT_PATH}:/results
