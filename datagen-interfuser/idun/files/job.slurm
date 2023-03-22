@@ -6,6 +6,7 @@
 
 #SBATCH --ntasks=1
 #SBATCH --gres=gpu:1
+#SBATCH --constraint="A100|V100"
 
 #SBATCH --array=1-1
 
