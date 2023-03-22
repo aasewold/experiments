@@ -25,7 +25,7 @@ CARLA_DOCKERFILE := ../../common/carla-$(CARLA_VERSION).dockerfile
 
 
 IDUN_HOST=idun-login1.hpc.ntnu.no
-IDUN_WORKDIR=work/thesis/datagen
+IDUN_WORKDIR=work/thesis/datagen-interfuser
 IDUN_SIFDIR=$(IDUN_WORKDIR)/sif
 
 .PHONY: job idun idun-carla idun-interfuser

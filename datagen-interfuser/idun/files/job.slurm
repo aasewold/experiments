@@ -6,7 +6,6 @@
 
 #SBATCH --ntasks=1
 #SBATCH --gres=gpu:1
-#SBATCH --constraint="V100|P100"
 
 #SBATCH --array=1-1
 
@@ -16,7 +15,7 @@ echo Starting at $(date +'%Y-%m-%d_%H-%M-%S')
 echo "job : $SLURM_ARRAY_JOB_ID"
 echo "index: $SLURM_ARRAY_TASK_ID / $SLURM_ARRAY_TASK_COUNT"
 
-SIF_DIR=$HOME/work/thesis/datagen/sif
+SIF_DIR=$HOME/work/thesis/datagen-interfuser/sif
 INPUT_DIR=$PWD/input
 
 YAMLS_DIR=$INPUT_DIR/yamls
