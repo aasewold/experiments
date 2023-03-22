@@ -25,6 +25,7 @@ services:
       - PYTHONUNBUFFERED=1
       - SAVE_PATH=${SAVE_PATH:-}
       - ACTOR_AMOUNT=${ACTOR_AMOUNT:-500}
+      - TRANSFUSER_DAYTIME_HEADLIGHTS=${TRANSFUSER_DAYTIME_HEADLIGHTS:-1}
     volumes:
       - ${MODEL_PATH}:/model
       - ${RESULT_PATH}:/results
