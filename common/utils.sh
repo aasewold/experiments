@@ -46,8 +46,40 @@ run_transfuser() (
     screen_name="ex-${MODEL_NAME}-${CARLA_VERSION}"
     compose_name="ex_${MODEL_NAME_SUBST}_${CARLA_VERSION_SUBST}"
 
-    RESULT_PATH="results/${MODEL_NAME}"
+    if [ -z "$RESUME" ]; then
+        RUN_ID="$(date +%Y-%m-%dT%H-%M-%S)"
+        echo "Starting new run with ID \"$RUN_ID\""
+    else
+        RUN_ID="$RESUME"
+        echo "Resuming run with ID \"$RUN_ID\""
+    fi
+
+    sleep 1
+
+    RESULT_PATH="results/${MODEL_NAME}/${RUN_ID}"
+    echo Saving results to \"$RESULT_PATH\"
+
+    if [ ! -z "$RESUME" ] && [ ! -d "$RESULT_PATH" ]; then
+        echo "Directory $RESULT_PATH doesn't exists!"
+        exit 1
+    fi
+
     mkdir -p "$RESULT_PATH"
+
+    echo "# Time: $(date '+%Y-%m-%d %H:%M:%S')" >> "$RESULT_PATH/desc.txt"
+    echo "# Run ID: $RUN_ID" >> "$RESULT_PATH/desc.txt"
+    echo "# CARLA version: $CARLA_VERSION" >> "$RESULT_PATH/desc.txt"
+    echo "# Transfuser commit: $TRANSFUSER_COMMIT" >> "$RESULT_PATH/desc.txt"
+    echo "# Model: $MODEL_NAME" >> "$RESULT_PATH/desc.txt"
+    echo >> "$RESULT_PATH/desc.txt"
+
+    echo "# Please write a short description of the run:" >> "$RESULT_PATH/desc.txt"
+    echo >> "$RESULT_PATH/desc.txt"
+    echo >> "$RESULT_PATH/desc.txt"
+
+    vim "$RESULT_PATH/desc.txt"
+
+    sleep 1
 
     export CARLA_VERSION
     export TRANSFUSER_COMMIT
