@@ -40,7 +40,10 @@ python3 ${LEADERBOARD_ROOT}/leaderboard/leaderboard_evaluator_local.py \
 --debug=${DEBUG_CHALLENGE} \
 --resume=${RESUME} \
     2>&1 | tee -a "/results/log.txt"
-echo >> /results/log.txt
+RET="${PIPESTATUS[0]}"
 
+echo >> /results/log.txt
 echo "Finished at $(date +"%Y-%m-%d %H:%M:%S")" >> /results/log.txt
 echo >> /results/log.txt
+
+exit $RET
