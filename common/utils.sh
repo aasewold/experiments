@@ -39,13 +39,6 @@ run_transfuser() (
         exit 1
     fi
 
-    TRANSFUSER_COMMIT="$(get_commit_hash "$TRANSFUSER_COMMIT")"
-    MODEL_NAME_SUBST="$(echo "$MODEL_NAME" | tr , _)"
-    CARLA_VERSION_SUBST="$(echo "$CARLA_VERSION" | tr . _)"
-
-    screen_name="ex-${MODEL_NAME}-${CARLA_VERSION}"
-    compose_name="ex_${MODEL_NAME_SUBST}_${CARLA_VERSION_SUBST}"
-
     if [ -z "$RESUME" ]; then
         RUN_ID="$(date +%Y-%m-%dT%H-%M-%S)"
         echo "Starting new run with ID \"$RUN_ID\""
@@ -65,6 +58,14 @@ run_transfuser() (
     fi
 
     mkdir -p "$RESULT_PATH"
+
+    TRANSFUSER_COMMIT="$(get_commit_hash "$TRANSFUSER_COMMIT")"
+    MODEL_NAME_SUBST="$(echo "$MODEL_NAME" | tr , _)"
+    CARLA_VERSION_SUBST="$(echo "$CARLA_VERSION" | tr . _)"
+    RUN_ID_SUBST="$(echo "$RUN_ID" | tr '[:upper:]' '[:lower:]')"
+
+    screen_name="ex-${MODEL_NAME}-${CARLA_VERSION}-${RUN_ID}"
+    compose_name="ex_${MODEL_NAME_SUBST}_${CARLA_VERSION_SUBST}-${RUN_ID_SUBST}"
 
     echo "# Time: $(date '+%Y-%m-%d %H:%M:%S')" >> "$RESULT_PATH/desc.txt"
     echo "# Run ID: $RUN_ID" >> "$RESULT_PATH/desc.txt"
