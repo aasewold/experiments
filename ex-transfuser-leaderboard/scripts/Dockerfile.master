@@ -1,3 +1,22 @@
+# Used to retreive the CARLA Python API
+ARG CARLA_VERSION
+FROM carlasim/carla:${CARLA_VERSION} AS carla
+RUN mv /home/carla/PythonAPI/carla/dist/carla*-py2*.egg /home/carla/PythonAPI/carla/dist/carla-leaderboard-py2.7.egg
+RUN mv /home/carla/PythonAPI/carla/dist/carla*-py3*.egg /home/carla/PythonAPI/carla/dist/carla-leaderboard-py3x.egg
+
+
+# Clones and checks out transfuser
+FROM alpine/git AS team_code_transfuser
+ARG TRANSFUSER_COMMIT
+
+RUN mkdir /transfuser
+WORKDIR /transfuser
+
+RUN git clone https://github.com/aasewold/transfuser.git /transfuser  \
+    && git checkout ${TRANSFUSER_COMMIT}
+
+
+# Leaderboard submission image
 FROM nvidia/cuda:10.2-cudnn7-devel-ubuntu16.04
 
 ARG HTTP_PROXY
@@ -49,8 +68,8 @@ RUN packages='py_trees==0.8.3 shapely six dictor requests ephem tabulate' \
 	&& python3.5 -m pip install ${packages}
 
 WORKDIR /workspace
-COPY .tmp/PythonAPI /workspace/CARLA/PythonAPI
 ENV CARLA_ROOT /workspace/CARLA
+COPY --from=carla /home/carla/PythonAPI ${CARLA_ROOT}/PythonAPI
 
 ENV PATH "/workspace/CARLA/PythonAPI/carla/dist/carla-leaderboard-py3x.egg":/opt/conda/envs/python37/bin:/opt/conda/envs/bin:$PATH
 
@@ -62,9 +81,9 @@ ENV LEADERBOARD_ROOT "/workspace/leaderboard"
 ENV TEAM_CODE_ROOT "/workspace/team_code"
 ENV PYTHONPATH "/workspace/CARLA/PythonAPI/carla/dist/carla-leaderboard-py3x.egg":"${SCENARIO_RUNNER_ROOT}":"${CARLA_ROOT}/PythonAPI/carla":"${LEADERBOARD_ROOT}":${PYTHONPATH}
 
-COPY .tmp/scenario_runner ${SCENARIO_RUNNER_ROOT}
-COPY .tmp/leaderboard ${LEADERBOARD_ROOT}
-COPY .tmp/team_code ${TEAM_CODE_ROOT}
+COPY --from=team_code_transfuser /transfuser/scenario_runner ${SCENARIO_RUNNER_ROOT}
+COPY --from=team_code_transfuser /transfuser/leaderboard ${LEADERBOARD_ROOT}
+COPY --from=team_code_transfuser /transfuser/team_code_transfuser ${TEAM_CODE_ROOT}
 
 RUN mkdir -p /workspace/results
 RUN ls /workspace/leaderboard/scripts/
