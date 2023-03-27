@@ -1,0 +1,2023 @@
+Starting at 2023-03-22 18:23:23
+
+Environment:
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+CONDA_SHLVL=2
+PYTHONUNBUFFERED=1
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+CONDA_EXE=/opt/conda/bin/conda
+RESUME=1
+ROUTES=./leaderboard/data/longest6/longest6.xml
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+ACTOR_AMOUNT=500
+HOSTNAME=9ee8b5b53f95
+LEADERBOARD_ROOT=./leaderboard
+CARLA_ROOT=carla
+CONDA_PREFIX=/opt/conda/envs/tfuse
+NV_LIBNPP_VERSION=11.3.3.95-1
+NVIDIA_VISIBLE_DEVICES=0
+CARLA_SERVER=carla/CarlaUE4.sh
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+_CE_M=
+NVIDIA_PRODUCT_NAME=CUDA
+CONDA_PREFIX_1=/opt/conda
+NCCL_VERSION=2.9.9-1
+SCENARIOS=./leaderboard/data/longest6/eval_scenarios.json
+PWD=/transfuser
+NVARCH=x86_64
+HOME=/root
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+LC_CTYPE=C.UTF-8
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_CUDA_LIB_VERSION=11.3.1-1
+_CE_CONDA=
+SCENARIO_RUNNER_ROOT=./scenario_runner
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_NVTX_VERSION=11.3.109-1
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_CUDNN_VERSION=8.2.0.53
+CONDA_PROMPT_MODIFIER=(tfuse) 
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+CHALLENGE_TRACK_CODENAME=SENSORS
+CUDA_VERSION=11.3.1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+CONDA_ROOT=/opt/conda
+SHLVL=2
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+DATAGEN=0
+DEBUG_CHALLENGE=0
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+REPETITIONS=1
+CONDA_DEFAULT_ENV=tfuse
+SAVE_PATH=
+CHECKPOINT_ENDPOINT=/results/transfuser_longest6.json
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+TEAM_CONFIG=/model
+WORK_DIR=.
+_=/usr/bin/env
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:89: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_18 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_15.pth
+Downloading: "https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-weights/regnety_032_ra-7f2439f9.pth" to /root/.cache/torch/hub/checkpoints/regnety_032_ra-7f2439f9.pth
+/model/model_14.pth
+/model/model_16.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Base transform is blocking objects  Transform(Location(x=375.516968, y=-219.791626, z=0.600000), Rotation(pitch=0.000000, yaw=360.598602, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=375.516968, y=-219.791626, z=0.600000), Rotation(pitch=0.000000, yaw=360.598602, roll=0.000000))
+Actor amount: 500
+No more spawn points to use. Spawned 373 actors out of 500
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:227: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_clses = topk_inds // (height * width)
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:229: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_ys = topk_inds // width
+Starting at 2023-03-22 18:27:48
+
+Environment:
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+CONDA_SHLVL=2
+PYTHONUNBUFFERED=1
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+CONDA_EXE=/opt/conda/bin/conda
+RESUME=1
+ROUTES=./leaderboard/data/longest6/longest6.xml
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+ACTOR_AMOUNT=500
+HOSTNAME=9ee8b5b53f95
+LEADERBOARD_ROOT=./leaderboard
+CARLA_ROOT=carla
+CONDA_PREFIX=/opt/conda/envs/tfuse
+NV_LIBNPP_VERSION=11.3.3.95-1
+NVIDIA_VISIBLE_DEVICES=0
+CARLA_SERVER=carla/CarlaUE4.sh
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+_CE_M=
+NVIDIA_PRODUCT_NAME=CUDA
+CONDA_PREFIX_1=/opt/conda
+NCCL_VERSION=2.9.9-1
+SCENARIOS=./leaderboard/data/longest6/eval_scenarios.json
+PWD=/transfuser
+NVARCH=x86_64
+HOME=/root
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+LC_CTYPE=C.UTF-8
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_CUDA_LIB_VERSION=11.3.1-1
+_CE_CONDA=
+SCENARIO_RUNNER_ROOT=./scenario_runner
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_NVTX_VERSION=11.3.109-1
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_CUDNN_VERSION=8.2.0.53
+CONDA_PROMPT_MODIFIER=(tfuse) 
+TRANSFUSER_DAYTIME_HEADLIGHTS=0
+CHALLENGE_TRACK_CODENAME=SENSORS
+CUDA_VERSION=11.3.1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+CONDA_ROOT=/opt/conda
+SHLVL=2
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+DATAGEN=0
+DEBUG_CHALLENGE=0
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+REPETITIONS=1
+CONDA_DEFAULT_ENV=tfuse
+SAVE_PATH=
+CHECKPOINT_ENDPOINT=/results/transfuser_longest6.json
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+TEAM_CONFIG=/model
+WORK_DIR=.
+_=/usr/bin/env
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:89: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_18 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_15.pth
+Downloading: "https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-weights/regnety_032_ra-7f2439f9.pth" to /root/.cache/torch/hub/checkpoints/regnety_032_ra-7f2439f9.pth
+/model/model_14.pth
+/model/model_16.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Base transform is blocking objects  Transform(Location(x=375.516968, y=-219.791626, z=0.600000), Rotation(pitch=0.000000, yaw=360.598602, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=375.516968, y=-219.791626, z=0.600000), Rotation(pitch=0.000000, yaw=360.598602, roll=0.000000))
+Actor amount: 500
+No more spawn points to use. Spawned 373 actors out of 500
+[1m> Running the route[0m
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:227: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_clses = topk_inds // (height * width)
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:229: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_ys = topk_inds // width
+Detected agent being stuck. Move for frame:  0
+Detected object directly in front of the vehicle. Stopping. Step: 9235
+Detected agent being stuck. Move for frame:  1
+Detected object directly in front of the vehicle. Stopping. Step: 9237
+Detected agent being stuck. Move for frame:  2
+Detected object directly in front of the vehicle. Stopping. Step: 9239
+Detected agent being stuck. Move for frame:  3
+Detected object directly in front of the vehicle. Stopping. Step: 9241
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected object directly in front of the vehicle. Stopping. Step: 9249
+Detected agent being stuck. Move for frame:  8
+Detected object directly in front of the vehicle. Stopping. Step: 9251
+Detected agent being stuck. Move for frame:  9
+Detected object directly in front of the vehicle. Stopping. Step: 9253
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected object directly in front of the vehicle. Stopping. Step: 9257
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected object directly in front of the vehicle. Stopping. Step: 9261
+Detected agent being stuck. Move for frame:  14
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_18 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-03-22 18:28:30 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-03-22 19:25:14 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 3403.68s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 642.5s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.189               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 45.88 % │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [91mFAILURE[0m │ 0.95 %  │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 5 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [91mFAILURE[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_19 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_15.pth
+/model/model_14.pth
+/model/model_16.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Base transform is blocking objects  Transform(Location(x=375.516968, y=-219.791626, z=0.600000), Rotation(pitch=0.000000, yaw=360.598602, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=375.516968, y=-219.791626, z=0.600000), Rotation(pitch=0.000000, yaw=360.598602, roll=0.000000))
+Actor amount: 500
+No more spawn points to use. Spawned 373 actors out of 500
+[1m> Running the route[0m
+Detected agent being stuck. Move for frame:  0
+Detected object directly in front of the vehicle. Stopping. Step: 4663
+Detected agent being stuck. Move for frame:  1
+Detected object directly in front of the vehicle. Stopping. Step: 4665
+Detected agent being stuck. Move for frame:  2
+Detected object directly in front of the vehicle. Stopping. Step: 4667
+Detected agent being stuck. Move for frame:  3
+Detected object directly in front of the vehicle. Stopping. Step: 4669
+Detected agent being stuck. Move for frame:  4
+Detected object directly in front of the vehicle. Stopping. Step: 4671
+Detected agent being stuck. Move for frame:  5
+Detected object directly in front of the vehicle. Stopping. Step: 4673
+Detected agent being stuck. Move for frame:  6
+Detected object directly in front of the vehicle. Stopping. Step: 4675
+Detected agent being stuck. Move for frame:  7
+Detected object directly in front of the vehicle. Stopping. Step: 4677
+Detected agent being stuck. Move for frame:  8
+Detected object directly in front of the vehicle. Stopping. Step: 4679
+Detected agent being stuck. Move for frame:  9
+Detected object directly in front of the vehicle. Stopping. Step: 4681
+Detected agent being stuck. Move for frame:  10
+Detected object directly in front of the vehicle. Stopping. Step: 4683
+Detected agent being stuck. Move for frame:  11
+Detected object directly in front of the vehicle. Stopping. Step: 4685
+Detected agent being stuck. Move for frame:  12
+Detected object directly in front of the vehicle. Stopping. Step: 4687
+Detected agent being stuck. Move for frame:  13
+Detected object directly in front of the vehicle. Stopping. Step: 4689
+Detected agent being stuck. Move for frame:  14
+Detected object directly in front of the vehicle. Stopping. Step: 4691
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_19 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-03-22 19:25:32 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-03-22 19:53:23 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 1670.53s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 358.0s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.214               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 27.95 % │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [91mFAILURE[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_20 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_15.pth
+/model/model_14.pth
+/model/model_16.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Base transform is blocking objects  Transform(Location(x=375.528503, y=-220.896393, z=0.600000), Rotation(pitch=0.000000, yaw=360.598602, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=375.528503, y=-220.896393, z=0.600000), Rotation(pitch=0.000000, yaw=360.598602, roll=0.000000))
+Actor amount: 500
+No more spawn points to use. Spawned 373 actors out of 500
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+Detected agent being stuck. Move for frame:  0
+Detected object directly in front of the vehicle. Stopping. Step: 3695
+Detected agent being stuck. Move for frame:  1
+Detected object directly in front of the vehicle. Stopping. Step: 3697
+Detected agent being stuck. Move for frame:  2
+Detected object directly in front of the vehicle. Stopping. Step: 3699
+Detected agent being stuck. Move for frame:  3
+Detected object directly in front of the vehicle. Stopping. Step: 3701
+Detected agent being stuck. Move for frame:  4
+Detected object directly in front of the vehicle. Stopping. Step: 3703
+Detected agent being stuck. Move for frame:  5
+Detected object directly in front of the vehicle. Stopping. Step: 3705
+Detected agent being stuck. Move for frame:  6
+Detected object directly in front of the vehicle. Stopping. Step: 3707
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected object directly in front of the vehicle. Stopping. Step: 3711
+Detected agent being stuck. Move for frame:  9
+Detected object directly in front of the vehicle. Stopping. Step: 3713
+Detected agent being stuck. Move for frame:  10
+Detected object directly in front of the vehicle. Stopping. Step: 3715
+Detected agent being stuck. Move for frame:  11
+Detected object directly in front of the vehicle. Stopping. Step: 3717
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected object directly in front of the vehicle. Stopping. Step: 3721
+Detected agent being stuck. Move for frame:  14
+Detected object directly in front of the vehicle. Stopping. Step: 3723
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_20 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-03-22 19:53:40 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-03-22 20:17:48 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 1447.33s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 309.6s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.214               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 7.76 %  │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [91mFAILURE[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_21 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_15.pth
+/model/model_14.pth
+/model/model_16.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Base transform is blocking objects  Transform(Location(x=375.528503, y=-220.896393, z=0.600000), Rotation(pitch=0.000000, yaw=360.598602, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=375.528503, y=-220.896393, z=0.600000), Rotation(pitch=0.000000, yaw=360.598602, roll=0.000000))
+Actor amount: 500
+No more spawn points to use. Spawned 373 actors out of 500
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_21 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-03-22 20:18:06 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-03-22 20:47:20 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 1754.18s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 365.9s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.209               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 11.76 % │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [91mFAILURE[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_22 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_15.pth
+/model/model_14.pth
+/model/model_16.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Base transform is blocking objects  Transform(Location(x=329.203644, y=3.426674, z=0.961854), Rotation(pitch=0.000000, yaw=90.977936, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=329.203644, y=3.426674, z=0.961854), Rotation(pitch=0.000000, yaw=90.977936, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=328.203766, y=3.409607, z=0.961854), Rotation(pitch=0.000000, yaw=90.977936, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=328.203766, y=3.409607, z=0.961854), Rotation(pitch=0.000000, yaw=90.977936, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=328.203766, y=3.409607, z=0.961854), Rotation(pitch=0.000000, yaw=90.977936, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=312.955475, y=3.149325, z=1.344376), Rotation(pitch=0.000000, yaw=90.977936, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=312.955475, y=3.149325, z=1.344376), Rotation(pitch=0.000000, yaw=90.977936, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=311.955627, y=3.132258, z=1.344376), Rotation(pitch=0.000000, yaw=90.977936, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=311.955627, y=3.132258, z=1.344376), Rotation(pitch=0.000000, yaw=90.977936, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=310.955780, y=3.115191, z=1.344376), Rotation(pitch=0.000000, yaw=90.977936, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=310.955780, y=3.115191, z=1.344376), Rotation(pitch=0.000000, yaw=90.977936, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=310.955780, y=3.115191, z=1.344376), Rotation(pitch=0.000000, yaw=90.977936, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=309.955902, y=3.098124, z=1.344376), Rotation(pitch=0.000000, yaw=90.977936, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=309.955902, y=3.098124, z=1.344376), Rotation(pitch=0.000000, yaw=90.977936, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=308.956055, y=3.081057, z=1.344376), Rotation(pitch=0.000000, yaw=90.977936, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=308.956055, y=3.081057, z=1.344376), Rotation(pitch=0.000000, yaw=90.977936, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=308.956055, y=3.081057, z=1.344376), Rotation(pitch=0.000000, yaw=90.977936, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=307.956207, y=3.063988, z=1.344376), Rotation(pitch=0.000000, yaw=90.977936, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=307.956207, y=3.063988, z=1.344376), Rotation(pitch=0.000000, yaw=90.977936, roll=0.000000))
+Actor amount: 500
+No more spawn points to use. Spawned 373 actors out of 500
+[1m> Running the route[0m
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+Detected agent being stuck. Move for frame:  0
+Detected object directly in front of the vehicle. Stopping. Step: 8345
+Detected agent being stuck. Move for frame:  1
+Detected object directly in front of the vehicle. Stopping. Step: 8347
+Detected agent being stuck. Move for frame:  2
+Detected object directly in front of the vehicle. Stopping. Step: 8349
+Detected agent being stuck. Move for frame:  3
+Detected object directly in front of the vehicle. Stopping. Step: 8351
+Detected agent being stuck. Move for frame:  4
+Detected object directly in front of the vehicle. Stopping. Step: 8353
+Detected agent being stuck. Move for frame:  5
+Detected object directly in front of the vehicle. Stopping. Step: 8355
+Detected agent being stuck. Move for frame:  6
+Detected object directly in front of the vehicle. Stopping. Step: 8357
+Detected agent being stuck. Move for frame:  7
+Detected object directly in front of the vehicle. Stopping. Step: 8359
+Detected agent being stuck. Move for frame:  8
+Detected object directly in front of the vehicle. Stopping. Step: 8361
+Detected agent being stuck. Move for frame:  9
+Detected object directly in front of the vehicle. Stopping. Step: 8363
+Detected agent being stuck. Move for frame:  10
+Detected object directly in front of the vehicle. Stopping. Step: 8365
+Detected agent being stuck. Move for frame:  11
+Detected object directly in front of the vehicle. Stopping. Step: 8367
+Detected agent being stuck. Move for frame:  12
+Detected object directly in front of the vehicle. Stopping. Step: 8369
+Detected agent being stuck. Move for frame:  13
+Detected object directly in front of the vehicle. Stopping. Step: 8371
+Detected agent being stuck. Move for frame:  14
+Detected object directly in front of the vehicle. Stopping. Step: 8373
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_22 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-03-22 20:47:39 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-03-22 21:30:47 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 2588.43s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 542.1s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.209               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 17.43 % │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 2 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [91mFAILURE[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_23 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_15.pth
+/model/model_14.pth
+/model/model_16.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Actor amount: 500
+No more spawn points to use. Spawned 373 actors out of 500
+[1m> Running the route[0m
+Detected agent being stuck. Move for frame:  0
+Detected object directly in front of the vehicle. Stopping. Step: 21983
+Detected agent being stuck. Move for frame:  1
+Detected object directly in front of the vehicle. Stopping. Step: 21985
+Detected agent being stuck. Move for frame:  2
+Detected object directly in front of the vehicle. Stopping. Step: 21987
+Detected agent being stuck. Move for frame:  3
+Detected object directly in front of the vehicle. Stopping. Step: 21989
+Detected agent being stuck. Move for frame:  4
+Detected object directly in front of the vehicle. Stopping. Step: 21991
+Detected agent being stuck. Move for frame:  5
+Detected object directly in front of the vehicle. Stopping. Step: 21993
+Detected agent being stuck. Move for frame:  6
+Detected object directly in front of the vehicle. Stopping. Step: 21995
+Detected agent being stuck. Move for frame:  7
+Detected object directly in front of the vehicle. Stopping. Step: 21997
+Detected agent being stuck. Move for frame:  8
+Detected object directly in front of the vehicle. Stopping. Step: 21999
+Detected agent being stuck. Move for frame:  9
+Detected object directly in front of the vehicle. Stopping. Step: 22001
+Detected agent being stuck. Move for frame:  10
+Detected object directly in front of the vehicle. Stopping. Step: 22003
+Detected agent being stuck. Move for frame:  11
+Detected object directly in front of the vehicle. Stopping. Step: 22005
+Detected agent being stuck. Move for frame:  12
+Detected object directly in front of the vehicle. Stopping. Step: 22007
+Detected agent being stuck. Move for frame:  13
+Detected object directly in front of the vehicle. Stopping. Step: 22009
+Detected agent being stuck. Move for frame:  14
+Detected object directly in front of the vehicle. Stopping. Step: 22011
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_23 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-03-22 21:31:05 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-03-22 23:02:01 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 5455.71s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 1224.05s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.224               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 80.75 % │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [91mFAILURE[0m │ 0.68 %  │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 6 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [91mFAILURE[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_24 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_15.pth
+/model/model_14.pth
+/model/model_16.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Actor amount: 500
+No more spawn points to use. Spawned 303 actors out of 500
+[1m> Running the route[0m
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected object directly in front of the vehicle. Stopping. Step: 4871
+Detected agent being stuck. Move for frame:  13
+Detected object directly in front of the vehicle. Stopping. Step: 4873
+Detected agent being stuck. Move for frame:  14
+Detected object directly in front of the vehicle. Stopping. Step: 4875
+Detected agent being stuck. Move for frame:  0
+Detected object directly in front of the vehicle. Stopping. Step: 5981
+Detected agent being stuck. Move for frame:  1
+Detected object directly in front of the vehicle. Stopping. Step: 5983
+Detected agent being stuck. Move for frame:  2
+Detected object directly in front of the vehicle. Stopping. Step: 5985
+Detected agent being stuck. Move for frame:  3
+Detected object directly in front of the vehicle. Stopping. Step: 5987
+Detected agent being stuck. Move for frame:  4
+Detected object directly in front of the vehicle. Stopping. Step: 5989
+Detected agent being stuck. Move for frame:  5
+Detected object directly in front of the vehicle. Stopping. Step: 5991
+Detected agent being stuck. Move for frame:  6
+Detected object directly in front of the vehicle. Stopping. Step: 5993
+Detected agent being stuck. Move for frame:  7
+Detected object directly in front of the vehicle. Stopping. Step: 5995
+Detected agent being stuck. Move for frame:  8
+Detected object directly in front of the vehicle. Stopping. Step: 5997
+Detected agent being stuck. Move for frame:  9
+Detected object directly in front of the vehicle. Stopping. Step: 5999
+Detected agent being stuck. Move for frame:  10
+Detected object directly in front of the vehicle. Stopping. Step: 6001
+Detected agent being stuck. Move for frame:  11
+Detected object directly in front of the vehicle. Stopping. Step: 6003
+Detected agent being stuck. Move for frame:  12
+Detected object directly in front of the vehicle. Stopping. Step: 6005
+Detected agent being stuck. Move for frame:  13
+Detected object directly in front of the vehicle. Stopping. Step: 6007
+Detected agent being stuck. Move for frame:  14
+Detected object directly in front of the vehicle. Stopping. Step: 6009
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_24 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-03-22 23:02:18 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-03-22 23:31:18 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 1739.71s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 423.95s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.244               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 19.62 % │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 4 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [91mFAILURE[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_25 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_15.pth
+/model/model_14.pth
+/model/model_16.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Actor amount: 500
+No more spawn points to use. Spawned 303 actors out of 500
+[1m> Running the route[0m
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected object directly in front of the vehicle. Stopping. Step: 6795
+Detected agent being stuck. Move for frame:  11
+Detected object directly in front of the vehicle. Stopping. Step: 6797
+Detected agent being stuck. Move for frame:  12
+Detected object directly in front of the vehicle. Stopping. Step: 6799
+Detected agent being stuck. Move for frame:  13
+Detected object directly in front of the vehicle. Stopping. Step: 6801
+Detected agent being stuck. Move for frame:  14
+Detected object directly in front of the vehicle. Stopping. Step: 6803
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_25 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-03-22 23:31:35 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-03-23 00:04:56 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 2001.04s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 520.0s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.26                │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 29.32 % │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [91mFAILURE[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_26 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_15.pth
+/model/model_14.pth
+/model/model_16.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Actor amount: 500
+No more spawn points to use. Spawned 303 actors out of 500
+[1m> Running the route[0m
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected object directly in front of the vehicle. Stopping. Step: 10563
+Detected agent being stuck. Move for frame:  11
+Detected object directly in front of the vehicle. Stopping. Step: 10565
+Detected agent being stuck. Move for frame:  12
+Detected object directly in front of the vehicle. Stopping. Step: 10567
+Detected agent being stuck. Move for frame:  13
+Detected object directly in front of the vehicle. Stopping. Step: 10569
+Detected agent being stuck. Move for frame:  14
+Detected object directly in front of the vehicle. Stopping. Step: 10571
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_26 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-03-23 00:05:12 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-03-23 00:53:59 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 2927.72s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 708.4s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.242               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 53.1 %  │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 3 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [91mFAILURE[0m │ 3 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [91mFAILURE[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_27 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_15.pth
+/model/model_14.pth
+/model/model_16.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Actor amount: 500
+No more spawn points to use. Spawned 303 actors out of 500
+[1m> Running the route[0m
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+Detected agent being stuck. Move for frame:  0
+Detected object directly in front of the vehicle. Stopping. Step: 14017
+Detected agent being stuck. Move for frame:  1
+Detected object directly in front of the vehicle. Stopping. Step: 14019
+Detected agent being stuck. Move for frame:  2
+Detected object directly in front of the vehicle. Stopping. Step: 14021
+Detected agent being stuck. Move for frame:  3
+Detected object directly in front of the vehicle. Stopping. Step: 14023
+Detected agent being stuck. Move for frame:  4
+Detected object directly in front of the vehicle. Stopping. Step: 14025
+Detected agent being stuck. Move for frame:  5
+Detected object directly in front of the vehicle. Stopping. Step: 14027
+Detected agent being stuck. Move for frame:  6
+Detected object directly in front of the vehicle. Stopping. Step: 14029
+Detected agent being stuck. Move for frame:  7
+Detected object directly in front of the vehicle. Stopping. Step: 14031
+Detected agent being stuck. Move for frame:  8
+Detected object directly in front of the vehicle. Stopping. Step: 14033
+Detected agent being stuck. Move for frame:  9
+Detected object directly in front of the vehicle. Stopping. Step: 14035
+Detected agent being stuck. Move for frame:  10
+Detected object directly in front of the vehicle. Stopping. Step: 14037
+Detected agent being stuck. Move for frame:  11
+Detected object directly in front of the vehicle. Stopping. Step: 14039
+Detected agent being stuck. Move for frame:  12
+Detected object directly in front of the vehicle. Stopping. Step: 14041
+Detected agent being stuck. Move for frame:  13
+Detected object directly in front of the vehicle. Stopping. Step: 14043
+Detected agent being stuck. Move for frame:  14
+Detected object directly in front of the vehicle. Stopping. Step: 14045
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_27 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-03-23 00:54:15 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-03-23 01:48:22 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 3247.39s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 825.75s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.254               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 83.49 % │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [91mFAILURE[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_28 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_15.pth
+/model/model_14.pth
+/model/model_16.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Actor amount: 500
+No more spawn points to use. Spawned 303 actors out of 500
+[1m> Running the route[0m
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected object directly in front of the vehicle. Stopping. Step: 7297
+Detected agent being stuck. Move for frame:  14
+Detected object directly in front of the vehicle. Stopping. Step: 7299
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected object directly in front of the vehicle. Stopping. Step: 12661
+Detected agent being stuck. Move for frame:  14
+Detected object directly in front of the vehicle. Stopping. Step: 12663
+Detected agent being stuck. Move for frame:  0
+Detected object directly in front of the vehicle. Stopping. Step: 13773
+Detected agent being stuck. Move for frame:  1
+Detected object directly in front of the vehicle. Stopping. Step: 13775
+Detected agent being stuck. Move for frame:  2
+Detected object directly in front of the vehicle. Stopping. Step: 13777
+Detected agent being stuck. Move for frame:  3
+Detected object directly in front of the vehicle. Stopping. Step: 13779
+Detected agent being stuck. Move for frame:  4
+Detected object directly in front of the vehicle. Stopping. Step: 13781
+Detected agent being stuck. Move for frame:  5
+Detected object directly in front of the vehicle. Stopping. Step: 13783
+Detected agent being stuck. Move for frame:  6
+Detected object directly in front of the vehicle. Stopping. Step: 13785
+Detected agent being stuck. Move for frame:  7
+Detected object directly in front of the vehicle. Stopping. Step: 13787
+Detected agent being stuck. Move for frame:  8
+Detected object directly in front of the vehicle. Stopping. Step: 13789
+Detected agent being stuck. Move for frame:  9
+Detected object directly in front of the vehicle. Stopping. Step: 13791
+Detected agent being stuck. Move for frame:  10
+Detected object directly in front of the vehicle. Stopping. Step: 13793
+Detected agent being stuck. Move for frame:  11
+Detected object directly in front of the vehicle. Stopping. Step: 13795
+Detected agent being stuck. Move for frame:  12
+Detected object directly in front of the vehicle. Stopping. Step: 13797
+Detected agent being stuck. Move for frame:  13
+Detected object directly in front of the vehicle. Stopping. Step: 13799
+Detected agent being stuck. Move for frame:  14
+Detected object directly in front of the vehicle. Stopping. Step: 13801
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_28 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-03-23 01:48:38 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-03-23 02:44:03 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 3325.48s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 813.5s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.245               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 51.53 % │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [91mFAILURE[0m │ 0.54 %  │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 3 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [91mFAILURE[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_29 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_15.pth
+/model/model_14.pth
+/model/model_16.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Base transform is blocking objects  Transform(Location(x=-11.660974, y=-214.464630, z=0.651695), Rotation(pitch=0.000000, yaw=90.076447, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-11.660974, y=-214.464630, z=0.651695), Rotation(pitch=0.000000, yaw=90.076447, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-12.660973, y=-214.465973, z=0.651695), Rotation(pitch=0.000000, yaw=90.076447, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-12.660973, y=-214.465973, z=0.651695), Rotation(pitch=0.000000, yaw=90.076447, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-13.660972, y=-214.467300, z=0.651695), Rotation(pitch=0.000000, yaw=90.076447, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-13.660972, y=-214.467300, z=0.651695), Rotation(pitch=0.000000, yaw=90.076447, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-13.660972, y=-214.467300, z=0.651695), Rotation(pitch=0.000000, yaw=90.076447, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-14.660971, y=-214.468643, z=0.651695), Rotation(pitch=0.000000, yaw=90.076447, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-14.660971, y=-214.468643, z=0.651695), Rotation(pitch=0.000000, yaw=90.076447, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-15.660970, y=-214.469971, z=0.651695), Rotation(pitch=0.000000, yaw=90.076447, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-15.660970, y=-214.469971, z=0.651695), Rotation(pitch=0.000000, yaw=90.076447, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-15.660970, y=-214.469971, z=0.651695), Rotation(pitch=0.000000, yaw=90.076447, roll=0.000000))
+Actor amount: 500
+No more spawn points to use. Spawned 303 actors out of 500
+[1m> Running the route[0m
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_29 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-03-23 02:44:20 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-03-23 03:14:48 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 1828.85s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 467.3s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.256               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [91mFAILURE[0m │ 2 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_30 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_15.pth
+/model/model_14.pth
+/model/model_16.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Actor amount: 500
+No more spawn points to use. Spawned 437 actors out of 500
+[1m> Running the route[0m
+ERROR: failed to destroy actor 6022 : unable to destroy actor: not found 
+Detected agent being stuck. Move for frame:  0
+Detected object directly in front of the vehicle. Stopping. Step: 9505
+Detected agent being stuck. Move for frame:  1
+Detected object directly in front of the vehicle. Stopping. Step: 9507
+Detected agent being stuck. Move for frame:  2
+Detected object directly in front of the vehicle. Stopping. Step: 9509
+Detected agent being stuck. Move for frame:  3
+Detected object directly in front of the vehicle. Stopping. Step: 9511
+Detected agent being stuck. Move for frame:  4
+Detected object directly in front of the vehicle. Stopping. Step: 9513
+Detected agent being stuck. Move for frame:  5
+Detected object directly in front of the vehicle. Stopping. Step: 9515
+Detected agent being stuck. Move for frame:  6
+Detected object directly in front of the vehicle. Stopping. Step: 9517
+Detected agent being stuck. Move for frame:  7
+Detected object directly in front of the vehicle. Stopping. Step: 9519
+Detected agent being stuck. Move for frame:  8
+Detected object directly in front of the vehicle. Stopping. Step: 9521
+Detected agent being stuck. Move for frame:  9
+Detected object directly in front of the vehicle. Stopping. Step: 9523
+Detected agent being stuck. Move for frame:  10
+Detected object directly in front of the vehicle. Stopping. Step: 9525
+Detected agent being stuck. Move for frame:  11
+Detected object directly in front of the vehicle. Stopping. Step: 9527
+Detected agent being stuck. Move for frame:  12
+Detected object directly in front of the vehicle. Stopping. Step: 9529
+Detected agent being stuck. Move for frame:  13
+Detected object directly in front of the vehicle. Stopping. Step: 9531
+Detected agent being stuck. Move for frame:  14
+Detected object directly in front of the vehicle. Stopping. Step: 9533
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+Detected agent being stuck. Move for frame:  0
+Detected object directly in front of the vehicle. Stopping. Step: 15867
+Detected agent being stuck. Move for frame:  1
+Detected object directly in front of the vehicle. Stopping. Step: 15869
+Detected agent being stuck. Move for frame:  2
+Detected object directly in front of the vehicle. Stopping. Step: 15871
+Detected agent being stuck. Move for frame:  3
+Detected object directly in front of the vehicle. Stopping. Step: 15873
+Detected agent being stuck. Move for frame:  4
+Detected object directly in front of the vehicle. Stopping. Step: 15875
+Detected agent being stuck. Move for frame:  5
+Detected object directly in front of the vehicle. Stopping. Step: 15877
+Detected agent being stuck. Move for frame:  6
+Detected object directly in front of the vehicle. Stopping. Step: 15879
+Detected agent being stuck. Move for frame:  7
+Detected object directly in front of the vehicle. Stopping. Step: 15881
+Detected agent being stuck. Move for frame:  8
+Detected object directly in front of the vehicle. Stopping. Step: 15883
+Detected agent being stuck. Move for frame:  9
+Detected object directly in front of the vehicle. Stopping. Step: 15885
+Detected agent being stuck. Move for frame:  10
+Detected object directly in front of the vehicle. Stopping. Step: 15887
+Detected agent being stuck. Move for frame:  11
+Detected object directly in front of the vehicle. Stopping. Step: 15889
+Detected agent being stuck. Move for frame:  12
+Detected object directly in front of the vehicle. Stopping. Step: 15891
+Detected agent being stuck. Move for frame:  13
+Detected object directly in front of the vehicle. Stopping. Step: 15893
+Detected agent being stuck. Move for frame:  14
+Detected object directly in front of the vehicle. Stopping. Step: 15895
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+ERROR: failed to destroy actor 6030 : unable to destroy actor: not found 
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_30 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-03-23 03:15:05 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-03-23 05:23:27 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 7702.09s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 1545.1s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.201               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [91mFAILURE[0m │ 1.45 %  │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 8 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [91mFAILURE[0m │ 4 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_31 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_15.pth
+/model/model_14.pth
+/model/model_16.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Actor amount: 500
+No more spawn points to use. Spawned 437 actors out of 500
+[1m> Running the route[0m
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_31 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-03-23 05:23:44 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-03-23 06:11:22 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 2858.57s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 609.0s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.213               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 4 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_32 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_15.pth
+/model/model_14.pth
+/model/model_16.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Actor amount: 500
+No more spawn points to use. Spawned 437 actors out of 500
+[1m> Running the route[0m
+ERROR: failed to destroy actor 7130 : unable to destroy actor: not found 
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+Detected agent being stuck. Move for frame:  0
+Detected object directly in front of the vehicle. Stopping. Step: 28087
+Detected agent being stuck. Move for frame:  1
+Detected object directly in front of the vehicle. Stopping. Step: 28089
+Detected agent being stuck. Move for frame:  2
+Detected object directly in front of the vehicle. Stopping. Step: 28091
+Detected agent being stuck. Move for frame:  3
+Detected object directly in front of the vehicle. Stopping. Step: 28093
+Detected agent being stuck. Move for frame:  4
+Detected object directly in front of the vehicle. Stopping. Step: 28095
+Detected agent being stuck. Move for frame:  5
+Detected object directly in front of the vehicle. Stopping. Step: 28097
+Detected agent being stuck. Move for frame:  6
+Detected object directly in front of the vehicle. Stopping. Step: 28099
+Detected agent being stuck. Move for frame:  7
+Detected object directly in front of the vehicle. Stopping. Step: 28101
+Detected agent being stuck. Move for frame:  8
+Detected object directly in front of the vehicle. Stopping. Step: 28103
+Detected agent being stuck. Move for frame:  9
+Detected object directly in front of the vehicle. Stopping. Step: 28105
+Detected agent being stuck. Move for frame:  10
+Detected object directly in front of the vehicle. Stopping. Step: 28107
+Detected agent being stuck. Move for frame:  11
+Detected object directly in front of the vehicle. Stopping. Step: 28109
+Detected agent being stuck. Move for frame:  12
+Detected object directly in front of the vehicle. Stopping. Step: 28111
+Detected agent being stuck. Move for frame:  13
+Detected object directly in front of the vehicle. Stopping. Step: 28113
+Detected agent being stuck. Move for frame:  14
+Detected object directly in front of the vehicle. Stopping. Step: 28115
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_32 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-03-23 06:11:39 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-03-23 09:33:39 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 12119.24s           │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 2393.05s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.197               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤══════════╕
+│ Criterion             │ Result  │ Value    │
+├───────────────────────┼─────────┼──────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 99.63 %  │
+├───────────────────────┼─────────┼──────────┤
+│ OutsideRouteLanesTest │ [91mFAILURE[0m │ 0.69 %   │
+├───────────────────────┼─────────┼──────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 21 times │
+├───────────────────────┼─────────┼──────────┤
+│ RunningRedLightTest   │ [91mFAILURE[0m │ 1 times  │
+├───────────────────────┼─────────┼──────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times  │
+├───────────────────────┼─────────┼──────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │          │
+├───────────────────────┼─────────┼──────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │          │
+├───────────────────────┼─────────┼──────────┤
+│ Timeout               │ [91mFAILURE[0m │          │
+╘═══════════════════════╧═════════╧══════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_33 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_15.pth
+/model/model_14.pth
+/model/model_16.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Actor amount: 500
+No more spawn points to use. Spawned 437 actors out of 500
+[1m> Running the route[0m
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_33 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-03-23 09:33:57 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-03-23 12:13:02 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 9544.91s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 1652.0s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.173               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤══════════╕
+│ Criterion             │ Result  │ Value    │
+├───────────────────────┼─────────┼──────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %    │
+├───────────────────────┼─────────┼──────────┤
+│ OutsideRouteLanesTest │ [91mFAILURE[0m │ 0.89 %   │
+├───────────────────────┼─────────┼──────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 20 times │
+├───────────────────────┼─────────┼──────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times  │
+├───────────────────────┼─────────┼──────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times  │
+├───────────────────────┼─────────┼──────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │          │
+├───────────────────────┼─────────┼──────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │          │
+├───────────────────────┼─────────┼──────────┤
+│ Timeout               │ [92mSUCCESS[0m │          │
+╘═══════════════════════╧═════════╧══════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_34 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_15.pth
+/model/model_14.pth
+/model/model_16.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Actor amount: 500
+No more spawn points to use. Spawned 437 actors out of 500
+[1m> Running the route[0m
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_34 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-03-23 12:13:20 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-03-23 12:47:22 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 2042.37s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 452.3s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.221               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [91mFAILURE[0m │ 1.14 %  │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 2 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_35 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_15.pth
+/model/model_14.pth
+/model/model_16.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Actor amount: 500
+No more spawn points to use. Spawned 437 actors out of 500
+[1m> Running the route[0m
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_35 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-03-23 12:47:40 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-03-23 14:10:09 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 4949.77s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 1130.85s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.228               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [91mFAILURE[0m │ 0.34 %  │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 4 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+[1m> Registering the global statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+_cleanup() finished
+
+Finished at 2023-03-23 14:10:11
+
