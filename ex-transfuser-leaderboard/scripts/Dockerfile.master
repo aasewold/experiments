@@ -1,7 +1,7 @@
 # Used to retreive the CARLA Python API
 ARG CARLA_VERSION
 FROM carlasim/carla:${CARLA_VERSION} AS carla
-RUN mv /home/carla/PythonAPI/carla/dist/carla*-py2*.egg /home/carla/PythonAPI/carla/dist/carla-leaderboard-py2.7.egg
+RUN mv /home/carla/PythonAPI/carla/dist/carla*-py2*.egg /home/carla/PythonAPI/carla/dist/carla-leaderboard-py2.7.egg || echo "No py2.7 egg"
 RUN mv /home/carla/PythonAPI/carla/dist/carla*-py3*.egg /home/carla/PythonAPI/carla/dist/carla-leaderboard-py3x.egg
 
 
@@ -106,6 +106,8 @@ RUN pip install torch-scatter -f https://data.pyg.org/whl/torch-1.11.0+cu102.htm
 RUN pip install mmcv-full==1.5.3 -f https://download.openmmlab.com/mmcv/dist/cu102/torch1.11.0/index.html
 RUN pip install mmsegmentation==0.25.0
 RUN pip install mmdet==2.25.0
+
+COPY models ${TEAM_CODE_ROOT}/model_ckpt/transfuser
 
 ENV TEAM_AGENT ${TEAM_CODE_ROOT}/submission_agent.py
 ENV TEAM_CONFIG ${TEAM_CODE_ROOT}/model_ckpt/transfuser
