@@ -14,6 +14,8 @@ if [ ! -d "$DATASET_PATH" ]; then
     exit 1
 fi
 
+export EXPERIMENT_NAME="C_${CARLA_VERSION}-I_${INTERFUSER_COMMIT}-d_$(basename "$DATASET_PATH")"
+
 echo "DATASET_PATH: $DATASET_PATH"
 echo "RESUME_PATH: $RESUME_PATH"
 

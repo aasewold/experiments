@@ -12,6 +12,7 @@ services:
     environment:
       - PYTHONUNBUFFERED=1
       - RESUME_PATH=${RESUME_PATH}
+      - EXPERIMENT_NAME=${EXPERIMENT_NAME}
     volumes:
       - ./scripts:/scripts
       - ${DATASET_PATH}:/dataset
