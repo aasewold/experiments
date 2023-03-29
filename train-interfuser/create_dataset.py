@@ -13,11 +13,7 @@ if len(sys.argv) != 2:
 
 DATETIME = sys.argv[1]
 IDUN = "idun-login1.hpc.ntnu.no"
-IDUN_DATASET_PATH = Path(f"~/work/thesis/datagen-interfuser/output/{DATETIME}/data/")
-
-if not IDUN_DATASET_PATH.exists():
-    print(f"ERROR: {IDUN_DATASET_PATH} does not exist")
-    sys.exit(1)
+IDUN_DATASET_PATH = f"~/work/thesis/datagen-interfuser/output/{DATETIME}/data/"
 
 DATASET_PATH = Path(f"/data/datasets/interfuser/{DATETIME}")
 DATASET_INDEX_PATH = DATASET_PATH / "dataset_index.txt"
