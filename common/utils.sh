@@ -19,6 +19,12 @@ get_commit_hash() {
         | head -c 8
 }
 
+get_commit_hash_interfuser() {
+    curl -s "https://api.github.com/repos/aasewold/interfuser/commits/$1" \
+        | jq -r .sha \
+        | head -c 8
+}
+
 setup_transfuser() (
     set -euo pipefail
 

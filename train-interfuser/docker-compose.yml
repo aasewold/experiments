@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  interfuser:
+    build:
+      context: ../common
+      dockerfile: interfuser.dockerfile
+      args:
+        - CARLA_VERSION=${CARLA_VERSION}
+        - INTERFUSER_COMMIT=${INTERFUSER_COMMIT}
+    command: ["/bin/bash", "/scripts/train.sh"]
+    environment:
+      - PYTHONUNBUFFERED=1
+      - RESUME_PATH=${RESUME_PATH}
+    volumes:
+      - ./scripts:/scripts
+      - ${DATASET_PATH}:/dataset
+      - ${LOG_PATH:-./output}:/output
+    restart: on-failure
+    shm_size: 5g
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 2
+              capabilities: [gpu]
