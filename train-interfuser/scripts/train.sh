@@ -11,6 +11,12 @@ export CUDA_VISIBLE_DEVICES="$CUDA_GPUS"
 
 cd interfuser
 
+RESUME_ARG=""
+
+if [ ! -z "$RESUME_PATH" ]; then
+    RESUME_ARG="--resume $RESUME_PATH"
+fi
+
 python3 -m torch.distributed.launch --nproc_per_node=$NUM_GPUS \
     train.py $DATASET_ROOT --dataset carla \
     --train-towns 1 2 3 4 6 7 \
@@ -25,7 +31,7 @@ python3 -m torch.distributed.launch --nproc_per_node=$NUM_GPUS \
     --experiment interfuser_baseline \
     --pretrained \
     --output $OUTPUT_DIR \
-    --resume $RESUME_PATH
+    $RESUME_ARG
 
 # Default:
 #   --train-towns 1 2 3 4 6 7 10 \
