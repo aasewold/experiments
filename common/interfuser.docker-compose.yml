@@ -3,8 +3,8 @@ version: '3'
 services:
   carla:
     build:
-      context: ../common
-      dockerfile: carla-0.9.14.dockerfile
+      context: .
+      dockerfile: carla-${CARLA_VERSION}.dockerfile
     restart: on-failure
     deploy:
       resources:
@@ -17,19 +17,21 @@ services:
 
   interfuser:
     build:
-      context: ../common
+      context: .
       dockerfile: interfuser.dockerfile
       args:
-        - CARLA_VERSION=0.9.14
-        - INTERFUSER_COMMIT=0.9.14
+        - CARLA_VERSION=${CARLA_VERSION}
+        - INTERFUSER_COMMIT=${INTERFUSER_COMMIT}
     environment:
       - PYTHONUNBUFFERED=1
       # Specify which evaluation to run. The options are town05, 42routes and longest6
       - EVALUATION=${EVALUATION:-longest6}
     volumes:
-      - ./models/interfuser/:/interfuser/models
-      - ./results/:/interfuser/results
-      - ./data/:/interfuser/data
+      - ${MODEL_PATH}:/interfuser/models
+      - ${RESULT_PATH}:/interfuser/results
+      - ${RESULT_PATH}/data:/interfuser/data
+      - ./interfuser-extra:/extra
+    command: /bin/bash /extra/run_evaluation.sh
     depends_on:
       carla:
         condition: service_healthy
