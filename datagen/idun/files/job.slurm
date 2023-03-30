@@ -29,6 +29,12 @@ SAVE_PATH=data/$SAVE_NAME
 TAR_NAME=$SAVE_NAME.tar.gz
 TAR_PATH=data/$TAR_NAME
 
+echo
+echo "Purging modules"
+module list
+module purge
+echo
+
 archive_data() (
     echo "Archiving files to $TAR_NAME"
     cd data
