@@ -6,7 +6,7 @@ mkdir -p results models data
 
 if [ ! -h models/interfuser ]; then
     echo "Creating symlink to models"
-    ln -s $(realpath ../models/interfuser) models/interfuser
+    ln -s $(realpath ../models) models
 fi
 
 if ../scripts/check-interfuser.sh; then
