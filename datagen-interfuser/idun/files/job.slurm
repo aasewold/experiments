@@ -11,6 +11,9 @@
 
 #SBATCH --array=1-1
 
+module list
+module purge
+
 time_start=$(date +%s)
 
 echo Starting at $(date +'%Y-%m-%d_%H-%M-%S')
