@@ -5,10 +5,14 @@
 #SBATCH --time=07-00:00:00
 
 #SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
 #SBATCH --gres=gpu:1
 #SBATCH --constraint="A100|V100"
 
 #SBATCH --array=1-1
+
+module list
+module purge
 
 time_start=$(date +%s)
 

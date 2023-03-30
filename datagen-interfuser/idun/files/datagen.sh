@@ -37,8 +37,6 @@ export RESUME=True
 mkdir -p $(dirname ${CHECKPOINT_ENDPOINT})
 mkdir -p ${SAVE_PATH}
 
-mkdir -p birdview_v2_cache/Carla/Maps
-
 python3 ${LEADERBOARD_ROOT}/leaderboard/leaderboard_evaluator.py \
 --scenarios=${SCENARIOS}  \
 --routes=${ROUTES} \
