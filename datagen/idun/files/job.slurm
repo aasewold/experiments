@@ -3,6 +3,7 @@
 #SBATCH --partition=GPUQ
 #SBATCH --account=share-ie-idi
 #SBATCH --time=07-00:00:00
+#SBATCH --constraint="A100|V100"
 
 #SBATCH --ntasks=1
 #SBATCH --gres=gpu:1
