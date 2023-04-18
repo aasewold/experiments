@@ -1,4 +1,4 @@
-from typing import Any, Optional
+from typing import Any, Optional, Tuple, List
 
 from logging import getLogger
 _log = getLogger(__name__)
@@ -11,11 +11,11 @@ from .source import MeasurementSource
 class MeasurementCollection:
     """Provides synchronized access to a collection of measurements from multiple sensors."""
 
-    def __init__(self, sources: list[MeasurementSource[Any]]) -> None:
+    def __init__(self, sources: List[MeasurementSource[Any]]) -> None:
         self._sources = tuple(sources)
 
     @property
-    def current(self) -> tuple[Measurement[Any], ...]:
+    def current(self) -> Tuple[Measurement[Any], ...]:
         return tuple(source.current for source in self._sources)
     
     def advance(self):

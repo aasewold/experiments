@@ -15,4 +15,6 @@ RUN pip install --upgrade pip wheel setuptools \
         rich ffmpeg-python scipy ouster-sdk \
         jupyterlab pymap3d
 
-CMD ["jupyter-lab", "--allow-root"]
+WORKDIR /work
+
+CMD ["jupyter-lab", "--allow-root", "--ip", "0.0.0.0"]

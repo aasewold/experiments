@@ -1,7 +1,7 @@
 from collections import defaultdict
 from dataclasses import dataclass
 import time
-from typing import Any, Callable, Iterable, TypeVar
+from typing import Any, Dict, Tuple, List, Callable, Iterable, TypeVar
 from contextlib import contextmanager
 from functools import wraps
 
@@ -15,10 +15,10 @@ class _Stats:
     tot_ns: int = 0
 
 
-DataDict = dict[tuple[str, ...], _Stats]
+DataDict = Dict[Tuple[str, ...], _Stats]
 
 _data: DataDict = defaultdict(_Stats)
-_ctx: list[str] = []
+_ctx: List[str] = []
 
 
 @contextmanager
@@ -39,7 +39,7 @@ def ctx(name: str):
 _F = TypeVar('_F', bound=Callable[..., Any])
 def func(f: _F) -> _F:
     @wraps(f)
-    def wrapper(*args: Any, **kwargs: dict[str, Any]):
+    def wrapper(*args: Any, **kwargs: Dict[str, Any]):
         with ctx(f.__name__):
             return f(*args, **kwargs)
     return wrapper  # type: ignore

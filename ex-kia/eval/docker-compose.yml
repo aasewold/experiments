@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  transfuser:
+    build:
+      context: .
+      dockerfile: transfuser.dockerfile
+      args:
+        - CARLA_VERSION=${CARLA_VERSION}
+        - TRANSFUSER_COMMIT=${TRANSFUSER_COMMIT}
+    command: ["python3", "-m", "src.scripts.transfuser"]
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app:/transfuser/carla/PythonAPI:/transfuser/carla/PythonAPI/carla:/transfuser/carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg:/transfuser/leaderboard:/transfuser/scenario_runner:/transfuser/team_code_transfuser
+      - SAVE_PATH=${SAVE_PATH}
+    volumes:
+      - ./work:/work
+      - ../app:/app:ro
+      - /data/ad/recordings_DW:/dataset:ro
+      - ${MODEL_PATH}:/model:ro
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
+              device_ids: ["${GPU:-0}"]

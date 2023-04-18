@@ -5,5 +5,6 @@ from .source import (
     IteratorSource as IteratorSource,
     NamedSource as NamedSource,
     SingleBufferSource as SingleBufferSource,
+    WrappingSource as WrappingSource,
 )
 from .collection import MeasurementCollection as MeasurementCollection

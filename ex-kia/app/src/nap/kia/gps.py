@@ -1,7 +1,7 @@
 import re
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Callable, Iterable, Optional, TypeVar
+from typing import Any, Callable, Iterable, Optional, TypeVar, List
 
 from src.measurements import Measurement, IteratorSource, NamedSource
 
@@ -26,7 +26,7 @@ class GpsData:
     vdop: Optional[float]
 
     @classmethod
-    def average(cls, datas: list['GpsData']) -> 'GpsData':
+    def average(cls, datas: List['GpsData']) -> 'GpsData':
         return cls(
             index=datas[0].index,
             lat=sum(d.lat for d in datas) / len(datas),
@@ -67,11 +67,12 @@ def make_gps(path: Path):
     def generator():
         with path.open('rt') as f:
             for line in f:
-                if match := re_gps.match(line):
+                match = re_gps.match(line)
+                if match:
                     index, ts, lat, lon, alt, *rest = match.groups()
 
                     index = int(index)
-                    ts = int(ts)
+                    ts = int(ts) / 1000.0
                     lat = float(lat)
                     lon = float(lon)
                     alt = float(alt)

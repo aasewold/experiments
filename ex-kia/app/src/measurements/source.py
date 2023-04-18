@@ -1,4 +1,8 @@
-from typing import Any, Iterable, Iterator, Protocol, TypeVar
+from typing import Any, Iterable, Iterator, TypeVar
+try:
+    from typing import Protocol
+except ImportError:
+    from typing_extensions import Protocol
 
 from .measurement import Measurement
 
@@ -19,7 +23,7 @@ class MeasurementSource(Protocol[_T]):
         return self.current.ts
 
     @property
-    def value(self) -> Any:
+    def value(self) -> _T:
         return self.current.value
 
     def advance_n(self, n: int):
@@ -39,6 +43,20 @@ class MeasurementSource(Protocol[_T]):
             yield self.current
 
 
+class WrappingSource(MeasurementSource[_T]):
+    _inner: MeasurementSource[_T]
+
+    def __init__(self, inner: MeasurementSource[_T]) -> None:
+        self._inner = inner
+    
+    @property
+    def current(self) -> Measurement[_T]:
+        return self._inner.current
+    
+    def advance(self):
+        self._inner.advance()
+
+
 class IteratorSource(MeasurementSource[_T]):
     _iterator: Iterator[Measurement[_T]]
     _current: Measurement[_T]
@@ -55,33 +73,23 @@ class IteratorSource(MeasurementSource[_T]):
         self._current = next(self._iterator)
 
 
-class NamedSource(MeasurementSource[_T]):
+class NamedSource(WrappingSource[_T]):
     _name: str
-    _inner: MeasurementSource[_T]
 
     def __init__(self, name: str, inner: MeasurementSource[_T]) -> None:
+        super().__init__(inner)
         self._name = name
-        self._inner = inner
-    
-    @property
-    def current(self) -> Measurement[_T]:
-        return self._inner.current
-    
-    def advance(self):
-        self._inner.advance()
     
     def __str__(self) -> str:
         return f'{self._name}'
 
 
-class SingleBufferSource(MeasurementSource[_T]):
-    _inner: MeasurementSource[_T]
+class SingleBufferSource(WrappingSource[_T]):
     _prev: Measurement[_T]
     _is_prev: bool
 
     def __init__(self, inner: MeasurementSource[_T]) -> None:
-        super().__init__()
-        self._inner = inner
+        super().__init__(inner)
         self._prev = inner.current
         self._is_prev = False
     

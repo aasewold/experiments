@@ -1,3 +1,4 @@
+from typing import Tuple, Dict, List
 from dataclasses import dataclass
 from pathlib import Path
 from logging import getLogger
@@ -16,7 +17,7 @@ class CameraData:
     frame: NDArray[np.float64]
 
 
-def make_camera(path: Path, resolution: tuple[int, int] = (1920, 1208)):
+def make_camera(path: Path, resolution: Tuple[int, int] = (1920, 1208)):
     log = getLogger('camera.' + path.stem)
 
     w, h = resolution

@@ -2,7 +2,7 @@ from itertools import count
 from pathlib import Path
 
 from logging import getLogger
-from typing import Any
+from typing import Any, Tuple, Dict, List
 _log = getLogger(__name__)
 
 import matplotlib.pyplot as plt
@@ -20,7 +20,7 @@ from .gps import make_gps, GpsData
 
 
 class DiffPlotter:
-    _data: dict[str, tuple[NDArray[Any], list[float], list[float]]]
+    _data: Dict[str, Tuple[NDArray[Any], List[float], List[float]]]
 
     def __init__(self):
         self._data = {}

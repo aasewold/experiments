@@ -1,4 +1,4 @@
-from typing import Generic, Optional, TypeVar
+from typing import Generic, Optional, TypeVar, List, Dict
 
 from .measurement import Measurement
 
@@ -7,7 +7,7 @@ _T = TypeVar('_T')
 
 
 class MeasurementBuffer(Generic[_T]):
-    _buffer: dict[int, Measurement[_T]]
+    _buffer: Dict[int, Measurement[_T]]
 
     def __init__(self):
         self._buffer = {}
@@ -27,7 +27,7 @@ class MeasurementBuffer(Generic[_T]):
         """Get the measurement at the given timestamp or raises KeyError."""
         return self._buffer.get(ts, None)
 
-    def get_range(self, start: int, end: int) -> list[Measurement[_T]]:
+    def get_range(self, start: int, end: int) -> List[Measurement[_T]]:
         """Get all measurements in the given range, inclusive of start and exclusive of end."""
         return [value for ts, value in self._buffer.items() if start <= ts < end]
     

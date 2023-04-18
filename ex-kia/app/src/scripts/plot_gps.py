@@ -26,7 +26,7 @@ def load_gps_data(path):
             continue
         data = GpsData.average(datas)
         ts.append(measurement.ts)
-        pos.append((data.lat, data.lon))
+        pos.append((data.lat, data.lon, data.alt))
     
     ts = np.array(ts)
     coords = np.array(pos)
@@ -36,8 +36,8 @@ def load_gps_data(path):
 def plot_gps_data(ts, gps_coords):
     imagery = OSM()
 
-    lat, lon = gps_coords.T
-    world_coords = imagery.crs.transform_points(ccrs.Geodetic(), lon, lat)
+    lat, lon, alt = gps_coords.T
+    world_coords = imagery.crs.transform_points(ccrs.Geodetic(), lon, lat, alt)
     world_coords = world_coords[:, :2]
 
     fig = plt.figure()
