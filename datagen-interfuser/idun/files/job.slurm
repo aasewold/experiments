@@ -6,6 +6,7 @@
 
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
+#SBATCH --mem=16000
 #SBATCH --gres=gpu:1
 #SBATCH --constraint="A100|V100"
 
