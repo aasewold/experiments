@@ -1,4 +1,5 @@
-FROM carlasim/carla:0.9.14
+ARG CARLA_IMAGE=carlasim/carla:0.9.14
+FROM ${CARLA_IMAGE}
 
 CMD ["/bin/bash", "CarlaUE4.sh", "-vulkan", "-RenderOffScreen"]
 
