@@ -56,6 +56,12 @@ class WrappingSource(MeasurementSource[_T]):
     def advance(self):
         self._inner.advance()
 
+    def advance_n(self, n: int):
+        self._inner.advance_n(n)
+    
+    def advance_to(self, ts: float):
+        self._inner.advance_to(ts)
+
 
 class IteratorSource(MeasurementSource[_T]):
     _iterator: Iterator[Measurement[_T]]
@@ -113,14 +119,15 @@ class SingleBufferSource(WrappingSource[_T]):
         self._is_prev = True
 
     def advance_to(self, ts: float):
-        prev_diff = abs(self.ts - ts)
+        prev_diff = None
         while self.ts < ts:
+            prev_diff = abs(self.ts - ts)
             self.advance()
+        
+        if prev_diff is not None:
             diff = abs(self.ts - ts)
             if diff > prev_diff:
                 self.reverse()
-                break
-            prev_diff = diff
 
     def __str__(self) -> str:
         return f'{self._inner} (buffered)'
