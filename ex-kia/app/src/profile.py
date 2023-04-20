@@ -25,14 +25,15 @@ _ctx: List[str] = []
 def ctx(name: str):
     _ctx.append(name)
     path = tuple(_ctx)
+    entry = _data[path]
     start = time.monotonic_ns()
     try:
         yield
     finally:
         end = time.monotonic_ns()
         ns = end - start
-        _data[path].count += 1
-        _data[path].tot_ns += ns
+        entry.count += 1
+        entry.tot_ns += ns
         _ctx.pop()
 
 
@@ -73,7 +74,7 @@ def _dump(data: DataDict, title: str):
     table.add_column('Count', justify='right')
     table.add_column('Time (ms, total)', justify='right')
     table.add_column('Time (ms, per call)', justify='right')
-    for path, stats in sorted(data.items()):
+    for path, stats in data.items():
         disp = ' -> '.join(path)
         table.add_row(disp, str(stats.count), f'{stats.tot_ns / 1e6:.2f}ms', f'{stats.tot_ns / stats.count / 1e6:.2f}ms')
     print(table)
