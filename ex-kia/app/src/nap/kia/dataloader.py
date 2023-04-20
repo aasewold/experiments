@@ -105,10 +105,10 @@ def iter_data():
 
         with profile.ctx('plot'):
             plotter.append('lidar', lid.ts, lid.value.ranges / 10000)
-            plotter.append('cam_c1', c1.ts, c1.value.frame)
-            plotter.append('cam_c2', c2.ts, c2.value.frame)
-            plotter.append('cam_c3', c3.ts, c3.value.frame)
-            plotter.append('cam_c4', c4.ts, c4.value.frame)
+            plotter.append('cam_c1', c1.ts, c1.value.frame / 255.0)
+            plotter.append('cam_c2', c2.ts, c2.value.frame / 255.0)
+            plotter.append('cam_c3', c3.ts, c3.value.frame / 255.0)
+            plotter.append('cam_c4', c4.ts, c4.value.frame / 255.0)
             plotter.merge('cam', 'cam_c1', 'cam_c2', 'cam_c3', 'cam_c4')
             plotter.save()
             plotter.analyze_lag('lidar', 'cam')

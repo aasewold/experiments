@@ -147,9 +147,9 @@ def gen_input_data(path: Path, *, gps_lat0: float, gps_lon0: float):
         input_data['speed'][1] = { 'speed': est_speed }
 
         # RGB
-        input_data['rgb_left'][1] = crop((cam_c1.value.frame * 255).astype(np.uint8))
-        input_data['rgb_right'][1] = crop((cam_c2.value.frame * 255).astype(np.uint8))
-        input_data['rgb_front'][1] = crop((cam_c3.value.frame * 255).astype(np.uint8))
+        input_data['rgb_left'][1] = crop(cam_c1.value.frame)
+        input_data['rgb_right'][1] = crop(cam_c2.value.frame)
+        input_data['rgb_front'][1] = crop(cam_c3.value.frame)
 
 
         output_data = {

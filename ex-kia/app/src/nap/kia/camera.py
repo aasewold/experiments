@@ -74,7 +74,7 @@ def make_camera(path: Path, resolution: Tuple[int, int] = (1920, 1208)):
                     ts_line = timestamps.readline().strip()
                     ts_ms = int(ts_line.split()[-1]) / 1e3
 
-                yield Measurement(ts_ms, CameraData(frame / 255.0))
+                yield Measurement(ts_ms, CameraData(frame))
 
         finally:
             log.info('Killing ffmpeg')
