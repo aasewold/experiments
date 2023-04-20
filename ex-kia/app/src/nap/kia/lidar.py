@@ -5,7 +5,7 @@ from logging import getLogger
 import numpy as np
 from numpy.typing import NDArray
 
-from ouster.client import Scans, SensorInfo, ChanField, destagger
+from ouster.client import Scans, SensorInfo, ChanField, XYZLut
 from ouster.pcap import Pcap
 
 from src import profile
@@ -23,6 +23,7 @@ class LidarTimesync:
 class LidarData:
     timestamps: NDArray[np.float64]
     ranges: NDArray[np.uint32]
+    cartesian: NDArray[float]
 
 
 def make_lidar(pcap_path: Path, ts_offset: float = 0):
@@ -35,6 +36,7 @@ def make_lidar(pcap_path: Path, ts_offset: float = 0):
     
     data = Pcap(str(pcap_path), metadata)
     scans = Scans(data)
+    lut = XYZLut(metadata)
 
     def generator():
         try:
@@ -46,8 +48,9 @@ def make_lidar(pcap_path: Path, ts_offset: float = 0):
                 with profile.ctx('lidar process'):
                     ts_ms = scan.timestamp / 1e6 + ts_offset
                     ranges = scan.field(ChanField.RANGE)
+                    cartesian = lut(ranges)
 
-                yield Measurement(ts_ms[0], LidarData(ts_ms, ranges))
+                yield Measurement(ts_ms[0], LidarData(ts_ms, ranges, cartesian))
 
         finally:
             log.info('Killing pcap')
