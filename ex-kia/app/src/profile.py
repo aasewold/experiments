@@ -1,7 +1,7 @@
 from collections import defaultdict
 from dataclasses import dataclass
 import time
-from typing import Any, Dict, Tuple, List, Callable, Iterable, TypeVar
+from typing import Any, Dict, Optional, Tuple, List, Callable, Iterable, TypeVar
 from contextlib import contextmanager
 from functools import wraps
 
@@ -38,10 +38,12 @@ def ctx(name: str):
 
 
 _F = TypeVar('_F', bound=Callable[..., Any])
-def func(f: _F) -> _F:
+def func(f: _F, *, name: Optional[str] = None) -> _F:
+    if name is None:
+        name = f.__name__
     @wraps(f)
     def wrapper(*args: Any, **kwargs: Dict[str, Any]):
-        with ctx(f.__name__):
+        with ctx(name):
             return f(*args, **kwargs)
     return wrapper  # type: ignore
 

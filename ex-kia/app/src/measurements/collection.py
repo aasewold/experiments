@@ -18,9 +18,11 @@ class MeasurementCollection:
     def current(self) -> Tuple[Measurement[Any], ...]:
         return tuple(source.current for source in self._sources)
     
+    @profile.func
     def advance(self):
         for source in self._sources:
-            source.advance()
+            with profile.ctx(f'sensor.{id(source)}.{str(source)}'):
+                source.advance()
     
     @profile.func
     def synchronize(self, to: Optional[float] = None):
@@ -32,7 +34,8 @@ class MeasurementCollection:
         min_ts, max_ts = ts, ts
 
         for source in self._sources:
-            source.advance_to(ts)
+            with profile.ctx(f'sensor.{id(source)}.{str(source)}'):
+                source.advance_to(ts)
             min_ts = min(min_ts, source.ts)
             max_ts = max(max_ts, source.ts)
 
