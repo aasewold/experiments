@@ -2,6 +2,7 @@ from typing import Tuple, Dict, List
 from dataclasses import dataclass
 from pathlib import Path
 from logging import getLogger
+import subprocess
 import numpy as np
 from numpy.typing import NDArray
 import queue
@@ -14,7 +15,7 @@ from src.measurements import Measurement, IteratorSource, NamedSource
 
 @dataclass
 class CameraData:
-    frame: NDArray[np.float64]
+    frame: NDArray[np.uint8]
 
 
 def make_camera(path: Path, resolution: Tuple[int, int] = (1920, 1208)):
@@ -24,18 +25,20 @@ def make_camera(path: Path, resolution: Tuple[int, int] = (1920, 1208)):
 
     log.info(f'Reading camera {path} at {w}x{h}')
     
-    video = (
+    video_cmd = (
         ffmpeg
         .input(str(path))
         .video
         .output('pipe:', format='rawvideo', pix_fmt='bgr24', s=f'{w}x{h}')
-        .run_async(pipe_stdout=True, quiet=True)
+        .compile()
     )
+
+    video = subprocess.Popen(video_cmd, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
 
     data_queue = queue.Queue(maxsize=2)
     def _read():
         while True:
-            in_bytes = video.stdout.read(w * h * 3)
+            in_bytes = video.stdout.read(w * h * 3)  # type: ignore
             if not in_bytes:
                 break
             data_queue.put(in_bytes)
