@@ -53,4 +53,4 @@ python3 ${LEADERBOARD_ROOT}/leaderboard/leaderboard_evaluator.py \
 --trafficManagerPort=${CARLA_TM_PORT} \
 --carlaProviderSeed=${CARLA_SEED} \
 --trafficManagerSeed=${TRAFFIC_SEED} \
---timeout=60
+--timeout=5
