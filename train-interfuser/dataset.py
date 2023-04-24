@@ -14,7 +14,9 @@ CPU_COUNT = os.cpu_count()
 IDUN = "idun-login1.hpc.ntnu.no"
 
 
-@click.group()
+@click.group(
+    context_settings=dict(max_content_width=120),
+)
 def cli():
     pass
 
@@ -25,11 +27,13 @@ def cli():
     "--destination-dir",
     type=click.Path(exists=True),
     default="/data/datasets/interfuser",
+    show_default=True,
 )
 @click.option(
     "--idun-datasets-path",
     type=click.Path(),
     default="~/work/thesis/datagen-interfuser/output",
+    show_default=True,
 )
 def sync(dataset_datetime, destination_dir, idun_datasets_path):
     destination = Path(destination_dir) / dataset_datetime
@@ -233,7 +237,7 @@ def rm_blocked_data(dataset_path: Path):
 
 @cli.command(help="Create dataset index")
 @click.argument("dataset-path", type=click.Path(exists=True, path_type=Path))
-def create_dataset_index(dataset_path: Path):
+def create_index(dataset_path: Path):
     dataset_index_path = dataset_path / "dataset_index.txt"
 
     if dataset_index_path.exists():
