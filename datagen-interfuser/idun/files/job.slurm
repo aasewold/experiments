@@ -58,6 +58,11 @@ if [ -f $TAR_PATH ]; then
     exit 0
 fi
 
+if [ -f $TAR_PATH.old ]; then
+    echo "Skipping because $TAR_NAME.old exists"
+    exit 0
+fi
+
 if [ -f $TAR_PATH.tmp ]; then
     echo "Data generated, but archiving failed last time, retrying."
     rm $TAR_PATH.tmp
