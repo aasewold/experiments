@@ -40,4 +40,5 @@ python3 ${LEADERBOARD_ROOT}/leaderboard/leaderboard_evaluator_local.py \
 --resume=${RESUME} \
 --host=${CARLA_HOST} \
 --port=${CARLA_PORT} \
---trafficManagerPort=${CARLA_TM_PORT}
+--trafficManagerPort=${CARLA_TM_PORT} \
+--timeout=5
