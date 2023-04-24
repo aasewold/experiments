@@ -1,3 +1,4 @@
+import json
 import os
 import re
 import shutil
@@ -18,7 +19,7 @@ def cli():
     pass
 
 
-@cli.command()
+@cli.command(help="Sync tarballs from IDUN")
 @click.argument("dataset-datetime")
 @click.option(
     "--destination-dir",
@@ -39,7 +40,7 @@ def sync(dataset_datetime, destination_dir, idun_datasets_path):
     )
 
 
-def process_job_tarball(job_tarball_path):
+def _process_job_tarball(job_tarball_path):
     weather_number_search = re.search("w[0-9]{1,2}", str(job_tarball_path))
     if weather_number_search is None:
         click.echo(f"Could not find weather number in {job_tarball_path}")
@@ -53,7 +54,7 @@ def process_job_tarball(job_tarball_path):
     )
 
 
-def process_weather_tarball(tarball_path: Path):
+def _process_weather_tarball(tarball_path: Path):
     destination = Path(tarball_path).parent
 
     error = False
@@ -71,25 +72,17 @@ def process_weather_tarball(tarball_path: Path):
     return tarball_path.name if error else None
 
 
-@cli.command(
-    help="Extracts the dataset from the tarballs and creates a dataset index file."
-)
+@cli.command(help="Extracts the dataset tarballs to weather folders")
 @click.argument("dataset-path", type=click.Path(exists=True, path_type=Path))
 def extract(dataset_path: Path):
     job_tarball_paths = list(dataset_path.glob("*.tar.gz"))
 
     process_map(
-        process_job_tarball,
+        _process_job_tarball,
         job_tarball_paths,
         max_workers=CPU_COUNT,
         desc="Untaring slurm job tarballs",
     )
-
-    dataset_index_path = dataset_path / "dataset_index.txt"
-
-    if dataset_index_path.exists():
-        shutil.copy(dataset_index_path, dataset_index_path.with_suffix(".bak"))
-        dataset_index_path.unlink()
 
     for weather_dir in dataset_path.glob("weather-*"):
         data_dir = weather_dir / "data"
@@ -100,7 +93,7 @@ def extract(dataset_path: Path):
         weather_tarball_paths = list(data_dir.glob("*.tar.gz"))
 
         results = process_map(
-            process_weather_tarball,
+            _process_weather_tarball,
             weather_tarball_paths,
             max_workers=CPU_COUNT,
             desc=f"Processing {weather_dir.name}",
@@ -112,9 +105,145 @@ def extract(dataset_path: Path):
             f"Failed to fully extract {len(failed_extractions)} tarballs: {failed_extractions}"
         )
 
-        routes_removed = []
+    click.echo("\nDONE\n")
+    click.echo(f"Converted dataset stored at {dataset_path}")
 
-        for route_dir in data_dir.iterdir():
+
+def _get_blocked_stats(route_dir):
+    frames = len(os.listdir(os.path.join(route_dir, "measurements")))
+    stop = 0
+    max_stop = 0
+    last_actors_num = 0
+    res = []
+    for i in range(frames):
+        json_data = json.load(
+            open(os.path.join(route_dir, "measurements", "%04d.json" % i))
+        )
+        actors_data = json.load(
+            open(os.path.join(route_dir, "actors_data", "%04d.json" % i))
+        )
+        actors_num = len(actors_data)
+        light = json_data["is_red_light_present"]
+        speed = json_data["speed"]
+        brake = json_data["should_brake"]
+        if speed < 0.1 and len(light) == 0 and brake == 1:
+            stop += 1
+            max_stop = max(max_stop, stop)
+        else:
+            if stop >= 10 and actors_num < last_actors_num:
+                res.append((route_dir, i, stop))
+            stop = 0
+        last_actors_num = actors_num
+    if stop >= 10:
+        res.append((route_dir, frames - 1, stop))
+    return res
+
+
+camera_names = [
+    "C1_front60Single",
+    "C2_tricam60",
+    "C3_tricam120",
+    "C4_rearCam",
+    "C8_R2",
+    "C5_R1",
+    "C6_L1",
+    "C7_L2",
+]
+data_dirs = {camera_name: "%04d.jpg" for camera_name in camera_names}
+data_dirs["measurements"] = "%04d.json"
+data_dirs["lidar"] = "%04d.npy"
+data_dirs["affordances"] = "%04d.npy"
+data_dirs["actors_data"] = "%04d.json"
+
+
+def _rm_blocked_data(task):
+    route_dir, end_id, length = task
+    for i in range(end_id - length + 6, end_id - 3):
+        for key in data_dirs:
+            os.remove(os.path.join(route_dir, key, data_dirs[key] % i))
+
+
+def _fix_indices(route_dir):
+    for folder in data_dirs:
+        temp = data_dirs[folder]
+        files = os.listdir(os.path.join(route_dir, folder))
+        fs = []
+        for file in files:
+            fs.append(int(file[:4]))
+        fs.sort()
+        for i in range(len(fs)):
+            if i == fs[i]:
+                continue
+            try:
+                os.rename(
+                    os.path.join(route_dir, folder, temp % fs[i]),
+                    os.path.join(route_dir, folder, temp % i),
+                )
+            except Exception as e:
+                click.echo(e)
+
+
+@cli.command(help="Remove data where ego is blocked over many frames")
+@click.argument("dataset-path", type=click.Path(exists=True, path_type=Path))
+def rm_blocked_data(dataset_path: Path):
+    blocked_stats_file = Path("blocked_stat.txt")
+
+    all_routes = []
+
+    for path in dataset_path.glob("weather-*/data/*"):
+        all_routes.append(path)
+
+    results = process_map(
+        _get_blocked_stats,
+        all_routes,
+        max_workers=CPU_COUNT,
+        desc=f"Getting blocked stats",
+    )
+
+    with open(blocked_stats_file, "w") as f:
+        for result in results:
+            if len(result) == 0:
+                continue
+            for stats in result:
+                f.write("%s %d %d\n" % stats)
+
+    blocked_data_tasks = []
+
+    with open(blocked_stats_file, "r") as f:
+        for line in f:
+            route, last_frame, num_frames_blocked = line.split()
+            blocked_data_tasks.append((route, int(last_frame), int(num_frames_blocked)))
+
+    process_map(
+        _rm_blocked_data,
+        blocked_data_tasks,
+        max_workers=CPU_COUNT,
+        desc=f"Removing blocked data",
+    )
+
+    processed_routes = set(task[0] for task in blocked_data_tasks)
+
+    process_map(
+        _fix_indices,
+        processed_routes,
+        max_workers=CPU_COUNT,
+        desc=f"Fixing indices",
+    )
+
+
+@cli.command(help="Create dataset index")
+@click.argument("dataset-path", type=click.Path(exists=True, path_type=Path))
+def create_dataset_index(dataset_path: Path):
+    dataset_index_path = dataset_path / "dataset_index.txt"
+
+    if dataset_index_path.exists():
+        shutil.copy(dataset_index_path, dataset_index_path.with_suffix(".old"))
+        dataset_index_path.unlink()
+
+    routes_removed = []
+
+    with open(dataset_index_path, "w") as f:
+        for route_dir in dataset_path.glob("weather-*/data/*"):
             if not route_dir.is_dir():
                 continue
 
@@ -126,15 +255,16 @@ def extract(dataset_path: Path):
                 continue
 
             relative_route_dir = route_dir.relative_to(dataset_path)
-            with open(dataset_index_path, "a") as f:
-                f.write(f"{relative_route_dir}/ {num_frames}\n")
+            f.write(f"{relative_route_dir}/ {num_frames}\n")
 
+    click.echo(
+        f"Removed {len(routes_removed)} routes with less than 10 frames: {routes_removed}"
+    )
+    click.echo(f"Dataset index stored at {dataset_index_path}")
+    if dataset_index_path.with_suffix(".old").exists():
         click.echo(
-            f"Removed {len(routes_removed)} routes with less than 10 frames: {routes_removed}"
+            f"Old dataset index stored at {dataset_index_path.with_suffix('.old')}"
         )
-
-    click.echo("\nDONE\n")
-    click.echo(f"Converted dataset stored at {dataset_path}")
 
 
 if __name__ == "__main__":
