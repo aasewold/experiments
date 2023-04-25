@@ -81,7 +81,7 @@ transfuser: $(TF_SIF)
 
 
 $(TF_SIF): $(TF_TAR)
-	apptainer build $(TF_SIF) docker-archive:$(TF_TAR)
+	apptainer build -F $(TF_SIF) docker-archive:$(TF_TAR)
 
 $(TF_TAR): $(TF_DOCKERFILE) | $(TF_BUILDDIR)
 	docker buildx build \
@@ -93,7 +93,7 @@ $(TF_TAR): $(TF_DOCKERFILE) | $(TF_BUILDDIR)
 
 
 $(CARLA_SIF): $(CARLA_TAR)
-	apptainer build $(CARLA_SIF) docker-archive:$(CARLA_TAR)
+	apptainer build -F $(CARLA_SIF) docker-archive:$(CARLA_TAR)
 
 $(CARLA_TAR): $(CARLA_DOCKERFILE) | $(CARLA_BUILDDIR)
 	docker buildx build \
