@@ -44,22 +44,23 @@ def sync(dataset_datetime, destination_dir, idun_datasets_path):
     )
 
 
-def _process_job_tarball(job_tarball_path):
+def _process_job_tarball(job_tarball_path: Path):
     weather_number_search = re.search("w[0-9]{1,2}", str(job_tarball_path))
     if weather_number_search is None:
         click.echo(f"Could not find weather number in {job_tarball_path}")
         sys.exit(1)
 
     weather_number = weather_number_search.group()[1:]
-    weather_dir = Path(job_tarball_path).parent / f"weather-{weather_number}/data"
+    weather_dir = job_tarball_path.parent / f"weather-{weather_number}/data"
     weather_dir.mkdir(parents=True, exist_ok=True)
     os.system(
         f"tar --skip-old-files -xf {job_tarball_path} -C {weather_dir} --strip-components=1"
     )
+    job_tarball_path.rename(f"{job_tarball_path}.done")
 
 
 def _process_weather_tarball(tarball_path: Path):
-    destination = Path(tarball_path).parent
+    destination = tarball_path.parent
 
     error = False
 
@@ -193,9 +194,11 @@ def rm_blocked_data(dataset_path: Path):
     blocked_stats_file = Path("blocked_stat.txt")
 
     all_routes = []
+    num_total_frames = 0
 
     for path in dataset_path.glob("weather-*/data/*"):
         all_routes.append(path)
+        num_total_frames += len(os.listdir(path / "measurements"))
 
     results = process_map(
         _get_blocked_stats,
@@ -204,12 +207,22 @@ def rm_blocked_data(dataset_path: Path):
         desc=f"Getting blocked stats",
     )
 
+    num_blocked_frames = 0
+
     with open(blocked_stats_file, "w") as f:
         for result in results:
             if len(result) == 0:
                 continue
             for stats in result:
                 f.write("%s %d %d\n" % stats)
+                num_blocked_frames += stats[2]
+
+    click.echo(
+        f"Found {num_blocked_frames} blocked frames out of {num_total_frames} total frames ({num_blocked_frames / num_total_frames * 100:.2f}%)"
+    )
+
+    if not click.confirm("\nDo you want to remove blocked data?"):
+        return
 
     blocked_data_tasks = []
 
@@ -241,7 +254,6 @@ def create_index(dataset_path: Path):
     dataset_index_path = dataset_path / "dataset_index.txt"
 
     if dataset_index_path.exists():
-        shutil.copy(dataset_index_path, dataset_index_path.with_suffix(".old"))
         dataset_index_path.unlink()
 
     routes_removed = []
@@ -265,10 +277,6 @@ def create_index(dataset_path: Path):
         f"Removed {len(routes_removed)} routes with less than 10 frames: {routes_removed}"
     )
     click.echo(f"Dataset index stored at {dataset_index_path}")
-    if dataset_index_path.with_suffix(".old").exists():
-        click.echo(
-            f"Old dataset index stored at {dataset_index_path.with_suffix('.old')}"
-        )
 
 
 if __name__ == "__main__":
