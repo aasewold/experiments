@@ -145,7 +145,8 @@ singularity run \
 echo Client exited with code $?
 
 echo Killing $CARLA_PID
-kill $CARLA_PID
+pkill -9 -P $CARLA_PID
+kill -9 $CARLA_PID
 wait $CARLA_PID
 
 echo CARLA exited with code $?
