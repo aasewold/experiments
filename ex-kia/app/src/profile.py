@@ -53,7 +53,10 @@ def iterable(name: str, iterable: Iterable[_T]) -> Iterable[_T]:
     iterator = iter(iterable)
     while True:
         with ctx(name):
-            val = next(iterator)
+            try:
+                val = next(iterator)
+            except StopIteration:
+                break
         yield val
 
 
