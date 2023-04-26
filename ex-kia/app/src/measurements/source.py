@@ -10,6 +10,10 @@ from .measurement import Measurement
 _T = TypeVar('_T')
 
 
+class SourceEmpty(Exception):
+    pass
+
+
 class MeasurementSource(Protocol[_T]):
     @property
     def current(self) -> Measurement[_T]:
@@ -38,7 +42,7 @@ class MeasurementSource(Protocol[_T]):
         while True:
             try:
                 self.advance()
-            except StopIteration:
+            except SourceEmpty:
                 break
             yield self.current
 
@@ -76,7 +80,10 @@ class IteratorSource(MeasurementSource[_T]):
         return self._current
 
     def advance(self):
-        self._current = next(self._iterator)
+        try:
+            self._current = next(self._iterator)
+        except StopIteration:
+            raise SourceEmpty
 
 
 class NamedSource(WrappingSource[_T]):
@@ -150,7 +157,7 @@ class GroupedSource(IteratorSource[Iterable[_T]]):
                 yield inner.value
                 try:
                     inner.advance() 
-                except StopIteration:
+                except SourceEmpty:
                     exhausted = True
                     return
         
