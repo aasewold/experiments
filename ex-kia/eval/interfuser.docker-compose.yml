@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  interfuser:
+    build:
+      context: .
+      dockerfile: interfuser.dockerfile
+      args:
+        - CARLA_VERSION=${CARLA_VERSION}
+        - INTERFUSER_COMMIT=${INTERFUSER_COMMIT}
+    command: ["python3", "-m", "src.scripts.interfuser"]
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app:/interfuser/carla/PythonAPI:/interfuser/carla/PythonAPI/carla:/interfuser/carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg:/interfuser/leaderboard:/interfuser/scenario_runner:/interfuser/team_code
+      - SAVE_PATH=${SAVE_PATH}
+      - MODEL_PATH=/model/interfuser.pth.tar
+    volumes:
+      - ./work:/work
+      - ../app:/app:ro
+      - /data/ad/recordings_DW:/dataset:ro
+      - ${MODEL_PATH}:/model:ro
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
+              device_ids: ["${GPU:-0}"]
