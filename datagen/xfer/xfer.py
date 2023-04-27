@@ -9,6 +9,7 @@ import subprocess
 import time
 from pathlib import Path
 import typing as t
+import logging
 
 
 @dataclass
@@ -31,7 +32,7 @@ def parse_args():
 
     to_path = Path(local_path_str)
     if not to_path.exists():
-        print(f"Creating {to_path}")
+        logging.info(f"Creating {to_path}")
         to_path.mkdir(parents=True)
 
     return Args(idun_path_str, local_path_str)
@@ -53,28 +54,34 @@ def rsync_data(args: Args):
 def find_checkpoints(args: Args):
     """Find all checkpoint.json files in the local directory."""
     for path in Path(args.local_path_str).rglob("checkpoint.json"):
-        text = path.read_text()
-        if not text:
-            continue
-        data = json.loads(text)
-        checkpoint = data.get("_checkpoint", {})
-        progress = checkpoint.get("progress", [])
-        if not progress:
-            continue
-        curr, tot = progress
-        yield path.parent, (curr, tot)
+        try:
+            text = path.read_text()
+            if not text:
+                continue
+            data = json.loads(text)
+            checkpoint = data.get("_checkpoint", {})
+            progress = checkpoint.get("progress", [])
+            if not progress:
+                continue
+            curr, tot = progress
+            yield path.parent, (curr, tot)
+        except Exception:
+            logging.exception(f"Failed to read {path}")
 
 
 def find_deletable(path: Path, p_curr: int, p_tot: int):
     """Find all routes before the current route."""
     for sub in path.iterdir():
-        if not sub.is_dir():
-            continue
-        route_num = re.match(r"[a-zA-Z0-9_]+_route(\d+)_[a-zA-Z0-9_]+", sub.name)
-        if route_num:
-            route_num = int(route_num.group(1))
-            if route_num < p_curr:
-                yield sub
+        try:
+            if not sub.is_dir():
+                continue
+            route_num = re.match(r"[a-zA-Z0-9_]+_route(\d+)_[a-zA-Z0-9_]+", sub.name)
+            if route_num:
+                route_num = int(route_num.group(1))
+                if route_num < p_curr:
+                    yield sub
+        except Exception:
+            logging.exception(f"Failed to match {sub}:")
 
 
 def translate_deletable_paths(args: Args, paths: t.List[Path]):
@@ -100,28 +107,49 @@ def delete_paths(paths: t.List[str]):
     subprocess.run(cmd)
 
 
+def tick(args: Args, already_deleted: t.Set[str]):
+    try:
+        rsync_data(args)
+    except Exception:
+        logging.exception(f"Exception during transfer:")
+        return
+
+    for path, (p_curr, p_tot) in find_checkpoints(args):
+        try:
+            deletables = sorted(find_deletable(path, p_curr, p_tot))
+            remote_paths = translate_deletable_paths(args, deletables)
+            remote_paths = [p for p in remote_paths if p not in already_deleted]
+            if remote_paths:
+                logging.info(f"Deleting {len(remote_paths)} routes from {path.name} with progress {p_curr}/{p_tot}")
+                for d in remote_paths:
+                    logging.info(f" - {d}")
+                delete_paths(remote_paths)
+                already_deleted.update(remote_paths)
+        except Exception:
+            logging.exception(f"Exception during deletion of {path}:")
+
+
 def main():
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s: %(message)s",
+        datefmt="%Y-%m-%d %H:%M:%S",
+    )
+
     load_ssh_keys()
     args = parse_args()
 
     already_deleted = set()
 
     while True:
-        print('date:', time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+        logging.info('New tick')
 
-        rsync_data(args)
+        try:
+            tick(args, already_deleted)
+        except Exception:
+            logging.exception(f"Exception during tick:")
 
-        for path, (p_curr, p_tot) in find_checkpoints(args):
-            deletables = sorted(find_deletable(path, p_curr, p_tot))
-            remote_paths = translate_deletable_paths(args, deletables)
-            remote_paths = [p for p in remote_paths if p not in already_deleted]
-            if remote_paths:
-                print(f"Deleting {len(remote_paths)} routes from {path.name} with progress {p_curr}/{p_tot}")
-                for d in remote_paths:
-                    print(f" - {d}")
-                delete_paths(remote_paths)
-                already_deleted.update(remote_paths)
-
+        print()
         time.sleep(10 * 60)
 
 
