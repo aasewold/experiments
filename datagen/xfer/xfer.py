@@ -17,6 +17,10 @@ class Args:
     local_path_str: str
 
 
+def load_ssh_keys():
+    subprocess.run(["ssh-add"])
+
+
 def parse_args():
     args = sys.argv[1:]
 
@@ -97,6 +101,7 @@ def delete_paths(paths: t.List[str]):
 
 
 def main():
+    load_ssh_keys()
     args = parse_args()
 
     already_deleted = set()
