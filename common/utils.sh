@@ -38,6 +38,19 @@ setup_transfuser() (
     fi
 )
 
+setup_interfuser() (
+    set -euo pipefail
+
+    mkdir -p results models
+
+    if ../scripts/check-interfuser.sh; then
+        echo "Models already exist, skipping download"
+    else
+        echo "Downloading models"
+        ../scripts/download-interfuser.sh
+    fi
+)
+
 run_transfuser() (
     MODEL_PATH="$REPO/models/$MODEL_NAME"
     if [ ! -d "$MODEL_PATH" ]; then
