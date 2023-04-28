@@ -86,7 +86,7 @@ def iter_data():
         cam_c3 = make_camera(dir / 'C3_tricam120.h264')
         cam_c4 = make_camera(dir / 'C4_rearCam.h264')
         lidar = make_lidar(dir / '2023-04-25-13-01-38_OS-2-128-992029000682-1024x10.pcap', 
-            ts_offset=1632131008789.2532,
+            first_ts=cam_c1.ts,
         )
         
         sensors = [lidar, cam_c1, cam_c2, cam_c3, cam_c4]

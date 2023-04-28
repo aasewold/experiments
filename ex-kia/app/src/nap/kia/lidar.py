@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from pathlib import Path
 from logging import getLogger
+from typing import Optional
 
 import numpy as np
 from numpy.typing import NDArray
@@ -26,7 +27,7 @@ class LidarData:
     cartesian: NDArray[float]
 
 
-def make_lidar(pcap_path: Path, ts_offset: float = 0):
+def make_lidar(pcap_path: Path, first_ts: Optional[float] = None):
     log = getLogger('lidar.' + pcap_path.stem)
 
     metadata_path = pcap_path.with_suffix('.json')
@@ -40,17 +41,22 @@ def make_lidar(pcap_path: Path, ts_offset: float = 0):
 
     def generator():
         try:
+            first = True
+            ts_offset = 0
             for scan in profile.iterable('lidar read', scans):
                 if not scan.complete():
                     log.debug('Skipping incomplete scan')
                     continue
 
                 with profile.ctx('lidar process'):
+                    if first and first_ts is not None:
+                        ts_offset = first_ts - scan.timestamp / 1e6
                     ts_ms = scan.timestamp / 1e6 + ts_offset
                     ranges = scan.field(ChanField.RANGE)
                     cartesian = lut(ranges)
 
                 yield Measurement(ts_ms[0], LidarData(ts_ms, ranges, cartesian))
+                first = False
 
         finally:
             log.info('Killing pcap')

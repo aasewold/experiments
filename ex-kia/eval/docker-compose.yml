@@ -12,10 +12,13 @@ services:
     environment:
       - PYTHONUNBUFFERED=1
       - PYTHONPATH=/app:/transfuser/carla/PythonAPI:/transfuser/carla/PythonAPI/carla:/transfuser/carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg:/transfuser/leaderboard:/transfuser/scenario_runner:/transfuser/team_code_transfuser
-      - SAVE_PATH=${SAVE_PATH}
+      - TRIP=${TRIP}
+      - OUT_PATH=/${RUN_PATH}
+      - SAVE_PATH=/${RUN_PATH}/viz
     volumes:
       - ./work:/work
       - ../app:/app:ro
+      - ../make-plan/work/${TRIP}:/plan
       - /data/ad/recordings_DW:/dataset:ro
       - ${MODEL_PATH}:/model:ro
     deploy:

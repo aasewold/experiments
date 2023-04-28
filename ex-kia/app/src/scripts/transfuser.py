@@ -1,5 +1,6 @@
 from collections import deque
 import logging
+import os
 
 _log = logging.getLogger(__name__)
 
@@ -29,23 +30,18 @@ from team_code_transfuser.submission_agent import HybridAgent
 from srunner.scenariomanager.timer import GameTime
 
 
+WORK_PATH = Path('/work')
+OUT_PATH = Path(os.environ['OUT_PATH'])
+
 
 class RoadOption(enum.Enum):
     UNUSED = 0
 
 
-def main(data_path: str = '/dataset/Trip066'):
-
-    if Path('/work/actions.npz').exists():
-        # load and plot
-        actions = np.load('/work/actions.npz')
-        tf_actions = actions['tf']
-        gt_actions = actions['gt']
-        plot_actions(tf_actions, gt_actions)
-        return
-    
+def main(trip: str):
     _log.info('Loading global plan')
-    csv = np.genfromtxt('/work/plan.csv', delimiter=',', names=True)
+    plan_path = '/plan/plan.csv'
+    csv = np.genfromtxt(plan_path, delimiter=',', names=True)
     gps_lat0 = csv['lat'][0]
     gps_lon0 = csv['lon'][0]
     csv = csv[1:]
@@ -58,7 +54,7 @@ def main(data_path: str = '/dataset/Trip066'):
 
     _log.info('Preparing input data')
     input_data_gen = gen_input_data(
-        Path(data_path),
+        Path('/dataset') / trip,
         gps_lat0=gps_lat0, gps_lon0=gps_lon0
     )
 
@@ -81,35 +77,34 @@ def main(data_path: str = '/dataset/Trip066'):
     tf_actions = []
     gt_actions = []
 
-    for ts, step, input_data, output_data in input_data_gen:
+    try:
+        for ts, step, input_data, output_data in input_data_gen:
+            GameTime._init = True
+            GameTime._last_frame = step
+            GameTime._carla_time = ts / 1000
+            GameTime._current_game_time = ts / 1000
+            GameTime._platform_timestamp = datetime.datetime.now()
 
-        # if step > 100:
-        #     break
+            print_input_data(step, input_data)
 
-        GameTime._init = True
-        GameTime._last_frame = step
-        GameTime._carla_time = ts / 1000
-        GameTime._current_game_time = ts / 1000
-        GameTime._platform_timestamp = datetime.datetime.now()
+            action = agent.run_step(input_data, step)
 
-        print_input_data(step, input_data)
+            print_agent_data(step, agent, action)
 
-        action = agent.run_step(input_data, step)
-
-        print_agent_data(step, agent, action)
-
-        tf_actions.append((-360 * action.steer, action.throttle, action.brake))
-        gt_actions.append((output_data.steer, output_data.throttle, output_data.brake))
+            tf_actions.append((-360 * action.steer, action.throttle, action.brake))
+            gt_actions.append((output_data.steer, output_data.throttle, output_data.brake))
+    
+    except KeyboardInterrupt:
+        pass
 
     tf_actions = np.array(tf_actions).T
     gt_actions = np.array(gt_actions).T
-    np.savez('/work/actions.npz', tf=tf_actions, gt=gt_actions)
+    np.savez(OUT_PATH / 'actions.npz', tf=tf_actions, gt=gt_actions)
     plot_actions(tf_actions, gt_actions)
 
 
 def plot_actions(tf_actions, gt_actions):
-    tf_actions[0] *= -1
-    smoothing = np.ones(100) / 100
+    smoothing = np.ones(50) / 50
     for i, name in enumerate(['steer', 'throttle', 'brake']):
         plt.subplot(3, 1, i + 1)
         plt.title(name)
@@ -118,7 +113,7 @@ def plot_actions(tf_actions, gt_actions):
         plt.plot(gt_actions[i], label=f'GT')
         plt.legend()
         plt.grid()
-    plt.savefig('/work/tf.png', dpi=600, bbox_inches='tight')
+    plt.savefig(OUT_PATH / 'tf.png', dpi=600, bbox_inches='tight')
 
 
 def make_input_data(step: int):
@@ -144,7 +139,6 @@ def make_input_data(step: int):
 def gen_input_data(path: Path, *, gps_lat0: float, gps_lon0: float):
 
     gps_path = path / 'gnss50_vehicle.bin'
-    lidar_path = path / '2023-04-25-13-01-38_OS-2-128-992029000682-1024x10.pcap'
 
     def gps_wrapper():
         """Wraps the GPS sensor with persistent speed and yaw values."""
@@ -159,13 +153,19 @@ def gen_input_data(path: Path, *, gps_lat0: float, gps_lon0: float):
             val.value.speed = speed
             yield val
 
+    lidar_path, = path.glob('*.pcap')
+    if lidar_path.with_suffix('.offset').exists():
+        lidar_offset = int(lidar_path.with_suffix('.offset').read_text())
+    else:
+        lidar_offset = 0
+
     with profile.scope('setup', dump=True):
         gps = NamedSource(name=gps_path.stem, inner=SingleBufferSource(IteratorSource(gps_wrapper())))
         can_0 = make_can(path / 'can_vehicle1.bin')
         cam_left = make_camera(path / 'C7_L2.h264')
         cam_right = make_camera(path / 'C8_R2.h264')
         cam_front = make_camera(path / 'C3_tricam120.h264')
-        lidar = make_lidar(lidar_path, ts_offset=6500 + 1682420524667.941 - 1943693.55037)
+        lidar = make_lidar(lidar_path, first_ts=lidar_offset + cam_front.ts)
 
         to_sync = [lidar, cam_left, cam_right, cam_front]
 

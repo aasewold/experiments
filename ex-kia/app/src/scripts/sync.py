@@ -20,7 +20,7 @@ def iter_data():
         gps = make_gps(dir / 'gnss50_vehicle.bin')
         lidar = make_lidar(
             dir / '2023-04-25-13-01-38_OS-2-128-992029000682-1024x10.pcap',
-            ts_offset=1682420524667.941 - 1943693.55037
+            first_ts=gps.ts
         )
         # cam_c1 = make_camera(dir / 'C1_front60Single.h264')
     

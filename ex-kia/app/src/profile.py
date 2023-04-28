@@ -1,6 +1,7 @@
 from collections import defaultdict
 from dataclasses import dataclass
 import time
+import logging
 from typing import Any, Dict, Optional, Tuple, List, Callable, Iterable, TypeVar
 from contextlib import contextmanager
 from functools import wraps
@@ -29,6 +30,9 @@ def ctx(name: str):
     start = time.monotonic_ns()
     try:
         yield
+    except:
+        logging.exception(f'Error in {path}')
+        raise
     finally:
         end = time.monotonic_ns()
         ns = end - start
