@@ -93,7 +93,7 @@ def main(trip: str):
 
             tf_actions.append((-360 * action.steer, action.throttle, action.brake))
             gt_actions.append((output_data.steer, output_data.throttle, output_data.brake))
-    
+
     except KeyboardInterrupt:
         pass
 
@@ -270,7 +270,7 @@ def crop(img):
     pil = Image.fromarray(img)
     pil = pil.resize((960, 480), Image.BILINEAR)
     img = np.asarray(pil)
-    return img #[160:320, 320:640]
+    return img
 
 
 if __name__ == '__main__':
