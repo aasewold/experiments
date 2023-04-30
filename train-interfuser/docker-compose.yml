@@ -17,7 +17,7 @@ services:
       - ./scripts:/scripts
       - ${DATASET_PATH}:/dataset
       - ${LOG_PATH:-./output}:/output
-    restart: on-failure
+    restart: "no"
     shm_size: 5g
     deploy:
       resources:
