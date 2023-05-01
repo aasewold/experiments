@@ -85,3 +85,16 @@ def make_camera(path: Path, resolution: Tuple[int, int] = (1920, 1208)):
         name=path.stem,
         inner=IteratorSource(generator())
     )
+
+
+def make_camera_ts(path: Path):
+    def generator():
+        with open(path, 'r') as f:
+            for line in f:
+                ts_ms = int(line.strip().split()[-1]) / 1e3
+                yield Measurement(ts_ms, None)
+    
+    return NamedSource(
+        name=path.stem,
+        inner=IteratorSource(generator())
+    )
