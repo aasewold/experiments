@@ -1,6 +1,6 @@
 # Training InterFuser on custom data
 
-In order to train InterFuser on custom data generated on IDUN, we first need to sync and convert the data. This is done using the CLI defined in `dataset.py` like this:
+In order to train InterFuser on custom data generated on IDUN, we first need to sync and convert the data. This is done using the CLI defined in `scripts/dataset.py` like this:
 1. `python dataset.py sync <DATASET_DATETIME>`
     - This will copy the dataset from IDUN to naplab. See `python dataset.py sync --help` for detailed usage.
 2. `python dataset.py extract <DATASET_PATH>`
