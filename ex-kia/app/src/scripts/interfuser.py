@@ -146,10 +146,10 @@ def gen_input_data(path: Path, *, gps_lat0: float, gps_lon0: float):
             yield val
 
     lidar_path, = path.glob('*.pcap')
-    if lidar_path.with_suffix('.offset').exists():
-        lidar_offset = int(lidar_path.with_suffix('.offset').read_text())
-    else:
-        lidar_offset = 0
+    if not lidar_path.with_suffix('.offset').exists():
+        _log.error(f'Please write the LiDAR offset in milliseconds to {lidar_path}')
+        sys.exit(1)
+    lidar_offset = int(lidar_path.with_suffix('.offset').read_text())
 
     with profile.scope('setup', dump=True):
         gps = NamedSource(name=gps_path.stem, inner=SingleBufferSource(IteratorSource(gps_wrapper())))
