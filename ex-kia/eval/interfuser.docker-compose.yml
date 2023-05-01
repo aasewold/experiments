@@ -16,6 +16,7 @@ services:
       - TRIP=${TRIP}
       - OUT_PATH=/${RUN_PATH}
       - SAVE_PATH=/${RUN_PATH}/viz
+      - METADATA_TEXT_COLOR=${METADATA_TEXT_COLOR}
     volumes:
       - ./work:/work
       - ../app:/app:ro

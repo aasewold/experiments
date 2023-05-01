@@ -13,4 +13,6 @@ export RUN="$(date +%Y-%m-%d-%H-%M-%S)"
 export RUN_PATH="work/out/$TRIP/$SCRIPT/$RUN"
 mkdir -p "$RUN_PATH/viz"
 
+export METADATA_TEXT_COLOR="255,255,255"
+
 docker compose -p eval-interfuser-kia -f interfuser.docker-compose.yml run -it --rm --build --user $UID interfuser python3 -m src.scripts.$SCRIPT $TRIP "$@"
