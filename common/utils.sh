@@ -161,6 +161,7 @@ run_interfuser() (
 
     sleep 1
 
+    export CARLA_IMAGE
     export CARLA_VERSION
     export INTERFUSER_COMMIT
     export MODEL_PATH="$(realpath "$MODEL_PATH")"

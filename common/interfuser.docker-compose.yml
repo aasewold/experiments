@@ -5,15 +5,16 @@ services:
     build:
       context: .
       dockerfile: carla-${CARLA_VERSION}.dockerfile
+      args:
+        - CARLA_IMAGE=${CARLA_IMAGE}
     restart: on-failure
     deploy:
       resources:
         reservations:
           devices:
             - driver: nvidia
-              device_ids:
-                - "1"
               capabilities: [gpu]
+              device_ids: ["${GPU:-0}"]
 
   interfuser:
     build:
@@ -42,6 +43,5 @@ services:
         reservations:
           devices:
             - driver: nvidia
-              device_ids:
-                - "1"
               capabilities: [gpu]
+              device_ids: ["${GPU:-0}"]
