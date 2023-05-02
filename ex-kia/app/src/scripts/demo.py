@@ -4,8 +4,8 @@ from pathlib import Path
 import sys
 
 from src import profile
-from src.measurements import MeasurementCollection
-from src.measurements import SingleBufferSource
+from src.measurements.source import SingleBufferSource, SourceEmpty
+from src.measurements.collection import MeasurementCollection
 from src.nap.kia.camera import make_camera, CameraData
 from src.nap.kia.gps import make_gps, GpsData
 
@@ -31,11 +31,14 @@ def main(trip: str):
         ])
 
     for _ in count():
-        with profile.ctx('advance'):
-            # Advance to the next GPS frame,
-            gps.advance()
-            # Then synchronize the cameras to that frame
-            cameras.synchronize(to=gps.ts)
+        try:
+            with profile.ctx('advance'):
+                # Advance to the next GPS frame,
+                gps.advance()
+                # Then synchronize the cameras to that frame
+                cameras.synchronize(to=gps.ts)
+        except SourceEmpty:
+            break
 
         # gps.value is GpsData
         # cam_c1.value is CameraData
