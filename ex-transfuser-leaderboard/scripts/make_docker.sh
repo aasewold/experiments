@@ -3,6 +3,7 @@ DIR="$(dirname "$0")"
 source ${DIR}/../../common/utils.sh
 
 MODEL_PATH="$1"; shift
+MODEL_TAG="$1"; shift
 CARLA_VERSION="0.9.10"
 TRANSFUSER_VERSION="experiments/0.9.10"
 
@@ -45,6 +46,6 @@ TRANSFUSER_COMMIT="$(get_commit_hash ${TRANSFUSER_VERSION})"
 docker build \
     --build-arg CARLA_VERSION=${CARLA_VERSION} \
     --build-arg TRANSFUSER_COMMIT=${TRANSFUSER_COMMIT} \
-    -t transfuser-leaderboard-agent \
+    -t "${MODEL_TAG}" \
     -f ${DIR}/Dockerfile.master \
     .context
