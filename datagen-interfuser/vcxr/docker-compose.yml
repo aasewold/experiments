@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  carla:
+    build:
+      context: .
+      dockerfile: $PWD/../../common/carla-${CARLA_VERSION}.dockerfile
+      args:
+        - CARLA_IMAGE=${CARLA_IMAGE}
+    restart: on-failure
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
+              device_ids: ["${GPU:-0}"]
+
+  interfuser:
+    build:
+      context: .
+      dockerfile: $PWD/../../common/interfuser.dockerfile
+      args:
+        - CARLA_VERSION=${CARLA_VERSION}
+        - INTERFUSER_COMMIT=${INTERFUSER_COMMIT}
+    environment:
+      - PYTHONUNBUFFERED=1
+      - ROUTES=${ROUTES}
+      - SCENARIOS=${SCENARIOS}
+      - WEATHER_CONFIG_INDEX=${WEATHER_CONFIG_INDEX}
+      - CREATE_SCENARIO_ARCHIVES=0
+    volumes:
+      - ./scripts:/scripts
+      - ./files/input/yamls:/yamls
+      - $SAVE_PATH:/results
+    command: /bin/bash /scripts/datagen.sh
+    depends_on:
+      carla:
+        condition: service_healthy
+    network_mode: service:carla
+    restart: on-failure
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
+              device_ids: ["${GPU:-0}"]
