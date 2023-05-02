@@ -4876,3 +4876,425 @@ _cleanup() finished
 
 Finished at 2023-03-24 00:16:41
 
+Starting at 2023-04-17 11:03:45
+
+Environment:
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+CONDA_SHLVL=2
+PYTHONUNBUFFERED=1
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+CONDA_EXE=/opt/conda/bin/conda
+RESUME=1
+ROUTES=./leaderboard/data/longest6/longest6.xml
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+ACTOR_AMOUNT=500
+HOSTNAME=f57ecf6e7406
+LEADERBOARD_ROOT=./leaderboard
+CARLA_ROOT=carla
+CONDA_PREFIX=/opt/conda/envs/tfuse
+NV_LIBNPP_VERSION=11.3.3.95-1
+NVIDIA_VISIBLE_DEVICES=0
+CARLA_SERVER=carla/CarlaUE4.sh
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+_CE_M=
+NVIDIA_PRODUCT_NAME=CUDA
+CONDA_PREFIX_1=/opt/conda
+NCCL_VERSION=2.9.9-1
+SCENARIOS=./leaderboard/data/longest6/eval_scenarios.json
+PWD=/transfuser
+NVARCH=x86_64
+HOME=/root
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+LC_CTYPE=C.UTF-8
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_CUDA_LIB_VERSION=11.3.1-1
+_CE_CONDA=
+SCENARIO_RUNNER_ROOT=./scenario_runner
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_NVTX_VERSION=11.3.109-1
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_CUDNN_VERSION=8.2.0.53
+CONDA_PROMPT_MODIFIER=(tfuse) 
+TRANSFUSER_DAYTIME_HEADLIGHTS=0
+CHALLENGE_TRACK_CODENAME=SENSORS
+CUDA_VERSION=11.3.1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+CONDA_ROOT=/opt/conda
+SHLVL=2
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+DATAGEN=0
+DEBUG_CHALLENGE=0
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+REPETITIONS=1
+CONDA_DEFAULT_ENV=tfuse
+SAVE_PATH=
+CHECKPOINT_ENDPOINT=/results/transfuser_longest6.json
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+TEAM_CONFIG=/model
+WORK_DIR=.
+_=/usr/bin/env
+---------------------
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 480, in main
+    leaderboard_evaluator = LeaderboardEvaluator(arguments, statistics_manager)
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 84, in __init__
+    self.world = self.client.load_world('Town01')
+RuntimeError: time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000
+_cleanup() started
+Exception ignored in: <function LeaderboardEvaluator.__del__ at 0x7fe460a89830>
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 122, in __del__
+    self._cleanup()
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 136, in _cleanup
+    if self.manager and self.manager.get_running_status() \
+AttributeError: 'LeaderboardEvaluator' object has no attribute 'manager'
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 490, in <module>
+    main()
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 486, in main
+    del leaderboard_evaluator
+UnboundLocalError: local variable 'leaderboard_evaluator' referenced before assignment
+
+Finished at 2023-04-17 11:04:49
+
+Starting at 2023-04-17 11:04:58
+
+Environment:
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+CONDA_SHLVL=2
+PYTHONUNBUFFERED=1
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+CONDA_EXE=/opt/conda/bin/conda
+RESUME=1
+ROUTES=./leaderboard/data/longest6/longest6.xml
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+ACTOR_AMOUNT=500
+HOSTNAME=f57ecf6e7406
+LEADERBOARD_ROOT=./leaderboard
+CARLA_ROOT=carla
+CONDA_PREFIX=/opt/conda/envs/tfuse
+NV_LIBNPP_VERSION=11.3.3.95-1
+NVIDIA_VISIBLE_DEVICES=0
+CARLA_SERVER=carla/CarlaUE4.sh
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+_CE_M=
+NVIDIA_PRODUCT_NAME=CUDA
+CONDA_PREFIX_1=/opt/conda
+NCCL_VERSION=2.9.9-1
+SCENARIOS=./leaderboard/data/longest6/eval_scenarios.json
+PWD=/transfuser
+NVARCH=x86_64
+HOME=/root
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+LC_CTYPE=C.UTF-8
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_CUDA_LIB_VERSION=11.3.1-1
+_CE_CONDA=
+SCENARIO_RUNNER_ROOT=./scenario_runner
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_NVTX_VERSION=11.3.109-1
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_CUDNN_VERSION=8.2.0.53
+CONDA_PROMPT_MODIFIER=(tfuse) 
+TRANSFUSER_DAYTIME_HEADLIGHTS=0
+CHALLENGE_TRACK_CODENAME=SENSORS
+CUDA_VERSION=11.3.1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+CONDA_ROOT=/opt/conda
+SHLVL=2
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+DATAGEN=0
+DEBUG_CHALLENGE=0
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+REPETITIONS=1
+CONDA_DEFAULT_ENV=tfuse
+SAVE_PATH=
+CHECKPOINT_ENDPOINT=/results/transfuser_longest6.json
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+TEAM_CONFIG=/model
+WORK_DIR=.
+_=/usr/bin/env
+---------------------
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 480, in main
+    leaderboard_evaluator = LeaderboardEvaluator(arguments, statistics_manager)
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 84, in __init__
+    self.world = self.client.load_world('Town01')
+RuntimeError: time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000
+_cleanup() started
+Exception ignored in: <function LeaderboardEvaluator.__del__ at 0x7f8e4b439830>
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 122, in __del__
+    self._cleanup()
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 136, in _cleanup
+    if self.manager and self.manager.get_running_status() \
+AttributeError: 'LeaderboardEvaluator' object has no attribute 'manager'
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 490, in <module>
+    main()
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 486, in main
+    del leaderboard_evaluator
+UnboundLocalError: local variable 'leaderboard_evaluator' referenced before assignment
+
+Finished at 2023-04-17 11:06:11
+
+Starting at 2023-04-17 11:06:18
+
+Environment:
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+CONDA_SHLVL=2
+PYTHONUNBUFFERED=1
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+CONDA_EXE=/opt/conda/bin/conda
+RESUME=1
+ROUTES=./leaderboard/data/longest6/longest6.xml
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+ACTOR_AMOUNT=500
+HOSTNAME=f57ecf6e7406
+LEADERBOARD_ROOT=./leaderboard
+CARLA_ROOT=carla
+CONDA_PREFIX=/opt/conda/envs/tfuse
+NV_LIBNPP_VERSION=11.3.3.95-1
+NVIDIA_VISIBLE_DEVICES=0
+CARLA_SERVER=carla/CarlaUE4.sh
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+_CE_M=
+NVIDIA_PRODUCT_NAME=CUDA
+CONDA_PREFIX_1=/opt/conda
+NCCL_VERSION=2.9.9-1
+SCENARIOS=./leaderboard/data/longest6/eval_scenarios.json
+PWD=/transfuser
+NVARCH=x86_64
+HOME=/root
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+LC_CTYPE=C.UTF-8
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_CUDA_LIB_VERSION=11.3.1-1
+_CE_CONDA=
+SCENARIO_RUNNER_ROOT=./scenario_runner
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_NVTX_VERSION=11.3.109-1
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_CUDNN_VERSION=8.2.0.53
+CONDA_PROMPT_MODIFIER=(tfuse) 
+TRANSFUSER_DAYTIME_HEADLIGHTS=0
+CHALLENGE_TRACK_CODENAME=SENSORS
+CUDA_VERSION=11.3.1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+CONDA_ROOT=/opt/conda
+SHLVL=2
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+DATAGEN=0
+DEBUG_CHALLENGE=0
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+REPETITIONS=1
+CONDA_DEFAULT_ENV=tfuse
+SAVE_PATH=
+CHECKPOINT_ENDPOINT=/results/transfuser_longest6.json
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+TEAM_CONFIG=/model
+WORK_DIR=.
+_=/usr/bin/env
+---------------------
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 480, in main
+    leaderboard_evaluator = LeaderboardEvaluator(arguments, statistics_manager)
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 84, in __init__
+    self.world = self.client.load_world('Town01')
+RuntimeError: time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000
+_cleanup() started
+Exception ignored in: <function LeaderboardEvaluator.__del__ at 0x7faf2c77a830>
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 122, in __del__
+    self._cleanup()
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 136, in _cleanup
+    if self.manager and self.manager.get_running_status() \
+AttributeError: 'LeaderboardEvaluator' object has no attribute 'manager'
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 490, in <module>
+    main()
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 486, in main
+    del leaderboard_evaluator
+UnboundLocalError: local variable 'leaderboard_evaluator' referenced before assignment
+
+Finished at 2023-04-17 11:07:24
+
+Starting at 2023-04-17 11:07:31
+
+Environment:
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+CONDA_SHLVL=2
+PYTHONUNBUFFERED=1
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+CONDA_EXE=/opt/conda/bin/conda
+RESUME=1
+ROUTES=./leaderboard/data/longest6/longest6.xml
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+ACTOR_AMOUNT=500
+HOSTNAME=f57ecf6e7406
+LEADERBOARD_ROOT=./leaderboard
+CARLA_ROOT=carla
+CONDA_PREFIX=/opt/conda/envs/tfuse
+NV_LIBNPP_VERSION=11.3.3.95-1
+NVIDIA_VISIBLE_DEVICES=0
+CARLA_SERVER=carla/CarlaUE4.sh
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+_CE_M=
+NVIDIA_PRODUCT_NAME=CUDA
+CONDA_PREFIX_1=/opt/conda
+NCCL_VERSION=2.9.9-1
+SCENARIOS=./leaderboard/data/longest6/eval_scenarios.json
+PWD=/transfuser
+NVARCH=x86_64
+HOME=/root
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+LC_CTYPE=C.UTF-8
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_CUDA_LIB_VERSION=11.3.1-1
+_CE_CONDA=
+SCENARIO_RUNNER_ROOT=./scenario_runner
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_NVTX_VERSION=11.3.109-1
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_CUDNN_VERSION=8.2.0.53
+CONDA_PROMPT_MODIFIER=(tfuse) 
+TRANSFUSER_DAYTIME_HEADLIGHTS=0
+CHALLENGE_TRACK_CODENAME=SENSORS
+CUDA_VERSION=11.3.1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+CONDA_ROOT=/opt/conda
+SHLVL=2
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+DATAGEN=0
+DEBUG_CHALLENGE=0
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+REPETITIONS=1
+CONDA_DEFAULT_ENV=tfuse
+SAVE_PATH=
+CHECKPOINT_ENDPOINT=/results/transfuser_longest6.json
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+TEAM_CONFIG=/model
+WORK_DIR=.
+_=/usr/bin/env
+---------------------
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 480, in main
+    leaderboard_evaluator = LeaderboardEvaluator(arguments, statistics_manager)
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 84, in __init__
+    self.world = self.client.load_world('Town01')
+RuntimeError: time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000
+_cleanup() started
+Exception ignored in: <function LeaderboardEvaluator.__del__ at 0x7f7ae50ff830>
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 122, in __del__
+    self._cleanup()
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 136, in _cleanup
+    if self.manager and self.manager.get_running_status() \
+AttributeError: 'LeaderboardEvaluator' object has no attribute 'manager'
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 490, in <module>
+    main()
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 486, in main
+    del leaderboard_evaluator
+UnboundLocalError: local variable 'leaderboard_evaluator' referenced before assignment
+
+Finished at 2023-04-17 11:08:37
+
+Starting at 2023-04-17 11:08:44
+
+Environment:
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+CONDA_SHLVL=2
+PYTHONUNBUFFERED=1
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+CONDA_EXE=/opt/conda/bin/conda
+RESUME=1
+ROUTES=./leaderboard/data/longest6/longest6.xml
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+ACTOR_AMOUNT=500
+HOSTNAME=f57ecf6e7406
+LEADERBOARD_ROOT=./leaderboard
+CARLA_ROOT=carla
+CONDA_PREFIX=/opt/conda/envs/tfuse
+NV_LIBNPP_VERSION=11.3.3.95-1
+NVIDIA_VISIBLE_DEVICES=0
+CARLA_SERVER=carla/CarlaUE4.sh
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+_CE_M=
+NVIDIA_PRODUCT_NAME=CUDA
+CONDA_PREFIX_1=/opt/conda
+NCCL_VERSION=2.9.9-1
+SCENARIOS=./leaderboard/data/longest6/eval_scenarios.json
+PWD=/transfuser
+NVARCH=x86_64
+HOME=/root
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+LC_CTYPE=C.UTF-8
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_CUDA_LIB_VERSION=11.3.1-1
+_CE_CONDA=
+SCENARIO_RUNNER_ROOT=./scenario_runner
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_NVTX_VERSION=11.3.109-1
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_CUDNN_VERSION=8.2.0.53
+CONDA_PROMPT_MODIFIER=(tfuse) 
+TRANSFUSER_DAYTIME_HEADLIGHTS=0
+CHALLENGE_TRACK_CODENAME=SENSORS
+CUDA_VERSION=11.3.1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+CONDA_ROOT=/opt/conda
+SHLVL=2
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+DATAGEN=0
+DEBUG_CHALLENGE=0
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+REPETITIONS=1
+CONDA_DEFAULT_ENV=tfuse
+SAVE_PATH=
+CHECKPOINT_ENDPOINT=/results/transfuser_longest6.json
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+TEAM_CONFIG=/model
+WORK_DIR=.
+_=/usr/bin/env
+---------------------
+
