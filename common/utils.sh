@@ -41,7 +41,7 @@ setup_transfuser() (
 setup_interfuser() (
     set -euo pipefail
 
-    mkdir -p results models
+    mkdir -p results
 
     if ../scripts/check-interfuser.sh; then
         echo "Models already exist, skipping download"
