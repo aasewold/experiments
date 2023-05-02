@@ -7,7 +7,7 @@ services:
       dockerfile: $PWD/../../common/carla-${CARLA_VERSION}.dockerfile
       args:
         - CARLA_IMAGE=${CARLA_IMAGE}
-    restart: on-failure
+    restart: "no"
     deploy:
       resources:
         reservations:
@@ -38,7 +38,7 @@ services:
       carla:
         condition: service_healthy
     network_mode: service:carla
-    restart: on-failure
+    restart: "no"
     deploy:
       resources:
         reservations:
