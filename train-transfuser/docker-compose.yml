@@ -8,7 +8,15 @@ services:
       args:
         - CARLA_VERSION=${CARLA_VERSION}
         - TRANSFUSER_COMMIT=${TRANSFUSER_COMMIT}
-    command: ["/bin/bash", "/scripts/train_multi.sh"]
+    command: [
+        "/bin/bash",
+        "/scripts/train_multi.sh",
+        # "--epochs", "26",
+        # "--schedule_reduce_epoch_01", "15",
+        # "--schedule_reduce_epoch_02", "25",
+        # "--load_file", "/logs/transfuser-2023-03-27_09-48-50/model_17.pth",
+        # "--start_epoch", "17",
+      ]
     environment:
       - PYTHONUNBUFFERED=1
     volumes:

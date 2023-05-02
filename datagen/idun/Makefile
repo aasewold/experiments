@@ -1,6 +1,8 @@
-ifndef CARLA_VERSION
-$(error CARLA_VERSION must be set)
+ifndef CARLA_IMAGE
+$(error CARLA_IMAGE must be set)
 endif
+
+CARLA_VERSION := $(shell echo $(CARLA_IMAGE) | cut -d ":" -f 2)
 
 ifndef TRANSFUSER_COMMIT
 $(error TRANSFUSER_COMMIT must be set)
@@ -79,7 +81,7 @@ transfuser: $(TF_SIF)
 
 
 $(TF_SIF): $(TF_TAR)
-	apptainer build $(TF_SIF) docker-archive:$(TF_TAR)
+	apptainer build -F $(TF_SIF) docker-archive:$(TF_TAR)
 
 $(TF_TAR): $(TF_DOCKERFILE) | $(TF_BUILDDIR)
 	docker buildx build \
@@ -91,12 +93,12 @@ $(TF_TAR): $(TF_DOCKERFILE) | $(TF_BUILDDIR)
 
 
 $(CARLA_SIF): $(CARLA_TAR)
-	apptainer build $(CARLA_SIF) docker-archive:$(CARLA_TAR)
+	apptainer build -F $(CARLA_SIF) docker-archive:$(CARLA_TAR)
 
 $(CARLA_TAR): $(CARLA_DOCKERFILE) | $(CARLA_BUILDDIR)
 	docker buildx build \
 		-t $(CARLA_TAG) \
-		--build-arg CARLA_VERSION=$(CARLA_VERSION) \
+		--build-arg CARLA_IMAGE=$(CARLA_IMAGE) \
 		- < $(CARLA_DOCKERFILE)
 	docker save $(CARLA_TAG) > $(CARLA_TAR)
 

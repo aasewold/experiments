@@ -3,8 +3,6 @@ set -euo pipefail
 
 cd "$(dirname "$0")"/..
 
-mkdir -p models/interfuser
-
 echo "Please download the model pth.tar file from http://43.159.60.142/s/p2CN"
 echo "and place it in the models/interfuser directory."
 echo "Then press enter to continue."

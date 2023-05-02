@@ -5,10 +5,15 @@
 #SBATCH --time=07-00:00:00
 
 #SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=16000
 #SBATCH --gres=gpu:1
 #SBATCH --constraint="A100|V100"
 
 #SBATCH --array=1-1
+
+module list
+module purge
 
 time_start=$(date +%s)
 
@@ -50,6 +55,11 @@ archive_data() (
 
 if [ -f $TAR_PATH ]; then
     echo "Data already exists at $TAR_NAME, skipping."
+    exit 0
+fi
+
+if [ -f $TAR_PATH.old ]; then
+    echo "Skipping because $TAR_NAME.old exists"
     exit 0
 fi
 

@@ -1,17 +1,11 @@
 #!/bin/bash
 
-set -euo pipefail
+source ../common/utils.sh
+setup_interfuser
 
-mkdir -p results models data
+mkdir -p data
 
 if [ ! -h models/interfuser ]; then
     echo "Creating symlink to models"
-    ln -s $(realpath ../models/interfuser) models/interfuser
-fi
-
-if ../scripts/check-interfuser.sh; then
-    echo "Models already exist, skipping download"
-else
-    echo "Downloading models"
-    ../scripts/download-interfuser.sh
+    ln -s $(realpath ../models) models
 fi

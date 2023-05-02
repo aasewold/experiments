@@ -1,5 +1,12 @@
 #!/bin/bash
 
+source ../common/utils.sh
+
+MODEL_NAME="$1"
+CARLA_IMAGE="mathiaswold/carla:0.9.14"
+CARLA_VERSION=0.9.14
+INTERFUSER_COMMIT=0.9.14
+
 PS3='Select evaluation: '
 options=("town05" "42routes" "longest6" "Quit")
 select eval in "${options[@]}"
@@ -23,7 +30,4 @@ done
 
 export EVALUATION=$eval
 
-source ../common/utils.sh
-
-run_in_screen "ex-interfuser-0.9.14-$eval" \
-    "docker compose up --build"
+run_interfuser

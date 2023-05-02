@@ -23,7 +23,7 @@ In theory, the following should be enough:
 
 ```sh
 cd idun
-make job CARLA_VERSION=0.9.14 INTERFUSER_COMMIT=experiments/0.9.14
+make job CARLA_IMAGE=mathiaswold/carla:0.9.14 INTERFUSER_COMMIT=0.9.14
 ```
 and wait. This will:
 - build CARLA and InterFuser docker images

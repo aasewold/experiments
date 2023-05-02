@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  transfuser:
+    build:
+      context: .
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app
+    volumes:
+      - ./work:/work
+      - ../app:/app:ro
+      - /data/ad/recordings_DW:/dataset:ro
+    ports:
+      - 8888:8888

@@ -59,4 +59,4 @@ ENV SDL_VIDEODRIVER=dummy
 
 ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "interfuser"]
 
-CMD ["/bin/bash", "./leaderboard/scripts/run_evaluation.sh" ]
+CMD ["/bin/bash"]

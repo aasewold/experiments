@@ -2,11 +2,13 @@
 #SBATCH --job-name="carla-datagen"
 #SBATCH --partition=GPUQ
 #SBATCH --account=share-ie-idi
-#SBATCH --time=05:00:00
+#SBATCH --time=07-00:00:00
+#SBATCH --constraint="A100|V100"
 
 #SBATCH --ntasks=1
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=4
+#SBATCH --mem=16000
 
 #SBATCH --array=1-1
 
@@ -27,39 +29,12 @@ echo "Scenario: $SCENARIO"
 
 SAVE_NAME=${SLURM_ARRAY_TASK_ID}-$(basename $ROUTE .xml)
 SAVE_PATH=data/$SAVE_NAME
-TAR_NAME=$SAVE_NAME.tar.gz
-TAR_PATH=data/$TAR_NAME
 
 echo
 echo "Purging modules"
 module list
 module purge
 echo
-
-archive_data() (
-    echo "Archiving files to $TAR_NAME"
-    cd data
-    tar -czf $TAR_NAME.tmp $SAVE_NAME
-    if [ $? -eq 0 ]; then
-        echo "Archiving successful, removing $SAVE_NAME"
-        mv $TAR_NAME.tmp $TAR_NAME
-        rm -r $SAVE_NAME
-    else
-        echo "Archiving failed, keeping $SAVE_NAME"
-    fi
-)
-
-if [ -f $TAR_PATH ]; then
-    echo "Data already exists at $TAR_NAME, skipping."
-    exit 0
-fi
-
-if [ -f $TAR_PATH.tmp ]; then
-    echo "Data generated, but archiving failed last time, retrying."
-    rm $TAR_PATH.tmp
-    archive_data
-    exit 0
-fi
 
 mkdir -p $SAVE_PATH
 echo "Generating data into $SAVE_PATH"
@@ -78,13 +53,9 @@ is_port_available() {
 find_port() {
     local port=$(($1+$SLURM_ARRAY_TASK_ID))
 
-    if ! is_port_available $port; then
-        port=$((port+10000))
-    fi
-
     local attempts=0
     while ! is_port_available $port; do
-        port=$((port+1))
+        port=$((2000+$RANDOM))
         attempts=$((attempts+1))
         if [ $attempts -gt 100 ]; then
             echo "Could not find available port" >&2
@@ -95,11 +66,40 @@ find_port() {
     echo $port
 }
 
+check_checkpoint() {
+    # Check checkpoint.json status
+    python3 <<EOF
+import sys
+import json
+with open('$SAVE_PATH/checkpoint.json') as f:
+    data = json.load(f)
+checkpoint = data.get('_checkpoint', {})
+progress = checkpoint.get('progress', [])
+if len(progress) != 2:
+    print('Invalid progress:', progress, file=sys.stderr)
+    sys.exit(1)
+if progress[0] != progress[1]:
+    print('Progress mismatch:', progress, file=sys.stderr)
+    sys.exit(1)
+EOF
+
+    checkpoint_good=$?
+    if [ $checkpoint_good -eq 0 ]; then
+        return 0
+    fi
+    return 1
+}
+
 attempt=0
 while :; do
 
 attempt=$((attempt+1))
-echo Starting attempt $attempt
+echo "Starting attempt $attempt at $(date +'%Y-%m-%d_%H-%M-%S')"
+
+if check_checkpoint; then
+    echo "Checkpoint OK, skipping"
+    break
+fi
 
 export CARLA_RPC_PORT=$(find_port 50000)
 export CARLA_STREAMING_PORT=$(find_port 51000)
@@ -112,6 +112,7 @@ singularity exec \
     --nv \
     $SIF_DIR/carla.sif \
         /home/carla/CarlaUE4.sh \
+            -slurm-task-id=${SLURM_ARRAY_JOB_ID}_${SLURM_ARRAY_TASK_ID}-${attempt} \
             -RenderOffScreen \
             -carla-rpc-port=$CARLA_RPC_PORT \
             -carla-streaming-port=$CARLA_STREAMING_PORT \
@@ -143,39 +144,23 @@ singularity run \
 echo Client exited with code $?
 
 echo Killing $CARLA_PID
-kill $CARLA_PID
+pkill -9 -P $CARLA_PID
+kill -9 $CARLA_PID
 wait $CARLA_PID
 
-echo CARLA exited with code $?
+echo "CARLA (apptainer) exited with code $?"
 
-# Check checkpoint.json status
-python3 <<EOF
-import sys
-import json
-with open('$SAVE_PATH/checkpoint.json') as f:
-    data = json.load(f)
-checkpoint = data.get('_checkpoint', {})
-progress = checkpoint.get('progress', [])
-if len(progress) != 2:
-    print('Invalid progress:', progress, file=sys.stderr)
-    sys.exit(1)
-if progress[0] != progress[1]:
-    print('Progress mismatch:', progress, file=sys.stderr)
-    sys.exit(1)
-EOF
-
-checkpoint_good=$?
-if [ $checkpoint_good -eq 0 ]; then
+if check_checkpoint; then
+    echo "Checkpoint OK, skipping"
     break
 fi
 
+echo Sleeping before next attempt
+sleep 30
+
 done
 
-
 echo "Data generation finished successfully after $attempt attempt(s)"
-
-archive_data
-
 echo "Finished at $(date +'%Y-%m-%d_%H-%M-%S')"
 
 time_end=$(date +%s)

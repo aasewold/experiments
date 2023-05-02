@@ -37,8 +37,6 @@ export RESUME=True
 mkdir -p $(dirname ${CHECKPOINT_ENDPOINT})
 mkdir -p ${SAVE_PATH}
 
-mkdir -p birdview_v2_cache/Carla/Maps
-
 python3 ${LEADERBOARD_ROOT}/leaderboard/leaderboard_evaluator.py \
 --scenarios=${SCENARIOS}  \
 --routes=${ROUTES} \
@@ -55,4 +53,4 @@ python3 ${LEADERBOARD_ROOT}/leaderboard/leaderboard_evaluator.py \
 --trafficManagerPort=${CARLA_TM_PORT} \
 --carlaProviderSeed=${CARLA_SEED} \
 --trafficManagerSeed=${TRAFFIC_SEED} \
---timeout=60
+--timeout=5

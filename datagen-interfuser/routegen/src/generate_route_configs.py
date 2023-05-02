@@ -8,68 +8,42 @@ import os
 routes = {}
 
 # town 01
-routes["training_routes/routes_town01_tiny.xml"] = "scenarios/town01_all_scenarios.json"
-# routes[
-#     "training_routes/routes_town01_short.xml"
-# ] = "scenarios/town01_all_scenarios.json"
-# routes[
-#     "additional_routes/routes_town01_long.xml"
-# ] = "scenarios/town01_all_scenarios.json"
+# routes["training_routes/routes_town01_tiny.xml"] = "scenarios/town01_all_scenarios.json"
+# routes["training_routes/routes_town01_short.xml"] = "scenarios/town01_all_scenarios.json"
+# routes["additional_routes/routes_town01_long.xml"] = "scenarios/town01_all_scenarios.json"
 
 # town 02
 # routes["training_routes/routes_town02_tiny.xml"] = "scenarios/town02_all_scenarios.json"
-routes[
-    "training_routes/routes_town02_short.xml"
-] = "scenarios/town02_all_scenarios.json"
-# routes[
-#     "additional_routes/routes_town02_long.xml"
-# ] = "scenarios/town02_all_scenarios.json"
+# routes["training_routes/routes_town02_short.xml"] = "scenarios/town02_all_scenarios.json"
+# routes["additional_routes/routes_town02_long.xml"] = "scenarios/town02_all_scenarios.json"
 
 # town 03
 # routes["training_routes/routes_town03_tiny.xml"] = "scenarios/town03_all_scenarios.json"
-# routes[
-#     "training_routes/routes_town03_short.xml"
-# ] = "scenarios/town03_all_scenarios.json"
-routes[
-    "additional_routes/routes_town03_long.xml"
-] = "scenarios/town03_all_scenarios.json"
+# routes["training_routes/routes_town03_short.xml"] = "scenarios/town03_all_scenarios.json"
+# routes["additional_routes/routes_town03_long.xml"] = "scenarios/town03_all_scenarios.json"
 
 # town 04
-routes["training_routes/routes_town04_tiny.xml"] = "scenarios/town04_all_scenarios.json"
-# routes[
-#     "training_routes/routes_town04_short.xml"
-# ] = "scenarios/town04_all_scenarios.json"
-# routes[
-#     "additional_routes/routes_town04_long.xml"
-# ] = "scenarios/town04_all_scenarios.json"
+# routes["training_routes/routes_town04_tiny.xml"] = "scenarios/town04_all_scenarios.json"
+# routes["training_routes/routes_town04_short.xml"] = "scenarios/town04_all_scenarios.json"
+# routes["additional_routes/routes_town04_long.xml"] = "scenarios/town04_all_scenarios.json"
 
 # town 05
-# routes["training_routes/routes_town05_tiny.xml"] = "scenarios/town05_all_scenarios.json"
-routes[
-    "training_routes/routes_town05_short.xml"
-] = "scenarios/town05_all_scenarios.json"
-# routes["training_routes/routes_town05_long.xml"] = "scenarios/town05_all_scenarios.json"
+routes["training_routes/routes_town05_tiny.xml"] = "scenarios/town05_all_scenarios.json"
+routes["training_routes/routes_town05_short.xml"] = "scenarios/town05_all_scenarios.json"
+routes["training_routes/routes_town05_long.xml"] = "scenarios/town05_all_scenarios.json"
 
 # town 06
-# routes["training_routes/routes_town06_tiny.xml"] = "scenarios/town06_all_scenarios.json"
-# routes[
-#     "training_routes/routes_town06_short.xml"
-# ] = "scenarios/town06_all_scenarios.json"
-routes[
-    "additional_routes/routes_town06_long.xml"
-] = "scenarios/town06_all_scenarios.json"
+routes["training_routes/routes_town06_tiny.xml"] = "scenarios/town06_all_scenarios.json"
+routes["training_routes/routes_town06_short.xml"] = "scenarios/town06_all_scenarios.json"
+routes["additional_routes/routes_town06_long.xml"] = "scenarios/town06_all_scenarios.json"
 
 # town 07
 routes["training_routes/routes_town07_tiny.xml"] = "scenarios/town07_all_scenarios.json"
-# routes[
-#     "training_routes/routes_town07_short.xml"
-# ] = "scenarios/town07_all_scenarios.json"
+routes["training_routes/routes_town07_short.xml"] = "scenarios/town07_all_scenarios.json"
 
 # town 10
-# routes["training_routes/routes_town10_tiny.xml"] = "scenarios/town10_all_scenarios.json"
-routes[
-    "training_routes/routes_town10_short.xml"
-] = "scenarios/town10_all_scenarios.json"
+routes["training_routes/routes_town10_tiny.xml"] = "scenarios/town10_all_scenarios.json"
+routes["training_routes/routes_town10_short.xml"] = "scenarios/town10_all_scenarios.json"
 
 
 # --------------------------------- weathers --------------------------------- #
@@ -95,7 +69,7 @@ routes[
 # 19: "MidRainyNight": carla.WeatherParameters(80.0,60.0,60.0,60.0,-1.0,-90.0,60.0,0.75,0.1,80.0),
 # 20: "HardRainNight": carla.WeatherParameters(100.0,100.0,90.0,100.0,-1.0,-90.0,100.0,0.75,0.1,100.0),
 
-WEATHER_CONFIG_INDEXES = [0, 1, 2, 4, 6, 7, 11, 12, 14, 17, 20]
+WEATHER_CONFIG_INDEXES = [0, 2, 4, 6, 7, 11, 12, 14, 17, 20]
 
 
 # ------------------------------ generate yamls ------------------------------ #
