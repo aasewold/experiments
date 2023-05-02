@@ -80,6 +80,7 @@ def make_camera(path: Path, resolution: Tuple[int, int] = (1920, 1208)):
             log.info('Killing ffmpeg')
             video.kill()
             video.wait()
+            timestamps.close()
 
     return NamedSource(
         name=path.stem,
