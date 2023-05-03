@@ -40,14 +40,54 @@ def parse_args():
 
 def rsync_data(args: Args):
     """Rsync all data from the remote machine."""
+
+    # First sync the checkpoint.json files, so that these represent an "old" checkpoint
+    # of the data generation. This way, after the second sync is finished, we're sure we've
+    # got all the data until this checkpoint.
+    #   It doesn't matter if this process fails, since then we just end up with an even older
+    # checkpoint, which is fine. Let the data rsync continue anyway.
+    logging.info("Syncing checkpoint.json files")
+    checkpoint_sync = subprocess.run(
+        [
+            "rsync",
+            "-az",
+            "--info=progress2",
+            "--no-inc-recursive", # Prepare whole list of files before transfer
+            "--include=/*/", # Include one level of subdirectories
+            "--include=/*/checkpoint.json", # Include the checkpoint.json files
+            "--exclude=*", # Exclude everything else
+            f"idun:{args.idun_path_str}",
+            f"{args.local_path_str}",
+        ],
+    )
+
+    if checkpoint_sync.returncode != 0:
+        logging.warning("Failed to sync checkpoint.json files, continuing anyway")
+
+    # Then sync everything else, but excluding the checkpoint.json files
+    # so that we don't end up with a "new" checkpoint before we've actually
+    # got all the data. If we synced the data first, and then the checkpoints,
+    # we could end up with the following race:
+    #  - *route12* data is being generated
+    #  - rsync initiated, syncings route11 and parts of route12
+    #  - *route12* data finishes generation
+    #  - rsync continues, since there is alot to copy
+    #  - *route13* data finished generation
+    #  - checkpoint is synced, indicating route12 data can be deleted
+    #  - rsync finishes
+    #  - script continues, deleting route12 data before everyting is synced
+    logging.info("Syncing data")
     subprocess.run(
         [
             "rsync",
             "-az",
-            '--info=progress2',
+            "--info=progress2",
+            "--no-inc-recursive", # Prepare whole list of files before transfer
+            "--exclude=/*/checkpoint.json",
             f"idun:{args.idun_path_str}",
             f"{args.local_path_str}",
-        ]
+        ],
+        check=True,
     )
 
 
@@ -104,7 +144,7 @@ def delete_paths(paths: t.List[str]):
         "-rf",
         *paths,
     ]
-    subprocess.run(cmd)
+    subprocess.run(cmd, check=True)
 
 
 def tick(args: Args, already_deleted: t.Set[str]):
@@ -142,6 +182,7 @@ def main():
     already_deleted = set()
 
     while True:
+        tick_start = time.monotonic()
         logging.info('New tick')
 
         try:
@@ -150,7 +191,10 @@ def main():
             logging.exception(f"Exception during tick:")
 
         print()
-        time.sleep(10 * 60)
+
+        tick_duration = time.monotonic() - tick_start
+        sleep_duration = max(10, 10 * 60 - tick_duration) # at least 10 seconds, but at most 10 minutes
+        time.sleep(sleep_duration)
 
 
 if __name__ == "__main__":
