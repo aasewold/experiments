@@ -263,9 +263,12 @@ def create_index(dataset_path: Path):
             if not route_dir.is_dir():
                 continue
 
-            num_frames = len(list((route_dir / "C2_tricam60").iterdir()))
+            route_type = route_dir.name.split("_")[2]
 
-            if num_frames < 10:
+            num_frames = len(list((route_dir / "C2_tricam60").iterdir()))
+            min_frames = 10 if route_type == "tiny" else 50
+
+            if num_frames < min_frames:
                 routes_removed.append(route_dir.name)
                 shutil.rmtree(route_dir)
                 continue
