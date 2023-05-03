@@ -87,13 +87,9 @@ is_port_available() {
 find_port() {
     local port=$(($1+$SLURM_ARRAY_TASK_ID))
 
-    if ! is_port_available $port; then
-        port=$((port+10000))
-    fi
-
     local attempts=0
     while ! is_port_available $port; do
-        port=$((port+1))
+        port=$((2000+$RANDOM))
         attempts=$((attempts+1))
         if [ $attempts -gt 100 ]; then
             echo "Could not find available port" >&2
@@ -121,6 +117,7 @@ singularity exec \
     --nv \
     $SIF_DIR/carla.sif \
         /home/carla/CarlaUE4.sh \
+            -slurm-task-id=${SLURM_ARRAY_JOB_ID}_${SLURM_ARRAY_TASK_ID}-${attempt} \
             -RenderOffScreen \
             -carla-rpc-port=$CARLA_RPC_PORT \
             -carla-streaming-port=$CARLA_STREAMING_PORT \
@@ -152,10 +149,10 @@ singularity run \
 echo Client exited with code $?
 
 echo Killing $CARLA_PID
-kill $CARLA_PID
-wait $CARLA_PID
+pkill -9 -P $CARLA_PID
+kill -9 $CARLA_PID
 
-echo CARLA exited with code $?
+echo "CARLA (apptainer) exited with code $?"
 
 # Check checkpoint.json status
 python3 <<EOF
@@ -177,6 +174,9 @@ checkpoint_good=$?
 if [ $checkpoint_good -eq 0 ]; then
     break
 fi
+
+echo Sleeping before next attempt
+sleep 30
 
 done
 
