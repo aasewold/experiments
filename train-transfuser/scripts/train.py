@@ -131,6 +131,7 @@ def main():
 
     # Configure config
     config = GlobalConfig(root_dir=args.root_dir, setting=args.setting)
+    config.debug = True
     config.use_target_point_image = bool(args.use_target_point_image)
     config.n_layer = args.n_layer
     config.use_point_pillars = bool(args.use_point_pillars)
