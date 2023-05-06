@@ -34,28 +34,9 @@ echo "----------------------------------------"
 
 compose_name=interfuser-datagen-$date_start-job-$PARALLEL_SEQ
 
-attempt=0
-while :; do
-
-attempt=$((attempt+1))
-echo Starting attempt $attempt
-
-docker compose -p $compose_name up --build --exit-code-from interfuser
-
-EXIT_CODE=$?
-echo "Docker compose exited with code $EXIT_CODE"
-
-sleep 5
-
-echo "Docker compose down..."
-docker compose -p $compose_name down
-
-echo "Sleeping for 10 seconds before restarting"
-
-sleep 10
-
-# Check checkpoint.json status
-python3 <<EOF
+check_checkpoint() {
+    # Check checkpoint.json status
+    python3 <<EOF
 import sys
 import json
 with open('$SAVE_PATH/checkpoint.json') as f:
@@ -70,10 +51,43 @@ if progress[0] != progress[1]:
     sys.exit(1)
 EOF
 
-checkpoint_good=$?
-if [ $checkpoint_good -eq 0 ]; then
+    checkpoint_good=$?
+    if [ $checkpoint_good -eq 0 ]; then
+        return 0
+    fi
+    return 1
+}
+
+
+attempt=0
+while :; do
+
+attempt=$((attempt+1))
+echo "Starting attempt $attempt at $(date +'%Y-%m-%d_%H-%M-%S')"
+
+if check_checkpoint; then
+    echo "Checkpoint OK, skipping"
     break
 fi
+
+docker compose -p $compose_name up --build --exit-code-from interfuser
+
+EXIT_CODE=$?
+echo "Docker compose exited with code $EXIT_CODE"
+
+sleep 5
+
+echo "Docker compose down..."
+docker compose -p $compose_name down
+
+if check_checkpoint; then
+    echo "Checkpoint OK, skipping"
+    break
+fi
+
+echo "Sleeping for 10 seconds before restarting"
+
+sleep 10
 
 done
 
