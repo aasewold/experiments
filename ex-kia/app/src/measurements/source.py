@@ -1,4 +1,4 @@
-from typing import Any, Iterable, Iterator, TypeVar
+from typing import Any, Iterable, Iterator, List, TypeVar
 try:
     from typing import Protocol
 except ImportError:
@@ -136,6 +136,50 @@ class SingleBufferSource(WrappingSource[_T]):
             if diff > prev_diff:
                 self.reverse()
 
+    def __str__(self) -> str:
+        return f'{self._inner} (buffered)'
+
+
+class BufferedSource(WrappingSource[_T]):
+    _buffer: List[Measurement[_T]]
+    _index: int
+
+    def __init__(self, inner: MeasurementSource[_T]) -> None:
+        super().__init__(inner)
+        self._buffer = []
+        self._index = 0
+        self._fill_to_index(self._index)
+    
+    @property
+    def index(self) -> int:
+        return self._index
+    
+    @property
+    def current(self) -> Measurement[_T]:
+        return self._buffer[self._index]
+    
+    def advance(self):
+        self._index += 1
+        self._fill_to_index(self._index)
+
+    def advance_to(self, ts: float):
+        while self.ts < ts:
+            self.advance()
+        if self._index > 0 and abs(self.peek(-1).ts - ts) < abs(self.ts - ts):
+            self.reverse()
+    
+    def reverse(self):
+        self._index -= 1
+
+    def peek(self, n: int) -> Measurement[_T]:
+        self._fill_to_index(self._index + n)
+        return self._buffer[self._index + n]
+
+    def _fill_to_index(self, index: int):
+        while len(self._buffer) <= index:
+            self._inner.advance()
+            self._buffer.append(self._inner.current)
+        
     def __str__(self) -> str:
         return f'{self._inner} (buffered)'
 

@@ -2,7 +2,8 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
-from src.measurements import Measurement, IteratorSource, NamedSource
+from src.measurements import Measurement, IteratorSource, NamedSource, SingleBufferSource
+from src.measurements.collection import MeasurementCollection
 from .old_gps import GpsData
 
 
@@ -35,52 +36,67 @@ def parse_lon(s: str) -> float:
 re_line = re.compile(r"\$(.+)\*[0-9A-F]{2} (\d+)")
 
 
+def generate_gps(path: Path):
+    curr_gga = None
+    curr_vtg = None
+
+    with path.open("rt") as f:
+        for line in f:
+            match = re_line.match(line.strip())
+            if match:
+                nmea, ts_us = match.group(1), int(match.group(2))
+                parts = nmea.split(",")
+
+                if parts[0] == "GPVTG":
+                    try:
+                        curr_vtg = NMEA_VTG(
+                            course=float(parts[1]),
+                            speed_kmh=float(parts[7]),
+                        )
+                    except ValueError:
+                        pass
+
+                if parts[0] == "GPGGA":
+                    try:
+                        curr_gga = NMEA_GGA(
+                            lat=parse_lat(parts[2])
+                            * (-1 if parts[3] == "S" else 1),
+                            lon=parse_lon(parts[4])
+                            * (-1 if parts[5] == "W" else 1),
+                            alt=float(parts[9]),
+                            hdop=float(parts[8]),
+                        )
+                    except ValueError:
+                        pass
+                    else:
+                        yield Measurement(
+                            ts_us / 1000,
+                            GpsData(
+                                index=0,
+                                lat=curr_gga.lat,
+                                lon=curr_gga.lon,
+                                alt=curr_gga.alt,
+                                speed=curr_vtg.speed_kmh if curr_vtg else None,
+                                course=curr_vtg.course if curr_vtg else None,
+                                hdop=curr_gga.hdop,
+                                vdop=None,
+                            ),
+                        )
+
 def make_gps(path: Path):
-    def generator():
-        curr_gga = None
-        curr_vtg = None
+    return NamedSource(name=path.stem, inner=IteratorSource(generate_gps(path)))
 
-        with path.open("rt") as f:
-            for line in f:
-                match = re_line.match(line.strip())
-                if match:
-                    nmea, ts_us = match.group(1), int(match.group(2))
-                    parts = nmea.split(",")
+def generate_avg_gps(*paths: Path):
+    col = MeasurementCollection[GpsData]([
+        SingleBufferSource(IteratorSource(generate_gps(p)))
+        for p in paths
+    ])
+    for data in col:
+        col.synchronize()
+        yield Measurement(
+            sum(d.ts for d in data) / len(data),
+            GpsData.average([d.value for d in data]),
+        )
 
-                    if parts[0] == "GPVTG":
-                        try:
-                            curr_vtg = NMEA_VTG(
-                                course=float(parts[1]),
-                                speed_kmh=float(parts[7]),
-                            )
-                        except ValueError:
-                            pass
-
-                    if parts[0] == "GPGGA":
-                        try:
-                            curr_gga = NMEA_GGA(
-                                lat=parse_lat(parts[2])
-                                * (-1 if parts[3] == "S" else 1),
-                                lon=parse_lon(parts[4])
-                                * (-1 if parts[5] == "W" else 1),
-                                alt=float(parts[9]),
-                                hdop=float(parts[8]),
-                            )
-                        except ValueError:
-                            pass
-                        else:
-                            yield Measurement(
-                                ts_us / 1000,
-                                GpsData(
-                                    index=0,
-                                    lat=curr_gga.lat,
-                                    lon=curr_gga.lon,
-                                    alt=curr_gga.alt,
-                                    speed=curr_vtg.speed_kmh if curr_vtg else None,
-                                    course=curr_vtg.course if curr_vtg else None,
-                                    hdop=curr_gga.hdop,
-                                    vdop=None,
-                                ),
-                            )
-
-    return NamedSource(name=path.stem, inner=IteratorSource(generator()))
+def make_avg_gps(*paths: Path):
+    return NamedSource(name="gps", inner=IteratorSource(generate_avg_gps(*paths)))
