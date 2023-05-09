@@ -30,11 +30,11 @@ setup_transfuser() (
 
     mkdir -p results models
 
-    if ../scripts/check-prefuser.sh; then
+    if ../common/pretrained-models/check-prefuser.sh; then
         echo "Models already exist, skipping download"
     else
         echo "Downloading pre-trained model"
-        ../scripts/download-prefuser.sh
+        ../common/pretrained-models/download-prefuser.sh
     fi
 )
 
@@ -43,11 +43,11 @@ setup_interfuser() (
 
     mkdir -p results
 
-    if ../scripts/check-interfuser.sh; then
+    if ../common/pretrained-models/check-interfuser.sh; then
         echo "Models already exist, skipping download"
     else
         echo "Downloading models"
-        ../scripts/download-interfuser.sh
+        ../common/pretrained-models/download-interfuser.sh
     fi
 )
 
