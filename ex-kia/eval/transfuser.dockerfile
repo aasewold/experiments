@@ -62,5 +62,8 @@ COPY --from=transfuser /transfuser /transfuser
 RUN mkdir /home/user && chmod 777 /home/user
 ENV HOME /home/user
 
-ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "tfuse"]
+RUN echo "source /opt/conda/etc/profile.d/conda.sh && conda activate tfuse && exec "\$@"" > /docker_entrypoint.sh \
+    && chmod +x /docker_entrypoint.sh
+
+ENTRYPOINT [ "/bin/bash", "/docker_entrypoint.sh" ]
 CMD [ "/bin/bash" ]
