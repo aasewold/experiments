@@ -1,6 +1,7 @@
 from collections import deque
 import logging
 import os
+from typing import Tuple
 
 _log = logging.getLogger(__name__)
 
@@ -19,12 +20,13 @@ from rich.table import Table
 from PIL import Image
 
 from src import profile
-from src.measurements.source import IteratorSource, NamedSource, SingleBufferSource, SourceEmpty
+from src.measurements.source import BufferedSource, SourceEmpty
 from src.measurements.collection import MeasurementCollection
-from src.nap.kia.gps import make_gps
+from src.nap.kia.gps import make_avg_gps
 from src.nap.kia.camera import make_camera
 from src.nap.kia.lidar import make_lidar
 from src.nap.kia.canbus import make_can
+from .make_mov import make_movie
 
 from team_code_transfuser.submission_agent import HybridAgent
 from srunner.scenariomanager.timer import GameTime
@@ -32,6 +34,7 @@ from srunner.scenariomanager.timer import GameTime
 
 WORK_PATH = Path('/work')
 OUT_PATH = Path(os.environ['OUT_PATH'])
+SAVE_PATH = Path(os.environ['SAVE_PATH'])
 
 
 class RoadOption(enum.Enum):
@@ -102,6 +105,9 @@ def main(trip: str):
     np.savez(OUT_PATH / 'actions.npz', tf=tf_actions, gt=gt_actions)
     plot_actions(tf_actions, gt_actions)
 
+    with profile.ctx('make movie'):
+        make_movie(SAVE_PATH, OUT_PATH / 'movie.mp4')
+
 
 def plot_actions(tf_actions, gt_actions):
     smoothing = np.ones(50) / 50
@@ -138,20 +144,8 @@ def make_input_data(step: int):
 
 def gen_input_data(path: Path, *, gps_lat0: float, gps_lon0: float):
 
-    gps_path = path / 'gnss50_vehicle.bin'
-
-    def gps_wrapper():
-        """Wraps the GPS sensor with persistent speed and yaw values."""
-        course = 0
-        speed = 0
-        for val in make_gps(gps_path):
-            if val.value.course is not None:
-                course = val.value.course
-            if val.value.speed is not None:
-                speed = val.value.speed
-            val.value.course = course
-            val.value.speed = speed
-            yield val
+    gps50_path = path / 'gnss50_vehicle.bin'
+    gps52_path = path / 'gnss52_vehicle.bin'
 
     lidar_path, = path.glob('*.pcap')
     if not lidar_path.with_suffix('.offset').exists():
@@ -160,7 +154,7 @@ def gen_input_data(path: Path, *, gps_lat0: float, gps_lon0: float):
     lidar_offset = int(lidar_path.with_suffix('.offset').read_text())
 
     with profile.scope('setup', dump=True):
-        gps = NamedSource(name=gps_path.stem, inner=SingleBufferSource(IteratorSource(gps_wrapper())))
+        gps = BufferedSource(make_avg_gps(gps50_path, gps52_path))
         can_0 = make_can(path / 'can_vehicle1.bin')
         cam_left = make_camera(path / 'C7_L2.h264')
         cam_right = make_camera(path / 'C8_R2.h264')
@@ -175,7 +169,8 @@ def gen_input_data(path: Path, *, gps_lat0: float, gps_lon0: float):
     def _generator():
         est_yaw = 0
         est_speed = 0
-        prev_gps = deque([])
+        behind_gps_buf = deque([])
+        ahead_gps_buf = deque([])
 
         for step in itertools.count():
             try:
@@ -191,47 +186,69 @@ def gen_input_data(path: Path, *, gps_lat0: float, gps_lon0: float):
 
             input_data = make_input_data(step)
 
-            ## GPS
-            N, E, _ = pymap3d.geodetic2ned(gps.value.lat, gps.value.lon, 0, gps_lat0, gps_lon0, 0)
-            carla_lat = N / 111324.60662786
-            carla_lon = E / 111319.490945
-            
-            # Keep the GPS history buffer one meter long
-            NE = np.array((N, E))
-            gps_dist = 1
-            while (
-                len(prev_gps) > 1 
-                and np.linalg.norm(prev_gps[1] - NE) >= gps_dist
-            ):
-                prev_gps.popleft()
-            
-            # Calculate the yaw from the GPS position one meter ago
-            if prev_gps:
-                dN, dE = NE - prev_gps[0]
-                est_yaw = np.arctan2(dE, dN)
-            prev_gps.append(NE)
+            with profile.ctx('gps'):
+                N, E, _ = pymap3d.geodetic2ned(gps.value.lat, gps.value.lon, 0, gps_lat0, gps_lon0, 0)
+                carla_lat = N / 111324.60662786
+                carla_lon = E / 111319.490945
+                
+                # Find points behind and ahead of us within distance (0.5, 1) meters
+                NE = np.array((N, E))
+                gps_min_dist = 0.5
+                gps_max_dist = 1
 
-            # # Use the values from the GPS if they are available
-            # # Or not, they are noisy
-            # if gps.value.course is not None:
-            #     est_yaw = gps.value.course * np.pi / 180
+                behind_gps_buf = []
+                for i in range(-1, -gps.index, -1):
+                    peek_gps = gps.peek(i)
+                    peek_NE = pymap3d.geodetic2ned(peek_gps.value.lat, peek_gps.value.lon, 0, gps_lat0, gps_lon0, 0)[:2]
+                    peek_dist = np.linalg.norm(peek_NE - NE)
+                    if peek_dist < gps_min_dist:
+                        continue
+                    if peek_dist > gps_max_dist:
+                        break
+                    behind_gps_buf.append(peek_NE)
 
-            if gps.value.speed is not None:
-                est_speed = min(3, gps.value.speed / 3.6)
+                ahead_gps_buf = []
+                for i in itertools.count(1):
+                    try:
+                        peek_gps = gps.peek(i)
+                    except SourceEmpty:
+                        break
+                    peek_NE = pymap3d.geodetic2ned(peek_gps.value.lat, peek_gps.value.lon, 0, gps_lat0, gps_lon0, 0)[:2]
+                    peek_dist = np.linalg.norm(peek_NE - NE)
+                    if peek_dist < gps_min_dist:
+                        continue
+                    if peek_dist > gps_max_dist:
+                        break
+                    ahead_gps_buf.append(peek_NE)
+                
+                # Calculate the yaw from the GPS buffers
+                if behind_gps_buf and ahead_gps_buf:
+                    fut_avg = np.mean(ahead_gps_buf, axis=0)
+                    prev_avg = np.mean(behind_gps_buf, axis=0)
+                    dN, dE = fut_avg - prev_avg
+                    est_yaw = np.arctan2(dE, dN)
+
+                # # Use the values from the GPS if they are available
+                # # Or not, they are noisy
+                # if gps.value.course is not None:
+                #     est_yaw = gps.value.course * np.pi / 180
+
+                if gps.value.speed is not None:
+                    est_speed = min(3, gps.value.speed / 3.6)
 
             input_data['gps'][1] = [carla_lat, carla_lon, 0]
             input_data['imu'][1] = [est_yaw]
             input_data['speed'][1] = { 'speed': est_speed }
 
             ## RGB
-            input_data['rgb_left'][1] = crop(cam_left.value.frame)
-            input_data['rgb_right'][1] = crop(cam_right.value.frame)
-            input_data['rgb_front'][1] = crop(cam_front.value.frame)
+            input_data['rgb_left'][1] = prepare_image(cam_left.value.frame, (40, 30, 1.33))
+            input_data['rgb_front'][1] = prepare_image(cam_front.value.frame, (0, 0, 1.21))
+            input_data['rgb_right'][1] = prepare_image(cam_right.value.frame, (-228, 38, 1.33))
 
             ## Lidar
             lidar_data = lidar.value.cartesian.reshape(-1, 3)
             lidar_data[:,[0,1]] = lidar_data[:,[1,0]]
-            lidar_data[:, 2] -= 0.7
+            lidar_data[:, 2] -= 0.8
             input_data['lidar'][1] = lidar_data 
 
             ## Output data
@@ -254,6 +271,9 @@ def print_input_data(step, input_data):
 def print_agent_data(step, agent, action):
     pred_wp = agent.pred_wp
     route = agent._route_planner.route
+
+    # target = pred_wp[0] + pred_wp[1]
+    # angle = atan2(target[1], target[0]) * 180 / np.pi
     
     print(f'{step}: {action}')
     print(pred_wp)
@@ -266,8 +286,15 @@ def print_agent_data(step, agent, action):
     rich.print(table)
 
 
-def crop(img):
+def prepare_image(img, transform: Tuple[int, int, float]):
     pil = Image.fromarray(img)
+    ox, oy, s = transform
+    x = pil.width//2 + ox
+    y = pil.height//2 + oy
+    w = int(pil.width * s)
+    h = int(pil.height * s)
+    box = (x - w//2, y - h//2, x + w//2, y + h//2)
+    pil = pil.crop(box)
     pil = pil.resize((960, 480), Image.BILINEAR)
     img = np.asarray(pil)
     return img
