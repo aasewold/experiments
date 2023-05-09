@@ -9,24 +9,21 @@ import cartopy.crs as ccrs
 from cartopy.io.img_tiles import OSM
 
 from src import profile
-from src.measurements.source import GroupedSource
-from src.nap.kia.gps import make_gps, GpsData
+from src.nap.kia.gps import make_avg_gps
 
 
 def load_gps_data(path):
-    gps = make_gps(path)
-    gps = GroupedSource(gps)
+    gps = make_avg_gps(
+        path / 'gnss50_vehicle.bin',
+        path / 'gnss52_vehicle.bin'
+    )
 
     ts = []
     pos = []
 
-    for measurement in gps:
-        datas = [data for data in measurement.value if not data.is_zero()]
-        if not datas:
-            continue
-        data = GpsData.average(datas)
-        ts.append(measurement.ts)
-        pos.append((data.lat, data.lon, data.alt))
+    for m in gps:
+        ts.append(m.ts)
+        pos.append((m.value.lat, m.value.lon, m.value.alt))
     
     ts = np.array(ts)
     coords = np.array(pos)
@@ -47,7 +44,7 @@ def plot_gps_data(ts, gps_coords):
     c = np.array(ts)
     c = (c - c.min()) / (c.max() - c.min())
 
-    ax.scatter(*world_coords.T, s=0.1, c=c)
+    ax.scatter(*world_coords.T, s=1, c=c, marker='.', lw=0)
 
     px_coords_q = []
     def on_draw(event):
@@ -62,7 +59,7 @@ def plot_gps_data(ts, gps_coords):
 
 
 def save_gps_fig(fig, path):
-    fig.savefig(path, dpi=600, bbox_inches='tight', pad_inches=0)
+    fig.savefig(path, dpi=1000, bbox_inches='tight', pad_inches=0)
 
 
 if __name__ == '__main__':
