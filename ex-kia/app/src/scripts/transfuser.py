@@ -195,6 +195,7 @@ def gen_input_data(path: Path, *, gps_lat0: float, gps_lon0: float):
                 NE = np.array((N, E))
                 gps_min_dist = 0.5
                 gps_max_dist = 1
+                gps_min_pts = 3
 
                 behind_gps_buf = []
                 for i in range(-1, -gps.index, -1):
@@ -203,7 +204,7 @@ def gen_input_data(path: Path, *, gps_lat0: float, gps_lon0: float):
                     peek_dist = np.linalg.norm(peek_NE - NE)
                     if peek_dist < gps_min_dist:
                         continue
-                    if peek_dist > gps_max_dist:
+                    if peek_dist > gps_max_dist and len(behind_gps_buf) >= gps_min_pts:
                         break
                     behind_gps_buf.append(peek_NE)
 
@@ -217,7 +218,7 @@ def gen_input_data(path: Path, *, gps_lat0: float, gps_lon0: float):
                     peek_dist = np.linalg.norm(peek_NE - NE)
                     if peek_dist < gps_min_dist:
                         continue
-                    if peek_dist > gps_max_dist:
+                    if peek_dist > gps_max_dist and len(ahead_gps_buf) >= gps_min_pts:
                         break
                     ahead_gps_buf.append(peek_NE)
                 
