@@ -5,15 +5,15 @@ BUILD := build
 
 route_configs: $(BUILD)/.route_configs
 
-copy:
+copy_idun:
 	@echo "Copying routes to dest"
 	mkdir -p ../idun/files/input
 	cp -rf $(BUILD)/output/* ../idun/files/input/
 
-copy_vcxr:
+copy_local:
 	@echo "Copying routes to dest"
-	mkdir -p ../vcxr/files/input
-	cp -rf $(BUILD)/output/* ../vcxr/files/input/
+	mkdir -p ../local/files/input
+	cp -rf $(BUILD)/output/* ../local/files/input/
 
 $(BUILD)/.route_configs: | $(BUILD)
 	@echo "Generating route_configs"
