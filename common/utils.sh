@@ -117,6 +117,12 @@ run_interfuser() (
         exit 1
     fi
 
+    if [ ! -f "$MODEL_PATH/interfuser.pth.tar" ]; then
+        echo "File $MODEL_PATH/interfuser.pth.tar does not exist"
+        echo "Download or make sure the model filename is correct"
+        exit 1
+    fi
+
     if [ -z "$RESUME" ]; then
         RUN_ID="$(date +%Y-%m-%dT%H-%M-%S)"
         echo "Starting new run with ID \"$RUN_ID\""
