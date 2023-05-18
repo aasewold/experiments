@@ -7,11 +7,19 @@ from typing import Optional
 def make_movie(data_folder: Path, movie_path: Optional[Path] = None):
     if movie_path is None:
         movie_path = data_folder / "movie.mp4"
+    
+    if (data_folder / '0.jpg').exists():
+        fmt = '%d'
+    elif (data_folder / '0000.jpg').exists():
+        fmt = '%04d'
+    else:
+        raise ValueError(f"Couldn't guess number format in {data_folder}")
+
     subprocess.run([
         "ffmpeg",
         "-y",
         "-framerate", "30",
-        "-i", f"{data_folder}/%d.jpg",
+        "-i", f"{data_folder}/{fmt}.jpg",
         "-c:v", "libx264",
         "-profile:v", "high",
         "-crf", "20",

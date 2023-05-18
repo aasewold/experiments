@@ -11,7 +11,7 @@ from src import profile
 from src.measurements.collection import MeasurementCollection
 from src.nap.kia.camera import make_camera, CameraData
 
-from .transfuser import prepare_image
+from .transfuser import tf_process_image
 
 
 def main(trip: str):
@@ -95,7 +95,7 @@ def main(trip: str):
 def make_image(cameras: List[CameraData], crops: List[Tuple[int, int, float]]):
     images = []
     for cam, transform in zip(cameras, crops):
-        img = prepare_image(cam.frame, transform)
+        img = tf_process_image(cam.frame, transform)
         img = img[160:320, 320:640]
         images.append(img)
     combined = np.hstack(images)[:,:,::-1]

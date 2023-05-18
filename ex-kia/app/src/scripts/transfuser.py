@@ -1,7 +1,7 @@
 from collections import deque
 import logging
 import os
-from typing import Any, Tuple
+from typing import Any, Callable, Tuple
 
 _log = logging.getLogger(__name__)
 
@@ -28,7 +28,6 @@ from src.nap.kia.lidar import make_lidar
 from src.nap.kia.canbus import make_can
 from .make_mov import make_movie
 
-from team_code_transfuser.submission_agent import HybridAgent
 from srunner.scenariomanager.timer import GameTime
 
 
@@ -41,7 +40,12 @@ class RoadOption(enum.Enum):
     UNUSED = 0
 
 
-def main(trip: str):
+def run_agent(
+    trip: str,
+    setup_agent: Callable[[], Any],
+    process_image: Callable[[np.ndarray, Any], np.ndarray],
+    process_output: Callable[[int, Any, Any], None],
+):
     _log.info('Loading global plan')
     plan_path = '/plan/plan.csv'
     csv = np.genfromtxt(plan_path, delimiter=',', names=True)
@@ -58,19 +62,16 @@ def main(trip: str):
     _log.info('Preparing input data')
     input_data_gen = gen_input_data(
         Path('/dataset') / trip,
-        gps_lat0=gps_lat0, gps_lon0=gps_lon0
+        gps_lat0=gps_lat0, gps_lon0=gps_lon0,
+        process_image=process_image,
     )
     input_data_iter = iter(input_data_gen)
 
     _log.info('Loading agent')
-    agent = HybridAgent('/model')
-    agent.config.action_repeat = 1
+    agent = setup_agent()
 
     # Don't use set_global_plan to avoid route downsampling
     agent._global_plan = global_plan_gps
-
-    # Disable GPS denoising
-    agent.gps_buffer = deque(maxlen=1)
 
     agent.tick = profile.func(agent.tick)
     agent.run_step = profile.func(agent.run_step, name='agent.run_step')
@@ -93,7 +94,7 @@ def main(trip: str):
 
             action = agent.run_step(input_data, step)
 
-            print_agent_data(step, agent, action)
+            process_output(step, agent, action)
 
             tf_actions.append((-360 * action.steer, action.throttle, action.brake))
             gt_actions.append((output_data.steer, output_data.throttle, output_data.brake))
@@ -133,6 +134,7 @@ def make_input_data(step: int):
 
         return {
             'lidar': ex_lidar,
+            'rgb': list(ex_rgb),
             'rgb_left': list(ex_rgb),
             'rgb_front': list(ex_rgb),
             'rgb_right': list(ex_rgb),
@@ -143,7 +145,7 @@ def make_input_data(step: int):
         }
 
 
-def gen_input_data(path: Path, *, gps_lat0: float, gps_lon0: float):
+def gen_input_data(path: Path, *, gps_lat0: float, gps_lon0: float, process_image: Callable[[np.ndarray, Any], np.ndarray]):
 
     gps_ts_max_diff = 50  # ms
     ts_max_diff = 100     # ms
@@ -246,15 +248,17 @@ def gen_input_data(path: Path, *, gps_lat0: float, gps_lon0: float):
 
             ## RGB
             with profile.ctx('process rgb'):
-                input_data['rgb_left'][1] = prepare_image(cam_left.value.frame, (40, 30, 1.33))
-                input_data['rgb_front'][1] = prepare_image(cam_front.value.frame, (0, 0, 1.21))
-                input_data['rgb_right'][1] = prepare_image(cam_right.value.frame, (-228, 38, 1.33))
+                input_data['rgb_left'][1] = process_image(cam_left.value.frame, (40, 30, 1.33))
+                input_data['rgb_front'][1] = process_image(cam_front.value.frame, (0, 0, 1.21))
+                input_data['rgb_right'][1] = process_image(cam_right.value.frame, (-228, 38, 1.33))
+                # InterFuser compatability
+                input_data['rgb'] = input_data['rgb_front']
 
             ## Lidar
             with profile.ctx('process lidar'):
                 lidar_data = lidar.value.cartesian.reshape(-1, 3).copy()
                 lidar_data[:,[0,1]] = lidar_data[:,[1,0]]
-                lidar_data[:, 2] -= 0.8
+                lidar_data[:, 2] -= 0.7
                 input_data['lidar'][1] = lidar_data 
 
             ## Output data
@@ -274,7 +278,7 @@ def print_input_data(step, input_data):
 
 
 @profile.func
-def print_agent_data(step, agent, action):
+def tf_process_output(step, agent, action):
     pred_wp = agent.pred_wp
     route = agent._route_planner.route
 
@@ -292,7 +296,16 @@ def print_agent_data(step, agent, action):
     rich.print(table)
 
 
-def prepare_image(img, transform: Tuple[int, int, float]):
+def tf_setup_agent():
+    from team_code_transfuser.submission_agent import HybridAgent
+    agent = HybridAgent('/model')
+    agent.config.action_repeat = 1
+    # Disable GPS denoising
+    agent.gps_buffer = deque(maxlen=1)
+    return agent
+
+
+def tf_process_image(img, transform: Tuple[int, int, float]):
     pil = Image.fromarray(img)
     ox, oy, s = transform
     x = pil.width//2 + ox
@@ -306,7 +319,11 @@ def prepare_image(img, transform: Tuple[int, int, float]):
     return img
 
 
+def tf_main(trip: str):
+    run_agent(trip, tf_setup_agent, tf_process_image, tf_process_output)
+
+
 if __name__ == '__main__':
     with suppress(KeyboardInterrupt):
         with profile.scope('main', dump=True):
-            main(*sys.argv[1:])
+            tf_main(*sys.argv[1:])

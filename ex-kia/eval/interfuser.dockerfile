@@ -70,6 +70,8 @@ ENV HOME /home/user
 ENV CUDA_VISIBLE_DEVICES=0
 ENV SDL_VIDEODRIVER=dummy
 
-ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "interfuser"]
+RUN echo "source /opt/conda/etc/profile.d/conda.sh && conda activate interfuser && exec "\$@"" > /docker_entrypoint.sh \
+    && chmod +x /docker_entrypoint.sh
 
-CMD ["/bin/bash"]
+ENTRYPOINT [ "/bin/bash", "/docker_entrypoint.sh" ]
+CMD [ "/bin/bash" ]
