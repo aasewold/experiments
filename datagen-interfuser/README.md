@@ -13,7 +13,7 @@ Then, generate route_configs and copy them to the idun folder:
 ```sh
 cd routegen
 make route_configs
-make copy
+make copy_idun
 ```
 
 ## To Idun and beyond
@@ -33,3 +33,19 @@ and wait. This will:
 
 All files are stored under `~/work/thesis/datagen` on Idun,
 however this can be changed by modifying `$IDUN_WORKDIR` in the `Makefile`.
+
+## Data generation on local clients
+You can also generate data on a local machine using Docker Compose. See the `./local/run.sh` script for details. You can specify the number of parallel executions. Example:
+
+Generate and copy routes:
+```sh
+cd routegen
+make route_configs
+make copy_local
+```
+    
+Start data generation:
+```sh
+cd local
+NUM_JOBS=3 ./run.sh
+```

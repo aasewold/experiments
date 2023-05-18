@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-cd "$(dirname "$0")"/..
+cd "$(dirname "$0")"/../..
 
 cd models/interfuser || { echo "models/interfuser does not exist" >&2; exit 1; }
 

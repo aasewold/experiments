@@ -6,7 +6,8 @@ source ../../common/utils.sh
 
 OUTPUT_DIR_ROOT=/nap02data/work/aasewold/datagen/interfuser
 
-RESUME=${1:-}
+RESUME=${RESUME:-}
+NUM_JOBS=${NUM_JOBS:-3}
 
 if [ -z "$RESUME" ]; then
     # Setup output directory
@@ -29,4 +30,4 @@ else
 fi
 
 run_in_screen "interfuser-datagen-vcxr" \
-    "cat files/input/route_configs.csv | parallel --line-buffer -j3 ./job.sh $output_dir" 
+    "cat files/input/route_configs.csv | parallel --line-buffer -j$NUM_JOBS ./job.sh $output_dir" 
