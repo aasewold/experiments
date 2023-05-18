@@ -126,15 +126,13 @@ class SingleBufferSource(WrappingSource[_T]):
         self._is_prev = True
 
     def advance_to(self, ts: float):
-        prev_diff = None
         while self.ts < ts:
-            prev_diff = abs(self.ts - ts)
             self.advance()
         
-        if prev_diff is not None:
-            diff = abs(self.ts - ts)
-            if diff > prev_diff:
-                self.reverse()
+        if not self._is_prev and (
+            abs(self._prev.ts - ts) < abs(self.ts - ts)
+        ):
+            self.reverse()
 
     def __str__(self) -> str:
         return f'{self._inner} (buffered)'
@@ -169,6 +167,8 @@ class BufferedSource(WrappingSource[_T]):
             self.reverse()
     
     def reverse(self):
+        if self._index <= 0:
+            raise ValueError('Cannot reverse beyond 0')
         self._index -= 1
 
     def peek(self, n: int) -> Measurement[_T]:

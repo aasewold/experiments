@@ -49,10 +49,11 @@ class MeasurementCollection(Generic[_T]):
         details = '\n'.join(f'\t{str(source):40s}: {source.ts:.3f} (diff={source.ts - ts:+.3f})' for source in self._sources)
         _log.info('Synchronized sources to %.3f range=%.3f:\n%s', ts, self.max_ts - self.min_ts, details)
 
-    def __iter__(self):
+    def iter_sync(self):
         while True:
             try:
                 self.advance()
+                self.synchronize()
             except SourceEmpty:
                 break
             yield self.current

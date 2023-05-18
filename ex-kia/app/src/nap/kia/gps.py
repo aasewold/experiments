@@ -1,9 +1,10 @@
 import re
+import logging
 from dataclasses import dataclass
 from pathlib import Path
 
 from src.measurements import Measurement, IteratorSource, NamedSource, SingleBufferSource
-from src.measurements.collection import MeasurementCollection
+from src.measurements.collection import MeasurementCollection, SourceEmpty
 from .old_gps import GpsData
 
 
@@ -86,17 +87,22 @@ def generate_gps(path: Path):
 def make_gps(path: Path):
     return NamedSource(name=path.stem, inner=IteratorSource(generate_gps(path)))
 
-def generate_avg_gps(*paths: Path):
+def generate_avg_gps(*paths: Path, max_ts_diff_ms: float):
     col = MeasurementCollection[GpsData]([
-        SingleBufferSource(IteratorSource(generate_gps(p)))
+        SingleBufferSource(make_gps(p))
         for p in paths
     ])
-    for data in col:
-        col.synchronize()
+
+    for data in col.iter_sync():
+        ts_diff = col.max_ts - col.min_ts
+        if ts_diff > max_ts_diff_ms:
+            logging.warning(f"GPS data too far apart: {ts_diff}ms")
+            continue
+
         yield Measurement(
             sum(d.ts for d in data) / len(data),
             GpsData.average([d.value for d in data]),
         )
 
-def make_avg_gps(*paths: Path):
-    return NamedSource(name="gps", inner=IteratorSource(generate_avg_gps(*paths)))
+def make_avg_gps(*paths: Path, max_ts_diff_ms: float):
+    return NamedSource(name="gps", inner=IteratorSource(generate_avg_gps(*paths, max_ts_diff_ms=max_ts_diff_ms)))

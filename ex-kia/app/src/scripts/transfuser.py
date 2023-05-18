@@ -1,7 +1,7 @@
 from collections import deque
 import logging
 import os
-from typing import Tuple
+from typing import Any, Tuple
 
 _log = logging.getLogger(__name__)
 
@@ -20,7 +20,7 @@ from rich.table import Table
 from PIL import Image
 
 from src import profile
-from src.measurements.source import BufferedSource, SourceEmpty
+from src.measurements.source import BufferedSource, SingleBufferSource, SourceEmpty
 from src.measurements.collection import MeasurementCollection
 from src.nap.kia.gps import make_avg_gps
 from src.nap.kia.camera import make_camera
@@ -60,6 +60,7 @@ def main(trip: str):
         Path('/dataset') / trip,
         gps_lat0=gps_lat0, gps_lon0=gps_lon0
     )
+    input_data_iter = iter(input_data_gen)
 
     _log.info('Loading agent')
     agent = HybridAgent('/model')
@@ -69,10 +70,7 @@ def main(trip: str):
     agent._global_plan = global_plan_gps
 
     # Disable GPS denoising
-    def _gps_keep_last(*_):
-        while len(agent.gps_buffer) > 1:
-            agent.gps_buffer.popleft()
-    agent.update_gps_buffer = _gps_keep_last
+    agent.gps_buffer = deque(maxlen=1)
 
     agent.tick = profile.func(agent.tick)
     agent.run_step = profile.func(agent.run_step, name='agent.run_step')
@@ -81,7 +79,10 @@ def main(trip: str):
     gt_actions = []
 
     try:
-        for ts, step, input_data, output_data in input_data_gen:
+        while True:
+            print('--')
+            ts, step, input_data, output_data = next(input_data_iter)
+
             GameTime._init = True
             GameTime._last_frame = step
             GameTime._carla_time = ts / 1000
@@ -97,7 +98,7 @@ def main(trip: str):
             tf_actions.append((-360 * action.steer, action.throttle, action.brake))
             gt_actions.append((output_data.steer, output_data.throttle, output_data.brake))
 
-    except KeyboardInterrupt:
+    except (StopIteration, KeyboardInterrupt):
         pass
 
     tf_actions = np.array(tf_actions).T
@@ -144,6 +145,9 @@ def make_input_data(step: int):
 
 def gen_input_data(path: Path, *, gps_lat0: float, gps_lon0: float):
 
+    gps_ts_max_diff = 50  # ms
+    ts_max_diff = 100     # ms
+
     gps50_path = path / 'gnss50_vehicle.bin'
     gps52_path = path / 'gnss52_vehicle.bin'
 
@@ -154,39 +158,38 @@ def gen_input_data(path: Path, *, gps_lat0: float, gps_lon0: float):
     lidar_offset = int(lidar_path.with_suffix('.offset').read_text())
 
     with profile.scope('setup', dump=True):
-        gps = BufferedSource(make_avg_gps(gps50_path, gps52_path))
-        can_0 = make_can(path / 'can_vehicle1.bin')
-        cam_left = make_camera(path / 'C7_L2.h264')
-        cam_right = make_camera(path / 'C8_R2.h264')
-        cam_front = make_camera(path / 'C3_tricam120.h264')
-        lidar = make_lidar(lidar_path, first_ts=lidar_offset + cam_front.ts)
+        gps = BufferedSource(make_avg_gps(gps50_path, gps52_path, max_ts_diff_ms=gps_ts_max_diff))
+        can_0 = SingleBufferSource(make_can(path / 'can_vehicle1.bin'))
+        cam_left = SingleBufferSource(make_camera(path / 'C7_L2.h264'))
+        cam_right = SingleBufferSource(make_camera(path / 'C8_R2.h264'))
+        cam_front = SingleBufferSource(make_camera(path / 'C3_tricam120.h264'))
+        lidar = SingleBufferSource(make_lidar(lidar_path, first_ts=lidar_offset + cam_front.ts))
 
-        to_sync = [lidar, cam_left, cam_right, cam_front]
-
-        collection = MeasurementCollection([gps, can_0, lidar, cam_left, cam_right, cam_front])
+        collection = MeasurementCollection[Any]([gps, can_0, lidar, cam_left, cam_right, cam_front])
         collection.synchronize()
 
     def _generator():
         est_yaw = 0
         est_speed = 0
-        behind_gps_buf = deque([])
-        ahead_gps_buf = deque([])
 
-        for step in itertools.count():
+        step = -1
+
+        while True:
             try:
-                with profile.ctx('advance'):
-                    for source in to_sync:
-                        with profile.ctx(str(source)):
-                            source.advance()
-                
-                ts = max(source.ts for source in to_sync)
-                collection.synchronize(to=ts)
+                gps.advance()
+                collection.synchronize(to=gps.ts)
             except SourceEmpty:
                 break
 
+            ts_diff = collection.max_ts - collection.min_ts
+            if ts_diff > ts_max_diff:
+                _log.warning('Skipping frame at %d due to large time difference %.2f', step + 1, ts_diff)
+                continue
+
+            step += 1
             input_data = make_input_data(step)
 
-            with profile.ctx('gps'):
+            with profile.ctx('process gps'):
                 N, E, _ = pymap3d.geodetic2ned(gps.value.lat, gps.value.lon, 0, gps_lat0, gps_lon0, 0)
                 carla_lat = N / 111324.60662786
                 carla_lon = E / 111319.490945
@@ -237,20 +240,22 @@ def gen_input_data(path: Path, *, gps_lat0: float, gps_lon0: float):
                 if gps.value.speed is not None:
                     est_speed = min(3, gps.value.speed / 3.6)
 
-            input_data['gps'][1] = [carla_lat, carla_lon, 0]
-            input_data['imu'][1] = [est_yaw]
-            input_data['speed'][1] = { 'speed': est_speed }
+                input_data['gps'][1] = [carla_lat, carla_lon, 0]
+                input_data['imu'][1] = [est_yaw]
+                input_data['speed'][1] = { 'speed': est_speed }
 
             ## RGB
-            input_data['rgb_left'][1] = prepare_image(cam_left.value.frame, (40, 30, 1.33))
-            input_data['rgb_front'][1] = prepare_image(cam_front.value.frame, (0, 0, 1.21))
-            input_data['rgb_right'][1] = prepare_image(cam_right.value.frame, (-228, 38, 1.33))
+            with profile.ctx('process rgb'):
+                input_data['rgb_left'][1] = prepare_image(cam_left.value.frame, (40, 30, 1.33))
+                input_data['rgb_front'][1] = prepare_image(cam_front.value.frame, (0, 0, 1.21))
+                input_data['rgb_right'][1] = prepare_image(cam_right.value.frame, (-228, 38, 1.33))
 
             ## Lidar
-            lidar_data = lidar.value.cartesian.reshape(-1, 3)
-            lidar_data[:,[0,1]] = lidar_data[:,[1,0]]
-            lidar_data[:, 2] -= 0.8
-            input_data['lidar'][1] = lidar_data 
+            with profile.ctx('process lidar'):
+                lidar_data = lidar.value.cartesian.reshape(-1, 3).copy()
+                lidar_data[:,[0,1]] = lidar_data[:,[1,0]]
+                lidar_data[:, 2] -= 0.8
+                input_data['lidar'][1] = lidar_data 
 
             ## Output data
             output_data = can_0.value[1]
