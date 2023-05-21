@@ -5,6 +5,8 @@ services:
     build:
       context: .
       dockerfile: carla-${CARLA_VERSION}.dockerfile
+      args:
+        - CARLA_IMAGE=${CARLA_IMAGE:-carlasim/carla:${CARLA_VERSION}}
     restart: on-failure
     deploy:
       resources:
