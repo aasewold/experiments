@@ -5,6 +5,7 @@ import shutil
 import sys
 import tarfile
 from pathlib import Path
+from PIL import Image
 
 import click
 from tqdm.contrib.concurrent import process_map
@@ -281,6 +282,43 @@ def create_index(dataset_path: Path):
     )
     click.echo(f"Dataset index stored at {dataset_index_path}")
 
+
+def _check_corrupt_images(image_dir: Path):
+    error = False
+
+    # check last image in dir
+    last_image = sorted(list(image_dir.glob("*.jpg")), key=lambda x: int(x.stem))[-1]
+
+    try:
+        image = Image.open(last_image)
+        image.load()
+        image.close()
+    except Exception:
+        error = True
+    
+    return image_dir if error else None
+
+
+@cli.command(help="Check if any images are corrupt")
+@click.argument("dataset-path", type=click.Path(exists=True, path_type=Path))
+def check_corrupt_images(dataset_path: Path):
+    all_image_dirs = []
+
+    for path in dataset_path.glob("weather-*/data/*/C*_*"):
+        all_image_dirs.append(path)
+
+    results = process_map(
+        _check_corrupt_images,
+        all_image_dirs,
+        max_workers=CPU_COUNT,
+        desc="Checking corrupt images",
+    )
+
+    corrupt_paths = [r for r in results if r is not None]
+
+    click.echo(f"Found {len(corrupt_paths)} corrupt images:")
+    for path in corrupt_paths:
+        click.echo(path)
 
 if __name__ == "__main__":
     cli()
