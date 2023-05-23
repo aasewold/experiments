@@ -83,14 +83,15 @@ run_transfuser() (
     CARLA_VERSION_SUBST="$(echo "$CARLA_VERSION" | tr . _)"
     RUN_ID_SUBST="$(echo "$RUN_ID" | tr '[:upper:]' '[:lower:]')"
 
-    screen_name="ex-${MODEL_NAME}-${CARLA_VERSION}-${RUN_ID}"
-    compose_name="ex_${MODEL_NAME_SUBST}_${CARLA_VERSION_SUBST}-${RUN_ID_SUBST}"
+    screen_name="ex-${MODEL_NAME}-${CARLA_VERSION}-${EVALUATION}-${RUN_ID}"
+    compose_name="ex_${MODEL_NAME_SUBST}_${CARLA_VERSION_SUBST}-${EVALUATION}-${RUN_ID_SUBST}"
 
     echo "# Time: $(date '+%Y-%m-%d %H:%M:%S')" >> "$RESULT_PATH/desc.txt"
     echo "# Run ID: $RUN_ID" >> "$RESULT_PATH/desc.txt"
     echo "# CARLA version: $CARLA_VERSION" >> "$RESULT_PATH/desc.txt"
     echo "# Transfuser commit: $TRANSFUSER_COMMIT" >> "$RESULT_PATH/desc.txt"
     echo "# Model: $MODEL_NAME" >> "$RESULT_PATH/desc.txt"
+    echo "# Evaluation: $EVALUATION" >> "$RESULT_PATH/desc.txt"
     echo >> "$RESULT_PATH/desc.txt"
 
     echo "# Please write a short description of the run:" >> "$RESULT_PATH/desc.txt"

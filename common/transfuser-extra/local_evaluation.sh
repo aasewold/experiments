@@ -10,9 +10,6 @@ export LEADERBOARD_ROOT=${WORK_DIR}/leaderboard
 export PYTHONPATH="${CARLA_ROOT}/PythonAPI/carla/":"${SCENARIO_RUNNER_ROOT}":"${LEADERBOARD_ROOT}":${PYTHONPATH}
 
 export TEAM_CONFIG=/model
-export CHECKPOINT_ENDPOINT=/results/transfuser_longest6.json
-export ROUTES=${WORK_DIR}/leaderboard/data/longest6/longest6.xml
-export SCENARIOS=${WORK_DIR}/leaderboard/data/longest6/eval_scenarios.json
 
 export TEAM_AGENT=${WORK_DIR}/team_code_transfuser/submission_agent.py
 export REPETITIONS=1
@@ -21,13 +18,43 @@ export DEBUG_CHALLENGE=0
 export RESUME=1
 export DATAGEN=0
 
-echo "Starting at $(date +"%Y-%m-%d %H:%M:%S")" >> /results/log.txt
+if [ -z "$EVALUATION" ]; then
+    echo "EVALUATION is not set, please set it to one of the following:"
+    echo "  - longest6"
+    echo "  - town05"
+    echo "  - 42routes"
+    exit 1
+fi
 
-echo >> /results/log.txt
-echo "Environment:" >> /results/log.txt
-env >> /results/log.txt
-echo "---------------------" >> /results/log.txt
-echo >> /results/log.txt
+if [ "$EVALUATION" = "town05" ]; then
+    export ROUTES=${WORK_DIR}/leaderboard/data/town05_long/routes_town05_long.xml
+    export SCENARIOS=${WORK_DIR}/leaderboard/data/town05_long/town05_all_scenarios.json
+    export CHECKPOINT_ENDPOINT=/results/town05.json
+elif [ "$EVALUATION" = "42routes" ]; then
+    export ROUTES=${WORK_DIR}/leaderboard/data/42routes/42routes.xml
+    export SCENARIOS=${WORK_DIR}/leaderboard/data/42routes/42scenarios.json
+    export CHECKPOINT_ENDPOINT=/results/42routes.json
+else
+    export ROUTES=${WORK_DIR}/leaderboard/data/longest6/longest6.xml
+    export SCENARIOS=${WORK_DIR}/leaderboard/data/longest6/eval_scenarios.json
+    export CHECKPOINT_ENDPOINT=/results/longest6.json
+fi
+
+logfile=/results/log.txt
+
+echo "Starting at $(date +"%Y-%m-%d %H:%M:%S")" >> $logfile
+
+echo >> $logfile
+echo "EVALUATION: $EVALUATION" >> $logfile
+echo "ROUTES: $ROUTES" >> $logfile
+echo "SCENARIOS: $SCENARIOS" >> $logfile
+echo "CHECKPOINT_ENDPOINT: $CHECKPOINT_ENDPOINT" >> $logfile
+
+echo >> $logfile
+echo "Environment:" >> $logfile
+env >> $logfile
+echo "---------------------" >> $logfile
+echo >> $logfile
 
 python3 ${LEADERBOARD_ROOT}/leaderboard/leaderboard_evaluator_local.py \
 --scenarios=${SCENARIOS}  \
@@ -39,11 +66,11 @@ python3 ${LEADERBOARD_ROOT}/leaderboard/leaderboard_evaluator_local.py \
 --agent-config=${TEAM_CONFIG} \
 --debug=${DEBUG_CHALLENGE} \
 --resume=${RESUME} \
-    2>&1 | tee -a "/results/log.txt"
+    2>&1 | tee -a "$logfile"
 RET="${PIPESTATUS[0]}"
 
-echo >> /results/log.txt
-echo "Finished at $(date +"%Y-%m-%d %H:%M:%S")" >> /results/log.txt
-echo >> /results/log.txt
+echo >> $logfile
+echo "Finished at $(date +"%Y-%m-%d %H:%M:%S")" >> $logfile
+echo >> $logfile
 
 exit $RET

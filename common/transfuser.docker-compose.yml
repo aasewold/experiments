@@ -28,6 +28,8 @@ services:
       SAVE_PATH: "${SAVE_PATH:-}"
       ACTOR_AMOUNT: "${ACTOR_AMOUNT:-500}"
       TRANSFUSER_DAYTIME_HEADLIGHTS: "${TRANSFUSER_DAYTIME_HEADLIGHTS:-1}"
+      # Specify which evaluation to run. The options are town05, 42routes and longest6
+      EVALUATION: "${EVALUATION:-longest6}"
     volumes:
       - ${MODEL_PATH}:/model
       - ${RESULT_PATH}:/results
