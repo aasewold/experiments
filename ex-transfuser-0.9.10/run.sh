@@ -6,6 +6,8 @@ MODEL_NAME="$1"
 CARLA_VERSION=0.9.10.1
 TRANSFUSER_COMMIT=experiments/0.9.10
 
+export SAVE_PATH=/results/viz
+
 PS3='Select evaluation: '
 options=("town05" "42routes" "longest6" "Quit")
 select eval in "${options[@]}"
