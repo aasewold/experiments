@@ -8,9 +8,9 @@ def make_movie(data_folder: Path, movie_path: Optional[Path] = None):
     if movie_path is None:
         movie_path = data_folder / "movie.mp4"
     
-    if (data_folder / '0.jpg').exists():
+    if (data_folder / '1.jpg').exists():
         fmt = '%d'
-    elif (data_folder / '0000.jpg').exists():
+    elif (data_folder / '0001.jpg').exists():
         fmt = '%04d'
     else:
         raise ValueError(f"Couldn't guess number format in {data_folder}")
