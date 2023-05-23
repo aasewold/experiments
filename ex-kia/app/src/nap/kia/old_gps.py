@@ -1,8 +1,13 @@
 import re
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Callable, Iterable, Optional, TypeVar, List
+from typing import Any, Callable, Iterable, Optional, Tuple, TypeVar, List
+import numpy as np
+import numpy.typing as npt
+import pymap3d
 
+from src import profile
+from src.util import cached_property
 from src.measurements import Measurement, IteratorSource, NamedSource
 
 
@@ -24,8 +29,10 @@ class GpsData:
     course: Optional[float]
     hdop: Optional[float]
     vdop: Optional[float]
+    gps0: Optional[Tuple[float, float]] = None
 
     @classmethod
+    @profile.func
     def average(cls, datas: List['GpsData']) -> 'GpsData':
         return cls(
             index=datas[0].index,
@@ -36,10 +43,22 @@ class GpsData:
             course=_avg_none(d.course for d in datas),
             hdop=_avg_none(d.hdop for d in datas),
             vdop=_avg_none(d.vdop for d in datas),
+            gps0=next((d.gps0 for d in datas if d.gps0 is not None), None),
         )
     
     def is_zero(self) -> bool:
         return self.lat == 0 and self.lon == 0 and self.alt == 0
+    
+    @cached_property
+    @profile.func
+    def NED(self) -> npt.NDArray[np.float64]:
+        if self.gps0 is None:
+            raise ValueError('gps0 is None')
+        return np.array(pymap3d.geodetic2ned(self.lat, self.lon, 0, *self.gps0, 0))
+
+    @property
+    def NE(self) -> npt.NDArray[np.float64]:
+        return self.NED[:2]
 
 
 _I = TypeVar('_I')

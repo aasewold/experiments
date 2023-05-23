@@ -22,15 +22,28 @@ def if_process_image(img, unused):
 
 
 @profile.func
-def if_process_output(step, agent, action):
-    # target = pred_wp[0] + pred_wp[1]
-    # angle = atan2(target[1], target[0]) * 180 / np.pi
+def if_get_extra_data(step, agent, action):
+    # Taken from interfuser_controller.py
+    wp = agent.prev_waypoints
+    meta = agent.meta_infos
+
+    desired_speed = float(meta[0].split('target_speed: ')[1])
     
-    print(f'{step}: {action}')
+    aim = (wp[1] + wp[0]) / 2
+    aim[1] *= -1
+    angle = np.pi/2 - np.arctan2(aim[1], aim[0])
+    steer = np.degrees(angle) / 90
+    
+    return {
+        'wp': wp,
+        'desired_speed': desired_speed,
+        'angle_rad': angle,
+        'raw_steer': steer,
+    }
 
 
 def if_main(trip: str):
-    run_agent(trip, if_setup_agent, if_process_image, if_process_output)
+    run_agent(trip, if_setup_agent, if_process_image, if_get_extra_data)
 
 
 if __name__ == '__main__':

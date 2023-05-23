@@ -15,7 +15,8 @@ from src.nap.kia.gps import make_avg_gps
 def load_gps_data(path):
     gps = make_avg_gps(
         path / 'gnss50_vehicle.bin',
-        path / 'gnss52_vehicle.bin'
+        path / 'gnss52_vehicle.bin',
+        max_ts_diff_ms=50,
     )
 
     ts = []

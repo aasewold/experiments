@@ -2,6 +2,7 @@ import re
 import logging
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Optional, Tuple
 
 from src.measurements import Measurement, IteratorSource, NamedSource, SingleBufferSource
 from src.measurements.collection import MeasurementCollection, SourceEmpty
@@ -37,7 +38,7 @@ def parse_lon(s: str) -> float:
 re_line = re.compile(r"\$(.+)\*[0-9A-F]{2} (\d+)")
 
 
-def generate_gps(path: Path):
+def generate_gps(path: Path, *, gps0: Optional[Tuple[float, float]] = None):
     curr_gga = None
     curr_vtg = None
 
@@ -81,15 +82,16 @@ def generate_gps(path: Path):
                                 course=curr_vtg.course if curr_vtg else None,
                                 hdop=curr_gga.hdop,
                                 vdop=None,
+                                gps0=gps0,
                             ),
                         )
 
-def make_gps(path: Path):
-    return NamedSource(name=path.stem, inner=IteratorSource(generate_gps(path)))
+def make_gps(path: Path, *, gps0: Optional[Tuple[float, float]] = None):
+    return NamedSource(name=path.stem, inner=IteratorSource(generate_gps(path, gps0=gps0)))
 
-def generate_avg_gps(*paths: Path, max_ts_diff_ms: float):
+def generate_avg_gps(*paths: Path, max_ts_diff_ms: float, gps0: Optional[Tuple[float, float]] = None):
     col = MeasurementCollection[GpsData]([
-        SingleBufferSource(make_gps(p))
+        SingleBufferSource(make_gps(p, gps0=gps0))
         for p in paths
     ])
 
@@ -104,5 +106,5 @@ def generate_avg_gps(*paths: Path, max_ts_diff_ms: float):
             GpsData.average([d.value for d in data]),
         )
 
-def make_avg_gps(*paths: Path, max_ts_diff_ms: float):
-    return NamedSource(name="gps", inner=IteratorSource(generate_avg_gps(*paths, max_ts_diff_ms=max_ts_diff_ms)))
+def make_avg_gps(*paths: Path, max_ts_diff_ms: float, gps0: Optional[Tuple[float, float]] = None):
+    return NamedSource(name="gps", inner=IteratorSource(generate_avg_gps(*paths, max_ts_diff_ms=max_ts_diff_ms, gps0=gps0)))
