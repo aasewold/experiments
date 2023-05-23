@@ -25,7 +25,7 @@ services:
         - TRANSFUSER_COMMIT=${TRANSFUSER_COMMIT}
     environment:
       PYTHONUNBUFFERED: "1"
-      SAVE_PATH: "${SAVE_PATH:-/results/viz}"
+      SAVE_PATH: "${SAVE_PATH-/results/viz}"
       ACTOR_AMOUNT: "${ACTOR_AMOUNT:-500}"
       TRANSFUSER_DAYTIME_HEADLIGHTS: "${TRANSFUSER_DAYTIME_HEADLIGHTS:-1}"
       # Specify which evaluation to run. The options are town05, 42routes and longest6
