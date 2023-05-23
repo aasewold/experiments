@@ -47,7 +47,7 @@ class MeasurementCollection(Generic[_T]):
                 source.advance_to(ts)
 
         details = '\n'.join(f'\t{str(source):40s}: {source.ts:.3f} (diff={source.ts - ts:+.3f})' for source in self._sources)
-        _log.info('Synchronized sources to %.3f range=%.3f:\n%s', ts, self.max_ts - self.min_ts, details)
+        _log.debug('Synchronized sources to %.3f range=%.3f:\n%s', ts, self.max_ts - self.min_ts, details)
 
     def iter_sync(self):
         while True:
