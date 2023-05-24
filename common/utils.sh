@@ -177,3 +177,30 @@ run_interfuser() (
     run_in_screen "$screen_name" \
         "docker compose -p $compose_name -f $COMMON/interfuser.docker-compose.yml up --build"
 )
+
+select_evaluation() {
+    PS3='Select evaluation: '
+    options=("town05" "42routes" "longest6" "Quit")
+    select eval in "${options[@]}"
+    do
+        case $eval in
+            "town05")
+                export ACTOR_AMOUNT=120
+                break
+                ;;
+            "42routes")
+                export ACTOR_AMOUNT=town
+                break
+                ;;
+            "longest6")
+                break
+                ;;
+            "Quit")
+                exit 0
+                ;;
+            *) echo "invalid option $REPLY";;
+        esac
+    done
+
+    export EVALUATION=$eval
+}
