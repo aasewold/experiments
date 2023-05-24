@@ -28,7 +28,7 @@ get_commit_hash_interfuser() {
 setup_transfuser() (
     set -euo pipefail
 
-    mkdir -p results models
+    mkdir -p results
 
     if ../common/pretrained-models/check-prefuser.sh; then
         echo "Models already exist, skipping download"
@@ -52,11 +52,12 @@ setup_interfuser() (
 )
 
 run_transfuser() (
-    MODEL_PATH="$REPO/models/$MODEL_NAME"
     if [ ! -d "$MODEL_PATH" ]; then
         echo "Directory $MODEL_PATH does not exist"
         exit 1
     fi
+
+    MODEL_NAME="$(basename "$MODEL_PATH")"
 
     if [ -z "$RESUME" ]; then
         RUN_ID="$(date +%Y-%m-%dT%H-%M-%S)"
@@ -78,7 +79,7 @@ run_transfuser() (
 
     mkdir -p "$RESULT_PATH"
 
-    TRANSFUSER_COMMIT="$(get_commit_hash "$TRANSFUSER_COMMIT")"
+    COMMIT="$(get_commit_hash "$COMMIT")"
     MODEL_NAME_SUBST="$(echo "$MODEL_NAME" | tr , _)"
     CARLA_VERSION_SUBST="$(echo "$CARLA_VERSION" | tr . _)"
     RUN_ID_SUBST="$(echo "$RUN_ID" | tr '[:upper:]' '[:lower:]')"
@@ -90,7 +91,7 @@ run_transfuser() (
     echo "# Run ID: $RUN_ID" >> "$RESULT_PATH/desc.txt"
     echo "# CARLA version: $CARLA_VERSION" >> "$RESULT_PATH/desc.txt"
     echo "# CARLA image: $CARLA_IMAGE" >> "$RESULT_PATH/desc.txt"
-    echo "# Transfuser commit: $TRANSFUSER_COMMIT" >> "$RESULT_PATH/desc.txt"
+    echo "# Transfuser commit: $COMMIT" >> "$RESULT_PATH/desc.txt"
     echo "# Model: $MODEL_NAME" >> "$RESULT_PATH/desc.txt"
     echo "# Evaluation: $EVALUATION" >> "$RESULT_PATH/desc.txt"
     echo >> "$RESULT_PATH/desc.txt"
@@ -105,7 +106,7 @@ run_transfuser() (
 
     export CARLA_IMAGE
     export CARLA_VERSION
-    export TRANSFUSER_COMMIT
+    export TRANSFUSER_COMMIT="$COMMIT"
     export MODEL_PATH="$(realpath "$MODEL_PATH")"
     export RESULT_PATH="$(realpath "$RESULT_PATH")"
 
@@ -114,7 +115,6 @@ run_transfuser() (
 )
 
 run_interfuser() (
-    MODEL_PATH="$REPO/models/$MODEL_NAME"
     if [ ! -d "$MODEL_PATH" ]; then
         echo "Directory $MODEL_PATH does not exist"
         exit 1
@@ -125,6 +125,8 @@ run_interfuser() (
         echo "Download or make sure the model filename is correct"
         exit 1
     fi
+    
+    MODEL_NAME="$(basename "$MODEL_PATH")"
 
     if [ -z "$RESUME" ]; then
         RUN_ID="$(date +%Y-%m-%dT%H-%M-%S)"
@@ -146,7 +148,7 @@ run_interfuser() (
 
     mkdir -p "$RESULT_PATH"
 
-    INTERFUSER_COMMIT="$(get_commit_hash_interfuser "$INTERFUSER_COMMIT")"
+    COMMIT="$(get_commit_hash_interfuser "$COMMIT")"
     MODEL_NAME_SUBST="$(echo "$MODEL_NAME" | tr , _)"
     CARLA_VERSION_SUBST="$(echo "$CARLA_VERSION" | tr . _)"
     RUN_ID_SUBST="$(echo "$RUN_ID" | tr '[:upper:]' '[:lower:]')"
@@ -158,7 +160,7 @@ run_interfuser() (
     echo "# Run ID: $RUN_ID" >> "$RESULT_PATH/desc.txt"
     echo "# CARLA version: $CARLA_VERSION" >> "$RESULT_PATH/desc.txt"
     echo "# CARLA image: $CARLA_IMAGE" >> "$RESULT_PATH/desc.txt"
-    echo "# Interfuser commit: $INTERFUSER_COMMIT" >> "$RESULT_PATH/desc.txt"
+    echo "# Interfuser commit: $COMMIT" >> "$RESULT_PATH/desc.txt"
     echo "# Model: $MODEL_NAME" >> "$RESULT_PATH/desc.txt"
     echo "# Evaluation: $EVALUATION" >> "$RESULT_PATH/desc.txt"
     echo >> "$RESULT_PATH/desc.txt"
@@ -173,7 +175,7 @@ run_interfuser() (
 
     export CARLA_IMAGE
     export CARLA_VERSION
-    export INTERFUSER_COMMIT
+    export INTERFUSER_COMMIT="$COMMIT"
     export MODEL_PATH="$(realpath "$MODEL_PATH")"
     export RESULT_PATH="$(realpath "$RESULT_PATH")"
 
@@ -182,7 +184,6 @@ run_interfuser() (
 )
 
 choose_0_9_14_experiment() {
-    echo
     PS3='Select 0.9.14 experiment: '
     options=("Original sensor config" "Kia sensor config" "Quit")
     select exp in "${options[@]}"
@@ -204,11 +205,10 @@ choose_0_9_14_experiment() {
             *) echo "invalid option $REPLY";;
         esac
     done
-
+    echo
 }
 
 select_evaluation() {
-    echo
     PS3='Select evaluation: '
     options=("town05" "42routes" "longest6" "Quit")
     select eval in "${options[@]}"
@@ -231,6 +231,35 @@ select_evaluation() {
             *) echo "invalid option $REPLY";;
         esac
     done
+    echo
 
     export EVALUATION=$eval
+}
+
+select_model() {
+    local model_dir="$1"
+    PS3='Select model: '
+    options=("Enter path")
+    readarray -O 1 -t options < <(find "$model_dir" -type d -links 2 -printf '%f\n' | sort)
+    select model in "${options[@]}"
+    do
+        case $model in
+            "Enter path")
+                read -p "Enter path: " model
+                export MODEL_PATH="$model"
+                break
+                ;;
+            *)
+                export MODEL_PATH="$model_dir/$model"
+                break
+                ;;
+        esac
+    done
+    echo "Selected model: $MODEL_PATH"
+    echo
+
+    if [ ! -d "$MODEL_PATH" ]; then
+        echo "Directory $MODEL_PATH does not exist"
+        select_model "$model_dir"
+    fi
 }

@@ -2,10 +2,10 @@
 
 source ../common/utils.sh
 
-MODEL_NAME="$1"
 CARLA_VERSION=0.9.10.1
-INTERFUSER_COMMIT=main
+COMMIT=experiments/0.9.10
 
+select_model "../models/"
 select_evaluation
 
 run_interfuser
