@@ -3,9 +3,11 @@
 source ../common/utils.sh
 
 MODEL_NAME="$1"
-CARLA_IMAGE="mathiaswold/carla:0.9.14"
+
+choose_0_9_14_experiment
+
 CARLA_VERSION=0.9.14
-INTERFUSER_COMMIT=0.9.14
+INTERFUSER_COMMIT=$COMMIT
 
 select_evaluation
 

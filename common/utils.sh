@@ -89,6 +89,7 @@ run_transfuser() (
     echo "# Time: $(date '+%Y-%m-%d %H:%M:%S')" >> "$RESULT_PATH/desc.txt"
     echo "# Run ID: $RUN_ID" >> "$RESULT_PATH/desc.txt"
     echo "# CARLA version: $CARLA_VERSION" >> "$RESULT_PATH/desc.txt"
+    echo "# CARLA image: $CARLA_IMAGE" >> "$RESULT_PATH/desc.txt"
     echo "# Transfuser commit: $TRANSFUSER_COMMIT" >> "$RESULT_PATH/desc.txt"
     echo "# Model: $MODEL_NAME" >> "$RESULT_PATH/desc.txt"
     echo "# Evaluation: $EVALUATION" >> "$RESULT_PATH/desc.txt"
@@ -102,6 +103,7 @@ run_transfuser() (
 
     sleep 1
 
+    export CARLA_IMAGE
     export CARLA_VERSION
     export TRANSFUSER_COMMIT
     export MODEL_PATH="$(realpath "$MODEL_PATH")"
@@ -155,6 +157,7 @@ run_interfuser() (
     echo "# Time: $(date '+%Y-%m-%d %H:%M:%S')" >> "$RESULT_PATH/desc.txt"
     echo "# Run ID: $RUN_ID" >> "$RESULT_PATH/desc.txt"
     echo "# CARLA version: $CARLA_VERSION" >> "$RESULT_PATH/desc.txt"
+    echo "# CARLA image: $CARLA_IMAGE" >> "$RESULT_PATH/desc.txt"
     echo "# Interfuser commit: $INTERFUSER_COMMIT" >> "$RESULT_PATH/desc.txt"
     echo "# Model: $MODEL_NAME" >> "$RESULT_PATH/desc.txt"
     echo "# Evaluation: $EVALUATION" >> "$RESULT_PATH/desc.txt"
@@ -178,7 +181,34 @@ run_interfuser() (
         "docker compose -p $compose_name -f $COMMON/interfuser.docker-compose.yml up --build"
 )
 
+choose_0_9_14_experiment() {
+    echo
+    PS3='Select 0.9.14 experiment: '
+    options=("Original sensor config" "Kia sensor config" "Quit")
+    select exp in "${options[@]}"
+    do
+        case $exp in
+            "Original sensor config")
+                COMMIT=experiments/0.9.14
+                CARLA_IMAGE=carlasim/carla:0.9.14
+                break
+                ;;
+            "Kia sensor config")
+                COMMIT=experiments/kia
+                CARLA_IMAGE=mathiaswold/carla:0.9.14
+                break
+                ;;
+            "Quit")
+                exit 0
+                ;;
+            *) echo "invalid option $REPLY";;
+        esac
+    done
+
+}
+
 select_evaluation() {
+    echo
     PS3='Select evaluation: '
     options=("town05" "42routes" "longest6" "Quit")
     select eval in "${options[@]}"
