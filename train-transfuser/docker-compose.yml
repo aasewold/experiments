@@ -12,14 +12,17 @@ services:
         "/bin/bash",
         "/scripts/train_multi.sh",
         "--root_dir", "${DATASET_PATH}",
-        # "--epochs", "26",
-        # "--schedule_reduce_epoch_01", "15",
-        # "--schedule_reduce_epoch_02", "25",
-        # "--load_file", "/logs/transfuser-2023-03-27_09-48-50/model_17.pth",
+        "--epochs", "26",
+        "--schedule_reduce_epoch_01", "15",
+        "--schedule_reduce_epoch_02", "25",
+        # "--setting", "02_05_withheld",
+        # "--load_file", "/logs/transfuser-2023-05-21_22-31-04/model_17.pth",
         # "--start_epoch", "17",
       ]
     environment:
       - PYTHONUNBUFFERED=1
+      - CARLA_VERSION=${CARLA_VERSION}
+      - TRANSFUSER_COMMIT=${TRANSFUSER_COMMIT}
     volumes:
       - ./scripts:/scripts
       - ${DATASET_PATH}:${DATASET_PATH}
