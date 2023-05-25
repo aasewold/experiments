@@ -183,7 +183,7 @@ run_interfuser() (
         "docker compose -p $compose_name -f $COMMON/interfuser.docker-compose.yml up --build"
 )
 
-choose_0_9_14_experiment() {
+select_sensor_config() {
     PS3='Select 0.9.14 experiment: '
     options=("Original sensor config" "Kia sensor config" "Quit")
     select exp in "${options[@]}"
