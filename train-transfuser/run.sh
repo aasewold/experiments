@@ -11,6 +11,7 @@ if [ ! -d "$DATASET_PATH" ]; then
     echo "Dataset path does not exist: $DATASET_PATH"
     exit 1
 fi
+export DATASET_PATH="$(realpath "$DATASET_PATH")"
 
 run_in_screen "train-transfuser" \
     "docker compose up --build"
