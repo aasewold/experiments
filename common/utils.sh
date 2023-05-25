@@ -239,7 +239,7 @@ select_model() {
     local model_dir="$1"
     PS3='Select model: '
     options=("Enter path")
-    readarray -O 1 -t options < <(find "$model_dir" -type d -links 2 -printf '%f\n' | sort)
+    readarray -O 1 -t options < <(find "$model_dir/" -type d -links 2 -printf '%f\n' | sort)
     select model in "${options[@]}"
     do
         case $model in
