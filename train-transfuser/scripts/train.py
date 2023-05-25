@@ -188,7 +188,11 @@ def main():
         writer = SummaryWriter(log_dir=args.logdir)
         # Log args
         with open(os.path.join(args.logdir, 'args.txt'), 'w') as f:
-            json.dump(args.__dict__, f, indent=2)
+            args_dict = {
+                **args.__dict__,
+                'environment': dict(os.environ),
+            }
+            json.dump(args_dict, f, indent=2)
     else:
         writer = None
 
