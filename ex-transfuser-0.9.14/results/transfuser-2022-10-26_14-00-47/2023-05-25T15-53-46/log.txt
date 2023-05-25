@@ -1,0 +1,92 @@
+Starting at 2023-05-25 13:54:13
+
+EVALUATION: longest6
+ROUTES: ./leaderboard/data/longest6/longest6.xml
+SCENARIOS: ./leaderboard/data/longest6/eval_scenarios.json
+CHECKPOINT_ENDPOINT: /results/longest6.json
+
+Environment:
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+CONDA_SHLVL=2
+PYTHONUNBUFFERED=1
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+CONDA_EXE=/opt/conda/bin/conda
+RESUME=1
+ROUTES=./leaderboard/data/longest6/longest6.xml
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+ACTOR_AMOUNT=500
+HOSTNAME=a2cf8a67e267
+LEADERBOARD_ROOT=./leaderboard
+CARLA_ROOT=carla
+CONDA_PREFIX=/opt/conda/envs/tfuse
+NV_LIBNPP_VERSION=11.3.3.95-1
+NVIDIA_VISIBLE_DEVICES=1
+CARLA_SERVER=carla/CarlaUE4.sh
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+_CE_M=
+NVIDIA_PRODUCT_NAME=CUDA
+CONDA_PREFIX_1=/opt/conda
+NCCL_VERSION=2.9.9-1
+SCENARIOS=./leaderboard/data/longest6/eval_scenarios.json
+PWD=/transfuser
+NVARCH=x86_64
+HOME=/root
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+LC_CTYPE=C.UTF-8
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_CUDA_LIB_VERSION=11.3.1-1
+_CE_CONDA=
+SCENARIO_RUNNER_ROOT=./scenario_runner
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_NVTX_VERSION=11.3.109-1
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_CUDNN_VERSION=8.2.0.53
+CONDA_PROMPT_MODIFIER=(tfuse) 
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+CHALLENGE_TRACK_CODENAME=SENSORS
+CUDA_VERSION=11.3.1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+CONDA_ROOT=/opt/conda
+SHLVL=2
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=longest6
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+REPETITIONS=1
+CONDA_DEFAULT_ENV=tfuse
+SAVE_PATH=/results/viz
+CHECKPOINT_ENDPOINT=/results/longest6.json
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+TEAM_CONFIG=/model
+WORK_DIR=.
+_=/usr/bin/env
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_0 (repetition 0) =========
+> Setting up the agent[0m
+SAVE_PATH set to /results/viz/RouteScenario_0_0
+/model/model_41.pth
+Downloading: "https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-weights/regnety_032_ra-7f2439f9.pth" to /root/.cache/torch/hub/checkpoints/regnety_032_ra-7f2439f9.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town01
+Actor amount: 500
+No more spawn points to use. Spawned 256 actors out of 500
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:227: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_clses = topk_inds // (height * width)
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:229: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_ys = topk_inds // width
