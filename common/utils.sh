@@ -215,7 +215,6 @@ select_evaluation() {
     do
         case $eval in
             "town05")
-                export ACTOR_AMOUNT=120
                 break
                 ;;
             "42routes")
