@@ -73,6 +73,7 @@ python3 ${LEADERBOARD_ROOT}/leaderboard/leaderboard_evaluator.py \
 --record=${RECORD_PATH} \
 --resume=${RESUME} \
 --port=${PORT} \
+--timeout=60 \
 --trafficManagerPort=${TM_PORT} \
     2>&1 | tee -a "$logfile"
 RET="${PIPESTATUS[0]}"
