@@ -215,13 +215,15 @@ select_evaluation() {
     do
         case $eval in
             "town05")
+                export ACTOR_AMOUNT=${ACTOR_AMOUNT-town}
                 break
                 ;;
             "42routes")
-                export ACTOR_AMOUNT=town
+                export ACTOR_AMOUNT=${ACTOR_AMOUNT-town}
                 break
                 ;;
             "longest6")
+                export ACTOR_AMOUNT=${ACTOR_AMOUNT-500}
                 break
                 ;;
             "Quit")

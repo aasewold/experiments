@@ -26,7 +26,7 @@ services:
     environment:
       PYTHONUNBUFFERED: "1"
       SAVE_PATH: "${SAVE_PATH-/results/viz}"
-      ACTOR_AMOUNT: "${ACTOR_AMOUNT:-500}"
+      ACTOR_AMOUNT: "${ACTOR_AMOUNT:?Please set ACTOR_AMOUNT}"
       TRANSFUSER_DAYTIME_HEADLIGHTS: "${TRANSFUSER_DAYTIME_HEADLIGHTS:-1}"
       # Specify which evaluation to run. The options are town05, 42routes and longest6
       EVALUATION: "${EVALUATION:-longest6}"
