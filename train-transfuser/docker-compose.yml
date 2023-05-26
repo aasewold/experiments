@@ -11,6 +11,7 @@ services:
     command: [
         "/bin/bash",
         "/scripts/train_multi.sh",
+        "--id", "${MODEL_NAME}",
         "--root_dir", "${DATASET_PATH}",
         "--epochs", "26",
         "--schedule_reduce_epoch_01", "15",
