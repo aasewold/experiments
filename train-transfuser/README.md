@@ -2,7 +2,7 @@
 
 Usage:
 ```bash
-./run.sh <DATASET_PATH>
+./run.sh <MODEL_NAME> <DATASET_PATH>
 ```
 
 This will run the training script on the given datset.

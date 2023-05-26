@@ -33,3 +33,8 @@ and wait. This will:
 
 All files are stored under `work/thesis/datagen` on Idun,
 however this can be changed by modifying `$IDUN_WORKDIR` in the `Makefile`.
+
+### Transferring files
+
+While generating data, your Idun file quota may be exceeded.
+In this case, use the `xfer` tool to continuously move data off Idun.

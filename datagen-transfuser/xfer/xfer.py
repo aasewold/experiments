@@ -27,6 +27,9 @@ def parse_args():
 
     run = args[0]
 
+    # Note that the trailing slash is important,
+    # as well as the specific Idun path, which assumes that 
+    # checkpoint.json files are stored at `{idun_path_str}/*/checkpoint.json`.
     idun_path_str = f"work/thesis/datagen/output/{run}/data/"
     local_path_str = f"/data/work/aasewold/datagen/transfuser/{run}/data/"
 
@@ -69,11 +72,11 @@ def rsync_data(args: Args):
     # got all the data. If we synced the data first, and then the checkpoints,
     # we could end up with the following race:
     #  - *route12* data is being generated
-    #  - rsync initiated, syncings route11 and parts of route12
+    #  - rsync initiated, syncing route11 and parts of route12
     #  - *route12* data finishes generation
     #  - rsync continues, since there is alot to copy
     #  - *route13* data finished generation
-    #  - checkpoint is synced, indicating route12 data can be deleted
+    #  - !! checkpoint is synced, indicating route12 data can be deleted
     #  - rsync finishes
     #  - script continues, deleting route12 data before everyting is synced
     logging.info("Syncing data")
