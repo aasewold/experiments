@@ -55,7 +55,7 @@ echo "CHECKPOINT_ENDPOINT: $CHECKPOINT_ENDPOINT" >> $logfile
 
 echo >> $logfile
 echo "Environment:" >> $logfile
-env >> $logfile
+env | sort >> $logfile
 echo "---------------------" >> $logfile
 echo >> $logfile
 
