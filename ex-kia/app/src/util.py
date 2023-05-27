@@ -69,3 +69,8 @@ def cached_property(func: t.Callable[[t.Any], t.Any]) -> property:
             setattr(self, cache_name, value)
             return value
     return inner
+
+
+_T = t.TypeVar('_T')
+def lerp(val: float, in_min: float, in_max: float, out_min: _T, out_max: _T) -> _T:
+    return out_min + (val - in_min) * (out_max - out_min) / (in_max - in_min)

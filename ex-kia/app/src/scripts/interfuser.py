@@ -14,24 +14,19 @@ def if_setup_agent():
     return agent
 
 
-def if_process_image(img, unused):
-    pil = Image.fromarray(img)
-    pil = pil.resize((800, 600), Image.BILINEAR)
-    img = np.asarray(pil)
-    return img
-
-
 @profile.func
 def if_get_extra_data(step, agent, action):
     # Taken from interfuser_controller.py
-    wp = agent.prev_waypoints
+    wp = agent.prev_waypoints.copy()
+    wp[:, 1] *= -1
+    wp[:, [0, 1]] = wp[:, [1, 0]]
+    
     meta = agent.meta_infos
 
     desired_speed = float(meta[0].split('target_speed: ')[1])
     
-    aim = (wp[1] + wp[0]) / 2
-    aim[1] *= -1
-    angle = np.pi/2 - np.arctan2(aim[1], aim[0])
+    aim = (wp[0] + wp[1]) / 2
+    angle = np.arctan2(aim[1], aim[0])
     steer = np.degrees(angle) / 90
     
     return {
@@ -43,7 +38,7 @@ def if_get_extra_data(step, agent, action):
 
 
 def if_main(trip: str):
-    run_agent(trip, if_setup_agent, if_process_image, if_get_extra_data)
+    run_agent(trip, if_setup_agent, if_get_extra_data)
 
 
 if __name__ == '__main__':

@@ -38,7 +38,6 @@ class RoadOption(enum.Enum):
 def run_agent(
     trip: str,
     setup_agent: Callable[[], Any],
-    process_image: Callable[[np.ndarray, Any], np.ndarray],
     get_extra_data: Callable[[int, Any, Any], Dict[str, Any]],
 ):
     _log.info("Loading global plan")
@@ -57,7 +56,6 @@ def run_agent(
     input_data_gen = gen_input_data(
         Path("/dataset") / trip,
         gps0=gps0,
-        process_image=process_image,
     )
     input_data_iter = iter(input_data_gen)
 
@@ -145,7 +143,6 @@ def gen_input_data(
     path: Path,
     *,
     gps0: Tuple[float, float],
-    process_image: Callable[[np.ndarray, Any], np.ndarray],
 ):
     gps_ts_max_diff = 50  # ms
     ts_max_diff = 100  # ms
@@ -254,15 +251,9 @@ def gen_input_data(
 
             ## RGB
             with profile.ctx("process rgb"):
-                input_data["rgb_left"][1] = process_image(
-                    cam_left.value.frame, (40, 30, 1.33)
-                )
-                input_data["rgb_front"][1] = process_image(
-                    cam_front.value.frame, (0, 0, 1.21)
-                )
-                input_data["rgb_right"][1] = process_image(
-                    cam_right.value.frame, (-228, 38, 1.33)
-                )
+                input_data["rgb_left"][1] = cam_left.value.frame
+                input_data["rgb_front"][1] = cam_front.value.frame
+                input_data["rgb_right"][1] = cam_right.value.frame
                 # InterFuser compatability
                 input_data["rgb"] = input_data["rgb_front"]
 
@@ -293,21 +284,12 @@ def tf_setup_agent():
     agent.config.action_repeat = 1
     # Disable GPS denoising
     agent.gps_buffer = deque(maxlen=1)
+    agent.CAM_TRANSFORMS = {
+        'C3_tricam120': (0, 0, 1.21),
+        'C7_L2': (40, 30, 1.33),
+        'C8_R2': (-228, 38, 1.33),
+    }
     return agent
-
-
-def tf_process_image(img, transform: Tuple[int, int, float]):
-    pil = Image.fromarray(img)
-    ox, oy, s = transform
-    x = pil.width // 2 + ox
-    y = pil.height // 2 + oy
-    w = int(pil.width * s)
-    h = int(pil.height * s)
-    box = (x - w // 2, y - h // 2, x + w // 2, y + h // 2)
-    pil = pil.crop(box)
-    pil = pil.resize((960, 480), Image.BILINEAR)
-    img = np.asarray(pil)
-    return img
 
 
 @profile.func
@@ -331,7 +313,7 @@ def tf_get_extra_data(step, agent, action):
 
 
 def tf_main(trip: str):
-    run_agent(trip, tf_setup_agent, tf_process_image, tf_get_extra_data)
+    run_agent(trip, tf_setup_agent, tf_get_extra_data)
 
 
 if __name__ == "__main__":
