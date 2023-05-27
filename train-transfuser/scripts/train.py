@@ -211,12 +211,18 @@ def main():
         if(parallel == True):
             # Update the seed depending on the epoch so that the distributed sampler will use different shuffles across different epochs
             sampler_train.set_epoch(epoch)
-        if ((epoch == args.schedule_reduce_epoch_01) or (epoch==args.schedule_reduce_epoch_02)) and (args.schedule == 1):
-            current_lr = optimizer.param_groups[0]['lr']
-            new_lr = current_lr * 0.1
-            print("Reduce learning rate by factor 10 to:", new_lr)
-            for g in optimizer.param_groups:
-                g['lr'] = new_lr
+
+        if args.schedule == 1:
+            old_lr = optimizer.param_groups[0]['lr']
+            lr = args.lr
+            if epoch >= args.schedule_reduce_epoch_01:
+                lr = lr * 0.1
+            if epoch >= args.schedule_reduce_epoch_02:
+                lr = lr * 0.1
+            if old_lr != lr:
+                print(f"Reduce learning rate from {old_lr} to {lr}")
+                for g in optimizer.param_groups:
+                    g['lr'] = lr
         trainer.train()
 
         if((args.setting != 'all') and (epoch % args.val_every == 0)):
