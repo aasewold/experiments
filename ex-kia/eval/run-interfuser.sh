@@ -6,7 +6,7 @@ export TRIP=$1; shift
 source ../../common/utils.sh
 
 export CARLA_VERSION="0.9.14"
-export INTERFUSER_COMMIT=$(get_commit_hash_interfuser "experiments/0.9.14")
+export INTERFUSER_COMMIT=$(get_commit_hash_interfuser "experiments/kia")
 
 select_model "../../models"
 

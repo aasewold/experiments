@@ -168,10 +168,14 @@ def find_closest_wps(gps: BufferedSource[GpsData], wp: np.ndarray):
 @profile.func
 def find_timed_wps(gps: BufferedSource[GpsData], wp: np.ndarray, time_sec: float):
     time_ms = gps.ts + time_sec * 1e3
-
     i = 0
-    while gps.peek(i).ts < time_ms:
-        i += 1
+
+    # Advance i until we're past the time we're looking for
+    try:
+        while gps.peek(i).ts < time_ms:
+            i += 1
+    except SourceEmpty:
+        return None
     
     lerp_NE = lerp(
         time_ms,
@@ -187,8 +191,13 @@ def find_timed_wps(gps: BufferedSource[GpsData], wp: np.ndarray, time_sec: float
 @profile.func
 def find_spaced_wps(gps: BufferedSource[GpsData], wp: np.ndarray, dist: float):
     i = 0
-    while np.linalg.norm(gps.peek(i).value.NE - gps.value.NE) < dist:
-        i += 1
+
+    # Advance i until we're past the distance we're looking for
+    try:
+        while np.linalg.norm(gps.peek(i).value.NE - gps.value.NE) < dist:
+            i += 1
+    except SourceEmpty:
+        return None
     
     lerp_NE = lerp(
         dist,
@@ -291,6 +300,9 @@ def main(trip: str, run: str, count: t.Optional[int]):
         
         elif wp_metric == 'closest':
             exp_wps = [find_closest_wps(gps, wp) for wp in wps_NE]
+
+        # Strip away trailing None values
+        exp_wps = list(itertools.takewhile(lambda x: x is not None, exp_wps))
         
         # Store the distances, and fill with masked values in
         # case we suddenly get a varying number of waypoints.
@@ -379,7 +391,8 @@ def main(trip: str, run: str, count: t.Optional[int]):
     plt.title(f"Waypoint error")
     for i, wp_dists in enumerate(waypoint_dists):
         percents = [50, 95, 99]
-        percentiles = np.percentile(wp_dists, percents)
+        wp_dists = ma.array(wp_dists)
+        percentiles = np.nanpercentile(wp_dists.filled(np.nan), percents)
         fmt_percentiles = ', '.join(f'{p}%: {d:.2f}' for p, d in zip(percents, percentiles))
         plt.plot(T, wp_dists, label=f"WP{i+1} percentiles: {fmt_percentiles}", zorder=2-i/100)
     plt.legend()
@@ -396,7 +409,8 @@ def main(trip: str, run: str, count: t.Optional[int]):
     plt.title(f"Waypoint error")
     for i, wp_dists in enumerate(waypoint_dists):
         percents = [50, 95, 99]
-        percentiles = np.percentile(wp_dists, percents)
+        wp_dists = ma.array(wp_dists)
+        percentiles = np.nanpercentile(wp_dists.filled(np.nan), percents)
         fmt_percentiles = ', '.join(f'{p}%: {d:.2f}' for p, d in zip(percents, percentiles))
         plt.plot(T, wp_dists, label=f"WP{i+1} percentiles: {fmt_percentiles}", zorder=2-i/100)
         plt.ylim(0, percentiles[-1] * 1.1)
