@@ -15,10 +15,18 @@ export PORT=2000 # same as the carla server port
 export TM_PORT=2500 # port for traffic manager, required when spawning multiple servers/clients
 export DEBUG_CHALLENGE=0
 export REPETITIONS=1 # multiple evaluation runs
-export TEAM_AGENT=leaderboard/team_code/interfuser_agent.py # agent
+
 export TEAM_CONFIG=leaderboard/team_code/interfuser_config.py # model checkpoint, not required for expert
 export SAVE_PATH=data/eval # path for saving episodes while evaluating
 export RESUME=True
+
+if [ -f "models/autopilot" ]; then
+    export TEAM_AGENT=leaderboard/team_code/auto_pilot.py # agent
+    export CHALLENGE_TRACK_CODENAME=MAP
+    unset SAVE_PATH
+else
+    export TEAM_AGENT=leaderboard/team_code/interfuser_agent.py # agent
+fi
 
 if [ -z "$EVALUATION" ]; then
     echo "EVALUATION is not set, please set it to one of the following:"

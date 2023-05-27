@@ -239,6 +239,15 @@ select_evaluation() {
 
 select_model() {
     local model_dir="$1"
+
+    (
+        local autopilot_dir="$model_dir/autopilot"
+        mkdir -p "$autopilot_dir" \
+        && touch "$autopilot_dir/autopilot" \
+        && touch "$autopilot_dir/interfuser.pth.tar" \
+        || echo "Failed to create \"$autopilot_dir\"" >&2
+    )
+
     PS3='Select model: '
     options=("Enter path")
     readarray -O 1 -t options < <(find "$model_dir/" -type d -links 2 -printf '%f\n' | sort)

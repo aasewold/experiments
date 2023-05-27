@@ -11,12 +11,19 @@ export PYTHONPATH="${CARLA_ROOT}/PythonAPI/carla/":"${SCENARIO_RUNNER_ROOT}":"${
 
 export TEAM_CONFIG=/model
 
-export TEAM_AGENT=${WORK_DIR}/team_code_transfuser/submission_agent.py
 export REPETITIONS=1
 export CHALLENGE_TRACK_CODENAME=SENSORS
 export DEBUG_CHALLENGE=0
 export RESUME=1
 export DATAGEN=0
+
+if [ -f "/model/autopilot" ]; then
+    export TEAM_AGENT=${WORK_DIR}/team_code_autopilot/autopilot.py
+    export CHALLENGE_TRACK_CODENAME=MAP
+    unset SAVE_PATH
+else
+    export TEAM_AGENT=${WORK_DIR}/team_code_transfuser/submission_agent.py
+fi
 
 if [ -z "$EVALUATION" ]; then
     echo "EVALUATION is not set, please set it to one of the following:"
