@@ -94,6 +94,7 @@ run_transfuser() (
     echo "# Transfuser commit: $COMMIT" >> "$RESULT_PATH/desc.txt"
     echo "# Model: $MODEL_NAME" >> "$RESULT_PATH/desc.txt"
     echo "# Evaluation: $EVALUATION" >> "$RESULT_PATH/desc.txt"
+    echo "# Actor amount: $ACTOR_AMOUNT" >> "$RESULT_PATH/desc.txt"
     echo >> "$RESULT_PATH/desc.txt"
 
     echo "# Please write a short description of the run:" >> "$RESULT_PATH/desc.txt"
@@ -163,6 +164,7 @@ run_interfuser() (
     echo "# Interfuser commit: $COMMIT" >> "$RESULT_PATH/desc.txt"
     echo "# Model: $MODEL_NAME" >> "$RESULT_PATH/desc.txt"
     echo "# Evaluation: $EVALUATION" >> "$RESULT_PATH/desc.txt"
+    echo "# Actor amount: $ACTOR_AMOUNT" >> "$RESULT_PATH/desc.txt"
     echo >> "$RESULT_PATH/desc.txt"
 
     echo "# Please write a short description of the run:" >> "$RESULT_PATH/desc.txt"
