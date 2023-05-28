@@ -33,6 +33,7 @@ export DEBUG_CHALLENGE=0
 export REPETITIONS=1 # multiple evaluation runs
 export TEAM_AGENT=${LEADERBOARD_ROOT}/team_code/auto_pilot.py # agent
 export RESUME=True
+export ACTOR_AMOUNT=town
 
 mkdir -p $(dirname ${CHECKPOINT_ENDPOINT})
 mkdir -p ${SAVE_PATH}
