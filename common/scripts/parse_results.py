@@ -73,7 +73,7 @@ def main(topdir: Path, *filters: str):
     if not topdir.is_dir():
         print(f'"{topdir}" is not a directory')
         sys.exit(1)
-    jsons = list(topdir.rglob("*.json"))
+    jsons = list(topdir.absolute().rglob("*.json"))
     results = list(filter(None, map(process_json, jsons)))
     print_results(results, filters)
 
