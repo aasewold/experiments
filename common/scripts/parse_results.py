@@ -32,7 +32,7 @@ class ResultKey:
         res += f"{self.carla_version} "
         res += f"{self.benchmark:<8} "
         res += f"(a={self.actors})".ljust(8)
-        res += f":  {self.agent}-{self.weights}"
+        res += f":  {self.agent} {self.weights}"
         return res
 
 
@@ -95,7 +95,7 @@ def process_json(path: Path):
 def parse_key(path: Path):
     benchmark = path.stem.split('fuser_')[-1]
     ir = path.parts.index('results')
-    weights = path.parts[-3]
+    weights = path.parts[ir + 1]
     _, agent, carla_version = path.parts[ir - 1].split('-')
     actors = find_actor_amount(path)
     return ResultKey(carla_version, benchmark, agent, weights, actors)
