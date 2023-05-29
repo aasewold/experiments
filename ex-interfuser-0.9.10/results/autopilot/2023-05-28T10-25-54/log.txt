@@ -1,0 +1,1131 @@
+Starting at 2023-05-28 08:29:00
+EVALUATION: town05
+ROUTES: leaderboard/data/evaluation_routes/routes_town05_long.xml
+SCENARIOS: leaderboard/data/scenarios/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: results/town05.json
+
+Environment:
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=MAP
+CHECKPOINT_ENDPOINT=results/town05.json
+CONDA_DEFAULT_ENV=interfuser
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/interfuser
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(interfuser) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+CUDA_VISIBLE_DEVICES=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=3966650553cd
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/interfuser/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PORT=2000
+PWD=/interfuser
+PYTHONPATH=:carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg:leaderboard:leaderboard/team_code:scenario_runner
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=True
+ROUTES=leaderboard/data/evaluation_routes/routes_town05_long.xml
+SCENARIOS=leaderboard/data/scenarios/town05_all_scenarios.json
+SDL_VIDEODRIVER=dummy
+SHLVL=2
+TEAM_AGENT=leaderboard/team_code/auto_pilot.py
+TEAM_CONFIG=leaderboard/team_code/interfuser_config.py
+TM_PORT=2500
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+leaderboard/leaderboard/leaderboard_evaluator.py:93: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.10'):
+
+[1m========= Preparing RouteScenario_16 (repetition 0) =========
+> Setting up the agent[0m
+{}
+10
+[1m> Loading the world[0m
+load
+load
+load
+load
+load
+load
+load
+[1m> Running the route[0m
+1148
+Cache file does not exist, generating cache at birdview_v2_cache/Town05__px_per_meter=4__opendrive_hash=2e1d4af27b41d85ff578b77d9ea0fd91f45abd81__margin=300.npy
+destory hazard actor: id: 201, type: vehicle.diamondback.century
+destory hazard actor: id: 228, type: vehicle.diamondback.century
+destory hazard actor: id: 255, type: vehicle.diamondback.century
+destory hazard actor: id: 261, type: vehicle.diamondback.century
+destory hazard actor: id: 284, type: vehicle.diamondback.century
+destory hazard actor: id: 358, type: vehicle.bmw.grandtourer
+destory hazard actor: id: 403, type: vehicle.tesla.model3
+destory hazard actor: id: 390, type: vehicle.chevrolet.impala
+destory hazard actor: id: 306, type: vehicle.toyota.prius
+destory hazard actor: id: 295, type: vehicle.lincoln.mkz2017
+destory hazard actor: id: 299, type: vehicle.diamondback.century
+destory hazard actor: id: 315, type: vehicle.audi.a2
+destory hazard actor: id: 323, type: vehicle.gazelle.omafiets
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_16 (repetition 0) ------ [92mSUCCESS[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-05-28 08:33:07 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-05-28 09:15:34 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 2547.34s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 460.6s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.181               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+ERROR: failed to destroy actor 295 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 299 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 306 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 315 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 323 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 358 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 390 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 403 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 201 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 228 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 255 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 261 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 284 : unable to destroy actor: not found 
+
+[1m========= Preparing RouteScenario_17 (repetition 0) =========
+> Setting up the agent[0m
+{}
+10
+[1m> Loading the world[0m
+load
+load
+load
+load
+load
+load
+load
+[1m> Running the route[0m
+880
+destory hazard actor: id: 544, type: vehicle.diamondback.century
+destory hazard actor: id: 547, type: vehicle.diamondback.century
+destory hazard actor: id: 551, type: vehicle.diamondback.century
+destory hazard actor: id: 561, type: vehicle.diamondback.century
+destory hazard actor: id: 584, type: vehicle.diamondback.century
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_17 (repetition 0) ------ [92mSUCCESS[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-05-28 09:18:32 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-05-28 09:39:49 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 1277.47s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 246.8s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.193               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+ERROR: failed to destroy actor 544 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 547 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 551 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 561 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 584 : unable to destroy actor: not found 
+
+[1m========= Preparing RouteScenario_18 (repetition 0) =========
+> Setting up the agent[0m
+{}
+10
+[1m> Loading the world[0m
+load
+load
+load
+load
+load
+load
+load
+[1m> Running the route[0m
+1018
+destory hazard actor: id: 846, type: vehicle.diamondback.century
+destory hazard actor: id: 847, type: vehicle.diamondback.century
+destory hazard actor: id: 1020, type: vehicle.harley-davidson.low_rider
+destory hazard actor: id: 982, type: vehicle.mercedes-benz.coupe
+ERROR: failed to destroy actor 899 : unable to destroy actor: not found 
+destory hazard actor: id: 931, type: vehicle.toyota.prius
+destory hazard actor: id: 1039, type: vehicle.bh.crossbike
+destory hazard actor: id: 977, type: vehicle.tesla.cybertruck
+destory hazard actor: id: 937, type: vehicle.tesla.model3
+destory hazard actor: id: 1006, type: vehicle.citroen.c3
+destory hazard actor: id: 1036, type: vehicle.toyota.prius
+destory hazard actor: id: 1017, type: vehicle.mercedes-benz.coupe
+destory hazard actor: id: 958, type: vehicle.toyota.prius
+destory hazard actor: id: 1001, type: vehicle.tesla.model3
+destory hazard actor: id: 1038, type: vehicle.kawasaki.ninja
+destory hazard actor: id: 938, type: vehicle.audi.tt
+destory hazard actor: id: 928, type: vehicle.dodge_charger.police
+destory hazard actor: id: 978, type: vehicle.dodge_charger.police
+destory hazard actor: id: 925, type: vehicle.nissan.patrol
+destory hazard actor: id: 976, type: vehicle.bmw.isetta
+destory hazard actor: id: 980, type: vehicle.dodge_charger.police
+destory hazard actor: id: 959, type: vehicle.gazelle.omafiets
+destory hazard actor: id: 935, type: vehicle.jeep.wrangler_rubicon
+destory hazard actor: id: 1028, type: vehicle.tesla.model3
+ERROR: failed to destroy actor 868 : unable to destroy actor: not found 
+destory hazard actor: id: 967, type: vehicle.gazelle.omafiets
+destory hazard actor: id: 939, type: vehicle.bmw.isetta
+destory hazard actor: id: 970, type: vehicle.carlamotors.carlacola
+destory hazard actor: id: 957, type: vehicle.bmw.isetta
+destory hazard actor: id: 975, type: vehicle.mustang.mustang
+destory hazard actor: id: 1024, type: vehicle.kawasaki.ninja
+destory hazard actor: id: 949, type: vehicle.chevrolet.impala
+destory hazard actor: id: 1025, type: vehicle.tesla.model3
+destory hazard actor: id: 964, type: vehicle.diamondback.century
+destory hazard actor: id: 974, type: vehicle.dodge_charger.police
+destory hazard actor: id: 1023, type: vehicle.bmw.grandtourer
+destory hazard actor: id: 940, type: vehicle.audi.a2
+destory hazard actor: id: 989, type: vehicle.mustang.mustang
+destory hazard actor: id: 955, type: vehicle.jeep.wrangler_rubicon
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_18 (repetition 0) ------ [92mSUCCESS[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-05-28 09:43:14 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-05-28 10:30:56 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 2862.47s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 545.15s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.19                │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+ERROR: failed to destroy actor 925 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 928 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 931 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 935 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 937 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 938 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 939 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 940 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 949 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 955 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 957 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 958 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 959 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 964 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 967 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 970 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 974 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 975 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 976 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 977 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 978 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 980 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 982 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 989 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1001 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1006 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1017 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1020 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1023 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1024 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1025 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1028 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1036 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1038 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1039 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 846 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 847 : unable to destroy actor: not found 
+
+[1m========= Preparing RouteScenario_19 (repetition 0) =========
+> Setting up the agent[0m
+{}
+10
+[1m> Loading the world[0m
+load
+load
+load
+load
+load
+load
+load
+[1m> Running the route[0m
+1622
+destory hazard actor: id: 1247, type: vehicle.kawasaki.ninja
+destory hazard actor: id: 1233, type: vehicle.chevrolet.impala
+destory hazard actor: id: 1338, type: vehicle.bh.crossbike
+destory hazard actor: id: 1243, type: vehicle.bmw.isetta
+destory hazard actor: id: 1334, type: vehicle.nissan.micra
+destory hazard actor: id: 1258, type: vehicle.bmw.isetta
+destory hazard actor: id: 1283, type: vehicle.mercedes-benz.coupe
+destory hazard actor: id: 1252, type: vehicle.audi.a2
+destory hazard actor: id: 1223, type: vehicle.volkswagen.t2
+destory hazard actor: id: 1246, type: vehicle.nissan.patrol
+destory hazard actor: id: 1326, type: vehicle.tesla.model3
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_19 (repetition 0) ------ [92mSUCCESS[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-05-28 10:36:29 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-05-28 11:13:04 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 2195.95s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 362.95s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.165               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+ERROR: failed to destroy actor 1223 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1233 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1243 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1246 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1247 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1252 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1258 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1283 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1326 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1334 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1338 : unable to destroy actor: not found 
+
+[1m========= Preparing RouteScenario_20 (repetition 0) =========
+> Setting up the agent[0m
+{}
+10
+[1m> Loading the world[0m
+load
+load
+load
+load
+load
+load
+load
+[1m> Running the route[0m
+1267
+destory hazard actor: id: 1463, type: vehicle.diamondback.century
+destory hazard actor: id: 1475, type: vehicle.diamondback.century
+destory hazard actor: id: 1486, type: vehicle.diamondback.century
+destory hazard actor: id: 1490, type: vehicle.diamondback.century
+destory hazard actor: id: 1507, type: vehicle.diamondback.century
+destory hazard actor: id: 1520, type: vehicle.diamondback.century
+destory hazard actor: id: 1566, type: vehicle.harley-davidson.low_rider
+ERROR: failed to destroy actor 1484 : unable to destroy actor: not found 
+destory hazard actor: id: 1602, type: vehicle.toyota.prius
+destory hazard actor: id: 1577, type: vehicle.jeep.wrangler_rubicon
+destory hazard actor: id: 1637, type: vehicle.mini.cooperst
+destory hazard actor: id: 1607, type: vehicle.toyota.prius
+destory hazard actor: id: 1532, type: vehicle.lincoln.mkz2017
+destory hazard actor: id: 1585, type: vehicle.dodge_charger.police
+destory hazard actor: id: 1608, type: vehicle.mercedes-benz.coupe
+destory hazard actor: id: 1547, type: vehicle.bmw.isetta
+destory hazard actor: id: 1615, type: vehicle.audi.tt
+destory hazard actor: id: 1537, type: vehicle.chevrolet.impala
+destory hazard actor: id: 1620, type: vehicle.chevrolet.impala
+destory hazard actor: id: 1561, type: vehicle.dodge_charger.police
+destory hazard actor: id: 1624, type: vehicle.nissan.micra
+destory hazard actor: id: 1631, type: vehicle.seat.leon
+destory hazard actor: id: 1541, type: vehicle.audi.tt
+destory hazard actor: id: 1591, type: vehicle.citroen.c3
+destory hazard actor: id: 1534, type: vehicle.yamaha.yzf
+destory hazard actor: id: 1555, type: vehicle.chevrolet.impala
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_20 (repetition 0) ------ [92mSUCCESS[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-05-28 11:17:23 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-05-28 11:51:50 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 2067.54s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 331.85s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.161               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+ERROR: failed to destroy actor 1532 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1534 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1537 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1541 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1547 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1555 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1561 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1566 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1577 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1585 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1591 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1602 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1607 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1608 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1615 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1620 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1624 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1631 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1637 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1463 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1475 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1486 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1490 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1507 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1520 : unable to destroy actor: not found 
+
+[1m========= Preparing RouteScenario_21 (repetition 0) =========
+> Setting up the agent[0m
+{}
+10
+[1m> Loading the world[0m
+load
+load
+load
+load
+load
+load
+load
+[1m> Running the route[0m
+566
+destory hazard actor: id: 1783, type: vehicle.diamondback.century
+destory hazard actor: id: 1818, type: vehicle.toyota.prius
+destory hazard actor: id: 1891, type: vehicle.bmw.grandtourer
+destory hazard actor: id: 1861, type: vehicle.diamondback.century
+ERROR: failed to destroy actor 1772 : unable to destroy actor: not found 
+destory hazard actor: id: 1849, type: vehicle.citroen.c3
+destory hazard actor: id: 1893, type: vehicle.toyota.prius
+destory hazard actor: id: 1916, type: vehicle.nissan.micra
+destory hazard actor: id: 1856, type: vehicle.gazelle.omafiets
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_21 (repetition 0) ------ [92mSUCCESS[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-05-28 11:53:50 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-05-28 12:10:40 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 1010.16s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 163.55s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.162               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+ERROR: failed to destroy actor 1818 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1849 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1856 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1861 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1891 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1893 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1916 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1783 : unable to destroy actor: not found 
+
+[1m========= Preparing RouteScenario_22 (repetition 0) =========
+> Setting up the agent[0m
+{}
+10
+[1m> Loading the world[0m
+load
+load
+load
+load
+load
+load
+load
+[1m> Running the route[0m
+1029
+destory hazard actor: id: 2069, type: vehicle.diamondback.century
+destory hazard actor: id: 2092, type: vehicle.diamondback.century
+destory hazard actor: id: 2109, type: vehicle.diamondback.century
+destory hazard actor: id: 2076, type: vehicle.diamondback.century
+ERROR: failed to destroy actor 2076 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2090 : unable to destroy actor: not found 
+destory hazard actor: id: 2174, type: vehicle.audi.tt
+destory hazard actor: id: 2159, type: vehicle.diamondback.century
+destory hazard actor: id: 2205, type: vehicle.audi.tt
+destory hazard actor: id: 2160, type: vehicle.carlamotors.carlacola
+destory hazard actor: id: 2190, type: vehicle.audi.etron
+destory hazard actor: id: 2126, type: vehicle.toyota.prius
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_22 (repetition 0) ------ [92mSUCCESS[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-05-28 12:14:08 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-05-28 12:46:25 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 1936.56s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 323.95s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.167               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+ERROR: failed to destroy actor 2126 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2159 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2160 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2174 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2190 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2205 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2069 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2092 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2109 : unable to destroy actor: not found 
+
+[1m========= Preparing RouteScenario_23 (repetition 0) =========
+> Setting up the agent[0m
+{}
+10
+[1m> Loading the world[0m
+load
+load
+load
+load
+load
+load
+load
+[1m> Running the route[0m
+1316
+destory hazard actor: id: 2360, type: vehicle.diamondback.century
+destory hazard actor: id: 2386, type: vehicle.diamondback.century
+destory hazard actor: id: 2390, type: vehicle.diamondback.century
+destory hazard actor: id: 2422, type: vehicle.diamondback.century
+destory hazard actor: id: 2423, type: vehicle.diamondback.century
+destory hazard actor: id: 2470, type: vehicle.diamondback.century
+destory hazard actor: id: 2473, type: vehicle.diamondback.century
+destory hazard actor: id: 2474, type: vehicle.diamondback.century
+destory hazard actor: id: 2468, type: vehicle.diamondback.century
+ERROR: failed to destroy actor 2468 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2370 : unable to destroy actor: not found 
+destory hazard actor: id: 2528, type: vehicle.dodge_charger.police
+destory hazard actor: id: 2540, type: vehicle.kawasaki.ninja
+destory hazard actor: id: 2590, type: vehicle.audi.a2
+destory hazard actor: id: 2488, type: vehicle.audi.tt
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_23 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-05-28 12:50:45 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-05-28 13:40:13 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 2968.07s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 499.8s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.168               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+ERROR: failed to destroy actor 2488 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2528 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2540 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2590 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2360 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2386 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2390 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2422 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2423 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2470 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2473 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2474 : unable to destroy actor: not found 
+
+[1m========= Preparing RouteScenario_24 (repetition 0) =========
+> Setting up the agent[0m
+{}
+10
+[1m> Loading the world[0m
+load
+load
+load
+load
+load
+load
+load
+[1m> Running the route[0m
+2190
+destory hazard actor: id: 2721, type: vehicle.diamondback.century
+destory hazard actor: id: 2729, type: vehicle.diamondback.century
+destory hazard actor: id: 2732, type: vehicle.diamondback.century
+destory hazard actor: id: 2735, type: vehicle.diamondback.century
+destory hazard actor: id: 2758, type: vehicle.diamondback.century
+destory hazard actor: id: 2779, type: vehicle.diamondback.century
+destory hazard actor: id: 2827, type: vehicle.diamondback.century
+ERROR: failed to destroy actor 2874 : unable to destroy actor: not found 
+destory hazard actor: id: 3001, type: vehicle.audi.a2
+destory hazard actor: id: 2954, type: vehicle.citroen.c3
+destory hazard actor: id: 2911, type: vehicle.chevrolet.impala
+destory hazard actor: id: 2966, type: vehicle.mini.cooperst
+destory hazard actor: id: 2921, type: vehicle.gazelle.omafiets
+destory hazard actor: id: 2934, type: vehicle.jeep.wrangler_rubicon
+destory hazard actor: id: 2927, type: vehicle.carlamotors.carlacola
+destory hazard actor: id: 2970, type: vehicle.toyota.prius
+destory hazard actor: id: 3006, type: vehicle.dodge_charger.police
+ERROR: failed to destroy actor 2832 : unable to destroy actor: not found 
+destory hazard actor: id: 3014, type: vehicle.bh.crossbike
+destory hazard actor: id: 2907, type: vehicle.nissan.patrol
+destory hazard actor: id: 2940, type: vehicle.dodge_charger.police
+destory hazard actor: id: 2947, type: vehicle.nissan.patrol
+destory hazard actor: id: 2956, type: vehicle.audi.etron
+destory hazard actor: id: 3004, type: vehicle.carlamotors.carlacola
+destory hazard actor: id: 2969, type: vehicle.bh.crossbike
+destory hazard actor: id: 2898, type: vehicle.carlamotors.carlacola
+destory hazard actor: id: 3002, type: vehicle.audi.a2
+destory hazard actor: id: 2944, type: vehicle.mercedes-benz.coupe
+destory hazard actor: id: 3009, type: vehicle.audi.etron
+destory hazard actor: id: 2925, type: vehicle.audi.tt
+destory hazard actor: id: 2903, type: vehicle.mustang.mustang
+destory hazard actor: id: 2899, type: vehicle.tesla.model3
+destory hazard actor: id: 2993, type: vehicle.mini.cooperst
+destory hazard actor: id: 2919, type: vehicle.bmw.isetta
+destory hazard actor: id: 3003, type: vehicle.citroen.c3
+destory hazard actor: id: 2992, type: vehicle.harley-davidson.low_rider
+destory hazard actor: id: 2962, type: vehicle.tesla.model3
+destory hazard actor: id: 2906, type: vehicle.dodge_charger.police
+destory hazard actor: id: 2936, type: vehicle.dodge_charger.police
+destory hazard actor: id: 3012, type: vehicle.diamondback.century
+destory hazard actor: id: 2964, type: vehicle.mercedes-benz.coupe
+destory hazard actor: id: 2951, type: vehicle.mustang.mustang
+destory hazard actor: id: 2985, type: vehicle.kawasaki.ninja
+destory hazard actor: id: 2990, type: vehicle.bmw.grandtourer
+destory hazard actor: id: 2920, type: vehicle.toyota.prius
+destory hazard actor: id: 2916, type: vehicle.bmw.grandtourer
+destory hazard actor: id: 2942, type: vehicle.dodge_charger.police
+destory hazard actor: id: 2988, type: vehicle.audi.etron
+destory hazard actor: id: 2980, type: vehicle.nissan.micra
+destory hazard actor: id: 2991, type: vehicle.tesla.model3
+destory hazard actor: id: 2950, type: vehicle.citroen.c3
+destory hazard actor: id: 2958, type: vehicle.toyota.prius
+destory hazard actor: id: 2972, type: vehicle.nissan.micra
+destory hazard actor: id: 2935, type: vehicle.bh.crossbike
+destory hazard actor: id: 2949, type: vehicle.diamondback.century
+destory hazard actor: id: 2914, type: vehicle.citroen.c3
+destory hazard actor: id: 3005, type: vehicle.jeep.wrangler_rubicon
+destory hazard actor: id: 2971, type: vehicle.audi.tt
+destory hazard actor: id: 2912, type: vehicle.chevrolet.impala
+destory hazard actor: id: 2910, type: vehicle.gazelle.omafiets
+destory hazard actor: id: 2924, type: vehicle.nissan.micra
+destory hazard actor: id: 2955, type: vehicle.bmw.grandtourer
+destory hazard actor: id: 2967, type: vehicle.citroen.c3
+destory hazard actor: id: 2930, type: vehicle.yamaha.yzf
+destory hazard actor: id: 3013, type: vehicle.gazelle.omafiets
+destory hazard actor: id: 2929, type: vehicle.gazelle.omafiets
+destory hazard actor: id: 2986, type: vehicle.tesla.model3
+destory hazard actor: id: 2946, type: vehicle.kawasaki.ninja
+destory hazard actor: id: 2926, type: vehicle.diamondback.century
+destory hazard actor: id: 2965, type: vehicle.yamaha.yzf
+destory hazard actor: id: 2984, type: vehicle.bmw.grandtourer
+destory hazard actor: id: 2961, type: vehicle.bmw.isetta
+destory hazard actor: id: 2979, type: vehicle.lincoln.mkz2017
+destory hazard actor: id: 2902, type: vehicle.audi.a2
+destory hazard actor: id: 2909, type: vehicle.diamondback.century
+destory hazard actor: id: 2931, type: vehicle.kawasaki.ninja
+destory hazard actor: id: 2943, type: vehicle.seat.leon
+destory hazard actor: id: 2963, type: vehicle.toyota.prius
+destory hazard actor: id: 2937, type: vehicle.mustang.mustang
+destory hazard actor: id: 3015, type: vehicle.bmw.grandtourer
+destory hazard actor: id: 3000, type: vehicle.bh.crossbike
+destory hazard actor: id: 2915, type: vehicle.harley-davidson.low_rider
+destory hazard actor: id: 2900, type: vehicle.audi.tt
+destory hazard actor: id: 2908, type: vehicle.kawasaki.ninja
+destory hazard actor: id: 2905, type: vehicle.bmw.grandtourer
+destory hazard actor: id: 2997, type: vehicle.toyota.prius
+destory hazard actor: id: 2923, type: vehicle.harley-davidson.low_rider
+destory hazard actor: id: 2945, type: vehicle.bmw.grandtourer
+destory hazard actor: id: 2982, type: vehicle.citroen.c3
+destory hazard actor: id: 2976, type: vehicle.chevrolet.impala
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_24 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-05-28 13:47:25 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-05-28 14:54:33 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 4027.8s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 718.9s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.178               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+ERROR: failed to destroy actor 2898 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2899 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2900 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2902 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2903 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2905 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2906 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2907 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2908 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2909 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2910 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2911 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2912 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2914 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2915 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2916 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2919 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2920 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2921 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2923 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2924 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2925 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2926 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2927 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2929 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2930 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2931 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2934 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2935 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2936 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2937 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2940 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2942 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2943 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2944 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2945 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2946 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2947 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2949 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2950 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2951 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2954 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2955 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2956 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2958 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2961 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2962 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2963 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2964 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2965 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2966 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2967 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2969 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2970 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2971 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2972 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2976 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2979 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2980 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2982 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2984 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2985 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2986 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2988 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2990 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2991 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2992 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2993 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2997 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3000 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3001 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3002 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3003 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3004 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3005 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3006 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3009 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3012 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3013 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3014 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3015 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2721 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2729 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2732 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2735 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2758 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2779 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2827 : unable to destroy actor: not found 
+
+[1m========= Preparing RouteScenario_25 (repetition 0) =========
+> Setting up the agent[0m
+{}
+10
+[1m> Loading the world[0m
+load
+load
+load
+load
+load
+load
+load
+[1m> Running the route[0m
+1629
+destory hazard actor: id: 3142, type: vehicle.diamondback.century
+destory hazard actor: id: 3154, type: vehicle.diamondback.century
+destory hazard actor: id: 3157, type: vehicle.diamondback.century
+destory hazard actor: id: 3169, type: vehicle.diamondback.century
+destory hazard actor: id: 3196, type: vehicle.diamondback.century
+destory hazard actor: id: 3224, type: vehicle.diamondback.century
+destory hazard actor: id: 3231, type: vehicle.diamondback.century
+destory hazard actor: id: 3232, type: vehicle.diamondback.century
+destory hazard actor: id: 3233, type: vehicle.diamondback.century
+destory hazard actor: id: 3317, type: vehicle.toyota.prius
+destory hazard actor: id: 3242, type: vehicle.mini.cooperst
+ERROR: failed to destroy actor 3222 : unable to destroy actor: not found 
+destory hazard actor: id: 3302, type: vehicle.bmw.grandtourer
+destory hazard actor: id: 3332, type: vehicle.kawasaki.ninja
+destory hazard actor: id: 3320, type: vehicle.tesla.model3
+destory hazard actor: id: 3268, type: vehicle.dodge_charger.police
+destory hazard actor: id: 3346, type: vehicle.kawasaki.ninja
+destory hazard actor: id: 3305, type: vehicle.toyota.prius
+destory hazard actor: id: 3327, type: vehicle.nissan.micra
+destory hazard actor: id: 3312, type: vehicle.yamaha.yzf
+destory hazard actor: id: 3339, type: vehicle.harley-davidson.low_rider
+destory hazard actor: id: 3350, type: vehicle.citroen.c3
+destory hazard actor: id: 3288, type: vehicle.dodge_charger.police
+destory hazard actor: id: 3269, type: vehicle.harley-davidson.low_rider
+destory hazard actor: id: 3257, type: vehicle.chevrolet.impala
+destory hazard actor: id: 3271, type: vehicle.audi.tt
+destory hazard actor: id: 3351, type: vehicle.carlamotors.carlacola
+destory hazard actor: id: 3313, type: vehicle.mini.cooperst
+destory hazard actor: id: 3264, type: vehicle.dodge_charger.police
+destory hazard actor: id: 3354, type: vehicle.carlamotors.carlacola
+destory hazard actor: id: 3311, type: vehicle.mercedes-benz.coupe
+destory hazard actor: id: 3295, type: vehicle.diamondback.century
+destory hazard actor: id: 3334, type: vehicle.seat.leon
+destory hazard actor: id: 3331, type: vehicle.bmw.grandtourer
+destory hazard actor: id: 3277, type: vehicle.kawasaki.ninja
+destory hazard actor: id: 3323, type: vehicle.chevrolet.impala
+destory hazard actor: id: 3285, type: vehicle.tesla.cybertruck
+destory hazard actor: id: 3309, type: vehicle.tesla.model3
+destory hazard actor: id: 3342, type: vehicle.audi.etron
+destory hazard actor: id: 3238, type: vehicle.dodge_charger.police
+destory hazard actor: id: 3338, type: vehicle.tesla.model3
+destory hazard actor: id: 3273, type: vehicle.carlamotors.carlacola
+destory hazard actor: id: 3279, type: vehicle.tesla.model3
+destory hazard actor: id: 3322, type: vehicle.tesla.cybertruck
+destory hazard actor: id: 3337, type: vehicle.bmw.grandtourer
+destory hazard actor: id: 3290, type: vehicle.mercedes-benz.coupe
+destory hazard actor: id: 3315, type: vehicle.gazelle.omafiets
+destory hazard actor: id: 3266, type: vehicle.toyota.prius
+destory hazard actor: id: 3252, type: vehicle.dodge_charger.police
+destory hazard actor: id: 3324, type: vehicle.carlamotors.carlacola
+destory hazard actor: id: 3326, type: vehicle.lincoln.mkz2017
+destory hazard actor: id: 3255, type: vehicle.diamondback.century
+destory hazard actor: id: 3240, type: vehicle.chevrolet.impala
+destory hazard actor: id: 3280, type: vehicle.jeep.wrangler_rubicon
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_25 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-05-28 14:59:53 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-05-28 15:45:29 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 2735.83s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 502.8s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.184               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+ERROR: failed to destroy actor 3238 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3240 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3242 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3252 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3255 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3257 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3264 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3266 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3268 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3269 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3271 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3273 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3277 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3279 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3280 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3285 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3288 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3290 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3295 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3302 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3305 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3309 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3311 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3312 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3313 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3315 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3317 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3320 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3322 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3323 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3324 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3326 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3327 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3331 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3332 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3334 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3337 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3338 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3339 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3342 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3346 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3350 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3351 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3354 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3142 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3154 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3157 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3169 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3196 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3224 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3231 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3232 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3233 : unable to destroy actor: not found 
+[1m> Registering the global statistics[0m
+
+Finished at 2023-05-28 15:45:30
+
