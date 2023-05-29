@@ -5,7 +5,8 @@ Run the script with a path to a directory, and optionally a list of filters.
 The script will find all runs within the directory, and print the results.
 
 Filters are checked for substring match agains each run, and are combined
-by logical and. Negate filters by prefixing them with a slash.
+by logical and. Filters separated by ',' are combined by logical or.
+Negate filters by prefixing them with a slash.
 
 Example: ./common/scripts/parse_results.py . transfuser longest6 /old
 """
@@ -132,11 +133,14 @@ def average_results(results: t.List[Result]) -> Result:
 
 def print_results(results: t.List[t.Tuple[ResultKey, Result]], filters: t.Tuple[str]):
     all_matches: t.List[Result] = []
+    num_tot = 0
 
     results = sorted(results, key=lambda x: str(x[0]))
     for key, group in itertools.groupby(results, lambda x: x[0]):
         key_str = str(key)
         items = sorted([r for _, r in group], key=lambda x: x.run)
+        num_tot += len(items)
+
         items = list(filter(lambda x: check_filters(f'{key_str}|{x}', filters), items))
         if not items:
             continue
@@ -144,14 +148,17 @@ def print_results(results: t.List[t.Tuple[ResultKey, Result]], filters: t.Tuple[
         print(f"{key}:")
         for result in items:
             print(f"\t{result}")
+
         complete_items = [r for r in items if r.complete]
         if len(complete_items) > 1:
             print(f"\t{average_results(complete_items)}")
         
         all_matches.extend(complete_items)
     
-    if len(all_matches) > 1:
-        print(f"\nAverage of all matches:")
+    num_match = len(all_matches)
+    print(f"\nMatched {num_match} of {num_tot} runs")
+    if num_match > 1:
+        print(f"Average of all matches:")
         print(f"\t{average_results(all_matches)}")
 
 
@@ -160,12 +167,16 @@ def check_filters(key: str, filters: t.Tuple[str]):
         return True
     
     for f in filters:
-        neg = f.startswith('/')
-        if neg:
-            f = f[1:]
-        if neg and f in key:
-            return False
-        if not neg and f not in key:
+        match = False
+        for f in f.split(','):
+            neg = f.startswith('/')
+            if neg:
+                f = f[1:]
+            if neg and f not in key:
+                match = True
+            if not neg and f in key:
+                match = True
+        if not match:
             return False
 
     return True
