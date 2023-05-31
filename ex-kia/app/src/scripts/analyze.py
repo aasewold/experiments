@@ -319,14 +319,14 @@ def main(trip: str, run: str, count: t.Optional[int]):
         throttle.append((tf_throttle, can.value[1].throttle))
         brake.append((tf_brake, can.value[1].brake))
 
-        if False:
+        # if False:
         # if 480 < T[-1] - T[0] < 490:
-        # if 800 <= step <= 900 or 1100 <= step <= 1200:
-            fut_gps = np.array([gps.peek(i).value.NE for i in range(1, 10)])
+        if step == 1112:
+            fut_gps = np.array([gps.peek(i).value.NE for i in range(1, 15)])
             exp_wpts = np.array([exp_wp[1] for exp_wp in exp_wps])
-            plt.figure(figsize=(12, 12))
+            plt.figure(figsize=(6, 6))
             plt.scatter(gps.value.NE[1], gps.value.NE[0], label='Car')
-            plt.scatter(fut_gps[:, 1], fut_gps[:, 0], label='GPS', s=np.linspace(3, 1, len(fut_gps)))
+            plt.scatter(fut_gps[:, 1], fut_gps[:, 0], label='GPS')
             plt.scatter(exp_wpts[:, 1], exp_wpts[:, 0], label='Expected WPs')
             plt.scatter(wps_NE[:, 1], wps_NE[:, 0], label='Predicted WPs')
             plt.plot
@@ -360,6 +360,7 @@ def main(trip: str, run: str, count: t.Optional[int]):
     steer[:, 1] = steer[:, 1] / np.max(np.abs(steer[:, 1]))
     steer_nz = np.abs(steer[:, 0]) > 0.01
     steer[:, 0] *= np.mean(np.abs(steer[steer_nz, 1]) / np.abs(steer[steer_nz, 0]))
+    steer_ylim = max(1.5, np.nanpercentile(np.abs(steer[:, 0]).filled(np.nan), 99))
 
     # Steer and speed
     plt.figure(figsize=(10, 10))
@@ -370,6 +371,7 @@ def main(trip: str, run: str, count: t.Optional[int]):
     plt.legend()
     plt.xlabel("Time [s]")
     plt.ylabel("Angle [normalized]")
+    plt.ylim(-steer_ylim * 1.1, steer_ylim * 1.1)
     plt.minorticks_on()
     plt.grid()
 
