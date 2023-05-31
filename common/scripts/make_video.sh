@@ -4,7 +4,7 @@ export LC_NUMERIC="en_US.UTF-8"
 
 run_path="$1"; shift
 
-run_path="$(realpath -s "$run_path")"
+run_path="$(realpath "$run_path")"
 run_name="$(basename "$run_path")"
 
 viz_path="$run_path"/viz
@@ -13,8 +13,23 @@ if [ ! -d "$viz_path" ]; then
     exit 1
 fi
 
+FPS=${FPS:-60}
+echo "Using FPS: $FPS"
+
 mov_path="$run_path"/mov
-mkdir "$mov_path"
+final_mp4="$run_path"/"$run_name".mp4
+
+if [ -d "$mov_path" ]; then
+    echo "Directory $mov_path already exists"
+    exit 1
+fi
+
+if [ -f "$final_mp4" ]; then
+    echo "File $final_mp4 already exists"
+    exit 1
+fi
+
+mkdir -p "$mov_path"
 echo "$USER@$(hostname)" > "$mov_path"/host
 
 ffmpeg() {
@@ -23,8 +38,8 @@ ffmpeg() {
     docker run --rm \
         -e PUID="$(id -u)" \
         -e PGID="$(id -g)" \
-        -v "$(pwd)":"$(pwd)" \
-        -w "$(pwd)" \
+        -v "$(pwd -P)":"$(pwd -P)" \
+        -w "$(pwd -P)" \
         linuxserver/ffmpeg \
         -nostdin "$@"
 }
@@ -47,21 +62,33 @@ enough_free_mem() {
 # Kill all ffmpeg processes on exit
 trap "trap - SIGTERM && killall ffmpeg && exit 1" SIGINT SIGTERM
 
-for route in "$viz_path"/*/; do
-    echo "Processing $route"
-    routename="$(basename "$route")"
+shopt -s nullglob
+for route in "$viz_path" "$viz_path"/*/; do
     while ! enough_free_mem; do
         echo "Not enough free memory, waiting"
         sleep 5
     done
-    ffmpeg -y -r 60 -f image2 \
-        -i "$route/%d.jpg" \
+    echo "Processing $route"
+    routename="$(basename "$route")"
+
+    if [ -f "$route"/1.jpg ]; then
+        fmt="jpg"
+    elif [ -f "$route"/1.png ]; then
+        fmt="png"
+    else
+        echo "No images found in $route"
+        continue
+    fi
+
+    ffmpeg -y -r "$FPS" -f image2 \
+        -i "$route/%d.$fmt" \
         -vf 'scale=iw*2:ih*2:flags=neighbor' \
         -c:v libx264 -preset veryfast -profile:v high -bf 2 -g 30 -crf 18 -pix_fmt yuv420p -movflags faststart \
-        "$mov_path/$routename.mp4" \
+        -y "$mov_path/$routename.mp4" \
         -hide_banner -loglevel error &
     sleep 2
 done
+shopt -u nullglob
 
 echo "Waiting for all processes to finish"
 wait
@@ -108,4 +135,4 @@ find "$mov_path" -name '*.mp4' -print0 | sort -zV \
 ffmpeg -f concat -safe 0 -i "$mov_path/concat.txt" \
        -c copy -movflags faststart \
        -hide_banner \
-       "$run_path"/"$run_name".mp4
+       -y "$final_mp4"
