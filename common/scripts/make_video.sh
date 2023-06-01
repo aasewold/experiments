@@ -7,7 +7,14 @@ run_path="$1"; shift
 run_path="$(realpath "$run_path")"
 run_name="$(basename "$run_path")"
 
-viz_path="$run_path"/viz
+is_interfuser() {
+    if [[ "$run_path" == *"inter"* ]]; then
+        return 0
+    fi
+    return 1
+}
+
+viz_path="$run_path/$(is_interfuser && echo 'data/eval' || echo 'viz')"
 if [ ! -d "$viz_path" ]; then
     echo "Directory $viz_path does not exist"
     exit 1
@@ -62,6 +69,9 @@ enough_free_mem() {
 # Kill all ffmpeg processes on exit
 trap "trap - SIGTERM && killall ffmpeg && exit 1" SIGINT SIGTERM
 
+# InterFuser routes have a 'meta' subdirectory
+meta=$(is_interfuser && echo "meta" || echo "")
+
 shopt -s nullglob
 for route in "$viz_path" "$viz_path"/*/; do
     while ! enough_free_mem; do
@@ -70,18 +80,24 @@ for route in "$viz_path" "$viz_path"/*/; do
     done
     echo "Processing $route"
     routename="$(basename "$route")"
+    
+    route="$route$meta"
 
     if [ -f "$route"/1.jpg ]; then
-        fmt="jpg"
+        fmt="%d.jpg"
     elif [ -f "$route"/1.png ]; then
-        fmt="png"
+        fmt="%d.png"
+    elif [ -f "$route"/0001.jpg ]; then
+        fmt="%04d.jpg"
+    elif [ -f "$route"/0001.png ]; then
+        fmt="%04d.png"
     else
         echo "No images found in $route"
         continue
     fi
 
     ffmpeg -y -r "$FPS" -f image2 \
-        -i "$route/%d.$fmt" \
+        -i "$route/$fmt" \
         -vf 'scale=iw*2:ih*2:flags=neighbor' \
         -c:v libx264 -preset veryfast -profile:v high -bf 2 -g 30 -crf 18 -pix_fmt yuv420p -movflags faststart \
         -y "$mov_path/$routename.mp4" \
