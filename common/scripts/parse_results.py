@@ -42,6 +42,7 @@ class Result:
     p_current: int
     p_total: int
     values: t.Tuple[float, ...]
+    ignored: bool
 
     @property
     def complete(self) -> bool:
@@ -66,6 +67,8 @@ class Result:
             score = f"{self.DS:>5.0f}% {self.RC:>5.0f}% {self.IS:>6.0%} | {vals}"
         else:
             score = 'incomplete'
+        if self.ignored:
+            score += ' (ignored)'
         return name + score
                
 
@@ -83,7 +86,7 @@ def process_json(path: Path):
     try:
         if 'results' not in path.parts:
             return None
-        
+
         k = parse_key(path)
         v = parse_results(path)
         return k, v
@@ -107,7 +110,8 @@ def parse_results(path: Path) -> Result:
         data = json.load(f)
         p_current, p_total = data['_checkpoint']['progress'] or (0, 0)
         values = tuple(map(float, data['values']))
-    return Result(run, p_current, p_total, values)
+    ignored = path.with_name('ignore').exists()
+    return Result(run, p_current, p_total, values, ignored)
 
 
 def find_actor_amount(path: Path) -> str:
@@ -128,12 +132,18 @@ def find_actor_amount(path: Path) -> str:
 
 
 def average_results(results: t.List[Result]) -> Result:
-    return Result('avg', 0, 0, tuple(sum(x) / len(x) for x in zip(*map(lambda x: x.values, results))))
+    return Result('avg', 0, 0, tuple(sum(x) / len(x) for x in zip(*map(lambda x: x.values, results))), False)
 
 
 def print_results(results: t.List[t.Tuple[ResultKey, Result]], filters: t.Tuple[str]):
     all_matches: t.List[Result] = []
     num_tot = 0
+
+    if not 'ignored' in filters:
+        num_ignored = len(list(filter(lambda x: x[1].ignored, results)))
+        results = list(filter(lambda x: not x[1].ignored, results))
+    else:
+        num_ignored = 0
 
     results = sorted(results, key=lambda x: str(x[0]))
     for key, group in itertools.groupby(results, lambda x: x[0]):
@@ -156,7 +166,7 @@ def print_results(results: t.List[t.Tuple[ResultKey, Result]], filters: t.Tuple[
         all_matches.extend(complete_items)
     
     num_match = len(all_matches)
-    print(f"\nMatched {num_match} of {num_tot} runs")
+    print(f"\nMatched {num_match} of {num_tot} runs ({num_ignored} ignored)")
     if num_match > 1:
         print(f"Average of all matches:")
         print(f"\t{average_results(all_matches)}")
