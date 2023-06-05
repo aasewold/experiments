@@ -15,8 +15,17 @@ import sys
 import json
 import typing as t
 import itertools
+import math
+import statistics as stats
 from pathlib import Path
 from dataclasses import dataclass
+
+
+def nanavg(xs: t.Iterable[float]) -> float:
+    try:
+        return stats.mean(xs)
+    except stats.StatisticsError:
+        return math.nan
 
 
 @dataclass(frozen=True)
@@ -41,12 +50,13 @@ class Result:
     run: str
     p_current: int
     p_total: int
+    records: t.List[t.Tuple[float, float, float]]
     values: t.Tuple[float, ...]
     ignored: bool
 
     @property
     def complete(self) -> bool:
-        return bool(self.values) and self.p_current == self.p_total
+        return bool(self.records) and self.p_current == self.p_total
 
     @property
     def DS(self) -> float:
@@ -60,8 +70,12 @@ class Result:
     def IS(self) -> float:
         return self.values[2]
     
+    @property
+    def num_records(self) -> int:
+        return len(self.records)
+    
     def __str__(self):
-        name = f"{self.run:>20} ({self.p_current:>2}/{self.p_total:>2}): "
+        name = f"{self.run:>20} ({self.num_records:>2}/{self.p_total:>2}): "
         if self.complete:
             vals = ' '.join(f"{v:>5.2f}" for v in self.values[3:])
             score = f"{self.DS:>5.0f}% {self.RC:>5.0f}% {self.IS:>6.0%} | {vals}"
@@ -70,7 +84,6 @@ class Result:
         if self.ignored:
             score += ' (ignored)'
         return name + score
-               
 
 
 def main(topdir: Path, *filters: str):
@@ -109,9 +122,31 @@ def parse_results(path: Path) -> Result:
     with path.open() as f:
         data = json.load(f)
         p_current, p_total = data['_checkpoint']['progress'] or (0, 0)
+        records = parse_records(data['_checkpoint']['records'])
         values = tuple(map(float, data['values']))
+        values = get_primary_scores(records) + values[3:]
     ignored = path.with_name('ignore').exists()
-    return Result(run, p_current, p_total, values, ignored)
+    return Result(run, p_current, p_total, records, values, ignored)
+
+
+def get_primary_scores(records):
+    return tuple(map(nanavg, zip(*records)))
+
+
+def parse_records(json_records: t.List[t.Dict[str, t.Any]]):
+    bad_statuses = {"Failed", "Failed - Agent couldn't be set up", "Failed - Agent crashed", "Failed - Simulation crashed"}
+    # List of (DS, RC, IS) tuples
+    records: t.List[t.Tuple[float, float, float]] = []
+    for row in json_records:
+        if row['status'] in bad_statuses:
+            continue
+        if row['meta']['duration_game'] < 1:
+            continue
+        s_ds = row['scores']['score_composed']
+        s_rc = row['scores']['score_route']
+        s_is = row['scores']['score_penalty']
+        records.append((s_ds, s_rc, s_is))
+    return records
 
 
 def find_actor_amount(path: Path) -> str:
@@ -131,8 +166,10 @@ def find_actor_amount(path: Path) -> str:
     return amounts.pop()
 
 
-def average_results(results: t.List[Result]) -> Result:
-    return Result('avg', 0, 0, tuple(sum(x) / len(x) for x in zip(*map(lambda x: x.values, results))), False)
+def agg_results(results: t.List[Result], fn: t.Callable, name: str) -> Result:
+    records = list(itertools.chain.from_iterable(r.records for r in results))
+    aux_values = tuple(fn(x) for x in zip(*map(lambda x: x.values, results)))
+    return Result(name, 0, 0, records, aux_values, False)
 
 
 def print_results(results: t.List[t.Tuple[ResultKey, Result]], filters: t.Tuple[str]):
@@ -161,7 +198,7 @@ def print_results(results: t.List[t.Tuple[ResultKey, Result]], filters: t.Tuple[
 
         complete_items = [r for r in items if r.complete]
         if len(complete_items) > 1:
-            print(f"\t{average_results(complete_items)}")
+            print(f"\t{agg_results(complete_items, stats.mean, 'avg')}")
         
         all_matches.extend(complete_items)
     
@@ -169,7 +206,8 @@ def print_results(results: t.List[t.Tuple[ResultKey, Result]], filters: t.Tuple[
     print(f"\nMatched {num_match} of {num_tot} runs ({num_ignored} ignored)")
     if num_match > 1:
         print(f"Average of all matches:")
-        print(f"\t{average_results(all_matches)}")
+        print(f"\t{agg_results(all_matches, stats.mean, 'avg')}")
+        print(f"\t{agg_results(all_matches, stats.stdev, 'std')}")
 
 
 def check_filters(key: str, filters: t.Tuple[str]):
