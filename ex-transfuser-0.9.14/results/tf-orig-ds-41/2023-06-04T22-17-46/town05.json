@@ -1,0 +1,393 @@
+{
+    "_checkpoint": {
+        "global_record": {
+            "index": -1,
+            "infractions": {
+                "collisions_layout": 0.0,
+                "collisions_pedestrian": 0.0,
+                "collisions_vehicle": 0.10042687715207503,
+                "outside_route_lanes": 0.01409600192396391,
+                "red_light": 0.0,
+                "route_dev": 0.0,
+                "route_timeout": 0.0,
+                "stop_infraction": 0.10610942298535886,
+                "vehicle_blocked": 0.011773209573132203
+            },
+            "meta": {
+                "exceptions": [
+                    [
+                        "RouteScenario_18",
+                        2,
+                        "Failed - Agent couldn't be set up"
+                    ],
+                    [
+                        "RouteScenario_20",
+                        4,
+                        "Failed - Agent crashed"
+                    ],
+                    [
+                        "RouteScenario_25",
+                        9,
+                        "Failed - Agent got blocked"
+                    ]
+                ]
+            },
+            "route_id": -1,
+            "scores": {
+                "score_composed": 47.117611576511656,
+                "score_penalty": 0.658878556182158,
+                "score_route": 79.41526447971633
+            },
+            "status": "Failed"
+        },
+        "progress": [
+            10,
+            10
+        ],
+        "records": [
+            {
+                "index": 0,
+                "infractions": {
+                    "collisions_layout": [],
+                    "collisions_pedestrian": [],
+                    "collisions_vehicle": [
+                        "Agent collided against object with type=vehicle.mitsubishi.fusorosa and id=338 at (x=-121.364, y=-61.446, z=0.033)",
+                        "Agent collided against object with type=vehicle.dodge.charger_2020 and id=417 at (x=-188.41, y=-118.055, z=0.089)",
+                        "Agent collided against object with type=vehicle.tesla.model3 and id=411 at (x=-255.396, y=-79.569, z=0.034)"
+                    ],
+                    "outside_route_lanes": [
+                        "Agent went outside its route lanes for about 15.815 meters (1.4% of the completed route)"
+                    ],
+                    "red_light": [],
+                    "route_dev": [],
+                    "route_timeout": [],
+                    "stop_infraction": [
+                        "Agent ran a stop with id=226 at (x=-268.994, y=18.56, z=0.0)"
+                    ],
+                    "vehicle_blocked": []
+                },
+                "meta": {
+                    "duration_game": 618.9500092230737,
+                    "duration_system": 1582.3490822315216,
+                    "route_length": 1071.0281341479306
+                },
+                "route_id": "RouteScenario_16",
+                "scores": {
+                    "score_composed": 21.297866296787884,
+                    "score_penalty": 0.21297866296787885,
+                    "score_route": 100.0
+                },
+                "status": "Completed"
+            },
+            {
+                "index": 1,
+                "infractions": {
+                    "collisions_layout": [],
+                    "collisions_pedestrian": [],
+                    "collisions_vehicle": [],
+                    "outside_route_lanes": [],
+                    "red_light": [],
+                    "route_dev": [],
+                    "route_timeout": [],
+                    "stop_infraction": [],
+                    "vehicle_blocked": []
+                },
+                "meta": {
+                    "duration_game": 386.30000575631857,
+                    "duration_system": 886.7608239650726,
+                    "route_length": 862.4300893683893
+                },
+                "route_id": "RouteScenario_17",
+                "scores": {
+                    "score_composed": 100.0,
+                    "score_penalty": 1.0,
+                    "score_route": 100.0
+                },
+                "status": "Completed"
+            },
+            {
+                "index": 2,
+                "infractions": {
+                    "collisions_layout": [],
+                    "collisions_pedestrian": [],
+                    "collisions_vehicle": [],
+                    "outside_route_lanes": [],
+                    "red_light": [],
+                    "route_dev": [],
+                    "route_timeout": [],
+                    "stop_infraction": [],
+                    "vehicle_blocked": []
+                },
+                "meta": {
+                    "duration_game": 0.0,
+                    "duration_system": 0.0,
+                    "route_length": 1018.1548091661475
+                },
+                "route_id": "RouteScenario_18",
+                "scores": {
+                    "score_composed": 0.0,
+                    "score_penalty": 1.0,
+                    "score_route": 0.0
+                },
+                "status": "Failed - Agent couldn't be set up"
+            },
+            {
+                "index": 3,
+                "infractions": {
+                    "collisions_layout": [],
+                    "collisions_pedestrian": [],
+                    "collisions_vehicle": [
+                        "Agent collided against object with type=vehicle.nissan.patrol_2021 and id=901 at (x=-96.417, y=206.728, z=8.038)",
+                        "Agent collided against object with type=vehicle.carlamotors.firetruck and id=811 at (x=-0.365, y=207.995, z=0.033)",
+                        "Agent collided against object with type=vehicle.audi.etron and id=821 at (x=10.333, y=207.112, z=0.034)",
+                        "Agent collided against object with type=vehicle.nissan.patrol and id=863 at (x=56.472, y=207.598, z=0.033)"
+                    ],
+                    "outside_route_lanes": [],
+                    "red_light": [],
+                    "route_dev": [],
+                    "route_timeout": [],
+                    "stop_infraction": [],
+                    "vehicle_blocked": []
+                },
+                "meta": {
+                    "duration_game": 577.3500086031854,
+                    "duration_system": 1332.7364077568054,
+                    "route_length": 1651.1240425772803
+                },
+                "route_id": "RouteScenario_19",
+                "scores": {
+                    "score_composed": 12.959999999999999,
+                    "score_penalty": 0.1296,
+                    "score_route": 100.0
+                },
+                "status": "Completed"
+            },
+            {
+                "index": 4,
+                "infractions": {
+                    "collisions_layout": [],
+                    "collisions_pedestrian": [],
+                    "collisions_vehicle": [],
+                    "outside_route_lanes": [],
+                    "red_light": [],
+                    "route_dev": [],
+                    "route_timeout": [],
+                    "stop_infraction": [],
+                    "vehicle_blocked": []
+                },
+                "meta": {
+                    "duration_game": 136.90000203996897,
+                    "duration_system": 325.17780232429504,
+                    "route_length": 1247.5247794196757
+                },
+                "route_id": "RouteScenario_20",
+                "scores": {
+                    "score_composed": 39.51493176165161,
+                    "score_penalty": 1.0,
+                    "score_route": 39.51493176165161
+                },
+                "status": "Failed - Agent crashed"
+            },
+            {
+                "index": 5,
+                "infractions": {
+                    "collisions_layout": [],
+                    "collisions_pedestrian": [],
+                    "collisions_vehicle": [],
+                    "outside_route_lanes": [],
+                    "red_light": [],
+                    "route_dev": [],
+                    "route_timeout": [],
+                    "stop_infraction": [
+                        "Agent ran a stop with id=1203 at (x=88.839, y=5.521, z=0.0)"
+                    ],
+                    "vehicle_blocked": []
+                },
+                "meta": {
+                    "duration_game": 255.0000037997961,
+                    "duration_system": 675.4406626224518,
+                    "route_length": 531.0775144021973
+                },
+                "route_id": "RouteScenario_21",
+                "scores": {
+                    "score_composed": 100.0,
+                    "score_penalty": 1.0,
+                    "score_route": 100.0
+                },
+                "status": "Completed"
+            },
+            {
+                "index": 6,
+                "infractions": {
+                    "collisions_layout": [],
+                    "collisions_pedestrian": [],
+                    "collisions_vehicle": [],
+                    "outside_route_lanes": [],
+                    "red_light": [],
+                    "route_dev": [],
+                    "route_timeout": [],
+                    "stop_infraction": [],
+                    "vehicle_blocked": []
+                },
+                "meta": {
+                    "duration_game": 463.2500069029629,
+                    "duration_system": 1126.7849543094635,
+                    "route_length": 991.7588080369975
+                },
+                "route_id": "RouteScenario_22",
+                "scores": {
+                    "score_composed": 100.0,
+                    "score_penalty": 1.0,
+                    "score_route": 100.0
+                },
+                "status": "Completed"
+            },
+            {
+                "index": 7,
+                "infractions": {
+                    "collisions_layout": [],
+                    "collisions_pedestrian": [],
+                    "collisions_vehicle": [
+                        "Agent collided against object with type=vehicle.tesla.model3 and id=1869 at (x=-186.338, y=14.983, z=0.089)"
+                    ],
+                    "outside_route_lanes": [],
+                    "red_light": [],
+                    "route_dev": [],
+                    "route_timeout": [],
+                    "stop_infraction": [
+                        "Agent ran a stop with id=1670 at (x=-174.338, y=-91.53, z=0.0)",
+                        "Agent ran a stop with id=1686 at (x=-272.192, y=-15.06, z=0.0)",
+                        "Agent ran a stop with id=1678 at (x=-205.414, y=91.087, z=0.0)"
+                    ],
+                    "vehicle_blocked": []
+                },
+                "meta": {
+                    "duration_game": 680.9000101462007,
+                    "duration_system": 1766.840078830719,
+                    "route_length": 1271.9079656924944
+                },
+                "route_id": "RouteScenario_23",
+                "scores": {
+                    "score_composed": 60.0,
+                    "score_penalty": 0.6,
+                    "score_route": 100.0
+                },
+                "status": "Completed"
+            },
+            {
+                "index": 8,
+                "infractions": {
+                    "collisions_layout": [],
+                    "collisions_pedestrian": [],
+                    "collisions_vehicle": [
+                        "Agent collided against object with type=vehicle.carlamotors.firetruck and id=2131 at (x=-56.636, y=-118.548, z=0.089)",
+                        "Agent collided against object with type=vehicle.carlamotors.firetruck and id=2131 at (x=-51.17, y=-27.718, z=0.089)",
+                        "Agent collided against object with type=vehicle.mitsubishi.fusorosa and id=2057 at (x=-192.629, y=-113.11, z=0.089)",
+                        "Agent collided against object with type=vehicle.nissan.patrol_2021 and id=2082 at (x=-191.181, y=91.433, z=0.084)",
+                        "Agent collided against object with type=vehicle.carlamotors.firetruck and id=2026 at (x=100.562, y=5.49, z=0.034)",
+                        "Agent collided against object with type=vehicle.audi.tt and id=2076 at (x=100.959, y=35.973, z=0.034)"
+                    ],
+                    "outside_route_lanes": [
+                        "Agent went outside its route lanes for about 21.341 meters (0.96% of the completed route)"
+                    ],
+                    "red_light": [],
+                    "route_dev": [],
+                    "route_timeout": [],
+                    "stop_infraction": [
+                        "Agent ran a stop with id=1918 at (x=-195.296, y=-105.828, z=0.055)",
+                        "Agent ran a stop with id=1930 at (x=-256.469, y=-0.304, z=0.0)",
+                        "Agent ran a stop with id=1921 at (x=-205.414, y=91.087, z=0.0)",
+                        "Agent ran a stop with id=1931 at (x=103.273, y=13.934, z=-0.0)"
+                    ],
+                    "vehicle_blocked": []
+                },
+                "meta": {
+                    "duration_game": 1403.70002091676,
+                    "duration_system": 3689.0543274879456,
+                    "route_length": 2101.2027349873474
+                },
+                "route_id": "RouteScenario_24",
+                "scores": {
+                    "score_composed": 4.620689885370049,
+                    "score_penalty": 0.04620689885370049,
+                    "score_route": 100.0
+                },
+                "status": "Completed"
+            },
+            {
+                "index": 9,
+                "infractions": {
+                    "collisions_layout": [],
+                    "collisions_pedestrian": [],
+                    "collisions_vehicle": [
+                        "Agent collided against object with type=vehicle.bmw.grandtourer and id=2336 at (x=-185.985, y=114.541, z=0.089)"
+                    ],
+                    "outside_route_lanes": [],
+                    "red_light": [],
+                    "route_dev": [],
+                    "route_timeout": [],
+                    "stop_infraction": [
+                        "Agent ran a stop with id=2174 at (x=88.839, y=5.521, z=0.0)",
+                        "Agent ran a stop with id=2168 at (x=-188.036, y=105.516, z=0.055)",
+                        "Agent ran a stop with id=2172 at (x=-256.469, y=-0.304, z=0.0)"
+                    ],
+                    "vehicle_blocked": [
+                        "Agent got blocked at (x=-214.448, y=91.271, z=0.034)"
+                    ]
+                },
+                "meta": {
+                    "duration_game": 633.3500094376504,
+                    "duration_system": 1901.8865385055542,
+                    "route_length": 1554.57833961516
+                },
+                "route_id": "RouteScenario_25",
+                "scores": {
+                    "score_composed": 32.78262782130701,
+                    "score_penalty": 0.6,
+                    "score_route": 54.63771303551169
+                },
+                "status": "Failed - Agent got blocked"
+            }
+        ]
+    },
+    "eligible": true,
+    "entry_status": "Finished with agent errors",
+    "labels": [
+        "Avg. driving score",
+        "Avg. route completion",
+        "Avg. infraction penalty",
+        "Collisions with pedestrians",
+        "Collisions with vehicles",
+        "Collisions with layout",
+        "Red lights infractions",
+        "Stop sign infractions",
+        "Off-road infractions",
+        "Route deviations",
+        "Route timeouts",
+        "Agent blocked"
+    ],
+    "sensors": [
+        "carla_camera",
+        "carla_camera",
+        "carla_camera",
+        "carla_imu",
+        "carla_gnss",
+        "carla_speedometer",
+        "carla_camera",
+        "carla_lidar"
+    ],
+    "values": [
+        "47.118",
+        "79.415",
+        "0.659",
+        "0.000",
+        "0.100",
+        "0.000",
+        "0.000",
+        "0.106",
+        "0.014",
+        "0.000",
+        "0.000",
+        "0.012"
+    ]
+}

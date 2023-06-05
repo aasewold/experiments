@@ -1,0 +1,1154 @@
+Starting at 2023-06-04 20:17:58
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=b3682754fc52
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=/results/viz
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_16 (repetition 0) =========
+> Setting up the agent[0m
+SAVE_PATH set to /results/viz/RouteScenario_16_0
+/model/model_41.pth
+Downloading: "https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-weights/regnety_032_ra-7f2439f9.pth" to /root/.cache/torch/hub/checkpoints/regnety_032_ra-7f2439f9.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:227: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_clses = topk_inds // (height * width)
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:229: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_ys = topk_inds // width
+Watchdog exception - Timeout of 59.0 seconds occured
+
+[91mError during the simulation:
+> time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000[0m
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 372, in _load_and_run_scenario
+    self.manager.run_scenario()
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 136, in run_scenario
+    self._tick_scenario(timestamp)
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 186, in _tick_scenario
+    CarlaDataProvider.get_world().tick(self._timeout)
+RuntimeError: time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000
+[1m> Stopping the route[0m
+[1m> Registering the route statistics[0m
+_cleanup() started
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+_cleanup() started
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+_cleanup() finished
+
+Finished at 2023-06-04 20:30:11
+
+Starting at 2023-06-04 20:30:12
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=b3682754fc52
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=/results/viz
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_16 (repetition 0) =========
+> Setting up the agent[0m
+SAVE_PATH set to /results/viz/RouteScenario_16_0
+/model/model_41.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town05
+
+[91mThe scenario could not be loaded:
+> tuple indices must be integers or slices, not str[0m
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 337, in _load_and_run_scenario
+    scenario = RouteScenario(world=self.world, config=config, debug_mode=args.debug)
+  File "/transfuser/leaderboard/leaderboard/scenarios/route_scenario_local.py", line 190, in __init__
+    self._update_route(world, config, debug_mode>0)
+  File "/transfuser/leaderboard/leaderboard/scenarios/route_scenario_local.py", line 225, in _update_route
+    config.town, route, world_annotations)
+  File "/transfuser/leaderboard/leaderboard/utils/route_parser.py", line 293, in scan_route_for_scenarios
+    waypoint, trajectory)
+  File "/transfuser/leaderboard/leaderboard/utils/route_parser.py", line 177, in match_world_location_to_route
+    if match_waypoints(world_location, route_waypoint[0]):
+  File "/transfuser/leaderboard/leaderboard/utils/route_parser.py", line 164, in match_waypoints
+    dx = float(waypoint1['x']) - wtransform.location.x
+TypeError: tuple indices must be integers or slices, not str
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+Exception ignored in: <function RouteScenario.__del__ at 0x7f64c4c17e60>
+Traceback (most recent call last):
+  File "/transfuser/leaderboard/leaderboard/scenarios/route_scenario_local.py", line 579, in __del__
+    self.remove_all_actors()
+  File "/transfuser/scenario_runner/srunner/scenarios/basic_scenario.py", line 202, in remove_all_actors
+    for i, _ in enumerate(self.other_actors):
+AttributeError: 'RouteScenario' object has no attribute 'other_actors'
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+_cleanup() finished
+
+Finished at 2023-06-04 20:30:34
+
+Starting at 2023-06-04 20:30:35
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=b3682754fc52
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=/results/viz
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_16 (repetition 0) =========
+> Setting up the agent[0m
+SAVE_PATH set to /results/viz/RouteScenario_16_0
+/model/model_41.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:227: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_clses = topk_inds // (height * width)
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:229: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_ys = topk_inds // width
+Watchdog exception - Timeout of 59.0 seconds occured
+terminate called after throwing an instance of 'carla::client::TimeoutException'
+  what():  time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000
+
+Finished at 2023-06-04 20:45:59
+
+Starting at 2023-06-04 20:46:01
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=b3682754fc52
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=/results/viz
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_16 (repetition 0) =========
+> Setting up the agent[0m
+SAVE_PATH set to /results/viz/RouteScenario_16_0
+/model/model_41.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+terminate called after throwing an instance of 'carla::client::TimeoutException'
+  what():  time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000
+
+Finished at 2023-06-04 20:49:16
+
+Starting at 2023-06-04 20:49:17
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=b3682754fc52
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=/results/viz
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_16 (repetition 0) =========
+> Setting up the agent[0m
+SAVE_PATH set to /results/viz/RouteScenario_16_0
+/model/model_41.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:227: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_clses = topk_inds // (height * width)
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:229: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_ys = topk_inds // width
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_16 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-04 20:51:37 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-04 21:18:00 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 1582.35s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 618.95s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.391               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [91mFAILURE[0m │ 1.4 %   │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 3 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_17 (repetition 0) =========
+> Setting up the agent[0m
+SAVE_PATH set to /results/viz/RouteScenario_17_0
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_17 (repetition 0) ------ [92mSUCCESS[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-04 21:19:33 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-04 21:34:20 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 886.76s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 386.3s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.436               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_18 (repetition 0) =========
+> Setting up the agent[0m
+SAVE_PATH set to /results/viz/RouteScenario_18_0
+/model/model_41.pth
+
+[91mCould not set up the required agent:
+> 'cell' object has no attribute 'typename'[0m
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 291, in _load_and_run_scenario
+    self.agent_instance = getattr(self.module_agent, agent_class_name)(args.agent_config)
+  File "/transfuser/leaderboard/leaderboard/autoagents/autonomous_agent.py", line 45, in __init__
+    self.setup(path_to_conf_file)
+  File "./team_code_transfuser/submission_agent.py", line 125, in setup
+    net = LidarCenterNet(self.config, 'cuda', self.backbone, image_architecture, lidar_architecture, use_velocity)
+  File "./team_code_transfuser/model.py", line 566, in __init__
+    self._model = TransfuserBackbone(config, image_architecture, lidar_architecture, use_velocity=use_velocity).to(self.device)
+  File "./team_code_transfuser/transfuser.py", line 22, in __init__
+    self.image_encoder = ImageCNN(architecture=image_architecture, normalize=True)
+  File "./team_code_transfuser/transfuser.py", line 378, in __init__
+    self.features = timm.create_model(architecture, pretrained=True)
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/timm/models/factory.py", line 74, in create_model
+    model = create_fn(pretrained=pretrained, **kwargs)
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/timm/models/regnet.py", line 458, in regnety_032
+    return _create_regnet('regnety_032', pretrained, **kwargs)
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/timm/models/regnet.py", line 350, in _create_regnet
+    **kwargs)
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/timm/models/helpers.py", line 453, in build_model_with_cfg
+    model = model_cls(**kwargs) if model_cfg is None else model_cls(cfg=model_cfg, **kwargs)
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/timm/models/regnet.py", line 260, in __init__
+    self.add_module(stage_name, RegStage(prev_width, **stage_args, se_ratio=se_ratio))
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/timm/models/regnet.py", line 224, in __init__
+    downsample=proj_block, drop_block=drop_block, drop_path=drop_path, **block_kwargs)
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/timm/models/regnet.py", line 138, in __init__
+    super(Bottleneck, self).__init__()
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/torch/nn/modules/module.py", line 262, in __init__
+    self._buffers: Dict[str, Optional[Tensor]] = OrderedDict()
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/torch/nn/modules/module.py", line 1222, in __setattr__
+    .format(torch.typename(value), name))
+AttributeError: 'cell' object has no attribute 'typename'
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_19 (repetition 0) =========
+> Setting up the agent[0m
+SAVE_PATH set to /results/viz/RouteScenario_19_0
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_19 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-04 21:37:11 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-04 21:59:24 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 1332.74s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 577.35s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.433               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 4 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_20 (repetition 0) =========
+> Setting up the agent[0m
+SAVE_PATH set to /results/viz/RouteScenario_20_0
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+
+[91mStopping the route, the agent has crashed:
+> 'float' object has no attribute 'steer_gain'[0m
+
+Traceback (most recent call last):
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 152, in _tick_scenario
+    ego_action = self._agent()
+  File "/transfuser/leaderboard/leaderboard/autoagents/agent_wrapper_local.py", line 84, in __call__
+    return self._agent()
+  File "/transfuser/leaderboard/leaderboard/autoagents/autonomous_agent.py", line 115, in __call__
+    control = self.run_step(input_data, timestamp)
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "./team_code_transfuser/submission_agent.py", line 432, in run_step
+    self.update_gps_buffer(self.control, tick_data['compass'], tick_data['speed'])
+  File "./team_code_transfuser/submission_agent.py", line 504, in update_gps_buffer
+    next_loc_tmp, _, _ = self.ego_model.forward(loc_temp, yaw, speed, action)
+  File "./team_code_transfuser/submission_agent.py", line 725, in forward
+    wheel = self.steer_gain * steer
+AttributeError: 'float' object has no attribute 'steer_gain'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 372, in _load_and_run_scenario
+    self.manager.run_scenario()
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 136, in run_scenario
+    self._tick_scenario(timestamp)
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 159, in _tick_scenario
+    raise AgentError(e)
+leaderboard.autoagents.agent_wrapper_local.AgentError: 'float' object has no attribute 'steer_gain'
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_20 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-04 22:01:41 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-04 22:07:06 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 325.18s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 136.9s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.421               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 39.51 % │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_21 (repetition 0) =========
+> Setting up the agent[0m
+SAVE_PATH set to /results/viz/RouteScenario_21_0
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_21 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-04 22:08:09 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-04 22:19:24 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 675.44s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 255.0s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.378               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_22 (repetition 0) =========
+> Setting up the agent[0m
+SAVE_PATH set to /results/viz/RouteScenario_22_0
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_22 (repetition 0) ------ [92mSUCCESS[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-04 22:21:14 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-04 22:40:01 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 1126.78s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 463.25s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.411               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_23 (repetition 0) =========
+> Setting up the agent[0m
+SAVE_PATH set to /results/viz/RouteScenario_23_0
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_23 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-04 22:42:20 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-04 23:11:47 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 1766.84s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 680.9s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.385               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [91mFAILURE[0m │ 3 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_24 (repetition 0) =========
+> Setting up the agent[0m
+SAVE_PATH set to /results/viz/RouteScenario_24_0
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+Detected agent being stuck. Move for frame:  0
+Detected object directly in front of the vehicle. Stopping. Step: 18335
+Detected agent being stuck. Move for frame:  1
+Detected object directly in front of the vehicle. Stopping. Step: 18337
+Detected agent being stuck. Move for frame:  2
+Detected object directly in front of the vehicle. Stopping. Step: 18339
+Detected agent being stuck. Move for frame:  3
+Detected object directly in front of the vehicle. Stopping. Step: 18341
+Detected agent being stuck. Move for frame:  4
+Detected object directly in front of the vehicle. Stopping. Step: 18343
+Detected agent being stuck. Move for frame:  5
+Detected object directly in front of the vehicle. Stopping. Step: 18345
+Detected agent being stuck. Move for frame:  6
+Detected object directly in front of the vehicle. Stopping. Step: 18347
+Detected agent being stuck. Move for frame:  7
+Detected object directly in front of the vehicle. Stopping. Step: 18349
+Detected agent being stuck. Move for frame:  8
+Detected object directly in front of the vehicle. Stopping. Step: 18351
+Detected agent being stuck. Move for frame:  9
+Detected object directly in front of the vehicle. Stopping. Step: 18353
+Detected agent being stuck. Move for frame:  10
+Detected object directly in front of the vehicle. Stopping. Step: 18355
+Detected agent being stuck. Move for frame:  11
+Detected object directly in front of the vehicle. Stopping. Step: 18357
+Detected agent being stuck. Move for frame:  12
+Detected object directly in front of the vehicle. Stopping. Step: 18359
+Detected agent being stuck. Move for frame:  13
+Detected object directly in front of the vehicle. Stopping. Step: 18361
+Detected agent being stuck. Move for frame:  14
+Detected object directly in front of the vehicle. Stopping. Step: 18363
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_24 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-04 23:15:34 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-05 00:17:03 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 3689.05s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 1403.7s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.381               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [91mFAILURE[0m │ 0.96 %  │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 6 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [91mFAILURE[0m │ 4 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_25 (repetition 0) =========
+> Setting up the agent[0m
+SAVE_PATH set to /results/viz/RouteScenario_25_0
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected object directly in front of the vehicle. Stopping. Step: 9065
+Detected agent being stuck. Move for frame:  9
+Detected object directly in front of the vehicle. Stopping. Step: 9067
+Detected agent being stuck. Move for frame:  10
+Detected object directly in front of the vehicle. Stopping. Step: 9069
+Detected agent being stuck. Move for frame:  11
+Detected object directly in front of the vehicle. Stopping. Step: 9071
+Detected agent being stuck. Move for frame:  12
+Detected object directly in front of the vehicle. Stopping. Step: 9073
+Detected agent being stuck. Move for frame:  13
+Detected object directly in front of the vehicle. Stopping. Step: 9075
+Detected agent being stuck. Move for frame:  14
+Detected object directly in front of the vehicle. Stopping. Step: 9077
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_25 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-05 00:19:51 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-05 00:51:33 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 1901.89s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 633.35s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.333               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 54.64 % │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [91mFAILURE[0m │ 3 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [91mFAILURE[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+[1m> Registering the global statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+_cleanup() finished
+
+Finished at 2023-06-05 00:51:34
+
