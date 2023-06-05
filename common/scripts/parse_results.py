@@ -77,8 +77,8 @@ class Result:
     def __str__(self):
         name = f"{self.run:>20} ({self.num_records:>2}/{self.p_total:>2}): "
         if self.complete:
-            vals = ' '.join(f"{v:>5.2f}" for v in self.values[3:])
-            score = f"{self.DS:>5.0f}% {self.RC:>5.0f}% {self.IS:>6.0%} | {vals}"
+            vals = ' &'.join(f"{v:>5.2f}" for v in self.values[3:])
+            score = f"{self.DS:>3.0f}\\% & {self.RC:>3.0f}\\% & {self.IS*100:>3.0f}\\% &{vals}"
         else:
             score = 'incomplete'
         if self.ignored:
