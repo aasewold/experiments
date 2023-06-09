@@ -1,0 +1,660 @@
+Starting at 2023-06-07 10:24:22
+EVALUATION: town05
+ROUTES: leaderboard/data/evaluation_routes/routes_town05_long.xml
+SCENARIOS: leaderboard/data/scenarios/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=results/town05.json
+CONDA_DEFAULT_ENV=interfuser
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/interfuser
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(interfuser) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+CUDA_VISIBLE_DEVICES=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=ef07651e88f9
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/interfuser/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PORT=2000
+PWD=/interfuser
+PYTHONPATH=:carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg:leaderboard:leaderboard/team_code:scenario_runner
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=True
+ROUTES=leaderboard/data/evaluation_routes/routes_town05_long.xml
+SAVE_PATH=data/eval
+SCENARIOS=leaderboard/data/scenarios/town05_all_scenarios.json
+SDL_VIDEODRIVER=dummy
+SHLVL=2
+TEAM_AGENT=leaderboard/team_code/interfuser_agent.py
+TEAM_CONFIG=leaderboard/team_code/interfuser_config.py
+TM_PORT=2500
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+leaderboard/leaderboard/leaderboard_evaluator.py:93: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+pygame 2.1.2 (SDL 2.0.16, Python 3.7.16)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+
+[1m========= Preparing RouteScenario_16 (repetition 0) =========
+> Setting up the agent[0m
+Downloading: "https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-weights/resnet50d_ra2-464e36ba.pth" to /root/.cache/torch/hub/checkpoints/resnet50d_ra2-464e36ba.pth
+load model: models/interfuser.pth.tar
+[1m> Loading the world[0m
+load
+load
+load
+load
+load
+load
+load
+Actor amount: 120
+[1m> Running the route[0m
+ERROR: failed to destroy actor 167 : unable to destroy actor: not found 
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_16 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-07 10:28:59 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-07 12:38:46 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 7787.52s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 532.4s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.068               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 5 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+WARNING: attempting to destroy an actor that is already dead: Actor 296 (vehicle.nissan.micra) 
+WARNING: attempting to destroy an actor that is already dead: Actor 298 (vehicle.bh.crossbike) 
+WARNING: attempting to destroy an actor that is already dead: Actor 346 (vehicle.mercedes.sprinter) 
+
+[1m========= Preparing RouteScenario_17 (repetition 0) =========
+> Setting up the agent[0m
+load model: models/interfuser.pth.tar
+[1m> Loading the world[0m
+load
+load
+load
+load
+load
+load
+load
+Actor amount: 120
+[1m> Running the route[0m
+ERROR: failed to destroy actor 514 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 522 : unable to destroy actor: not found 
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_17 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-07 12:42:05 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-07 13:22:35 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 2430.29s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 207.95s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.086               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+
+[1m========= Preparing RouteScenario_18 (repetition 0) =========
+> Setting up the agent[0m
+load model: models/interfuser.pth.tar
+[1m> Loading the world[0m
+load
+load
+load
+load
+load
+load
+load
+Base transform is blocking objects  Transform(Location(x=-59.311008, y=-106.639061, z=0.600000), Rotation(pitch=0.000000, yaw=-12.545258, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-59.311008, y=-106.639061, z=0.600000), Rotation(pitch=0.000000, yaw=-12.545258, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-59.311008, y=-106.639061, z=0.600000), Rotation(pitch=0.000000, yaw=-12.545258, roll=0.000000))
+Actor amount: 120
+[1m> Running the route[0m
+/interfuser/leaderboard/team_code/tracker.py:141: RuntimeWarning: divide by zero encountered in double_scalars
+  speed = 0.5 * self.frequency * np.sqrt((prev_pos[0]-cur_pos[0])**2+(prev_pos[1]-cur_pos[1])**2) / (to.historical_steps[i+1]-to.historical_steps[i])
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_18 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-07 13:26:22 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-07 14:45:47 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 4765.72s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 361.55s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.076               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [91mFAILURE[0m │ 2.44 %  │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 2 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+
+[1m========= Preparing RouteScenario_19 (repetition 0) =========
+> Setting up the agent[0m
+load model: models/interfuser.pth.tar
+[1m> Loading the world[0m
+load
+load
+load
+load
+load
+load
+load
+Actor amount: 120
+[1m> Running the route[0m
+ERROR: failed to destroy actor 1123 : unable to destroy actor: not found 
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_19 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-07 14:51:40 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-07 16:24:19 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 5559.49s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 476.45s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.086               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+
+[1m========= Preparing RouteScenario_20 (repetition 0) =========
+> Setting up the agent[0m
+load model: models/interfuser.pth.tar
+[1m> Loading the world[0m
+load
+load
+load
+load
+load
+load
+load
+Base transform is blocking objects  Transform(Location(x=39.997688, y=-77.031784, z=0.600000), Rotation(pitch=0.000000, yaw=541.532104, roll=0.000000))
+Actor amount: 120
+[1m> Running the route[0m
+ERROR: failed to destroy actor 1403 : unable to destroy actor: not found 
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_20 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-07 16:29:09 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-07 19:43:18 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 11648.88s           │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 949.8s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.082               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+WARNING: attempting to destroy an actor that is already dead: Actor 1459 (vehicle.mercedes.coupe_2020) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1460 (vehicle.ford.mustang) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1468 (vehicle.mini.cooper_s) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1475 (vehicle.diamondback.century) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1476 (vehicle.dodge.charger_police_2020) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1481 (vehicle.volkswagen.t2_2021) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1485 (vehicle.audi.a2) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1491 (vehicle.yamaha.yzf) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1495 (vehicle.bh.crossbike) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1496 (vehicle.jeep.wrangler_rubicon) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1501 (vehicle.ford.crown) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1505 (vehicle.seat.leon) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1507 (vehicle.mercedes.sprinter) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1514 (vehicle.citroen.c3) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1516 (vehicle.vespa.zx125) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1521 (vehicle.mitsubishi.fusorosa) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1523 (vehicle.gazelle.omafiets) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1525 (vehicle.bh.crossbike) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1526 (vehicle.dodge.charger_police) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1531 (vehicle.lincoln.mkz_2020) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1536 (vehicle.mercedes.coupe_2020) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1542 (vehicle.nissan.micra) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1545 (vehicle.mini.cooper_s) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1547 (vehicle.bmw.grandtourer) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1569 (vehicle.ford.crown) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1570 (vehicle.vespa.zx125) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1575 (vehicle.gazelle.omafiets) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1576 (vehicle.dodge.charger_police) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1577 (vehicle.chevrolet.impala) 
+
+[1m========= Preparing RouteScenario_21 (repetition 0) =========
+> Setting up the agent[0m
+load model: models/interfuser.pth.tar
+[1m> Loading the world[0m
+load
+load
+load
+load
+load
+load
+load
+Actor amount: 120
+[1m> Running the route[0m
+ERROR: failed to destroy actor 1703 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1705 : unable to destroy actor: not found 
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_21 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-07 19:45:28 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-07 20:19:48 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 2060.31s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 158.35s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.077               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [91mFAILURE[0m │ 0.35 %  │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+
+[1m========= Preparing RouteScenario_22 (repetition 0) =========
+> Setting up the agent[0m
+load model: models/interfuser.pth.tar
+[1m> Loading the world[0m
+load
+load
+load
+load
+load
+load
+load
+Actor amount: 120
+[1m> Running the route[0m
+ERROR: failed to destroy actor 1995 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1997 : unable to destroy actor: not found 
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_22 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-07 20:23:34 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-07 21:32:02 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 4108.29s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 340.95s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.083               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 4 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+
+[1m========= Preparing RouteScenario_23 (repetition 0) =========
+> Setting up the agent[0m
+load model: models/interfuser.pth.tar
+[1m> Loading the world[0m
+load
+load
+load
+load
+load
+load
+load
+Base transform is blocking objects  Transform(Location(x=-59.297535, y=-106.578163, z=0.600000), Rotation(pitch=0.000000, yaw=-12.448853, roll=0.000000))
+Actor amount: 120
+[1m> Running the route[0m
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_23 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-07 21:36:50 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-08 01:15:55 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 13144.87s           │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 1067.05s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.081               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 16.38 % │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [91mFAILURE[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+WARNING: attempting to destroy an actor that is already dead: Actor 2420 (vehicle.audi.a2) 
+WARNING: attempting to destroy an actor that is already dead: Actor 2428 (vehicle.diamondback.century) 
+WARNING: attempting to destroy an actor that is already dead: Actor 2432 (vehicle.seat.leon) 
+WARNING: attempting to destroy an actor that is already dead: Actor 2440 (vehicle.tesla.cybertruck) 
+WARNING: attempting to destroy an actor that is already dead: Actor 2441 (vehicle.micro.microlino) 
+WARNING: attempting to destroy an actor that is already dead: Actor 2444 (vehicle.chevrolet.impala) 
+WARNING: attempting to destroy an actor that is already dead: Actor 2448 (vehicle.carlamotors.firetruck) 
+WARNING: attempting to destroy an actor that is already dead: Actor 2456 (vehicle.citroen.c3) 
+WARNING: attempting to destroy an actor that is already dead: Actor 2475 (vehicle.nissan.micra) 
+WARNING: attempting to destroy an actor that is already dead: Actor 2488 (vehicle.dodge.charger_2020) 
+WARNING: attempting to destroy an actor that is already dead: Actor 2519 (vehicle.chevrolet.impala) 
+WARNING: attempting to destroy an actor that is already dead: Actor 2526 (vehicle.nissan.patrol) 
+
+[1m========= Preparing RouteScenario_24 (repetition 0) =========
+> Setting up the agent[0m
+load model: models/interfuser.pth.tar
+[1m> Loading the world[0m
+load
+load
+load
+load
+load
+load
+load
+Base transform is blocking objects  Transform(Location(x=-59.311008, y=-106.639061, z=0.600000), Rotation(pitch=0.000000, yaw=-12.545258, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-59.311008, y=-106.639061, z=0.600000), Rotation(pitch=0.000000, yaw=-12.545258, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-59.311008, y=-106.639061, z=0.600000), Rotation(pitch=0.000000, yaw=-12.545258, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-59.311008, y=-106.639061, z=0.600000), Rotation(pitch=0.000000, yaw=-12.545258, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-59.311008, y=-106.639061, z=0.600000), Rotation(pitch=0.000000, yaw=-12.545258, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-59.311008, y=-106.639061, z=0.600000), Rotation(pitch=0.000000, yaw=-12.545258, roll=0.000000))
+Actor amount: 120
+[1m> Running the route[0m
+ERROR: failed to destroy actor 2734 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 2760 : unable to destroy actor: not found 
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_24 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-08 01:23:41 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-08 03:54:12 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 9030.86s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 636.35s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.07                │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 41.43 % │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 2 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [91mFAILURE[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+
+[1m========= Preparing RouteScenario_25 (repetition 0) =========
+> Setting up the agent[0m
+load model: models/interfuser.pth.tar
+[1m> Loading the world[0m
+load
+load
+load
+load
+load
+load
+load
+Actor amount: 120
+[1m> Running the route[0m
+ERROR: failed to destroy actor 3150 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 3100 : unable to destroy actor: not found 
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_25 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-08 04:00:03 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-08 05:46:17 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 6373.85s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 511.95s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.08                │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [91mFAILURE[0m │ 4.96 %  │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 2 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [91mFAILURE[0m │ 3 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+[1m> Registering the global statistics[0m
+
+Finished at 2023-06-08 05:46:19
+
