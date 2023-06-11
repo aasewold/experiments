@@ -1,0 +1,890 @@
+Starting at 2023-06-09 09:05:30
+EVALUATION: town05
+ROUTES: leaderboard/data/evaluation_routes/routes_town05_long.xml
+SCENARIOS: leaderboard/data/scenarios/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: results/town05.json
+
+Environment:
+ACTOR_AMOUNT=500
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=results/town05.json
+CONDA_DEFAULT_ENV=interfuser
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/interfuser
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(interfuser) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+CUDA_VISIBLE_DEVICES=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=f51cb2f54cbc
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/interfuser/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PORT=2000
+PWD=/interfuser
+PYTHONPATH=:carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg:leaderboard:leaderboard/team_code:scenario_runner
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=True
+ROUTES=leaderboard/data/evaluation_routes/routes_town05_long.xml
+SAVE_PATH=data/eval
+SCENARIOS=leaderboard/data/scenarios/town05_all_scenarios.json
+SDL_VIDEODRIVER=dummy
+SHLVL=2
+TEAM_AGENT=leaderboard/team_code/interfuser_agent.py
+TEAM_CONFIG=leaderboard/team_code/interfuser_config.py
+TM_PORT=2500
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+leaderboard/leaderboard/leaderboard_evaluator.py:93: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+pygame 2.1.2 (SDL 2.0.16, Python 3.7.16)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+
+[1m========= Preparing RouteScenario_16 (repetition 0) =========
+> Setting up the agent[0m
+Downloading: "https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-weights/resnet50d_ra2-464e36ba.pth" to /root/.cache/torch/hub/checkpoints/resnet50d_ra2-464e36ba.pth
+load model: models/interfuser.pth.tar
+[1m> Loading the world[0m
+load
+load
+load
+load
+load
+load
+load
+Actor amount: 500
+No more spawn points to use. Spawned 303 actors out of 500
+[1m> Running the route[0m
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_16 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-09 09:09:30 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-09 15:53:53 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 24263.01s           │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 917.05s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.038               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 38.4 %  │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [91mFAILURE[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+WARNING: attempting to destroy an actor that is already dead: Actor 233 (vehicle.mercedes.coupe_2020) 
+WARNING: attempting to destroy an actor that is already dead: Actor 267 (vehicle.lincoln.mkz_2017) 
+WARNING: attempting to destroy an actor that is already dead: Actor 289 (vehicle.gazelle.omafiets) 
+WARNING: attempting to destroy an actor that is already dead: Actor 302 (vehicle.yamaha.yzf) 
+WARNING: attempting to destroy an actor that is already dead: Actor 307 (vehicle.nissan.micra) 
+WARNING: attempting to destroy an actor that is already dead: Actor 312 (vehicle.mitsubishi.fusorosa) 
+WARNING: attempting to destroy an actor that is already dead: Actor 317 (vehicle.seat.leon) 
+WARNING: attempting to destroy an actor that is already dead: Actor 324 (vehicle.lincoln.mkz_2017) 
+WARNING: attempting to destroy an actor that is already dead: Actor 329 (vehicle.dodge.charger_police) 
+WARNING: attempting to destroy an actor that is already dead: Actor 331 (vehicle.toyota.prius) 
+WARNING: attempting to destroy an actor that is already dead: Actor 350 (vehicle.dodge.charger_police) 
+WARNING: attempting to destroy an actor that is already dead: Actor 370 (vehicle.lincoln.mkz_2017) 
+WARNING: attempting to destroy an actor that is already dead: Actor 381 (vehicle.nissan.patrol) 
+WARNING: attempting to destroy an actor that is already dead: Actor 419 (vehicle.mercedes.sprinter) 
+WARNING: attempting to destroy an actor that is already dead: Actor 441 (vehicle.harley-davidson.low_rider) 
+WARNING: attempting to destroy an actor that is already dead: Actor 466 (vehicle.seat.leon) 
+WARNING: attempting to destroy an actor that is already dead: Actor 513 (vehicle.mini.cooper_s) 
+
+[1m========= Preparing RouteScenario_17 (repetition 0) =========
+> Setting up the agent[0m
+load model: models/interfuser.pth.tar
+[1m> Loading the world[0m
+load
+load
+load
+load
+load
+load
+load
+Actor amount: 500
+No more spawn points to use. Spawned 303 actors out of 500
+[1m> Running the route[0m
+/interfuser/leaderboard/team_code/tracker.py:141: RuntimeWarning: divide by zero encountered in double_scalars
+  speed = 0.5 * self.frequency * np.sqrt((prev_pos[0]-cur_pos[0])**2+(prev_pos[1]-cur_pos[1])**2) / (to.historical_steps[i+1]-to.historical_steps[i])
+ERROR: failed to destroy actor 689 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 687 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 696 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 706 : unable to destroy actor: not found 
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_17 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-09 15:57:12 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-09 21:30:21 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 19988.88s           │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 714.05s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.036               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 97.04 % │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [91mFAILURE[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+
+[1m========= Preparing RouteScenario_18 (repetition 0) =========
+> Setting up the agent[0m
+load model: models/interfuser.pth.tar
+[1m> Loading the world[0m
+load
+load
+load
+load
+load
+load
+load
+Base transform is blocking objects  Transform(Location(x=-59.311008, y=-106.639061, z=0.600000), Rotation(pitch=0.000000, yaw=-12.545258, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-59.311008, y=-106.639061, z=0.600000), Rotation(pitch=0.000000, yaw=-12.545258, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-59.311008, y=-106.639061, z=0.600000), Rotation(pitch=0.000000, yaw=-12.545258, roll=0.000000))
+Actor amount: 500
+No more spawn points to use. Spawned 303 actors out of 500
+[1m> Running the route[0m
+ERROR: failed to destroy actor 1148 : unable to destroy actor: not found 
+Watchdog exception - Timeout of 59.0 seconds occured
+[1m> Stopping the route[0m
+[1m> Registering the route statistics[0m
+
+[1m========= Preparing RouteScenario_19 (repetition 0) =========
+> Setting up the agent[0m
+load model: models/interfuser.pth.tar
+[1m> Loading the world[0m
+
+[91mThe scenario could not be loaded:
+> time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000[0m
+
+Traceback (most recent call last):
+  File "leaderboard/leaderboard/leaderboard_evaluator.py", line 332, in _load_and_run_scenario
+    self._load_and_wait_for_world(args, config.town, config.ego_vehicles)
+  File "leaderboard/leaderboard/leaderboard_evaluator.py", line 209, in _load_and_wait_for_world
+    self.world = self.client.load_world(town)
+RuntimeError: time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000
+[1m> Registering the route statistics[0m
+
+Finished at 2023-06-10 00:10:59
+
+Starting at 2023-06-10 00:11:01
+EVALUATION: town05
+ROUTES: leaderboard/data/evaluation_routes/routes_town05_long.xml
+SCENARIOS: leaderboard/data/scenarios/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: results/town05.json
+
+Environment:
+ACTOR_AMOUNT=500
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=results/town05.json
+CONDA_DEFAULT_ENV=interfuser
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/interfuser
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(interfuser) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+CUDA_VISIBLE_DEVICES=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=f51cb2f54cbc
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/interfuser/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PORT=2000
+PWD=/interfuser
+PYTHONPATH=:carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg:leaderboard:leaderboard/team_code:scenario_runner
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=True
+ROUTES=leaderboard/data/evaluation_routes/routes_town05_long.xml
+SAVE_PATH=data/eval
+SCENARIOS=leaderboard/data/scenarios/town05_all_scenarios.json
+SDL_VIDEODRIVER=dummy
+SHLVL=2
+TEAM_AGENT=leaderboard/team_code/interfuser_agent.py
+TEAM_CONFIG=leaderboard/team_code/interfuser_config.py
+TM_PORT=2500
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+leaderboard/leaderboard/leaderboard_evaluator.py:93: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+pygame 2.1.2 (SDL 2.0.16, Python 3.7.16)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+
+[1m========= Preparing RouteScenario_19 (repetition 0) =========
+> Setting up the agent[0m
+load model: models/interfuser.pth.tar
+[1m> Loading the world[0m
+load
+load
+load
+load
+load
+load
+load
+Actor amount: 500
+No more spawn points to use. Spawned 303 actors out of 500
+[1m> Running the route[0m
+/interfuser/leaderboard/team_code/tracker.py:141: RuntimeWarning: divide by zero encountered in double_scalars
+  speed = 0.5 * self.frequency * np.sqrt((prev_pos[0]-cur_pos[0])**2+(prev_pos[1]-cur_pos[1])**2) / (to.historical_steps[i+1]-to.historical_steps[i])
+ERROR: failed to destroy actor 162 : unable to destroy actor: not found 
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_19 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-10 00:16:46 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-10 02:35:12 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 8305.67s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 448.6s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.054               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+WARNING: attempting to destroy an actor that is already dead: Actor 207 (vehicle.lincoln.mkz_2017) 
+WARNING: attempting to destroy an actor that is already dead: Actor 257 (vehicle.mitsubishi.fusorosa) 
+WARNING: attempting to destroy an actor that is already dead: Actor 274 (vehicle.mitsubishi.fusorosa) 
+WARNING: attempting to destroy an actor that is already dead: Actor 294 (vehicle.tesla.model3) 
+WARNING: attempting to destroy an actor that is already dead: Actor 325 (vehicle.mercedes.coupe) 
+WARNING: attempting to destroy an actor that is already dead: Actor 418 (vehicle.audi.tt) 
+WARNING: attempting to destroy an actor that is already dead: Actor 474 (vehicle.mini.cooper_s) 
+
+[1m========= Preparing RouteScenario_20 (repetition 0) =========
+> Setting up the agent[0m
+load model: models/interfuser.pth.tar
+[1m> Loading the world[0m
+load
+load
+load
+load
+load
+load
+load
+Base transform is blocking objects  Transform(Location(x=39.997688, y=-77.031784, z=0.600000), Rotation(pitch=0.000000, yaw=541.532104, roll=0.000000))
+Actor amount: 500
+No more spawn points to use. Spawned 303 actors out of 500
+[1m> Running the route[0m
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_20 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-10 02:39:21 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-10 04:19:57 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 6035.8s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 383.95s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.064               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 43.1 %  │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [91mFAILURE[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+WARNING: attempting to destroy an actor that is already dead: Actor 765 (vehicle.mini.cooper_s) 
+WARNING: attempting to destroy an actor that is already dead: Actor 807 (vehicle.nissan.patrol_2021) 
+
+[1m========= Preparing RouteScenario_21 (repetition 0) =========
+> Setting up the agent[0m
+load model: models/interfuser.pth.tar
+[1m> Loading the world[0m
+load
+load
+load
+load
+load
+load
+load
+Actor amount: 500
+No more spawn points to use. Spawned 303 actors out of 500
+[1m> Running the route[0m
+ERROR: failed to destroy actor 1113 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 1105 : unable to destroy actor: not found 
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_21 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-10 04:21:55 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-10 06:02:56 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 6061.06s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 389.95s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.064               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 3 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+
+[1m========= Preparing RouteScenario_22 (repetition 0) =========
+> Setting up the agent[0m
+load model: models/interfuser.pth.tar
+[1m> Loading the world[0m
+load
+load
+load
+load
+load
+load
+load
+Actor amount: 500
+No more spawn points to use. Spawned 303 actors out of 500
+[1m> Running the route[0m
+ERROR: failed to destroy actor 1615 : unable to destroy actor: not found 
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_22 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-10 06:06:29 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-10 09:55:28 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 13739.33s           │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 851.05s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.062               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 51.73 % │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [91mFAILURE[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+WARNING: attempting to destroy an actor that is already dead: Actor 1640 (vehicle.mini.cooper_s) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1642 (vehicle.carlamotors.firetruck) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1650 (vehicle.audi.a2) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1712 (vehicle.mini.cooper_s) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1741 (vehicle.ford.crown) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1814 (vehicle.seat.leon) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1829 (vehicle.harley-davidson.low_rider) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1856 (vehicle.carlamotors.carlacola) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1884 (vehicle.mini.cooper_s) 
+WARNING: attempting to destroy an actor that is already dead: Actor 1925 (vehicle.harley-davidson.low_rider) 
+
+[1m========= Preparing RouteScenario_23 (repetition 0) =========
+> Setting up the agent[0m
+load model: models/interfuser.pth.tar
+[1m> Loading the world[0m
+load
+load
+load
+load
+load
+load
+load
+Base transform is blocking objects  Transform(Location(x=-59.297535, y=-106.578163, z=0.600000), Rotation(pitch=0.000000, yaw=-12.448853, roll=0.000000))
+Actor amount: 500
+No more spawn points to use. Spawned 303 actors out of 500
+[1m> Running the route[0m
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_23 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-10 09:59:41 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-10 16:47:21 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 24460.07s           │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 1067.05s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.044               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 53.92 % │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [91mFAILURE[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+WARNING: attempting to destroy an actor that is already dead: Actor 2228 (vehicle.mitsubishi.fusorosa) 
+WARNING: attempting to destroy an actor that is already dead: Actor 2229 (vehicle.nissan.micra) 
+WARNING: attempting to destroy an actor that is already dead: Actor 2257 (vehicle.lincoln.mkz_2017) 
+WARNING: attempting to destroy an actor that is already dead: Actor 2274 (vehicle.micro.microlino) 
+WARNING: attempting to destroy an actor that is already dead: Actor 2301 (vehicle.harley-davidson.low_rider) 
+WARNING: attempting to destroy an actor that is already dead: Actor 2311 (vehicle.dodge.charger_2020) 
+WARNING: attempting to destroy an actor that is already dead: Actor 2343 (vehicle.audi.a2) 
+WARNING: attempting to destroy an actor that is already dead: Actor 2356 (vehicle.chevrolet.impala) 
+WARNING: attempting to destroy an actor that is already dead: Actor 2404 (vehicle.chevrolet.impala) 
+WARNING: attempting to destroy an actor that is already dead: Actor 2412 (vehicle.ford.ambulance) 
+WARNING: attempting to destroy an actor that is already dead: Actor 2419 (vehicle.mini.cooper_s) 
+WARNING: attempting to destroy an actor that is already dead: Actor 2421 (vehicle.harley-davidson.low_rider) 
+WARNING: attempting to destroy an actor that is already dead: Actor 2425 (vehicle.lincoln.mkz_2020) 
+WARNING: attempting to destroy an actor that is already dead: Actor 2457 (vehicle.mercedes.coupe_2020) 
+WARNING: attempting to destroy an actor that is already dead: Actor 2465 (vehicle.kawasaki.ninja) 
+
+[1m========= Preparing RouteScenario_24 (repetition 0) =========
+> Setting up the agent[0m
+load model: models/interfuser.pth.tar
+[1m> Loading the world[0m
+load
+load
+load
+load
+load
+load
+load
+Base transform is blocking objects  Transform(Location(x=-59.311008, y=-106.639061, z=0.600000), Rotation(pitch=0.000000, yaw=-12.545258, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-59.311008, y=-106.639061, z=0.600000), Rotation(pitch=0.000000, yaw=-12.545258, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-59.311008, y=-106.639061, z=0.600000), Rotation(pitch=0.000000, yaw=-12.545258, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-59.311008, y=-106.639061, z=0.600000), Rotation(pitch=0.000000, yaw=-12.545258, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-59.311008, y=-106.639061, z=0.600000), Rotation(pitch=0.000000, yaw=-12.545258, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-59.311008, y=-106.639061, z=0.600000), Rotation(pitch=0.000000, yaw=-12.545258, roll=0.000000))
+Actor amount: 500
+No more spawn points to use. Spawned 303 actors out of 500
+[1m> Running the route[0m
+ERROR: failed to destroy actor 2681 : unable to destroy actor: not found 
+Watchdog exception - Timeout of 59.0 seconds occured
+[1m> Stopping the route[0m
+[1m> Registering the route statistics[0m
+
+[1m========= Preparing RouteScenario_25 (repetition 0) =========
+> Setting up the agent[0m
+load model: models/interfuser.pth.tar
+[1m> Loading the world[0m
+
+[91mThe scenario could not be loaded:
+> time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000[0m
+
+Traceback (most recent call last):
+  File "leaderboard/leaderboard/leaderboard_evaluator.py", line 332, in _load_and_run_scenario
+    self._load_and_wait_for_world(args, config.town, config.ego_vehicles)
+  File "leaderboard/leaderboard/leaderboard_evaluator.py", line 209, in _load_and_wait_for_world
+    self.world = self.client.load_world(town)
+RuntimeError: time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000
+[1m> Registering the route statistics[0m
+
+Finished at 2023-06-11 00:10:21
+
+Starting at 2023-06-11 00:10:22
+EVALUATION: town05
+ROUTES: leaderboard/data/evaluation_routes/routes_town05_long.xml
+SCENARIOS: leaderboard/data/scenarios/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: results/town05.json
+
+Environment:
+ACTOR_AMOUNT=500
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=results/town05.json
+CONDA_DEFAULT_ENV=interfuser
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/interfuser
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(interfuser) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+CUDA_VISIBLE_DEVICES=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=f51cb2f54cbc
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/interfuser/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PORT=2000
+PWD=/interfuser
+PYTHONPATH=:carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg:leaderboard:leaderboard/team_code:scenario_runner
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=True
+ROUTES=leaderboard/data/evaluation_routes/routes_town05_long.xml
+SAVE_PATH=data/eval
+SCENARIOS=leaderboard/data/scenarios/town05_all_scenarios.json
+SDL_VIDEODRIVER=dummy
+SHLVL=2
+TEAM_AGENT=leaderboard/team_code/interfuser_agent.py
+TEAM_CONFIG=leaderboard/team_code/interfuser_config.py
+TM_PORT=2500
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+leaderboard/leaderboard/leaderboard_evaluator.py:93: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+pygame 2.1.2 (SDL 2.0.16, Python 3.7.16)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+
+[1m========= Preparing RouteScenario_25 (repetition 0) =========
+> Setting up the agent[0m
+load model: models/interfuser.pth.tar
+[1m> Loading the world[0m
+load
+load
+load
+load
+load
+load
+load
+Actor amount: 500
+No more spawn points to use. Spawned 303 actors out of 500
+[1m> Running the route[0m
+/interfuser/leaderboard/team_code/tracker.py:141: RuntimeWarning: divide by zero encountered in double_scalars
+  speed = 0.5 * self.frequency * np.sqrt((prev_pos[0]-cur_pos[0])**2+(prev_pos[1]-cur_pos[1])**2) / (to.historical_steps[i+1]-to.historical_steps[i])
+ERROR: failed to destroy actor 197 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 194 : unable to destroy actor: not found 
+ERROR: failed to destroy actor 170 : unable to destroy actor: not found 
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_25 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-11 00:15:57 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-11 05:23:40 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 18463.02s           │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 1321.05s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.072               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 59.1 %  │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [91mFAILURE[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+WARNING: attempting to destroy an actor that is already dead: Actor 237 (vehicle.mini.cooper_s) 
+WARNING: attempting to destroy an actor that is already dead: Actor 239 (vehicle.carlamotors.firetruck) 
+WARNING: attempting to destroy an actor that is already dead: Actor 240 (vehicle.lincoln.mkz_2017) 
+WARNING: attempting to destroy an actor that is already dead: Actor 242 (vehicle.ford.crown) 
+WARNING: attempting to destroy an actor that is already dead: Actor 243 (vehicle.chevrolet.impala) 
+WARNING: attempting to destroy an actor that is already dead: Actor 247 (vehicle.audi.a2) 
+WARNING: attempting to destroy an actor that is already dead: Actor 248 (vehicle.harley-davidson.low_rider) 
+WARNING: attempting to destroy an actor that is already dead: Actor 251 (vehicle.tesla.cybertruck) 
+WARNING: attempting to destroy an actor that is already dead: Actor 264 (vehicle.bh.crossbike) 
+WARNING: attempting to destroy an actor that is already dead: Actor 266 (vehicle.vespa.zx125) 
+WARNING: attempting to destroy an actor that is already dead: Actor 268 (vehicle.micro.microlino) 
+WARNING: attempting to destroy an actor that is already dead: Actor 269 (vehicle.carlamotors.firetruck) 
+WARNING: attempting to destroy an actor that is already dead: Actor 276 (vehicle.mercedes.sprinter) 
+WARNING: attempting to destroy an actor that is already dead: Actor 278 (vehicle.audi.etron) 
+WARNING: attempting to destroy an actor that is already dead: Actor 281 (vehicle.yamaha.yzf) 
+WARNING: attempting to destroy an actor that is already dead: Actor 288 (vehicle.ford.mustang) 
+WARNING: attempting to destroy an actor that is already dead: Actor 290 (vehicle.mitsubishi.fusorosa) 
+WARNING: attempting to destroy an actor that is already dead: Actor 291 (vehicle.nissan.micra) 
+WARNING: attempting to destroy an actor that is already dead: Actor 294 (vehicle.bh.crossbike) 
+WARNING: attempting to destroy an actor that is already dead: Actor 295 (vehicle.dodge.charger_police) 
+WARNING: attempting to destroy an actor that is already dead: Actor 302 (vehicle.nissan.micra) 
+WARNING: attempting to destroy an actor that is already dead: Actor 305 (vehicle.mercedes.coupe_2020) 
+WARNING: attempting to destroy an actor that is already dead: Actor 306 (vehicle.kawasaki.ninja) 
+WARNING: attempting to destroy an actor that is already dead: Actor 308 (vehicle.ford.crown) 
+WARNING: attempting to destroy an actor that is already dead: Actor 310 (vehicle.carlamotors.firetruck) 
+WARNING: attempting to destroy an actor that is already dead: Actor 311 (vehicle.nissan.micra) 
+WARNING: attempting to destroy an actor that is already dead: Actor 315 (vehicle.dodge.charger_2020) 
+WARNING: attempting to destroy an actor that is already dead: Actor 318 (vehicle.lincoln.mkz_2020) 
+WARNING: attempting to destroy an actor that is already dead: Actor 323 (vehicle.tesla.cybertruck) 
+WARNING: attempting to destroy an actor that is already dead: Actor 324 (vehicle.dodge.charger_police) 
+WARNING: attempting to destroy an actor that is already dead: Actor 330 (vehicle.tesla.model3) 
+WARNING: attempting to destroy an actor that is already dead: Actor 332 (vehicle.diamondback.century) 
+WARNING: attempting to destroy an actor that is already dead: Actor 335 (vehicle.mercedes.coupe) 
+WARNING: attempting to destroy an actor that is already dead: Actor 337 (vehicle.lincoln.mkz_2017) 
+WARNING: attempting to destroy an actor that is already dead: Actor 338 (vehicle.ford.crown) 
+WARNING: attempting to destroy an actor that is already dead: Actor 343 (vehicle.audi.a2) 
+WARNING: attempting to destroy an actor that is already dead: Actor 346 (vehicle.chevrolet.impala) 
+WARNING: attempting to destroy an actor that is already dead: Actor 347 (vehicle.carlamotors.carlacola) 
+WARNING: attempting to destroy an actor that is already dead: Actor 353 (vehicle.nissan.patrol) 
+WARNING: attempting to destroy an actor that is already dead: Actor 354 (vehicle.tesla.model3) 
+WARNING: attempting to destroy an actor that is already dead: Actor 355 (vehicle.audi.tt) 
+WARNING: attempting to destroy an actor that is already dead: Actor 363 (vehicle.harley-davidson.low_rider) 
+WARNING: attempting to destroy an actor that is already dead: Actor 364 (vehicle.audi.a2) 
+WARNING: attempting to destroy an actor that is already dead: Actor 367 (vehicle.mercedes.coupe_2020) 
+WARNING: attempting to destroy an actor that is already dead: Actor 368 (vehicle.mercedes.coupe) 
+WARNING: attempting to destroy an actor that is already dead: Actor 370 (vehicle.jeep.wrangler_rubicon) 
+WARNING: attempting to destroy an actor that is already dead: Actor 376 (vehicle.nissan.patrol) 
+WARNING: attempting to destroy an actor that is already dead: Actor 384 (vehicle.seat.leon) 
+WARNING: attempting to destroy an actor that is already dead: Actor 385 (vehicle.bmw.grandtourer) 
+WARNING: attempting to destroy an actor that is already dead: Actor 388 (vehicle.toyota.prius) 
+WARNING: attempting to destroy an actor that is already dead: Actor 392 (vehicle.audi.tt) 
+WARNING: attempting to destroy an actor that is already dead: Actor 395 (vehicle.micro.microlino) 
+WARNING: attempting to destroy an actor that is already dead: Actor 396 (vehicle.nissan.micra) 
+WARNING: attempting to destroy an actor that is already dead: Actor 400 (vehicle.kawasaki.ninja) 
+WARNING: attempting to destroy an actor that is already dead: Actor 402 (vehicle.lincoln.mkz_2020) 
+WARNING: attempting to destroy an actor that is already dead: Actor 408 (vehicle.dodge.charger_2020) 
+WARNING: attempting to destroy an actor that is already dead: Actor 417 (vehicle.dodge.charger_police_2020) 
+WARNING: attempting to destroy an actor that is already dead: Actor 423 (vehicle.jeep.wrangler_rubicon) 
+WARNING: attempting to destroy an actor that is already dead: Actor 425 (vehicle.bh.crossbike) 
+WARNING: attempting to destroy an actor that is already dead: Actor 431 (vehicle.yamaha.yzf) 
+WARNING: attempting to destroy an actor that is already dead: Actor 439 (vehicle.vespa.zx125) 
+WARNING: attempting to destroy an actor that is already dead: Actor 440 (vehicle.bh.crossbike) 
+WARNING: attempting to destroy an actor that is already dead: Actor 441 (vehicle.audi.a2) 
+WARNING: attempting to destroy an actor that is already dead: Actor 444 (vehicle.mercedes.coupe) 
+WARNING: attempting to destroy an actor that is already dead: Actor 447 (vehicle.audi.etron) 
+WARNING: attempting to destroy an actor that is already dead: Actor 450 (vehicle.mini.cooper_s) 
+WARNING: attempting to destroy an actor that is already dead: Actor 454 (vehicle.dodge.charger_police_2020) 
+WARNING: attempting to destroy an actor that is already dead: Actor 455 (vehicle.mercedes.coupe_2020) 
+WARNING: attempting to destroy an actor that is already dead: Actor 459 (vehicle.mini.cooper_s) 
+WARNING: attempting to destroy an actor that is already dead: Actor 463 (vehicle.mercedes.coupe_2020) 
+WARNING: attempting to destroy an actor that is already dead: Actor 464 (vehicle.nissan.micra) 
+WARNING: attempting to destroy an actor that is already dead: Actor 465 (vehicle.dodge.charger_police) 
+WARNING: attempting to destroy an actor that is already dead: Actor 473 (vehicle.toyota.prius) 
+WARNING: attempting to destroy an actor that is already dead: Actor 475 (vehicle.mini.cooper_s_2021) 
+WARNING: attempting to destroy an actor that is already dead: Actor 480 (vehicle.seat.leon) 
+WARNING: attempting to destroy an actor that is already dead: Actor 488 (vehicle.carlamotors.carlacola) 
+WARNING: attempting to destroy an actor that is already dead: Actor 489 (vehicle.mercedes.coupe_2020) 
+WARNING: attempting to destroy an actor that is already dead: Actor 490 (vehicle.mini.cooper_s) 
+WARNING: attempting to destroy an actor that is already dead: Actor 494 (vehicle.chevrolet.impala) 
+WARNING: attempting to destroy an actor that is already dead: Actor 512 (vehicle.nissan.micra) 
+WARNING: attempting to destroy an actor that is already dead: Actor 513 (vehicle.audi.a2) 
+WARNING: attempting to destroy an actor that is already dead: Actor 514 (vehicle.nissan.micra) 
+WARNING: attempting to destroy an actor that is already dead: Actor 516 (vehicle.nissan.patrol) 
+WARNING: attempting to destroy an actor that is already dead: Actor 517 (vehicle.nissan.micra) 
+WARNING: attempting to destroy an actor that is already dead: Actor 528 (vehicle.micro.microlino) 
+WARNING: attempting to destroy an actor that is already dead: Actor 529 (vehicle.jeep.wrangler_rubicon) 
+WARNING: attempting to destroy an actor that is already dead: Actor 531 (vehicle.dodge.charger_2020) 
+WARNING: attempting to destroy an actor that is already dead: Actor 533 (vehicle.audi.etron) 
+WARNING: attempting to destroy an actor that is already dead: Actor 536 (vehicle.yamaha.yzf) 
+[1m> Registering the global statistics[0m
+
+Finished at 2023-06-11 05:23:41
+
