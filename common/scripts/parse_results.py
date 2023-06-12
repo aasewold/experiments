@@ -17,8 +17,26 @@ import typing as t
 import itertools
 import math
 import statistics as stats
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
 from pathlib import Path
 from dataclasses import dataclass
+
+
+agent_names = {
+    'transfuser': 'TF',
+    'interfuser': 'IF',
+}
+
+model_names = {
+    'prefuser': 'Pre-trained',
+    'printerfuser': 'Pre-trained',
+    'autopilot': 'Expert agent',
+    'interfuser-kia-ds': 'ds-kia',
+    'if-ds-custom': 'ds-custom',
+    'transfuser-2023-03-08-epoch41': 'ds-feb',
+}
 
 
 def nanavg(xs: t.Iterable[float]) -> float:
@@ -98,7 +116,9 @@ def main(topdir: Path, *filters: str):
         sys.exit(1)
     jsons = list(topdir.absolute().rglob("*.json"))
     results = list(filter(None, map(process_json, jsons)))
-    print_results(results, filters)
+    groups, num_ignored = filter_and_group_results(results, filters)
+    print_groups(groups, num_ignored)
+    plot_groups(groups)
 
 
 def process_json(path: Path):
@@ -178,8 +198,8 @@ def agg_results(results: t.List[Result], fn: t.Callable, name: str) -> Result:
     return Result(name, 0, 0, records, aux_values, False)
 
 
-def print_results(results: t.List[t.Tuple[ResultKey, Result]], filters: t.Tuple[str]):
-    all_matches: t.List[Result] = []
+def filter_and_group_results(results: t.List[t.Tuple[ResultKey, Result]], filters: t.Tuple[str]):
+    groups: t.List[t.Tuple[ResultKey, t.List[Result]]] = []
     num_tot = 0
 
     if not 'ignored' in filters:
@@ -195,8 +215,18 @@ def print_results(results: t.List[t.Tuple[ResultKey, Result]], filters: t.Tuple[
         num_tot += len(items)
 
         items = list(filter(lambda x: check_filters(f'{key_str}|{x}', filters), items))
-        if not items:
-            continue
+        if items:
+            groups.append((key, items))
+    
+    return groups, num_ignored
+
+
+def print_groups(groups: t.List[t.Tuple[ResultKey, t.List[Result]]], num_ignored: int):
+    all_matches: t.List[Result] = []
+    num_tot = 0
+
+    for key, items in groups:
+        num_tot += len(items)
 
         print(f"{key}:")
         for result in items:
@@ -214,6 +244,38 @@ def print_results(results: t.List[t.Tuple[ResultKey, Result]], filters: t.Tuple[
         print(f"Average of all matches:")
         print(f"\t{agg_results(all_matches, stats.mean, 'avg')}")
         print(f"\t{agg_results(all_matches, stats.stdev, 'std')}")
+
+
+def plot_groups(groups: t.List[t.Tuple[ResultKey, t.List[Result]]]):
+    fig, ax = plt.subplots(figsize=(5, 5))
+    ax.set_title("Driving Scores")
+    ax.set_ylabel("Driving Score")
+    ax.grid(True)
+
+    for key, items in groups:
+        items = [r for r in items if r.complete]
+        if not items:
+            continue
+
+        str_agent = agent_names.get(key.agent, key.agent)
+        str_model = model_names.get(key.weights, key.weights)
+        key_str = f"{str_agent}: {str_model}"
+        # if True:
+        if False:
+            key_user = input(f"Enter label for \"{key}\", or 'skip': ")
+            if key_user == 'skip':
+                continue
+            if key_user:
+                key_str = key_user
+        
+        x = [key_str for r in items]
+        y = [r.DS for r in items]
+        sns.swarmplot(x=x, y=y, alpha=0.5, linewidth=0.5)
+
+    plt.setp(ax.get_xticklabels(), rotation=20, horizontalalignment='right')
+    plt.savefig("parse_result_scores.png", bbox_inches='tight', dpi=300)
+    with open('parse_results_cmdline.txt', 'w') as f:
+        f.write(' '.join(sys.argv))
 
 
 def check_filters(key: str, filters: t.Tuple[str]):
