@@ -17,8 +17,11 @@ export DEBUG_CHALLENGE=0
 export REPETITIONS=1 # multiple evaluation runs
 
 export TEAM_CONFIG=leaderboard/team_code/interfuser_config.py # model checkpoint, not required for expert
-export SAVE_PATH=data/eval # path for saving episodes while evaluating
 export RESUME=True
+
+if [ -z "$SAVE_PATH" ]; then
+    unset SAVE_PATH
+fi
 
 if [ -f "models/autopilot" ]; then
     export TEAM_AGENT=leaderboard/team_code/auto_pilot.py # agent

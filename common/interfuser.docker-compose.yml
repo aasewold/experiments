@@ -25,6 +25,7 @@ services:
         - INTERFUSER_COMMIT=${INTERFUSER_COMMIT}
     environment:
       - PYTHONUNBUFFERED=1
+      - SAVE_PATH=${SAVE_PATH-data/eval}
       # Specify which evaluation to run. The options are town05, 42routes and longest6
       - EVALUATION=${EVALUATION:-longest6}
       - ACTOR_AMOUNT=${ACTOR_AMOUNT:?Please set ACTOR_AMOUNT}
