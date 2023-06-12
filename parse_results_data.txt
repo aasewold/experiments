@@ -1,0 +1,8 @@
+./common/scripts/parse_results.py . town05 9.14 a=town autopilot,prefuser,printerfuser,03-08-epoch41,orig-ds-41
+Scores: agent, median, mean, std
+IF: Expert agent     &  78.0 &  77.9 &  6.9 &  20.9 \\
+IF: Pre-trained      &  52.8 &  51.1 &  7.8 &  23.3 \\
+TF: Expert agent     &  92.0 &  92.3 &  4.8 &  14.8 \\
+TF: Pre-trained      &  85.1 &  83.8 &  4.5 &  10.9 \\
+TF: ds-orig          &  65.3 &  64.4 &  8.4 &  18.4 \\
+TF: ds-feb           &  76.1 &  71.1 & 15.4 &  34.2 \\

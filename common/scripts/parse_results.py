@@ -36,6 +36,7 @@ model_names = {
     'interfuser-kia-ds': 'ds-kia',
     'if-ds-custom': 'ds-custom',
     'transfuser-2023-03-08-epoch41': 'ds-feb',
+    'tf-orig-ds-41': 'ds-orig',
 }
 
 
@@ -247,10 +248,12 @@ def print_groups(groups: t.List[t.Tuple[ResultKey, t.List[Result]]], num_ignored
 
 
 def plot_groups(groups: t.List[t.Tuple[ResultKey, t.List[Result]]]):
-    fig, ax = plt.subplots(figsize=(5, 5))
+    fig, ax = plt.subplots(figsize=(5, 3))
     ax.set_title("Driving Scores")
     ax.set_ylabel("Driving Score")
     ax.grid(True)
+
+    lines = []
 
     for key, items in groups:
         items = [r for r in items if r.complete]
@@ -272,10 +275,18 @@ def plot_groups(groups: t.List[t.Tuple[ResultKey, t.List[Result]]]):
         y = [r.DS for r in items]
         sns.swarmplot(x=x, y=y, alpha=0.5, linewidth=0.5)
 
+        mean = stats.mean(y)
+        median = stats.median(y)
+        std = stats.stdev(y)
+        range = max(y) - min(y)
+        lines.append(f'{key_str:<20} & {median:>5.1f} & {mean:>5.1f} & {std:>4.1f} & {range:>5.1f} \\\\\n')
+
     plt.setp(ax.get_xticklabels(), rotation=20, horizontalalignment='right')
     plt.savefig("parse_result_scores.png", bbox_inches='tight', dpi=300)
-    with open('parse_results_cmdline.txt', 'w') as f:
-        f.write(' '.join(sys.argv))
+    with open('parse_results_data.txt', 'w') as f:
+        f.write(' '.join(sys.argv) + '\n')
+        f.write('Scores: agent, median, mean, std\n')
+        f.writelines(lines)
 
 
 def check_filters(key: str, filters: t.Tuple[str]):
