@@ -5,6 +5,7 @@ SCENARIOS: leaderboard/data/scenarios/town05_all_scenarios.json
 CHECKPOINT_ENDPOINT: results/town05.json
 
 Environment:
+ACTOR_AMOUNT=town
 CARLA_ROOT=carla
 CARLA_SERVER=carla/CarlaUE4.sh
 CHALLENGE_TRACK_CODENAME=MAP

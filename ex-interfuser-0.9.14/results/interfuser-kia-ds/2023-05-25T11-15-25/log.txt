@@ -5,6 +5,7 @@ SCENARIOS: leaderboard/data/scenarios/town05_all_scenarios.json
 CHECKPOINT_ENDPOINT: results/town05.json
 
 Environment:
+ACTOR_AMOUNT=town
 NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
 CONDA_SHLVL=2
 PYTHONUNBUFFERED=1
