@@ -1,0 +1,1149 @@
+Starting at 2023-06-13 07:07:01
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=5df6848f505d
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_16 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Downloading: "https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-weights/regnety_032_ra-7f2439f9.pth" to /root/.cache/torch/hub/checkpoints/regnety_032_ra-7f2439f9.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+
+[91mThe scenario could not be loaded:
+> time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000[0m
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 337, in _load_and_run_scenario
+    scenario = RouteScenario(world=self.world, config=config, debug_mode=args.debug)
+  File "/transfuser/leaderboard/leaderboard/scenarios/route_scenario_local.py", line 207, in __init__
+    criteria_enable=criteria_enable)
+  File "/transfuser/scenario_runner/srunner/scenarios/basic_scenario.py", line 55, in __init__
+    world.tick()
+RuntimeError: time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 337, in _load_and_run_scenario
+    scenario = RouteScenario(world=self.world, config=config, debug_mode=args.debug)
+  File "/transfuser/leaderboard/leaderboard/scenarios/route_scenario_local.py", line 207, in __init__
+    criteria_enable=criteria_enable)
+  File "/transfuser/scenario_runner/srunner/scenarios/basic_scenario.py", line 55, in __init__
+    world.tick()
+RuntimeError: time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 490, in main
+    leaderboard_evaluator.run(arguments)
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 434, in run
+    self._load_and_run_scenario(args, config)
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 365, in _load_and_run_scenario
+    self._cleanup()
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 143, in _cleanup
+    settings = self.world.get_settings()
+RuntimeError: time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000
+ERROR: failed to destroy actor 312 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 313 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 314 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 315 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 316 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 317 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 318 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 319 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 320 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 321 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 322 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 323 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 324 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 325 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+Starting at 2023-06-13 07:26:40
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=5df6848f505d
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_16 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+
+[91mThe scenario could not be loaded:
+> time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000[0m
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 349, in _load_and_run_scenario
+    self.manager.load_scenario(scenario, self.agent_instance, config.repetition_index)
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 116, in load_scenario
+    self._agent.setup_sensors(self.ego_vehicles[0], self._debug_mode)
+  File "/transfuser/leaderboard/leaderboard/autoagents/agent_wrapper_local.py", line 193, in setup_sensors
+    CarlaDataProvider.get_world().tick()
+RuntimeError: time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 349, in _load_and_run_scenario
+    self.manager.load_scenario(scenario, self.agent_instance, config.repetition_index)
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 116, in load_scenario
+    self._agent.setup_sensors(self.ego_vehicles[0], self._debug_mode)
+  File "/transfuser/leaderboard/leaderboard/autoagents/agent_wrapper_local.py", line 193, in setup_sensors
+    CarlaDataProvider.get_world().tick()
+RuntimeError: time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 490, in main
+    leaderboard_evaluator.run(arguments)
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 434, in run
+    self._load_and_run_scenario(args, config)
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 365, in _load_and_run_scenario
+    self._cleanup()
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 143, in _cleanup
+    settings = self.world.get_settings()
+RuntimeError: time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000
+_cleanup() started
+_cleanup() unsetting sync mode
+Exception ignored in: <function LeaderboardEvaluator.__del__ at 0x7f3c39558710>
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 125, in __del__
+    self._cleanup()
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 143, in _cleanup
+    settings = self.world.get_settings()
+RuntimeError: time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000
+ERROR: failed to destroy actor 312 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 313 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 314 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 315 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 316 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 317 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 318 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 319 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 320 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 321 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 322 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 323 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 324 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 325 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 326 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 327 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 328 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 329 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 330 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 331 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 332 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 333 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 334 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 335 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 336 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 337 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 338 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 339 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 340 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 341 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 342 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 343 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 344 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 345 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 346 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 347 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 348 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 349 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 350 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 351 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 352 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 353 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 354 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 355 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 356 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 357 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 358 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 359 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 360 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 361 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 362 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 363 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 364 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 365 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 366 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 367 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 368 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 369 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 370 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 371 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 372 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 373 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 374 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 375 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 376 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 377 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 378 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 379 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 380 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 381 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 382 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 383 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 384 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 385 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 386 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 387 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 388 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 389 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 390 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 391 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 392 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 393 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 394 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 395 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 396 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 397 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 398 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 399 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 400 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 401 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 402 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 403 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 404 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 405 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 406 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 407 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 408 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 409 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 410 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 411 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 412 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 413 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 414 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 415 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 416 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 417 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 418 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 419 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 420 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 421 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 422 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 423 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 424 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 425 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 426 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 427 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 428 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 429 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 430 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+ERROR: failed to destroy actor 431 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+
+Finished at 2023-06-13 09:32:29
+
+Starting at 2023-06-13 09:54:28
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=5df6848f505d
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_16 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:227: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_clses = topk_inds // (height * width)
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:229: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_ys = topk_inds // width
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_16 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-13 09:57:17 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-13 10:20:56 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 1418.27s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 564.4s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.398               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [91mFAILURE[0m │ 3 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_17 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_17 (repetition 0) ------ [92mSUCCESS[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-13 10:22:56 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-13 10:38:26 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 929.57s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 385.45s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.415               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_18 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_18 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-13 10:40:44 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-13 11:05:35 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 1490.75s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 590.5s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.396               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [91mFAILURE[0m │ 2 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_19 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_19 (repetition 0) ------ [92mSUCCESS[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-13 11:09:17 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-13 11:33:28 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 1450.63s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 583.65s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.402               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_20 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_20 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-13 11:36:19 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-13 11:57:04 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 1245.41s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 481.15s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.386               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_21 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_21 (repetition 0) ------ [92mSUCCESS[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-13 11:58:24 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-13 12:11:09 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 764.89s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 294.55s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.385               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_22 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_22 (repetition 0) ------ [92mSUCCESS[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-13 12:13:30 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-13 12:39:30 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 1560.34s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 600.25s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.385               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_23 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected object directly in front of the vehicle. Stopping. Step: 10341
+Detected agent being stuck. Move for frame:  11
+Detected object directly in front of the vehicle. Stopping. Step: 10343
+Detected agent being stuck. Move for frame:  12
+Detected object directly in front of the vehicle. Stopping. Step: 10345
+Detected agent being stuck. Move for frame:  13
+Detected object directly in front of the vehicle. Stopping. Step: 10347
+Detected agent being stuck. Move for frame:  14
+Detected object directly in front of the vehicle. Stopping. Step: 10349
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+Detected agent being stuck. Move for frame:  0
+Detected object directly in front of the vehicle. Stopping. Step: 13081
+Detected agent being stuck. Move for frame:  1
+Detected object directly in front of the vehicle. Stopping. Step: 13083
+Detected agent being stuck. Move for frame:  2
+Detected object directly in front of the vehicle. Stopping. Step: 13085
+Detected agent being stuck. Move for frame:  3
+Detected object directly in front of the vehicle. Stopping. Step: 13087
+Detected agent being stuck. Move for frame:  4
+Detected object directly in front of the vehicle. Stopping. Step: 13089
+Detected agent being stuck. Move for frame:  5
+Detected object directly in front of the vehicle. Stopping. Step: 13091
+Detected agent being stuck. Move for frame:  6
+Detected object directly in front of the vehicle. Stopping. Step: 13093
+Detected agent being stuck. Move for frame:  7
+Detected object directly in front of the vehicle. Stopping. Step: 13095
+Detected agent being stuck. Move for frame:  8
+Detected object directly in front of the vehicle. Stopping. Step: 13097
+Detected agent being stuck. Move for frame:  9
+Detected object directly in front of the vehicle. Stopping. Step: 13099
+Detected agent being stuck. Move for frame:  10
+Detected object directly in front of the vehicle. Stopping. Step: 13101
+Detected agent being stuck. Move for frame:  11
+Detected object directly in front of the vehicle. Stopping. Step: 13103
+Detected agent being stuck. Move for frame:  12
+Detected object directly in front of the vehicle. Stopping. Step: 13105
+Detected agent being stuck. Move for frame:  13
+Detected object directly in front of the vehicle. Stopping. Step: 13107
+Detected agent being stuck. Move for frame:  14
+Detected object directly in front of the vehicle. Stopping. Step: 13109
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_23 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-13 12:42:32 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-13 13:24:34 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 2521.86s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 778.9s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.309               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 54.23 % │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [91mFAILURE[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_24 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_24 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-13 13:29:32 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-13 14:37:13 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 4061.23s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 1345.0s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.331               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [91mFAILURE[0m │ 0.23 %  │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [91mFAILURE[0m │ 4 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_25 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+Detected agent being stuck. Move for frame:  0
+Detected object directly in front of the vehicle. Stopping. Step: 11331
+Detected agent being stuck. Move for frame:  1
+Detected object directly in front of the vehicle. Stopping. Step: 11333
+Detected agent being stuck. Move for frame:  2
+Detected object directly in front of the vehicle. Stopping. Step: 11335
+Detected agent being stuck. Move for frame:  3
+Detected object directly in front of the vehicle. Stopping. Step: 11337
+Detected agent being stuck. Move for frame:  4
+Detected object directly in front of the vehicle. Stopping. Step: 11339
+Detected agent being stuck. Move for frame:  5
+Detected object directly in front of the vehicle. Stopping. Step: 11341
+Detected agent being stuck. Move for frame:  6
+Detected object directly in front of the vehicle. Stopping. Step: 11343
+Detected agent being stuck. Move for frame:  7
+Detected object directly in front of the vehicle. Stopping. Step: 11345
+Detected agent being stuck. Move for frame:  8
+Detected object directly in front of the vehicle. Stopping. Step: 11347
+Detected agent being stuck. Move for frame:  9
+Detected object directly in front of the vehicle. Stopping. Step: 11349
+Detected agent being stuck. Move for frame:  10
+Detected object directly in front of the vehicle. Stopping. Step: 11351
+Detected agent being stuck. Move for frame:  11
+Detected object directly in front of the vehicle. Stopping. Step: 11353
+Detected agent being stuck. Move for frame:  12
+Detected object directly in front of the vehicle. Stopping. Step: 11355
+Detected agent being stuck. Move for frame:  13
+Detected object directly in front of the vehicle. Stopping. Step: 11357
+Detected agent being stuck. Move for frame:  14
+Detected object directly in front of the vehicle. Stopping. Step: 11359
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_25 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-13 14:40:52 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-13 15:15:20 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 2067.63s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 718.75s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.348               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 53.36 % │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [91mFAILURE[0m │ 1.82 %  │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [91mFAILURE[0m │ 2 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [91mFAILURE[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+[1m> Registering the global statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+_cleanup() finished
+
+Finished at 2023-06-13 15:15:21
+
