@@ -1,0 +1,4053 @@
+Starting at 2023-06-12 08:35:17
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=3fb084502c0a
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_16 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Downloading: "https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-weights/regnety_032_ra-7f2439f9.pth" to /root/.cache/torch/hub/checkpoints/regnety_032_ra-7f2439f9.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:227: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_clses = topk_inds // (height * width)
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:229: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_ys = topk_inds // width
+Watchdog exception - Timeout of 59.0 seconds occured
+
+[91mError during the simulation:
+> time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000[0m
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 372, in _load_and_run_scenario
+    self.manager.run_scenario()
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 136, in run_scenario
+    self._tick_scenario(timestamp)
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 186, in _tick_scenario
+    CarlaDataProvider.get_world().tick(self._timeout)
+RuntimeError: time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000
+[1m> Stopping the route[0m
+[1m> Registering the route statistics[0m
+_cleanup() started
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+_cleanup() started
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+_cleanup() finished
+
+Finished at 2023-06-12 08:44:02
+
+Starting at 2023-06-12 08:44:03
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=3fb084502c0a
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_16 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:227: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_clses = topk_inds // (height * width)
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:229: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_ys = topk_inds // width
+
+[91mStopping the route, the agent has crashed:
+> 'HybridAgent' object is not subscriptable[0m
+
+Traceback (most recent call last):
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 152, in _tick_scenario
+    ego_action = self._agent()
+  File "/transfuser/leaderboard/leaderboard/autoagents/agent_wrapper_local.py", line 84, in __call__
+    return self._agent()
+  File "/transfuser/leaderboard/leaderboard/autoagents/autonomous_agent.py", line 115, in __call__
+    control = self.run_step(input_data, timestamp)
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "./team_code_transfuser/submission_agent.py", line 432, in run_step
+    self.update_gps_buffer(self.control, tick_data['compass'], tick_data['speed'])
+  File "./team_code_transfuser/submission_agent.py", line 504, in update_gps_buffer
+    next_loc_tmp, _, _ = self.ego_model.forward(loc_temp, yaw, speed, action)
+  File "./team_code_transfuser/submission_agent.py", line 716, in forward
+    steer = acts[..., 0:1].item()
+TypeError: 'HybridAgent' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 372, in _load_and_run_scenario
+    self.manager.run_scenario()
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 136, in run_scenario
+    self._tick_scenario(timestamp)
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 159, in _tick_scenario
+    raise AgentError(e)
+leaderboard.autoagents.agent_wrapper_local.AgentError: 'HybridAgent' object is not subscriptable
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_16 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-12 08:46:06 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-12 08:49:22 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 195.3s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 102.9s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.527               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 12.92 % │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_17 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+Watchdog exception - Timeout of 59.0 seconds occured
+terminate called after throwing an instance of 'carla::client::TimeoutException'
+  what():  time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000
+
+Finished at 2023-06-12 08:52:04
+
+Starting at 2023-06-12 08:52:05
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=3fb084502c0a
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_17 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town05
+
+[91mThe scenario could not be loaded:
+> unsupported operand type(s) for *: 'collections.OrderedDict' and 'float'[0m
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 337, in _load_and_run_scenario
+    scenario = RouteScenario(world=self.world, config=config, debug_mode=args.debug)
+  File "/transfuser/leaderboard/leaderboard/scenarios/route_scenario_local.py", line 190, in __init__
+    self._update_route(world, config, debug_mode>0)
+  File "/transfuser/leaderboard/leaderboard/scenarios/route_scenario_local.py", line 225, in _update_route
+    config.town, route, world_annotations)
+  File "/transfuser/leaderboard/leaderboard/utils/route_parser.py", line 293, in scan_route_for_scenarios
+    waypoint, trajectory)
+  File "/transfuser/leaderboard/leaderboard/utils/route_parser.py", line 177, in match_world_location_to_route
+    if match_waypoints(world_location, route_waypoint[0]):
+  File "/transfuser/leaderboard/leaderboard/utils/route_parser.py", line 167, in match_waypoints
+    dpos = math.sqrt(dx * dx + dy * dy + dz * dz)
+TypeError: unsupported operand type(s) for *: 'collections.OrderedDict' and 'float'
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+Exception ignored in: <function RouteScenario.__del__ at 0x7fb2aaeb1e60>
+Traceback (most recent call last):
+  File "/transfuser/leaderboard/leaderboard/scenarios/route_scenario_local.py", line 579, in __del__
+    self.remove_all_actors()
+  File "/transfuser/scenario_runner/srunner/scenarios/basic_scenario.py", line 202, in remove_all_actors
+    for i, _ in enumerate(self.other_actors):
+AttributeError: 'RouteScenario' object has no attribute 'other_actors'
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+_cleanup() finished
+
+Finished at 2023-06-12 08:53:22
+
+Starting at 2023-06-12 08:53:23
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=3fb084502c0a
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_17 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:227: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_clses = topk_inds // (height * width)
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:229: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_ys = topk_inds // width
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_17 (repetition 0) ------ [92mSUCCESS[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-12 08:55:04 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-12 09:04:57 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 592.78s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 385.2s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.65                │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_18 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+Watchdog exception - Timeout of 59.0 seconds occured
+terminate called after throwing an instance of 'carla::client::TimeoutException'
+  what():  time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000
+
+Finished at 2023-06-12 09:07:55
+
+Starting at 2023-06-12 09:07:56
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=3fb084502c0a
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 489, in main
+    leaderboard_evaluator = LeaderboardEvaluator(arguments, statistics_manager)
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 98, in __init__
+    self.module_agent = importlib.import_module(module_name)
+  File "/opt/conda/envs/tfuse/lib/python3.7/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 967, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "./team_code_transfuser/submission_agent.py", line 15, in <module>
+    from model import LidarCenterNet
+  File "./team_code_transfuser/model.py", line 19, in <module>
+    from mmcv.cnn import bias_init_with_prob, normal_init
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmcv/__init__.py", line 4, in <module>
+    from .fileio import *
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmcv/fileio/__init__.py", line 2, in <module>
+    from .file_client import BaseStorageBackend, FileClient
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmcv/fileio/file_client.py", line 15, in <module>
+    from mmcv.utils.misc import has_method
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmcv/utils/__init__.py", line 40, in <module>
+    from .env import collect_env
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmcv/utils/env.py", line 13, in <module>
+    from .parrots_wrapper import get_build_config
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmcv/utils/parrots_wrapper.py", line 101, in <module>
+    BuildExtension, CppExtension, CUDAExtension = _get_extension()
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmcv/utils/parrots_wrapper.py", line 71, in _get_extension
+    from torch.utils.cpp_extension import (BuildExtension, CppExtension,
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/torch/utils/cpp_extension.py", line 18, in <module>
+    from .hipify import hipify_python
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/torch/utils/hipify/hipify_python.py", line 743, in <module>
+    RE_CAFFE2_PREPROCESSOR = re.compile(CAFFE2_TRIE.pattern())
+  File "/opt/conda/envs/tfuse/lib/python3.7/re.py", line 236, in compile
+    return _compile(pattern, flags)
+  File "/opt/conda/envs/tfuse/lib/python3.7/re.py", line 288, in _compile
+    p = sre_compile.compile(pattern, flags)
+  File "/opt/conda/envs/tfuse/lib/python3.7/sre_compile.py", line 764, in compile
+    p = sre_parse.parse(p, flags)
+  File "/opt/conda/envs/tfuse/lib/python3.7/sre_parse.py", line 924, in parse
+    p = _parse_sub(source, pattern, flags & SRE_FLAG_VERBOSE, 0)
+  File "/opt/conda/envs/tfuse/lib/python3.7/sre_parse.py", line 420, in _parse_sub
+    not nested and not items))
+  File "/opt/conda/envs/tfuse/lib/python3.7/sre_parse.py", line 810, in _parse
+    p = _parse_sub(source, state, sub_verbose, nested + 1)
+  File "/opt/conda/envs/tfuse/lib/python3.7/sre_parse.py", line 420, in _parse_sub
+    not nested and not items))
+  File "/opt/conda/envs/tfuse/lib/python3.7/sre_parse.py", line 810, in _parse
+    p = _parse_sub(source, state, sub_verbose, nested + 1)
+  File "/opt/conda/envs/tfuse/lib/python3.7/sre_parse.py", line 420, in _parse_sub
+    not nested and not items))
+  File "/opt/conda/envs/tfuse/lib/python3.7/sre_parse.py", line 810, in _parse
+    p = _parse_sub(source, state, sub_verbose, nested + 1)
+  File "/opt/conda/envs/tfuse/lib/python3.7/sre_parse.py", line 420, in _parse_sub
+    not nested and not items))
+  File "/opt/conda/envs/tfuse/lib/python3.7/sre_parse.py", line 810, in _parse
+    p = _parse_sub(source, state, sub_verbose, nested + 1)
+  File "/opt/conda/envs/tfuse/lib/python3.7/sre_parse.py", line 420, in _parse_sub
+    not nested and not items))
+  File "/opt/conda/envs/tfuse/lib/python3.7/sre_parse.py", line 810, in _parse
+    p = _parse_sub(source, state, sub_verbose, nested + 1)
+  File "/opt/conda/envs/tfuse/lib/python3.7/sre_parse.py", line 420, in _parse_sub
+    not nested and not items))
+  File "/opt/conda/envs/tfuse/lib/python3.7/sre_parse.py", line 810, in _parse
+    p = _parse_sub(source, state, sub_verbose, nested + 1)
+  File "/opt/conda/envs/tfuse/lib/python3.7/sre_parse.py", line 420, in _parse_sub
+    not nested and not items))
+  File "/opt/conda/envs/tfuse/lib/python3.7/sre_parse.py", line 810, in _parse
+    p = _parse_sub(source, state, sub_verbose, nested + 1)
+  File "/opt/conda/envs/tfuse/lib/python3.7/sre_parse.py", line 420, in _parse_sub
+    not nested and not items))
+  File "/opt/conda/envs/tfuse/lib/python3.7/sre_parse.py", line 810, in _parse
+    p = _parse_sub(source, state, sub_verbose, nested + 1)
+  File "/opt/conda/envs/tfuse/lib/python3.7/sre_parse.py", line 420, in _parse_sub
+    not nested and not items))
+  File "/opt/conda/envs/tfuse/lib/python3.7/sre_parse.py", line 810, in _parse
+    p = _parse_sub(source, state, sub_verbose, nested + 1)
+UnboundLocalError: local variable 'sub_verbose' referenced before assignment
+_cleanup() started
+Exception ignored in: <function LeaderboardEvaluator.__del__ at 0x7efc8dccc710>
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 125, in __del__
+    self._cleanup()
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 139, in _cleanup
+    if self.manager and self.manager.get_running_status() \
+AttributeError: 'LeaderboardEvaluator' object has no attribute 'manager'
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 499, in <module>
+    main()
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 495, in main
+    del leaderboard_evaluator
+UnboundLocalError: local variable 'leaderboard_evaluator' referenced before assignment
+
+Finished at 2023-06-12 09:08:00
+
+Starting at 2023-06-12 09:08:01
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=3fb084502c0a
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 489, in main
+    leaderboard_evaluator = LeaderboardEvaluator(arguments, statistics_manager)
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 87, in __init__
+    self.world = self.client.load_world('Town01')
+RuntimeError: time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000
+_cleanup() started
+Exception ignored in: <function LeaderboardEvaluator.__del__ at 0x7f4a2ec8d710>
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 125, in __del__
+    self._cleanup()
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 139, in _cleanup
+    if self.manager and self.manager.get_running_status() \
+AttributeError: 'LeaderboardEvaluator' object has no attribute 'manager'
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 499, in <module>
+    main()
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 495, in main
+    del leaderboard_evaluator
+UnboundLocalError: local variable 'leaderboard_evaluator' referenced before assignment
+
+Finished at 2023-06-12 09:09:02
+
+Starting at 2023-06-12 09:09:03
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=3fb084502c0a
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 489, in main
+    leaderboard_evaluator = LeaderboardEvaluator(arguments, statistics_manager)
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 87, in __init__
+    self.world = self.client.load_world('Town01')
+RuntimeError: time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000
+_cleanup() started
+Exception ignored in: <function LeaderboardEvaluator.__del__ at 0x7f29cfdc7710>
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 125, in __del__
+    self._cleanup()
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 139, in _cleanup
+    if self.manager and self.manager.get_running_status() \
+AttributeError: 'LeaderboardEvaluator' object has no attribute 'manager'
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 499, in <module>
+    main()
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 495, in main
+    del leaderboard_evaluator
+UnboundLocalError: local variable 'leaderboard_evaluator' referenced before assignment
+
+Finished at 2023-06-12 09:10:03
+
+Starting at 2023-06-12 09:10:04
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=3fb084502c0a
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_18 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:227: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_clses = topk_inds // (height * width)
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:229: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_ys = topk_inds // width
+
+[91mStopping the route, the agent has crashed:
+> 'numpy.ndarray' object is not callable[0m
+
+Traceback (most recent call last):
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 152, in _tick_scenario
+    ego_action = self._agent()
+  File "/transfuser/leaderboard/leaderboard/autoagents/agent_wrapper_local.py", line 84, in __call__
+    return self._agent()
+  File "/transfuser/leaderboard/leaderboard/autoagents/autonomous_agent.py", line 115, in __call__
+    control = self.run_step(input_data, timestamp)
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "./team_code_transfuser/submission_agent.py", line 293, in run_step
+    self.update_gps_buffer(self.control, tick_data['compass'], tick_data['speed'])
+  File "./team_code_transfuser/submission_agent.py", line 504, in update_gps_buffer
+    next_loc_tmp, _, _ = self.ego_model.forward(loc_temp, yaw, speed, action)
+TypeError: 'numpy.ndarray' object is not callable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 372, in _load_and_run_scenario
+    self.manager.run_scenario()
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 136, in run_scenario
+    self._tick_scenario(timestamp)
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 159, in _tick_scenario
+    raise AgentError(e)
+leaderboard.autoagents.agent_wrapper_local.AgentError: 'numpy.ndarray' object is not callable
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_18 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-12 09:11:56 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-12 09:12:01 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 5.07s               │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 2.05s               │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.405               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 0.0 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_19 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+
+[91mError during the simulation:
+> 'list_iterator' object has no attribute '_world'[0m
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 372, in _load_and_run_scenario
+    self.manager.run_scenario()
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 136, in run_scenario
+    self._tick_scenario(timestamp)
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 164, in _tick_scenario
+    self.scenario_tree.tick_once()
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/py_trees/behaviour.py", line 158, in tick_once
+    for unused in self.tick():
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/py_trees/composites.py", line 578, in tick
+    for node in child.tick():
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/py_trees/composites.py", line 578, in tick
+    for node in child.tick():
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/py_trees/behaviour.py", line 249, in tick
+    new_status = self.update()
+  File "/transfuser/scenario_runner/srunner/scenariomanager/scenarioatomics/atomic_criteria_local.py", line 1767, in update
+    self._world.debug.draw_point(center + carla.Location(z=z), size=0.2, color=color, life_time=0.01)
+AttributeError: 'list_iterator' object has no attribute '_world'
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_19 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-12 09:14:45 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-12 09:15:31 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 46.0s               │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 26.4s               │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.574               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 1.79 %  │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+_cleanup() finished
+
+Finished at 2023-06-12 09:15:31
+
+Starting at 2023-06-12 09:15:32
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=3fb084502c0a
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_19 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:227: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_clses = topk_inds // (height * width)
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:229: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_ys = topk_inds // width
+Watchdog exception - Timeout of 59.0 seconds occured
+terminate called after throwing an instance of 'carla::client::TimeoutException'
+  what():  time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000
+
+Finished at 2023-06-12 09:24:34
+
+Starting at 2023-06-12 09:24:35
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=3fb084502c0a
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_19 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:227: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_clses = topk_inds // (height * width)
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:229: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_ys = topk_inds // width
+Watchdog exception - Timeout of 59.0 seconds occured
+
+[91mError during the simulation:
+> time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000[0m
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 372, in _load_and_run_scenario
+    self.manager.run_scenario()
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 136, in run_scenario
+    self._tick_scenario(timestamp)
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 186, in _tick_scenario
+    CarlaDataProvider.get_world().tick(self._timeout)
+RuntimeError: time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000
+[1m> Stopping the route[0m
+[1m> Registering the route statistics[0m
+_cleanup() started
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+_cleanup() started
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+_cleanup() finished
+
+Finished at 2023-06-12 09:29:50
+
+Starting at 2023-06-12 09:29:51
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=3fb084502c0a
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_19 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:227: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_clses = topk_inds // (height * width)
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:229: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_ys = topk_inds // width
+
+[91mStopping the route, the agent has crashed:
+> unsupported operand type(s) for *: 'EgoModel' and 'bool'[0m
+
+Traceback (most recent call last):
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 152, in _tick_scenario
+    ego_action = self._agent()
+  File "/transfuser/leaderboard/leaderboard/autoagents/agent_wrapper_local.py", line 84, in __call__
+    return self._agent()
+  File "/transfuser/leaderboard/leaderboard/autoagents/autonomous_agent.py", line 115, in __call__
+    control = self.run_step(input_data, timestamp)
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "./team_code_transfuser/submission_agent.py", line 432, in run_step
+    self.update_gps_buffer(self.control, tick_data['compass'], tick_data['speed'])
+  File "./team_code_transfuser/submission_agent.py", line 504, in update_gps_buffer
+    next_loc_tmp, _, _ = self.ego_model.forward(loc_temp, yaw, speed, action)
+  File "./team_code_transfuser/submission_agent.py", line 734, in forward
+    next_spds = next_spds * (next_spds > 0.0)  # Fast ReLU
+TypeError: unsupported operand type(s) for *: 'EgoModel' and 'bool'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 372, in _load_and_run_scenario
+    self.manager.run_scenario()
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 136, in run_scenario
+    self._tick_scenario(timestamp)
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 159, in _tick_scenario
+    raise AgentError(e)
+leaderboard.autoagents.agent_wrapper_local.AgentError: unsupported operand type(s) for *: 'EgoModel' and 'bool'
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_19 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-12 09:32:37 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-12 09:46:44 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 846.48s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 533.5s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.63                │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 89.36 % │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_20 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+Watchdog exception - Timeout of 59.0 seconds occured
+terminate called after throwing an instance of 'carla::client::TimeoutException'
+  what():  time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000
+
+Finished at 2023-06-12 09:52:09
+
+Starting at 2023-06-12 09:52:10
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=3fb084502c0a
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_20 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:227: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_clses = topk_inds // (height * width)
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:229: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_ys = topk_inds // width
+Watchdog exception - Timeout of 59.0 seconds occured
+
+[91mError during the simulation:
+> time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000[0m
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 372, in _load_and_run_scenario
+    self.manager.run_scenario()
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 136, in run_scenario
+    self._tick_scenario(timestamp)
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 186, in _tick_scenario
+    CarlaDataProvider.get_world().tick(self._timeout)
+RuntimeError: time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000
+[1m> Stopping the route[0m
+[1m> Registering the route statistics[0m
+_cleanup() started
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+_cleanup() started
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+_cleanup() finished
+
+Finished at 2023-06-12 09:57:24
+
+Starting at 2023-06-12 09:57:25
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=3fb084502c0a
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_20 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:227: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_clses = topk_inds // (height * width)
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:229: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_ys = topk_inds // width
+Watchdog exception - Timeout of 59.0 seconds occured
+terminate called after throwing an instance of 'carla::client::TimeoutException'
+  what():  time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000
+
+Finished at 2023-06-12 10:02:33
+
+Starting at 2023-06-12 10:02:34
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=3fb084502c0a
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_20 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:227: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_clses = topk_inds // (height * width)
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:229: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_ys = topk_inds // width
+
+[91mStopping the route, the agent has crashed:
+> isinstance() arg 2 must be a type or tuple of types[0m
+
+Traceback (most recent call last):
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 152, in _tick_scenario
+    ego_action = self._agent()
+  File "/transfuser/leaderboard/leaderboard/autoagents/agent_wrapper_local.py", line 84, in __call__
+    return self._agent()
+  File "/transfuser/leaderboard/leaderboard/autoagents/autonomous_agent.py", line 115, in __call__
+    control = self.run_step(input_data, timestamp)
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "./team_code_transfuser/submission_agent.py", line 338, in run_step
+    forced_move=is_stuck, rgb_back=self.rgb_back)
+  File "./team_code_transfuser/model.py", line 697, in forward_ego
+    features, image_features_grid, fused_features = self._model(rgb, lidar_bev, ego_vel)
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "./team_code_transfuser/transfuser.py", line 190, in forward
+    lidar_features_layer4 = F.interpolate(lidar_features_layer4, size=(lidar_features.shape[2],lidar_features.shape[3]), mode='bilinear', align_corners=False)
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/torch/nn/functional.py", line 3833, in interpolate
+    if isinstance(size, (list, tuple)):
+TypeError: isinstance() arg 2 must be a type or tuple of types
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 372, in _load_and_run_scenario
+    self.manager.run_scenario()
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 136, in run_scenario
+    self._tick_scenario(timestamp)
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 159, in _tick_scenario
+    raise AgentError(e)
+leaderboard.autoagents.agent_wrapper_local.AgentError: isinstance() arg 2 must be a type or tuple of types
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_20 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-12 10:04:45 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-12 10:07:04 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 138.45s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 83.0s               │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.6                 │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 23.75 % │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_21 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+
+[91mThe scenario could not be loaded:
+> unsupported operand type(s) for *: 'float' and 'collections.OrderedDict'[0m
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 337, in _load_and_run_scenario
+    scenario = RouteScenario(world=self.world, config=config, debug_mode=args.debug)
+  File "/transfuser/leaderboard/leaderboard/scenarios/route_scenario_local.py", line 190, in __init__
+    self._update_route(world, config, debug_mode>0)
+  File "/transfuser/leaderboard/leaderboard/scenarios/route_scenario_local.py", line 225, in _update_route
+    config.town, route, world_annotations)
+  File "/transfuser/leaderboard/leaderboard/utils/route_parser.py", line 293, in scan_route_for_scenarios
+    waypoint, trajectory)
+  File "/transfuser/leaderboard/leaderboard/utils/route_parser.py", line 177, in match_world_location_to_route
+    if match_waypoints(world_location, route_waypoint[0]):
+  File "/transfuser/leaderboard/leaderboard/utils/route_parser.py", line 167, in match_waypoints
+    dpos = math.sqrt(dx * dx + dy * dy + dz * dz)
+TypeError: unsupported operand type(s) for *: 'float' and 'collections.OrderedDict'
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+Exception ignored in: <function RouteScenario.__del__ at 0x7f442f3a3e60>
+Traceback (most recent call last):
+  File "/transfuser/leaderboard/leaderboard/scenarios/route_scenario_local.py", line 579, in __del__
+    self.remove_all_actors()
+  File "/transfuser/scenario_runner/srunner/scenarios/basic_scenario.py", line 202, in remove_all_actors
+    for i, _ in enumerate(self.other_actors):
+AttributeError: 'RouteScenario' object has no attribute 'other_actors'
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+_cleanup() finished
+
+Finished at 2023-06-12 10:07:49
+
+Starting at 2023-06-12 10:07:50
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=3fb084502c0a
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_21 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town05
+
+Finished at 2023-06-12 10:08:05
+
+Starting at 2023-06-12 10:08:06
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=3fb084502c0a
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_21 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town05
+
+[91mThe scenario could not be loaded:
+> type object 'float' has no attribute 'sqrt'[0m
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 337, in _load_and_run_scenario
+    scenario = RouteScenario(world=self.world, config=config, debug_mode=args.debug)
+  File "/transfuser/leaderboard/leaderboard/scenarios/route_scenario_local.py", line 190, in __init__
+    self._update_route(world, config, debug_mode>0)
+  File "/transfuser/leaderboard/leaderboard/scenarios/route_scenario_local.py", line 225, in _update_route
+    config.town, route, world_annotations)
+  File "/transfuser/leaderboard/leaderboard/utils/route_parser.py", line 293, in scan_route_for_scenarios
+    waypoint, trajectory)
+  File "/transfuser/leaderboard/leaderboard/utils/route_parser.py", line 177, in match_world_location_to_route
+    if match_waypoints(world_location, route_waypoint[0]):
+  File "/transfuser/leaderboard/leaderboard/utils/route_parser.py", line 167, in match_waypoints
+    dpos = math.sqrt(dx * dx + dy * dy + dz * dz)
+AttributeError: type object 'float' has no attribute 'sqrt'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 490, in main
+    leaderboard_evaluator.run(arguments)
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 434, in run
+    self._load_and_run_scenario(args, config)
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 355, in _load_and_run_scenario
+    traceback.print_exc()
+  File "/opt/conda/envs/tfuse/lib/python3.7/traceback.py", line 163, in print_exc
+    print_exception(*sys.exc_info(), limit=limit, file=file, chain=chain)
+  File "/opt/conda/envs/tfuse/lib/python3.7/traceback.py", line 104, in print_exception
+    type(value), value, tb, limit=limit).format(chain=chain):
+  File "/opt/conda/envs/tfuse/lib/python3.7/traceback.py", line 508, in __init__
+    capture_locals=capture_locals)
+  File "/opt/conda/envs/tfuse/lib/python3.7/traceback.py", line 363, in extract
+    f.line
+  File "/opt/conda/envs/tfuse/lib/python3.7/traceback.py", line 285, in line
+    self._line = linecache.getline(self.filename, self.lineno).strip()
+  File "/opt/conda/envs/tfuse/lib/python3.7/linecache.py", line 17, in getline
+    if 1 <= lineno <= len(lines):
+TypeError: '<=' not supported between instances of 'NoneType' and 'int'
+Exception ignored in: <function RouteScenario.__del__ at 0x7f51d0cd0e60>
+Traceback (most recent call last):
+  File "/transfuser/leaderboard/leaderboard/scenarios/route_scenario_local.py", line 579, in __del__
+    self.remove_all_actors()
+  File "/transfuser/scenario_runner/srunner/scenarios/basic_scenario.py", line 202, in remove_all_actors
+    for i, _ in enumerate(self.other_actors):
+AttributeError: 'RouteScenario' object has no attribute 'other_actors'
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+Finished at 2023-06-12 10:08:35
+
+Starting at 2023-06-12 13:44:21
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=3fb084502c0a
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_21 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:227: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_clses = topk_inds // (height * width)
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:229: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_ys = topk_inds // width
+Watchdog exception - Timeout of 59.0 seconds occured
+
+[91mError during the simulation:
+> time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000[0m
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 372, in _load_and_run_scenario
+    self.manager.run_scenario()
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 136, in run_scenario
+    self._tick_scenario(timestamp)
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 186, in _tick_scenario
+    CarlaDataProvider.get_world().tick(self._timeout)
+RuntimeError: time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000
+[1m> Stopping the route[0m
+[1m> Registering the route statistics[0m
+_cleanup() started
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+_cleanup() started
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+_cleanup() finished
+
+Finished at 2023-06-12 13:48:03
+
+Starting at 2023-06-12 13:48:03
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=3fb084502c0a
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_21 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:227: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_clses = topk_inds // (height * width)
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:229: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_ys = topk_inds // width
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_21 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-12 13:49:09 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-12 13:57:43 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 513.67s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 295.9s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.576               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_22 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+
+[91mError during the simulation:
+> 'Logger' object is not iterable[0m
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 372, in _load_and_run_scenario
+    self.manager.run_scenario()
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 136, in run_scenario
+    self._tick_scenario(timestamp)
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 164, in _tick_scenario
+    self.scenario_tree.tick_once()
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/py_trees/behaviour.py", line 158, in tick_once
+    for unused in self.tick():
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/py_trees/composites.py", line 578, in tick
+    for node in child.tick():
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/py_trees/composites.py", line 494, in tick
+    for node in child.tick():
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/py_trees/composites.py", line 578, in tick
+    for node in child.tick():
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/py_trees/composites.py", line 578, in tick
+    for node in child.tick():
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/py_trees/composites.py", line 493, in tick
+    for child in itertools.islice(self.children, self.current_index, None):
+TypeError: 'Logger' object is not iterable
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_22 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-12 13:59:25 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-12 14:02:21 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 176.44s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 94.2s               │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.534               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 26.8 %  │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+_cleanup() finished
+
+Finished at 2023-06-12 14:02:22
+
+Starting at 2023-06-12 14:02:23
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=3fb084502c0a
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+Finished at 2023-06-12 14:02:30
+
+Starting at 2023-06-12 14:02:31
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=3fb084502c0a
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_22 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:227: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_clses = topk_inds // (height * width)
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:229: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_ys = topk_inds // width
+Watchdog exception - Timeout of 59.0 seconds occured
+terminate called after throwing an instance of 'carla::client::TimeoutException'
+  what():  time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000
+
+Finished at 2023-06-12 14:06:05
+
+Starting at 2023-06-12 14:06:06
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=3fb084502c0a
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_22 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:227: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_clses = topk_inds // (height * width)
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:229: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_ys = topk_inds // width
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+Watchdog exception - Timeout of 59.0 seconds occured
+terminate called after throwing an instance of 'carla::client::TimeoutException'
+  what():  time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000
+
+Finished at 2023-06-12 14:21:21
+
+Starting at 2023-06-12 14:21:22
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=3fb084502c0a
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 28, in <module>
+    from srunner.scenariomanager.timer import GameTime
+  File "/transfuser/scenario_runner/srunner/scenariomanager/timer.py", line 14, in <module>
+    import py_trees
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/py_trees/__init__.py", line 16, in <module>
+    from . import behaviour  # noqa
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/py_trees/behaviour.py", line 23, in <module>
+    from . import common
+  File "/opt/conda/envs/tfuse/lib/python3.7/site-packages/py_trees/common.py", line 58, in <module>
+    class ClearingPolicy(enum.IntEnum):
+  File "/opt/conda/envs/tfuse/lib/python3.7/enum.py", line 235, in __new__
+    for name, canonical_member in enum_class._member_map_.items():
+ValueError: too many values to unpack (expected 0)
+
+Finished at 2023-06-12 14:21:22
+
+Starting at 2023-06-12 14:21:23
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=3fb084502c0a
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_22 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town05
+
+Finished at 2023-06-12 14:21:35
+
+Starting at 2023-06-12 14:21:35
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=3fb084502c0a
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_22 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:227: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_clses = topk_inds // (height * width)
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:229: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_ys = topk_inds // width
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+Watchdog exception - Timeout of 59.0 seconds occured
+terminate called after throwing an instance of 'carla::client::TimeoutException'
+  what():  time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000
+
+Finished at 2023-06-12 14:29:28
+
+Starting at 2023-06-12 14:29:29
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=3fb084502c0a
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_22 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:227: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_clses = topk_inds // (height * width)
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:229: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_ys = topk_inds // width
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_22 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-12 14:31:20 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-12 14:49:27 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 1087.37s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 645.6s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.594               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [91mFAILURE[0m │ 0.88 %  │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_23 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Starting at 2023-06-13 08:23:37
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=3fb084502c0a
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_23 (repetition 0) =========
+> Setting up the agent[0m
+
+[91mCould not set up the required agent:
+> [Errno 2] No such file or directory: '/model/args.txt'[0m
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 291, in _load_and_run_scenario
+    self.agent_instance = getattr(self.module_agent, agent_class_name)(args.agent_config)
+  File "/transfuser/leaderboard/leaderboard/autoagents/autonomous_agent.py", line 45, in __init__
+    self.setup(path_to_conf_file)
+  File "./team_code_transfuser/submission_agent.py", line 75, in setup
+    args_file = open(os.path.join(path_to_conf_file, 'args.txt'), 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '/model/args.txt'
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_24 (repetition 0) =========
+> Setting up the agent[0m
+
+[91mCould not set up the required agent:
+> [Errno 2] No such file or directory: '/model/args.txt'[0m
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 291, in _load_and_run_scenario
+    self.agent_instance = getattr(self.module_agent, agent_class_name)(args.agent_config)
+  File "/transfuser/leaderboard/leaderboard/autoagents/autonomous_agent.py", line 45, in __init__
+    self.setup(path_to_conf_file)
+  File "./team_code_transfuser/submission_agent.py", line 75, in setup
+    args_file = open(os.path.join(path_to_conf_file, 'args.txt'), 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '/model/args.txt'
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_25 (repetition 0) =========
+> Setting up the agent[0m
+
+[91mCould not set up the required agent:
+> [Errno 2] No such file or directory: '/model/args.txt'[0m
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 291, in _load_and_run_scenario
+    self.agent_instance = getattr(self.module_agent, agent_class_name)(args.agent_config)
+  File "/transfuser/leaderboard/leaderboard/autoagents/autonomous_agent.py", line 45, in __init__
+    self.setup(path_to_conf_file)
+  File "./team_code_transfuser/submission_agent.py", line 75, in setup
+    args_file = open(os.path.join(path_to_conf_file, 'args.txt'), 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '/model/args.txt'
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+_cleanup() finished
+[1m> Registering the global statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+_cleanup() finished
+
+Finished at 2023-06-13 08:23:47
+
+Starting at 2023-06-13 11:21:03
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=3fb084502c0a
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_23 (repetition 0) =========
+> Setting up the agent[0m
+
+[91mCould not set up the required agent:
+> [Errno 2] No such file or directory: '/model/args.txt'[0m
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 291, in _load_and_run_scenario
+    self.agent_instance = getattr(self.module_agent, agent_class_name)(args.agent_config)
+  File "/transfuser/leaderboard/leaderboard/autoagents/autonomous_agent.py", line 45, in __init__
+    self.setup(path_to_conf_file)
+  File "./team_code_transfuser/submission_agent.py", line 75, in setup
+    args_file = open(os.path.join(path_to_conf_file, 'args.txt'), 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '/model/args.txt'
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_24 (repetition 0) =========
+> Setting up the agent[0m
+
+[91mCould not set up the required agent:
+> [Errno 2] No such file or directory: '/model/args.txt'[0m
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 291, in _load_and_run_scenario
+    self.agent_instance = getattr(self.module_agent, agent_class_name)(args.agent_config)
+  File "/transfuser/leaderboard/leaderboard/autoagents/autonomous_agent.py", line 45, in __init__
+    self.setup(path_to_conf_file)
+  File "./team_code_transfuser/submission_agent.py", line 75, in setup
+    args_file = open(os.path.join(path_to_conf_file, 'args.txt'), 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '/model/args.txt'
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_25 (repetition 0) =========
+> Setting up the agent[0m
+
+[91mCould not set up the required agent:
+> [Errno 2] No such file or directory: '/model/args.txt'[0m
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 291, in _load_and_run_scenario
+    self.agent_instance = getattr(self.module_agent, agent_class_name)(args.agent_config)
+  File "/transfuser/leaderboard/leaderboard/autoagents/autonomous_agent.py", line 45, in __init__
+    self.setup(path_to_conf_file)
+  File "./team_code_transfuser/submission_agent.py", line 75, in setup
+    args_file = open(os.path.join(path_to_conf_file, 'args.txt'), 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '/model/args.txt'
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+_cleanup() finished
+[1m> Registering the global statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+_cleanup() finished
+
+Finished at 2023-06-13 11:21:08
+
+Starting at 2023-06-13 11:25:24
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=3fb084502c0a
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_23 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:227: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_clses = topk_inds // (height * width)
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:229: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_ys = topk_inds // width
+
+[91mError during the simulation:
+> A sensor took too long to send their data[0m
+
+Traceback (most recent call last):
+  File "/transfuser/leaderboard/leaderboard/envs/sensor_interface.py", line 236, in get_data
+    sensor_data = self._new_data_buffers.get(True, self._queue_timeout)
+  File "/opt/conda/envs/tfuse/lib/python3.7/queue.py", line 178, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 152, in _tick_scenario
+    ego_action = self._agent()
+  File "/transfuser/leaderboard/leaderboard/autoagents/agent_wrapper_local.py", line 84, in __call__
+    return self._agent()
+  File "/transfuser/leaderboard/leaderboard/autoagents/autonomous_agent.py", line 104, in __call__
+    input_data = self.sensor_interface.get_data()
+  File "/transfuser/leaderboard/leaderboard/envs/sensor_interface.py", line 241, in get_data
+    raise SensorReceivedNoData("A sensor took too long to send their data")
+leaderboard.envs.sensor_interface.SensorReceivedNoData: A sensor took too long to send their data
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./leaderboard/leaderboard/leaderboard_evaluator_local.py", line 372, in _load_and_run_scenario
+    self.manager.run_scenario()
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 136, in run_scenario
+    self._tick_scenario(timestamp)
+  File "/transfuser/leaderboard/leaderboard/scenarios/scenario_manager_local.py", line 156, in _tick_scenario
+    raise RuntimeError(e)
+RuntimeError: A sensor took too long to send their data
+[1m> Stopping the route[0m
+ERROR: failed to destroy actor 605 : time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000 
+Starting at 2023-06-13 11:32:34
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=3fb084502c0a
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_23 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:227: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_clses = topk_inds // (height * width)
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:229: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_ys = topk_inds // width
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_23 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-13 11:34:42 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-13 11:51:17 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 995.29s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 683.0s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.686               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [91mFAILURE[0m │ 1.29 %  │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [91mFAILURE[0m │ 2 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_24 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_24 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-13 11:54:37 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-13 12:28:15 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 2017.8s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 1406.0s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.697               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [91mFAILURE[0m │ 0.23 %  │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 4 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [91mFAILURE[0m │ 3 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_25 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected object directly in front of the vehicle. Stopping. Step: 13305
+Detected agent being stuck. Move for frame:  10
+Detected object directly in front of the vehicle. Stopping. Step: 13307
+Detected agent being stuck. Move for frame:  11
+Detected object directly in front of the vehicle. Stopping. Step: 13309
+Detected agent being stuck. Move for frame:  12
+Detected object directly in front of the vehicle. Stopping. Step: 13311
+Detected agent being stuck. Move for frame:  13
+Detected object directly in front of the vehicle. Stopping. Step: 13313
+Detected agent being stuck. Move for frame:  14
+Detected object directly in front of the vehicle. Stopping. Step: 13315
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_25 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-13 12:30:45 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-13 12:52:29 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 1303.92s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 845.45s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.648               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 58.72 % │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [91mFAILURE[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+[1m> Registering the global statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+_cleanup() finished
+
+Finished at 2023-06-13 12:52:30
+
