@@ -1,0 +1,846 @@
+Starting at 2023-06-14 06:50:44
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=972c675573b8
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_16 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Downloading: "https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-weights/regnety_032_ra-7f2439f9.pth" to /root/.cache/torch/hub/checkpoints/regnety_032_ra-7f2439f9.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+terminate called after throwing an instance of 'carla::client::TimeoutException'
+  what():  time-out of 60000ms while waiting for the simulator, make sure the simulator is ready and connected to localhost:2000
+
+Finished at 2023-06-14 06:54:27
+
+Starting at 2023-06-14 06:54:28
+
+EVALUATION: town05
+ROUTES: ./leaderboard/data/town05_long/routes_town05_long.xml
+SCENARIOS: ./leaderboard/data/town05_long/town05_all_scenarios.json
+CHECKPOINT_ENDPOINT: /results/town05.json
+
+Environment:
+ACTOR_AMOUNT=town
+CARLA_ROOT=carla
+CARLA_SERVER=carla/CarlaUE4.sh
+CHALLENGE_TRACK_CODENAME=SENSORS
+CHECKPOINT_ENDPOINT=/results/town05.json
+CONDA_DEFAULT_ENV=tfuse
+CONDA_EXE=/opt/conda/bin/conda
+CONDA_PREFIX=/opt/conda/envs/tfuse
+CONDA_PREFIX_1=/opt/conda
+CONDA_PROMPT_MODIFIER=(tfuse) 
+CONDA_PYTHON_EXE=/opt/conda/bin/python
+CONDA_ROOT=/opt/conda
+CONDA_SHLVL=2
+CUDA_VERSION=11.3.1
+DATAGEN=0
+DEBUG_CHALLENGE=0
+EVALUATION=town05
+HOME=/root
+HOSTNAME=972c675573b8
+LC_CTYPE=C.UTF-8
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LEADERBOARD_ROOT=./leaderboard
+NCCL_VERSION=2.9.9-1
+NVARCH=x86_64
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+NVIDIA_PRODUCT_NAME=CUDA
+NVIDIA_REQUIRE_CUDA=cuda>=11.3 brand=tesla,driver>=418,driver<419 driver>=450
+NVIDIA_VISIBLE_DEVICES=0
+NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-3
+NV_CUDA_CUDART_VERSION=11.3.109-1
+NV_CUDA_LIB_VERSION=11.3.1-1
+NV_CUDNN_PACKAGE=libcudnn8=8.2.0.53-1+cuda11.3
+NV_CUDNN_PACKAGE_NAME=libcudnn8
+NV_CUDNN_VERSION=8.2.0.53
+NV_LIBCUBLAS_PACKAGE=libcublas-11-3=11.5.1.109-1
+NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-3
+NV_LIBCUBLAS_VERSION=11.5.1.109-1
+NV_LIBCUSPARSE_VERSION=11.6.0.109-1
+NV_LIBNCCL_PACKAGE=libnccl2=2.9.9-1+cuda11.3
+NV_LIBNCCL_PACKAGE_NAME=libnccl2
+NV_LIBNCCL_PACKAGE_VERSION=2.9.9-1
+NV_LIBNPP_PACKAGE=libnpp-11-3=11.3.3.95-1
+NV_LIBNPP_VERSION=11.3.3.95-1
+NV_NVTX_VERSION=11.3.109-1
+PATH=/opt/conda/envs/tfuse/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/transfuser
+PYTHONPATH=carla/PythonAPI/carla/:./scenario_runner:./leaderboard::carla/PythonAPI:carla/PythonAPI/carla:carla/PythonAPI/carla/dist/carla-0.9.14-py3.7-linux-x86_64.egg
+PYTHONUNBUFFERED=1
+REPETITIONS=1
+RESUME=1
+ROUTES=./leaderboard/data/town05_long/routes_town05_long.xml
+SAVE_PATH=
+SCENARIOS=./leaderboard/data/town05_long/town05_all_scenarios.json
+SCENARIO_RUNNER_ROOT=./scenario_runner
+SHLVL=2
+TEAM_AGENT=./team_code_transfuser/submission_agent.py
+TEAM_CONFIG=/model
+TRANSFUSER_DAYTIME_HEADLIGHTS=1
+WORK_DIR=.
+_=/usr/bin/env
+_CE_CONDA=
+_CE_M=
+---------------------
+
+./leaderboard/leaderboard/leaderboard_evaluator_local.py:92: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(dist.version) < LooseVersion('0.9.14'):
+
+[1m========= Preparing RouteScenario_16 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Loading model /model/model_41.pth
+Freezing model cache.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:227: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_clses = topk_inds // (height * width)
+/opt/conda/envs/tfuse/lib/python3.7/site-packages/mmdet/models/utils/gaussian_target.py:229: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  topk_ys = topk_inds // width
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_16 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-14 06:57:26 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-14 07:26:05 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 1719.09s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 588.35s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.342               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [91mFAILURE[0m │ 3 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_17 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected agent being stuck. Move for frame:  14
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_17 (repetition 0) ------ [92mSUCCESS[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-14 07:28:07 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-14 07:48:41 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 1234.96s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 474.4s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.384               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_18 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_18 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-14 07:51:03 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-14 08:16:52 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 1549.25s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 534.9s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.345               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_19 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_19 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-14 08:20:40 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-14 08:44:59 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 1459.5s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 540.05s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.37                │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_20 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_20 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-14 08:47:52 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-14 09:11:20 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 1407.93s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 478.6s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.34                │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [91mFAILURE[0m │ 2 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_21 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected object directly in front of the vehicle. Stopping. Step: 6117
+Detected agent being stuck. Move for frame:  5
+Detected object directly in front of the vehicle. Stopping. Step: 6119
+Detected agent being stuck. Move for frame:  6
+Detected object directly in front of the vehicle. Stopping. Step: 6121
+Detected agent being stuck. Move for frame:  7
+Detected object directly in front of the vehicle. Stopping. Step: 6123
+Detected agent being stuck. Move for frame:  8
+Detected object directly in front of the vehicle. Stopping. Step: 6125
+Detected agent being stuck. Move for frame:  9
+Detected object directly in front of the vehicle. Stopping. Step: 6127
+Detected agent being stuck. Move for frame:  10
+Detected object directly in front of the vehicle. Stopping. Step: 6129
+Detected agent being stuck. Move for frame:  11
+Detected object directly in front of the vehicle. Stopping. Step: 6131
+Detected agent being stuck. Move for frame:  12
+Detected object directly in front of the vehicle. Stopping. Step: 6133
+Detected agent being stuck. Move for frame:  13
+Detected object directly in front of the vehicle. Stopping. Step: 6135
+Detected agent being stuck. Move for frame:  14
+Detected object directly in front of the vehicle. Stopping. Step: 6137
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_21 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-14 09:12:41 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-14 09:34:01 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 1279.99s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 450.05s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.352               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 95.15 % │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [91mFAILURE[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_22 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_22 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-14 09:36:23 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-14 09:58:01 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 1298.44s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 464.0s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.357               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [91mFAILURE[0m │ 0.26 %  │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_23 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+Detected agent being stuck. Move for frame:  0
+Detected agent being stuck. Move for frame:  1
+Detected agent being stuck. Move for frame:  2
+Detected agent being stuck. Move for frame:  3
+Detected agent being stuck. Move for frame:  4
+Detected agent being stuck. Move for frame:  5
+Detected agent being stuck. Move for frame:  6
+Detected agent being stuck. Move for frame:  7
+Detected agent being stuck. Move for frame:  8
+Detected agent being stuck. Move for frame:  9
+Detected agent being stuck. Move for frame:  10
+Detected agent being stuck. Move for frame:  11
+Detected agent being stuck. Move for frame:  12
+Detected agent being stuck. Move for frame:  13
+Detected object directly in front of the vehicle. Stopping. Step: 13907
+Detected agent being stuck. Move for frame:  14
+Detected object directly in front of the vehicle. Stopping. Step: 13909
+Detected agent being stuck. Move for frame:  0
+Detected object directly in front of the vehicle. Stopping. Step: 15019
+Detected agent being stuck. Move for frame:  1
+Detected object directly in front of the vehicle. Stopping. Step: 15021
+Detected agent being stuck. Move for frame:  2
+Detected object directly in front of the vehicle. Stopping. Step: 15023
+Detected agent being stuck. Move for frame:  3
+Detected object directly in front of the vehicle. Stopping. Step: 15025
+Detected agent being stuck. Move for frame:  4
+Detected object directly in front of the vehicle. Stopping. Step: 15027
+Detected agent being stuck. Move for frame:  5
+Detected object directly in front of the vehicle. Stopping. Step: 15029
+Detected agent being stuck. Move for frame:  6
+Detected object directly in front of the vehicle. Stopping. Step: 15031
+Detected agent being stuck. Move for frame:  7
+Detected object directly in front of the vehicle. Stopping. Step: 15033
+Detected agent being stuck. Move for frame:  8
+Detected object directly in front of the vehicle. Stopping. Step: 15035
+Detected agent being stuck. Move for frame:  9
+Detected object directly in front of the vehicle. Stopping. Step: 15037
+Detected agent being stuck. Move for frame:  10
+Detected object directly in front of the vehicle. Stopping. Step: 15039
+Detected agent being stuck. Move for frame:  11
+Detected object directly in front of the vehicle. Stopping. Step: 15041
+Detected agent being stuck. Move for frame:  12
+Detected object directly in front of the vehicle. Stopping. Step: 15043
+Detected agent being stuck. Move for frame:  13
+Detected object directly in front of the vehicle. Stopping. Step: 15045
+Detected agent being stuck. Move for frame:  14
+Detected object directly in front of the vehicle. Stopping. Step: 15047
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_23 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-14 10:01:00 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-14 10:43:52 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 2571.59s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 923.7s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.359               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [91mFAILURE[0m │ 1.86 %  │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 2 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [91mFAILURE[0m │ 2 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_24 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_24 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-14 10:48:41 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-14 11:47:16 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 3514.93s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 1344.1s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.382               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [92mSUCCESS[0m │ 100 %   │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [91mFAILURE[0m │ 0.52 %  │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [91mFAILURE[0m │ 4 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+
+[1m========= Preparing RouteScenario_25 (repetition 0) =========
+> Setting up the agent[0m
+/model/model_41.pth
+Using cached model /model/model_41.pth
+Model cache is already frozen.
+[1m> Loading the world[0m
+Loading town Town05
+Actor amount: 120
+[1m> Enabling ego headlights[0m
+[1m> Running the route[0m
+Detected agent being stuck. Move for frame:  0
+Detected object directly in front of the vehicle. Stopping. Step: 7323
+Detected agent being stuck. Move for frame:  1
+Detected object directly in front of the vehicle. Stopping. Step: 7325
+Detected agent being stuck. Move for frame:  2
+Detected object directly in front of the vehicle. Stopping. Step: 7327
+Detected agent being stuck. Move for frame:  3
+Detected object directly in front of the vehicle. Stopping. Step: 7329
+Detected agent being stuck. Move for frame:  4
+Detected object directly in front of the vehicle. Stopping. Step: 7331
+Detected agent being stuck. Move for frame:  5
+Detected object directly in front of the vehicle. Stopping. Step: 7333
+Detected agent being stuck. Move for frame:  6
+Detected object directly in front of the vehicle. Stopping. Step: 7335
+Detected agent being stuck. Move for frame:  7
+Detected object directly in front of the vehicle. Stopping. Step: 7337
+Detected agent being stuck. Move for frame:  8
+Detected object directly in front of the vehicle. Stopping. Step: 7339
+Detected agent being stuck. Move for frame:  9
+Detected object directly in front of the vehicle. Stopping. Step: 7341
+Detected agent being stuck. Move for frame:  10
+Detected object directly in front of the vehicle. Stopping. Step: 7343
+Detected agent being stuck. Move for frame:  11
+Detected object directly in front of the vehicle. Stopping. Step: 7345
+Detected agent being stuck. Move for frame:  12
+Detected object directly in front of the vehicle. Stopping. Step: 7347
+Detected agent being stuck. Move for frame:  13
+Detected object directly in front of the vehicle. Stopping. Step: 7349
+Detected agent being stuck. Move for frame:  14
+Detected object directly in front of the vehicle. Stopping. Step: 7351
+[1m> Stopping the route[0m
+
+[1m========= Results of RouteScenario_25 (repetition 0) ------ [91mFAILURE[0m [1m=========[0m
+
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2023-06-14 11:50:49 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2023-06-14 12:13:39 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 1369.99s            │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 491.0s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.358               │
+╘═════════════════════════════════╧═════════════════════╛
+
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[0m │ 34.16 % │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[0m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [91mFAILURE[0m │ 2 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[0m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [91mFAILURE[0m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [91mFAILURE[0m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[0m │         │
+╘═══════════════════════╧═════════╧═════════╛
+
+[1m> Registering the route statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+agent_instance.destroy()
+_cleanup() finished
+[1m> Registering the global statistics[0m
+_cleanup() started
+_cleanup() unsetting sync mode
+manager.cleanup()
+CarlaDataProvider.cleanup()
+_agent_watchdog.stop()
+_cleanup() finished
+
+Finished at 2023-06-14 12:13:40
+
